@@ -1,15 +1,19 @@
 <template>
   <!-- Note in this component that it is using another component -->
-<div>
+<div class = "displayNewOrder">
   <OrderItem
     :ui-labels="uiLabels"
     :lang="lang"
     :order-id="orderId"
     :order="order">
   </OrderItem>
-  <button v-on:click="orderDone">
+  <button class = "OrderStartedButton" v-on:click="orderStarted">
+    {{uiLabels.started}}
+  </button>
+  <button class = "OrderDoneButton" v-on:click="orderDone">
     {{uiLabels.ready}}
   </button>
+
 </div>
 </template>
 <script>
@@ -24,6 +28,7 @@ export default {
     orderId: String,
     lang: String
   },
+
   methods: {
     orderDone: function () {
       // sending 'done' message to parent component or view so that it
@@ -32,10 +37,22 @@ export default {
     },
     cancelOrder: function () {
       // not implemented
+    },
+    orderStarted: function (){
+      this.$emit('started')
     }
   }
 }
 </script>
 <style scoped>
-	
+.displayNewOrder{
+  display: grid;
+
+}
+.OrderDoneButton {
+  top: 50px;
+  width: 70px;
+  height: 19px;
+}
+
 </style>
