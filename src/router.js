@@ -24,25 +24,14 @@ let router = new Router({
       // route level code-splitting
       // this generates a separate chunk (read.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-<<<<<<< HEAD
+
       component: Kitchen
-    }
-=======
-      component: () => import(/* webpackChunkName: "read" */ './views/Kitchen.vue')
     },
-    // {
-    //   path: '/test',
-    //   meta: {
-    //     title: 'test',
-    //   },
-    //   name: 'test',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (read.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import(/* webpackChunkName: "read" */ './views/Test.vue')
-    // },
->>>>>>> 7d7ed550c9be55840e563df9361b8492df517279
+    {
+      component: () => import(/* webpackChunkName: "read" */ './views/Kitchen.vue')
+    }
   ]
+
 })
 
 router.beforeEach((to, from, next) => {
