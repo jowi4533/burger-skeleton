@@ -2,8 +2,6 @@
 <div id="orders">
   <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
   <div id= "gridContainer">
-
-
     <OrderItemToPrepare id ="snygg" v-for="(order, key) in orders"
     v-if="order.status !== 'done'"
     v-on:done="markDone(key)"
@@ -12,19 +10,9 @@
     :key="key"
     :order-id="key"
     :order="order">
-
-<!-- <OrderItemToPrepare
-  v-for="(order, key) in orders"
-  v-if="order.status !== 'done'"
-  v-on:done="markDone(key)"
-  :order-id="key"
-  :order="order"
-  :ui-labels="uiLabels"
-  :lang="lang"
-  :key="key">
-</OrderItemToPrepare> -->
-
 </OrderItemToPrepare>
+</homepage>
+
   </div>
 </div>
 </template>

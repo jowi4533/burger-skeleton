@@ -1,3 +1,4 @@
+
 <template>
   <!-- Note in this component that it is using another component -->
 <div class = "displayNewOrder">
@@ -7,12 +8,17 @@
     :order-id="orderId"
     :order="order">
   </OrderItem>
-  <button class = "OrderStartedButton" v-on:click="orderStarted">
+
+  <div v-if="order.status !=='started' ">
+  <button class = "OrderStartedButton" v-on:click="orderStarted" >
     {{uiLabels.started}}
   </button>
+    </div>
+    <div v-if="order.status == 'started'">
   <button class = "OrderDoneButton" v-on:click="orderDone">
     {{uiLabels.ready}}
   </button>
+</div>
 
 </div>
 </template>
@@ -39,6 +45,7 @@ export default {
       // not implemented
     },
     orderStarted: function (){
+      this.order.status = 'started';
       this.$emit('started')
     }
   }
@@ -46,13 +53,25 @@ export default {
 </script>
 <style scoped>
 .displayNewOrder{
-  display: grid;
+  position:relative;
+  /*grid-template-rows: "1 2 3 4 5 6 7 8 9";*/
 
 }
 .OrderDoneButton {
-  top: 50px;
+  position:absolute;
+  bottom:0;
+  left:0;
   width: 70px;
   height: 19px;
+
 }
+.OrderStartedButton {
+  position:absolute;
+  bottom:0;
+  right:0;
+  width:70px;
+  height:19px;
+}
+
 
 </style>
