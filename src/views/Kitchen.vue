@@ -7,7 +7,7 @@
       v-if="order.status !== 'done'"
       v-on:done="markDone(key)"
       :order-id="key"
-      :order="order" 
+      :order="order"
       :ui-labels="uiLabels"
       :lang="lang"
       :key="key">
@@ -25,7 +25,7 @@
       :key="key">
     </OrderItem>
   </div>
-</div>	
+</div>
 </template>
 <script>
 import OrderItem from '@/components/OrderItem.vue'
@@ -40,17 +40,20 @@ export default {
     OrderItem,
     OrderItemToPrepare
   },
-  mixins: [sharedVueStuff], // include stuff that is used in both 
+  mixins: [sharedVueStuff], // include stuff that is used in both
                             //the ordering system and the kitchen
   data: function(){
     return {
       chosenIngredients: [],
-      price: 0
+      price: 0,
     }
   },
   methods: {
     markDone: function (orderid) {
       this.$store.state.socket.emit("orderDone", orderid);
+    },
+    markStarted: function (orderid) {
+      this.$store.state.socket.emit("orderStarted", orderid);
     }
   }
 }

@@ -7,12 +7,18 @@
     :order-id="orderId"
     :order="order">
   </OrderItem>
-  <button v-on:click="orderDone">
+  <button id="orderDoneButton" v-if = "order.status == 'started'" v-on:click="orderDone">
     {{uiLabels.ready}}
   </button>
+
+  <button id="orderStartedButton" v-if = "order.status !== 'started'" v-on:click="orderStarted">
+    {{uiLabels.started}}
+  </button>
+
 </div>
 </template>
 <script>
+
 import OrderItem from '@/components/OrderItem.vue'
 
 export default {
@@ -32,10 +38,23 @@ export default {
     },
     cancelOrder: function () {
       // not implemented
+    },
+    orderStarted: function () {
+      this.order.status = 'started';
+      this.$emit('started');
     }
   }
 }
 </script>
 <style scoped>
-	
+.orderDoneButton {
+  width: 30px;
+  height: 25px;
+}
+
+.orderStartedButton {
+  width: 30px;
+  height: 25px;
+}
+
 </style>
