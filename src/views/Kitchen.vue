@@ -1,5 +1,6 @@
 <template>
 <div id="orders">
+<<<<<<< HEAD
   <h1>{{ uiLabels.ordersInQueue }}</h1>
   <div>
     <OrderItemToPrepare
@@ -24,6 +25,21 @@
       :ui-labels="uiLabels"
       :key="key">
     </OrderItem>
+=======
+  <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
+  <div id= "gridContainer">
+    <OrderItemToPrepare id ="snygg" v-for="(order, key) in orders"
+    v-if="order.status !== 'done'"
+    v-on:done="markDone(key)"
+    :ui-labels="uiLabels"
+    :lang="lang"
+    :key="key"
+    :order-id="key"
+    :order="order">
+</OrderItemToPrepare>
+</homepage>
+
+>>>>>>> 7d7ed550c9be55840e563df9361b8492df517279
   </div>
 </div>
 </template>
@@ -60,11 +76,43 @@ export default {
 </script>
 <style scoped>
 	#orders {
-    font-size:24pt;
+    font-size:13pt;
   }
 
   h1 {
     text-transform: uppercase;
-    font-size: 1.4em;
+    font-size: 1em;
   }
+
+   #gridContainer {
+    margin: 5px 25px 25px 25px;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 300px 300px;
+    /*border: 5px dashed #000000;*/
+    grid-template-areas:
+    "grid grid grid grid"
+    "grid grid grid grid";
+    background-color: white;
+  }
+<<<<<<< HEAD
+=======
+  #gridContainer > grid,grid1,grid2,grid3,grid4,grid5,grid6,grid7,grid8 {
+
+}
+
+#snygg {
+  color: #800080;
+  left: 10px;
+  margin-left: 5pt;
+  margin-top: 3pt;
+  background-color: #696969;
+  border-color: black;
+  border-style: solid;
+}
+
+
+
+>>>>>>> 7d7ed550c9be55840e563df9361b8492df517279
 </style>
