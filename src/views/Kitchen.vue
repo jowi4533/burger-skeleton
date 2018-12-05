@@ -12,6 +12,7 @@
     :order-id="key"
     :order="order">
     </OrderItemToPrepare>
+    <!-- </homepage> -->
   </div>
 </div>
 </template>
@@ -34,15 +35,12 @@ export default {
   data: function(){
     return {
       chosenIngredients: [],
-      price: 0,
+      price: 0
     }
   },
   methods: {
     markDone: function (orderid) {
       this.$store.state.socket.emit("orderDone", orderid);
-    },
-    markStarted: function (orderid) {
-      this.$store.state.socket.emit("orderStarted", orderid);
     }
   }
 }
