@@ -18,6 +18,8 @@
   "order" : "My burger",
   "language" : "Svenska",
   "started" : "Start",
-  "storage" : "Storage"
+  "storage" : "Storage",
+  "backtoorder": "Back to orders"
+
 
 }

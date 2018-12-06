@@ -35,12 +35,7 @@ let router = new Router({
       // which is lazy-loaded when the route is visited.
 
       component: () => import(/* webpackChunkName: "read" */ './views/Kitchen.vue')
-<<<<<<< HEAD
     }
-=======
-    },
->>>>>>> 8831e65b2a914d2d593fffcfdd97d79f5770a456
-
   ]
 
 })
