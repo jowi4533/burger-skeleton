@@ -49,6 +49,7 @@
       </OrderItem>
     </div>
   </div>
+</div>
 </template>
 <script>
 
