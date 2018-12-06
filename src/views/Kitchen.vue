@@ -1,6 +1,12 @@
 <template>
 <div id="orders">
   <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
+  <button id = "StorageButton" v-on:click="">
+    {{uiLabels.storage}}
+  </button>
+
+
+
   <div id= "gridContainer">
     <OrderItemToPrepare id ="snygg" v-for="(order, key) in orders"
     v-if="order.status !== 'done'"
@@ -79,7 +85,12 @@ export default {
   border-color: black;
   border-style: solid;
 }
-
-
+#StorageButton{
+  width:100px;
+  height:30px;
+  position:absolute;
+  top:0;
+  right:0;
+}
 
 </style>
