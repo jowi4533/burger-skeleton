@@ -3,6 +3,21 @@
     <img class="example-panel" src="@/assets/exampleImage.jpg">
     <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
 
+
+    <div id="frontpage">
+      <h1>TAJaa</h1>
+      <FrontPage> hello </FrontPage>
+      <button>Eat here</button>
+      <button>Take away</button>
+
+       <!-- v-on:click="placeToEat('Eat here')"
+      v-on:click="placeToEat('Take away') -->
+
+    </div>
+
+
+
+    <div id="ingredients_">
     <h1>{{ uiLabels.ingredients }}</h1>
 
     <Ingredient
@@ -13,13 +28,15 @@
       :lang="lang"
       :key="item.ingredient_id">
     </Ingredient>
-
-    <h1>{{ uiLabels.order }}</h1>
+  </div>
+  <div id="chosen_ingredients">
+    <h1>{{ uiLabels.order }} hej</h1>
     {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+  </div>
+<div id="order_item">
+    <h1>{{ uiLabels.ordersInQueue }} tja</h1>
 
-    <h1>{{ uiLabels.ordersInQueue }}</h1>
-    <div>
       <OrderItem
         v-for="(order, key) in orders"
         v-if="order.status !== 'done'"
@@ -28,6 +45,7 @@
         :ui-labels="uiLabels"
         :lang="lang"
         :key="key">
+        hej
       </OrderItem>
     </div>
   </div>
@@ -39,9 +57,10 @@
 //components
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
-
+import FrontPage from '@/components/FrontPage.vue'
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
+
 
 /* instead of defining a Vue instance, export default allows the only
 necessary Vue instance (found in main.js) to import your data and methods */
@@ -49,7 +68,8 @@ export default {
   name: 'Ordering',
   components: {
     Ingredient,
-    OrderItem
+    OrderItem,
+    FrontPage
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
                             // the ordering system and the kitchen
@@ -89,12 +109,42 @@ export default {
   }
 }
 </script>
+
+
 <style scoped>
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #ordering {
   margin:auto;
   width: 40em;
+  background-color: rgb(0,100,200);
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+
 }
+
+#frontpage {
+  height: 500px;
+  background-color: rgb(0,150,150);
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 3;
+}
+
+#ingredients_ {
+  background-color: rgb(240,240,240);
+  grid-column: 1;
+  grid-row: 2 / span 3;
+}
+#chosen_ingredients {
+  background-color: rgb(220,150,200);
+  grid-column: 2;
+  grid-row: 2 / span 3;
+}
+#order_item {
+  background-color: rgb(200,200,200);
+  grid-column: 3;
+  grid-row: 2 / span 3;
+}
+
 
 .example-panel {
   position: fixed;
@@ -105,7 +155,8 @@ export default {
 .ingredient {
   border: 1px solid #ccd;
   padding: 1em;
-  background-image: url('~@/assets/exampleImage.jpg');
+  background-color:  rgb(20,100,120);
+  /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
 }
 </style>

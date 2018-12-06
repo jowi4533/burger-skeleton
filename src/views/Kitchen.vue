@@ -8,7 +8,8 @@
 
 
   <div id= "gridContainer">
-    <OrderItemToPrepare id ="snygg" v-for="(order, key) in orders"
+    <OrderItemToPrepare id ="snygg"
+    v-for="(order, key) in orders"
     v-if="order.status !== 'done'"
     v-on:done="markDone(key)"
     :ui-labels="uiLabels"
@@ -16,12 +17,12 @@
     :key="key"
     :order-id="key"
     :order="order">
-</OrderItemToPrepare>
-</homepage>
-
+    </OrderItemToPrepare>
+    <!-- </homepage> -->
   </div>
 </div>
 </template>
+
 <script>
 import OrderItem from '@/components/OrderItem.vue'
 import OrderItemToPrepare from '@/components/OrderItemToPrepare.vue'
@@ -72,10 +73,6 @@ export default {
     "grid grid grid grid";
     background-color: white;
   }
-  #gridContainer > grid,grid1,grid2,grid3,grid4,grid5,grid6,grid7,grid8 {
-
-}
-
 #snygg {
   color: #800080;
   left: 10px;

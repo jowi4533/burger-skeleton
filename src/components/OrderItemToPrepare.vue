@@ -18,11 +18,13 @@
   <button class = "OrderDoneButton" v-on:click="orderDone">
     {{uiLabels.ready}}
   </button>
+
 </div>
 
 </div>
 </template>
 <script>
+
 import OrderItem from '@/components/OrderItem.vue'
 
 export default {
@@ -44,14 +46,17 @@ export default {
     cancelOrder: function () {
       // not implemented
     },
-    orderStarted: function (){
+
+    orderStarted: function () {
       this.order.status = 'started';
-      this.$emit('started')
+      this.$emit('started');
+
     }
   }
 }
 </script>
 <style scoped>
+
 .displayNewOrder{
   position:relative;
   /*grid-template-rows: "1 2 3 4 5 6 7 8 9";*/

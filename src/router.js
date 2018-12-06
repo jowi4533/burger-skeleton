@@ -1,3 +1,4 @@
+import Kitchen from './views/Kitchen.vue'
 import Vue from 'vue'
 import Router from 'vue-router'
 import Ordering from './views/Ordering.vue'
@@ -14,6 +15,15 @@ let router = new Router({
       name: 'ordering',
       component: Ordering
     },
+    // {
+    //   path: '/frontpage',
+    //   meta: {
+    //     title: 'RAW Sauce Burgers',
+    //   },
+    //   name: 'frontpage',
+    //   component: () => import( './views/FrontPage.vue')
+    //
+    // },
     {
       path: '/kitchen',
       meta: {
@@ -25,18 +35,9 @@ let router = new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "read" */ './views/Kitchen.vue')
     },
-    // {
-    //   path: '/test',
-    //   meta: {
-    //     title: 'test',
-    //   },
-    //   name: 'test',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (read.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import(/* webpackChunkName: "read" */ './views/Test.vue')
-    // },
+    
   ]
+
 })
 
 router.beforeEach((to, from, next) => {
