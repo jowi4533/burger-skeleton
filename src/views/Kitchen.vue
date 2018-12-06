@@ -1,4 +1,5 @@
 <template>
+  <div id="orders">
   <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
 
   <div id= "gridContainer" v-if = "NewState == 'OrderState'">
@@ -15,8 +16,8 @@
     :order-id="key"
     :order="order">
     </OrderItemToPrepare>
-
   </div>
+
 
   <div v-else-if= "NewState =='StorageState'">
     <button id = "StorageButton" v-on:click="BackToOrders">
@@ -28,17 +29,6 @@
     </StorageItem>
   </div>
 </div>
-<div v-else-if= "NewState =='StorageState' ">
-  <button id = "StorageButton" v-on:click= "NewState == 'orderState'" >
-    {{uiLabels.backtoorder}}
-  </button>
-  <StorageItem
-    :ui-labels="uiLabels"
-    :item="item">
-</StorageItem>
-</div>
-
-
 
 </template>
 
