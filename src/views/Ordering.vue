@@ -55,6 +55,7 @@
 //components
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
+import StorageItem from '@/components/StorageItem.vue'
 //import FrontPage from '@/components/FrontPage.vue'
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
