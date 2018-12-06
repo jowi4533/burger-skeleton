@@ -1,10 +1,10 @@
 <template>
   <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
-<div id="ordersSide" v-if= "NewState == 'orderState'">
-  <button id = "StorageButton" v-on:click="OpenStorage" >
-    {{uiLabels.storage}}
-  </button>
-  <div id= "gridContainer">
+
+  <div id= "gridContainer" v-if = "NewState == 'OrderState'">
+    <button id = "StorageButton" v-on:click="OpenStorage">
+      {{uiLabels.storage}}
+    </button>
     <OrderItemToPrepare id ="snygg"
     v-for="(order, key) in orders"
     v-if="order.status !== 'done' "
@@ -15,6 +15,17 @@
     :order-id="key"
     :order="order">
     </OrderItemToPrepare>
+
+  </div>
+
+  <div v-else-if= "NewState =='StorageState'">
+    <button id = "StorageButton" v-on:click="BackToOrders">
+      {{uiLabels.backtoorder}}
+    </button>
+    <StorageItem
+      :ui-labels="uiLabels"
+      :lang="lang">
+    </StorageItem>
   </div>
 </div>
 <div v-else-if= "NewState =='StorageState' ">
@@ -51,19 +62,20 @@ export default {
     return {
       chosenIngredients: [],
       price: 0,
-      NewState: "orderState"
-
+      NewState: "OrderState"
     }
   },
 
-  methods: {
+    methods: {
     markDone: function (orderid) {
       this.$store.state.socket.emit("orderDone", orderid);
     },
     OpenStorage: function () {
       this.NewState = "StorageState";
-      //console.log(this.NewState);
-
+      // console.log(this.NewState);
+    },
+    BackToOrders: function () {
+      this.NewState = "OrderState";
     }
   }
 }
