@@ -60,8 +60,6 @@ export default {
     text-transform: uppercase;
     font-size: 1em;
   }
-<<<<<<< HEAD
-=======
 
    #gridContainer {
     margin: 5px 25px 25px 25px;
@@ -92,5 +90,4 @@ export default {
   right:0;
 }
 
->>>>>>> d91438b455943839d9457f971b8211e702ffbd57
 </style>
