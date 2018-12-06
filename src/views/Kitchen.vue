@@ -1,6 +1,19 @@
 <template>
 <div id="orders">
   <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
+  <button id = "StorageButton" v-on:click="OpenStorage" >
+    {{uiLabels.storage}}
+  </button>
+
+<div v-if= "this.NewState =='ShowStorage' ">
+  <StorageItem
+    :ui-labels="uiLabels"
+    :lang="lang"
+    :order-id="orderId"
+    :order="order">
+</StorageItem>
+</div>
+
   <div id= "gridContainer">
     <OrderItemToPrepare id ="snygg"
     v-for="(order, key) in orders"
@@ -20,7 +33,7 @@
 <script>
 import OrderItem from '@/components/OrderItem.vue'
 import OrderItemToPrepare from '@/components/OrderItemToPrepare.vue'
-
+import StorageItem from '@/components/StorageItem.vue'
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 
@@ -38,9 +51,15 @@ export default {
       price: 0
     }
   },
+  NewState: "" ,
   methods: {
     markDone: function (orderid) {
       this.$store.state.socket.emit("orderDone", orderid);
+    },
+    OpenStorage: function () {
+      this.NewState = "ShowStorage";
+      console.log(this.NewState);
+
     }
   }
 }
@@ -67,19 +86,21 @@ export default {
     "grid grid grid grid";
     background-color: white;
   }
-
-  #gridContainer > grid,grid1,grid2,grid3,grid4,grid5,grid6,grid7,grid8 {
-
-  }
-
-  #snygg {
-    color: #800080;
-    left: 10px;
-    margin-left: 5pt;
-    margin-top: 3pt;
-    background-color: #696969;
-    border-color: black;
-    border-style: solid;
-  }
+#snygg {
+  color: #800080;
+  left: 10px;
+  margin-left: 5pt;
+  margin-top: 3pt;
+  background-color: #696969;
+  border-color: black;
+  border-style: solid;
+}
+#StorageButton{
+  width:100px;
+  height:30px;
+  position:absolute;
+  top:0;
+  right:0;
+}
 
 </style>
