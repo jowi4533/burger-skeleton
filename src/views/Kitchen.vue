@@ -5,19 +5,18 @@
     {{uiLabels.storage}}
   </button>
 
-<div v-if= "this.NewState =='ShowStorage' ">
+<div v-if= "NewState =='StorageState' ">
   <StorageItem
+    v-for="item in ingredients"
     :ui-labels="uiLabels"
-    :lang="lang"
-    :order-id="orderId"
-    :order="order">
+    :item="item">
 </StorageItem>
 </div>
 
-  <div id= "gridContainer">
+  <div id= "gridContainer" v-if = "NewState == 'orderState'">
     <OrderItemToPrepare id ="snygg"
     v-for="(order, key) in orders"
-    v-if="order.status !== 'done'"
+    v-if="order.status !== 'done' && NewState !=='StorageState'"
     v-on:done="markDone(key)"
     :ui-labels="uiLabels"
     :lang="lang"
@@ -25,7 +24,6 @@
     :order-id="key"
     :order="order">
     </OrderItemToPrepare>
-    <!-- </homepage> -->
   </div>
 </div>
 </template>
@@ -41,24 +39,27 @@ export default {
   name: 'Ordering',
   components: {
     OrderItem,
-    OrderItemToPrepare
+    OrderItemToPrepare,
+    StorageItem
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
                             //the ordering system and the kitchen
   data: function(){
     return {
       chosenIngredients: [],
-      price: 0
+      price: 0,
+      NewState: "orderState"
+
     }
   },
-  NewState: "" ,
+
   methods: {
     markDone: function (orderid) {
       this.$store.state.socket.emit("orderDone", orderid);
     },
     OpenStorage: function () {
-      this.NewState = "ShowStorage";
-      console.log(this.NewState);
+      this.NewState = "StorageState";
+      //console.log(this.NewState);
 
     }
   }
@@ -80,7 +81,6 @@ export default {
     grid-gap: 5px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 300px 300px;
-    /*border: 5px dashed #000000;*/
     grid-template-areas:
     "grid grid grid grid"
     "grid grid grid grid";

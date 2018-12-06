@@ -43,7 +43,6 @@
         :ui-labels="uiLabels"
         :lang="lang"
         :key="key">
-        hej
       </OrderItem>
     </div>
   </div>
@@ -68,7 +67,8 @@ export default {
   components: {
     Ingredient,
     OrderItem,
-    //FrontPage
+    StorageItem
+
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
                             // the ordering system and the kitchen
