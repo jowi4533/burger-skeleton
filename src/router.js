@@ -10,6 +10,14 @@ let router = new Router({
     {
       path: '/',
       meta: {
+        title: 'Raw Sauce',
+      },
+      name: 'HomePage',
+      component: () => import(/* webpackChunkName: "read" */ './views/HomePage.vue')
+    },
+    {
+      path: '/Ordering',
+      meta: {
         title: 'Kraft Burgers',
       },
       name: 'ordering',
