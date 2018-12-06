@@ -4,18 +4,16 @@
     <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
 
 
-    <div id="frontpage">
+   <!-- <div id="frontpage">
       <h1>TAJaa</h1>
       <FrontPage> hello </FrontPage>
       <button>Eat here</button>
       <button>Take away</button>
 
-       <!-- v-on:click="placeToEat('Eat here')"
-      v-on:click="placeToEat('Take away') -->
+       v-on:click="placeToEat('Eat here')"
+      v-on:click="placeToEat('Take away')
 
-    </div>
-
-
+    </div> -->
 
     <div id="ingredients_">
     <h1>{{ uiLabels.ingredients }}</h1>
@@ -59,7 +57,7 @@
 //components
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
-import FrontPage from '@/components/FrontPage.vue'
+//import FrontPage from '@/components/FrontPage.vue'
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 
@@ -70,7 +68,7 @@ export default {
   components: {
     Ingredient,
     OrderItem,
-    FrontPage
+    //FrontPage
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
                             // the ordering system and the kitchen
