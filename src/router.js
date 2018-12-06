@@ -14,6 +14,15 @@ let router = new Router({
       name: 'ordering',
       component: Ordering
     },
+    // {
+    //   path: '/frontpage',
+    //   meta: {
+    //     title: 'RAW Sauce Burgers',
+    //   },
+    //   name: 'frontpage',
+    //   component: () => import( './views/FrontPage.vue')
+    //
+    // },
     {
       path: '/kitchen',
       meta: {
