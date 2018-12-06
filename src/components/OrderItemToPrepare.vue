@@ -49,8 +49,6 @@ export default {
 
     orderStarted: function () {
       this.order.status = 'started';
-      this.$emit('started');
-
     }
   }
 }

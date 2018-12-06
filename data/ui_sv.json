@@ -18,5 +18,6 @@
   "order" : "Min burgare",
   "language" : "English",
   "started" : "Påbörja",
-  "storage" : "Lager"
+  "storage" : "Lager",
+  "backtoorder" : "Tillbaka till beställningar"
 }

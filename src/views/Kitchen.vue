@@ -1,20 +1,11 @@
 <template>
 <div id="orders">
   <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
-  <button id = "StorageButton" v-on:click="OpenStorage" >
-    {{uiLabels.storage}}
-  </button>
 
-<div v-if= "this.NewState =='ShowStorage' ">
-  <StorageItem
-    :ui-labels="uiLabels"
-    :lang="lang"
-    :order-id="orderId"
-    :order="order">
-</StorageItem>
-</div>
-
-  <div id= "gridContainer">
+  <div id= "gridContainer" v-if = "NewState == 'OrderState'">
+    <button id = "StorageButton" v-on:click="OpenStorage">
+      {{uiLabels.storage}}
+    </button>
     <OrderItemToPrepare id ="snygg"
     v-for="(order, key) in orders"
     v-if="order.status !== 'done'"
@@ -25,7 +16,17 @@
     :order-id="key"
     :order="order">
     </OrderItemToPrepare>
-    <!-- </homepage> -->
+
+  </div>
+
+  <div v-else-if= "NewState =='StorageState'">
+    <button id = "StorageButton" v-on:click="BackToOrders">
+      {{uiLabels.backtoorder}}
+    </button>
+    <StorageItem
+      :ui-labels="uiLabels"
+      :lang="lang">
+    </StorageItem>
   </div>
 </div>
 </template>
@@ -41,25 +42,29 @@ export default {
   name: 'Ordering',
   components: {
     OrderItem,
-    OrderItemToPrepare
+    OrderItemToPrepare,
+    StorageItem
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
                             //the ordering system and the kitchen
   data: function(){
     return {
       chosenIngredients: [],
-      price: 0
+      price: 0,
+      NewState: "OrderState"
     }
   },
-  NewState: "" ,
-  methods: {
+
+    methods: {
     markDone: function (orderid) {
       this.$store.state.socket.emit("orderDone", orderid);
     },
     OpenStorage: function () {
-      this.NewState = "ShowStorage";
-      console.log(this.NewState);
-
+      this.NewState = "StorageState";
+      // console.log(this.NewState);
+    },
+    BackToOrders: function () {
+      this.NewState = "OrderState";
     }
   }
 }
