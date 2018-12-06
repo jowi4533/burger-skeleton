@@ -17,5 +17,7 @@
   "ready" : "Done",
   "order" : "My burger",
   "language" : "Svenska",
-  "started" : "Start"
+  "started" : "Start",
+  "storage" : "Storage"
+
 }
