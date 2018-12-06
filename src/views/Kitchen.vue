@@ -1,11 +1,18 @@
 <template>
 <div id="orders">
   <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
-  <button id = "StorageButton">
+  <button id = "StorageButton" v-on:click="OpenStorage" >
     {{uiLabels.storage}}
   </button>
 
-
+<div v-if= "this.NewState =='ShowStorage' ">
+  <StorageItem
+    :ui-labels="uiLabels"
+    :lang="lang"
+    :order-id="orderId"
+    :order="order">
+</StorageItem>
+</div>
 
   <div id= "gridContainer">
     <OrderItemToPrepare id ="snygg"
@@ -26,7 +33,7 @@
 <script>
 import OrderItem from '@/components/OrderItem.vue'
 import OrderItemToPrepare from '@/components/OrderItemToPrepare.vue'
-
+import StorageItem from '@/components/StorageItem.vue'
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 
@@ -44,9 +51,15 @@ export default {
       price: 0
     }
   },
+  NewState: "" ,
   methods: {
     markDone: function (orderid) {
       this.$store.state.socket.emit("orderDone", orderid);
+    },
+    OpenStorage: function () {
+      this.NewState = "ShowStorage";
+      console.log(this.NewState);
+
     }
   }
 }

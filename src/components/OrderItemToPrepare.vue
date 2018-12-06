@@ -77,6 +77,4 @@ export default {
   width:70px;
   height:19px;
 }
-
-
 </style>
