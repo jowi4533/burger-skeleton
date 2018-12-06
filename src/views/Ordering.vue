@@ -54,7 +54,7 @@
 //components
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
-import MenuPage from '@/components/MenuPage.vue'
+//import MenuPage from '@/components/MenuPage.vue'
 
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
@@ -66,8 +66,7 @@ export default {
   name: 'Ordering',
   components: {
     Ingredient,
-    OrderItem,
-    StorageItem
+    OrderItem
 
   },
   mixins: [sharedVueStuff], // include stuff that is used in both

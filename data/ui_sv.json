@@ -19,9 +19,6 @@
   "language" : "English",
   "started" : "Påbörja",
   "storage" : "Lager",
-<<<<<<< HEAD
-  "backtoorder": "Tillbaka till orders"
-=======
   "backtoorder" : "Tillbaka till beställningar"
->>>>>>> c3f2859f32dfee06519669d1a17023e62da8ae36
+
 }

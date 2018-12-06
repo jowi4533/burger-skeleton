@@ -19,10 +19,5 @@
   "language" : "Svenska",
   "started" : "Start",
   "storage" : "Storage",
-  "backtoorder": "Back to orders"
-<<<<<<< HEAD
-=======
-
->>>>>>> c3f2859f32dfee06519669d1a17023e62da8ae36
-
+  "backtoorder" : "Back to orders"
 }
