@@ -3,12 +3,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Ordering from './views/Ordering.vue'
 import Kitchen from './views/Kitchen.vue'
-import BuildYourBurger from './views/BuildYourBurger.vue'
-import MenuPage from './views/MenuPage.vue'
-import OrderOverview from './views/OrderOverview.vue'
-import Payment from './views/Payment.vue'
-import SidesAndDrinks from './views/SidesAndDrinks.vue'
-import WelcomePage from './views/WelcomePage.vue'
 
 Vue.use(Router)
 
@@ -23,15 +17,15 @@ let router = new Router({
       name: 'ordering',
       component: Ordering
     },
-    // {
-    //   path: '/frontpage',
-    //   meta: {
-    //     title: 'RAW Sauce Burgers',
-    //   },
-    //   name: 'frontpage',
-    //   component: () => import( './views/FrontPage.vue')
-    //
-    // },
+    {
+      path: '/frontpage',
+      meta: {
+        title: 'RAW Sauce Burgers',
+      },
+      name: 'frontpage',
+      component: () => import( './views/FrontPage.vue')
+
+    },
     {
       path: '/kitchen',
       meta: {
