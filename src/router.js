@@ -1,3 +1,4 @@
+import Kitchen from './views/Kitchen.vue'
 import Vue from 'vue'
 import Router from 'vue-router'
 import Ordering from './views/Ordering.vue'
@@ -14,6 +15,15 @@ let router = new Router({
       name: 'ordering',
       component: Ordering
     },
+    // {
+    //   path: '/frontpage',
+    //   meta: {
+    //     title: 'RAW Sauce Burgers',
+    //   },
+    //   name: 'frontpage',
+    //   component: () => import( './views/FrontPage.vue')
+    //
+    // },
     {
       path: '/kitchen',
       meta: {
@@ -27,6 +37,7 @@ let router = new Router({
     },
 
   ]
+
 })
 
 router.beforeEach((to, from, next) => {

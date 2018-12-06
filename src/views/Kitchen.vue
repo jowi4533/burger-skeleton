@@ -1,35 +1,28 @@
 <template>
 <div id="orders">
-  <h1>{{ uiLabels.ordersInQueue }}</h1>
-  <div>
-    <OrderItemToPrepare
-      v-for="(order, key) in orders"
-      v-if="order.status !== 'done'"
-      v-on:done="markDone(key)"
-      :order-id="key"
-      :order="order"
-      :ui-labels="uiLabels"
-      :lang="lang"
-      :key="key">
+  <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
+  <button id = "StorageButton" v-on:click="">
+    {{uiLabels.storage}}
+  </button>
+
+
+
+  <div id= "gridContainer">
+    <OrderItemToPrepare id ="snygg"
+    v-for="(order, key) in orders"
+    v-if="order.status !== 'done'"
+    v-on:done="markDone(key)"
+    :ui-labels="uiLabels"
+    :lang="lang"
+    :key="key"
+    :order-id="key"
+    :order="order">
     </OrderItemToPrepare>
-  </div>
-  <h1>{{ uiLabels.ordersFinished }}</h1>
-  <div>
-    <OrderItem
-      v-for="(order, key) in orders"
-      v-if="order.status === 'done'"
-      :order-id="key"
-      :order="order"
-      :lang="lang"
-      :ui-labels="uiLabels"
-      :key="key">
-    </OrderItem>
+    <!-- </homepage> -->
   </div>
 </div>
-
-
-
 </template>
+
 <script>
 import OrderItem from '@/components/OrderItem.vue'
 import OrderItemToPrepare from '@/components/OrderItemToPrepare.vue'
@@ -60,11 +53,44 @@ export default {
 </script>
 <style scoped>
 	#orders {
-    font-size:24pt;
+    font-size:13pt;
   }
 
   h1 {
     text-transform: uppercase;
-    font-size: 1.4em;
+    font-size: 1em;
   }
+<<<<<<< HEAD
+=======
+
+   #gridContainer {
+    margin: 5px 25px 25px 25px;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 300px 300px;
+    /*border: 5px dashed #000000;*/
+    grid-template-areas:
+    "grid grid grid grid"
+    "grid grid grid grid";
+    background-color: white;
+  }
+#snygg {
+  color: #800080;
+  left: 10px;
+  margin-left: 5pt;
+  margin-top: 3pt;
+  background-color: #696969;
+  border-color: black;
+  border-style: solid;
+}
+#StorageButton{
+  width:100px;
+  height:30px;
+  position:absolute;
+  top:0;
+  right:0;
+}
+
+>>>>>>> d91438b455943839d9457f971b8211e702ffbd57
 </style>
