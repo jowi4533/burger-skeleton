@@ -9,6 +9,7 @@ var sharedVueStuff = {
       ingredients: {},
       lang: "en"
     }
+
   },
   created: function () {
     this.$store.state.socket.on('initialize', function (data) {
