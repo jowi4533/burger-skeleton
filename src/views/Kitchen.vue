@@ -1,22 +1,13 @@
 <template>
-<div id="orders">
   <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
+<div id="ordersSide" v-if= "NewState == 'orderState'">
   <button id = "StorageButton" v-on:click="OpenStorage" >
     {{uiLabels.storage}}
   </button>
-
-<div v-if= "NewState =='StorageState' ">
-  <StorageItem
-    v-for="item in ingredients"
-    :ui-labels="uiLabels"
-    :item="item">
-</StorageItem>
-</div>
-
-  <div id= "gridContainer" v-if = "NewState == 'orderState'">
+  <div id= "gridContainer">
     <OrderItemToPrepare id ="snygg"
     v-for="(order, key) in orders"
-    v-if="order.status !== 'done' && NewState !=='StorageState'"
+    v-if="order.status !== 'done' "
     v-on:done="markDone(key)"
     :ui-labels="uiLabels"
     :lang="lang"
@@ -26,6 +17,18 @@
     </OrderItemToPrepare>
   </div>
 </div>
+<div v-else-if= "NewState =='StorageState' ">
+  <button id = "StorageButton" v-on:click= "NewState == 'orderState'" >
+    {{uiLabels.backtoorder}}
+  </button>
+  <StorageItem
+    :ui-labels="uiLabels"
+    :item="item">
+</StorageItem>
+</div>
+
+
+
 </template>
 
 <script>
