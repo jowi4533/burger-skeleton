@@ -1,4 +1,4 @@
-import Kitchen from './views/Kitchen.vue'
+//import Kitchen from './views/Kitchen.vue'
 import Vue from 'vue'
 import Router from 'vue-router'
 import Ordering from './views/Ordering.vue'
@@ -35,7 +35,7 @@ let router = new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "read" */ './views/Kitchen.vue')
     },
-    
+
   ]
 
 })

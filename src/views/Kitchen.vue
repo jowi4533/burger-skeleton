@@ -1,7 +1,7 @@
 <template>
 <div id="orders">
   <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
-  <button id = "StorageButton" v-on:click="">
+  <button id = "StorageButton">
     {{uiLabels.storage}}
   </button>
 
