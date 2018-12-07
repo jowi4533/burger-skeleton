@@ -6,10 +6,12 @@
     <button id = "StorageButton" v-on:click="OpenStorage">
       {{uiLabels.storage}}
     </button>
-    <OrderItemToPrepare id ="snygg"
+    <OrderItemToPrepare ref="OITP" class ="snygg"
+    v-bind:style="{ backgroundColor: backgroundColor }"
     v-for="(order, key) in orders"
     v-if="order.status !== 'done'"
     v-on:done="markDone(key)"
+    v-on:click="backgroundColor = (255,255,255)"
     :ui-labels="uiLabels"
     :lang="lang"
     :key="key"
@@ -51,7 +53,8 @@ export default {
     return {
       chosenIngredients: [],
       price: 0,
-      NewState: "OrderState"
+      NewState: "OrderState",
+      backgroundColor: ''
     }
   },
 
@@ -65,11 +68,15 @@ export default {
     },
     BackToOrders: function () {
       this.NewState = "OrderState";
+    },
+    // markStarted: function () {
+    //  backgroundColor: 255, 255, 255;
+    // }
     }
-  }
 }
+
 </script>
-<style scoped>
+<style id="style" scoped>
 	#orders {
     font-size:13pt;
   }
@@ -87,16 +94,17 @@ export default {
     grid-template-rows: 300px 300px;
     /*border: 5px dashed #000000;*/
     grid-template-areas:
-    "grid grid grid grid"
-    "grid grid grid grid";
+    "a a a a"
+    "a a a a";
     background-color: white;
   }
-#snygg {
-  color: #800080;
+
+.snygg {
+  color: #100080;
   left: 10px;
   margin-left: 5pt;
   margin-top: 3pt;
-  background-color: #696969;
+  background-color: #999999;
   border-color: black;
   border-style: solid;
 }

@@ -4,9 +4,9 @@
     <div> snyggg </div>
 	</div>
 </template>
+
+
 <script>
-
-
 
 export default {
   name: 'StorageItem',

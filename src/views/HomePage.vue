@@ -3,7 +3,7 @@
 <div>
 
 <header id="TopHeader">
-  <img id="headerImg"src="https://i.imgur.com/1NLTXH0.png">
+  <img id="headerImg" src="https://i.imgur.com/1NLTXH0.png">
 </header>
 
   <div id="lillaSkit">
