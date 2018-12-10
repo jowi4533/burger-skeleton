@@ -1,9 +1,18 @@
 <template>
-  <div id="ordering">
-    <img class="example-panel" src="@/assets/exampleImage.jpg">
-    <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+  <div id="OrderingContainer">
 
 
+<div id="menupage" v-if="showMainMenu">
+
+    <MenuPage>
+
+
+    </MenuPage>
+    <button v-on:click = "klappatochKlart()"> TJAAAAA </button>
+</div>
+<div id="ordering" v-if="showOrdering">
+  <img class="example-panel" src="@/assets/exampleImage.jpg">
+  <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
    <!-- <div id="frontpage">
       <h1>TAJaa</h1>
       <FrontPage> hello </FrontPage>
@@ -47,15 +56,17 @@
       </OrderItem>
     </div>
   </div>
+  </div>
 </template>
 <script>
 
 //import the components that are used in the template, the name that you
 //use for importing will be used in the template above and also below in
 //components
+import MenuPage from '@/components/MenuPage.vue'
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
-import MenuPage from '@/components/MenuPage.vue'
+
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 
@@ -67,6 +78,7 @@ export default {
   components: {
     Ingredient,
     OrderItem,
+    MenuPage
     //FrontPage
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
@@ -76,6 +88,8 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
+      showMainMenu: true,
+      showOrdering: false,
     }
   },
   created: function () {
@@ -84,6 +98,11 @@ export default {
     }.bind(this));
   },
   methods: {
+    klappatochKlart: function() {
+      this.showMainMenu = false;
+      this.showOrdering = true;
+
+    },
     addToOrder: function (item) {
       this.chosenIngredients.push(item);
       this.price += +item.selling_price;
@@ -111,7 +130,7 @@ export default {
 
 <style scoped>
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
-#ordering {
+#OrderingContainer{
   margin:auto;
   width: 40em;
   background-color: rgb(0,100,200);
@@ -120,12 +139,12 @@ export default {
 
 }
 
-#frontpage {
+/* #frontpage {
   height: 500px;
   background-color: rgb(0,150,150);
   grid-column: 1 / span 3;
   grid-row: 1 / span 3;
-}
+} */
 
 #ingredients_ {
   background-color: rgb(240,240,240);
@@ -142,6 +161,13 @@ export default {
   grid-column: 3;
   grid-row: 2 / span 3;
 }
+
+#menupage {
+  width: 400px;
+  height: 400px;
+  background-color: green;
+}
+
 
 
 .example-panel {

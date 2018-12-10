@@ -3,7 +3,7 @@
 <div>
 
 <header id="TopHeader">
-  <img id="headerImg"src="https://imgur.com/1NLTXH0">
+  <img id="headerImg" src="https://i.imgur.com/1NLTXH0.png">
   <h1 id="WelcomeText">Welcome zum RawSauce</h1>
 </header>
 

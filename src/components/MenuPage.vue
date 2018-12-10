@@ -23,7 +23,16 @@
 
 
 <style scoped>
+
+#MenuPageContainer {
+  height: 300px;
+  width: 300px;
+  border: 2px;
+  border-style: dashed;
+  border-color: black;
+}
 #tja {
   color: blue;
+  text-align: right;
 }
 </style>
