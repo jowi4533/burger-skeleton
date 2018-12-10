@@ -18,14 +18,15 @@
     </OrderItemToPrepare>
   </div>
 
-
   <div v-else-if= "NewState =='StorageState'">
     <button id = "StorageButton" v-on:click="BackToOrders">
       {{uiLabels.backtoorder}}
     </button>
+    <h1 align ="center"> Storage </h1>
     <StorageItem
-      :ui-labels="uiLabels"
-      :lang="lang">
+    :ingredients="ingredients"
+    :lang="lang"
+    :ui-labels="uiLabels">
     </StorageItem>
   </div>
 </div>
@@ -52,7 +53,7 @@ export default {
     return {
       chosenIngredients: [],
       price: 0,
-      NewState: "OrderState"
+      NewState: "OrderState",
     }
   },
 
@@ -107,5 +108,6 @@ export default {
   top:0;
   right:0;
 }
+
 
 </style>

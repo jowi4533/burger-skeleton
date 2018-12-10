@@ -3,8 +3,7 @@
 <div>
 
 <header id="TopHeader">
-  <img id="headerImg"src="https://imgur.com/1NLTXH0">
-  <h1 id="WelcomeText">Welcome zum RawSauce</h1>
+  <img id="headerImg" src="https://i.imgur.com/1NLTXH0.png">
 </header>
 
   <div id="lillaSkit">
@@ -21,7 +20,8 @@
 <script>
 export default {
   name: 'HomePage'
-}
+
+  }
 </script>
 
 
@@ -29,20 +29,28 @@ export default {
 
 
 <style lang="css">
+
 #TopHeader{
   font-size: 2em;
   text-align: center;
   overflow: hidden;
-}
-#headerImg{
-  width: 500px;
-  height: 100px;
+  background-color: black;
+
 
 }
+#headerImg{
+  width: 100%;
+  opacity: 0.8;
+  border-bottom: 2px dashed red;
+}
+
 
 
 #lillaSkit{
   display: grid;
+  background-color: black;
+  overflow: hidden;
+
 
 
 }
@@ -50,21 +58,31 @@ export default {
 /*  position: absolute;*/
   width: 400px;
   height: 300px;
-  color: red;
+  color: green;
   font-size: 50px;
-  text: bold;
+  border: 2px dashed black;
+  background-color: lightgrey;
   grid-column: 2;
   grid-row: 1;
 
+
+}
+#EatHere:hover{
+  background-color: darkblue;
+
 }
 #EatThere{
-/*  position: absolute; */
   width: 400px;
   height: 300px;
-  color: red;
+  color: green;
   font-size: 50px;
   text: bold;
+  border: 2px dashed black;
+  background-color: lightgrey;
   grid-column: 4;
   grid-row: 1;
+}
+#EatThere:hover{
+  background-color: darkblue;
 }
 </style>
