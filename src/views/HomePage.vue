@@ -3,12 +3,12 @@
 <div>
 
 <header id="TopHeader">
-  <img id="headerImg"src="https://i.imgur.com/1NLTXH0.png">
+  <img id="headerImg" src="https://i.imgur.com/1NLTXH0.png">
 </header>
 
   <div id="lillaSkit">
-      <button id="EatHere">Eat Here</button>
-      <button id="EatThere">Take Away</button>
+      <button id="EatHere" v-on:click="OrderOption()">Eat Here</button>
+      <button id="EatThere" v-on:click="OrderOption()">Take Away</button>
 
   </div>
 </div>
@@ -18,9 +18,16 @@
 
 
 <script>
-export default {
-  name: 'HomePage'
 
+
+
+export default {
+  name: 'HomePage',
+  methods: {
+    OrderOption: function (){
+      window.location = 'http://localhost:8080/#/Ordering'
+    },
+  }
   }
 </script>
 
