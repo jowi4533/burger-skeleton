@@ -1,10 +1,13 @@
 <template>
 	<div>
-		<h1> HÄR FINNS STORAGE </h1>
-    snyggg
+		<h1 align ="center"> Storage </h1>
+    <div> snyggg </div>
 	</div>
 </template>
 <script>
+
+
+
 export default {
   name: 'StorageItem',
   props: {

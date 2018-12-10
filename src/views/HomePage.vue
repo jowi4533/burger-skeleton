@@ -4,12 +4,12 @@
 
 <header id="TopHeader">
   <img id="headerImg" src="https://i.imgur.com/1NLTXH0.png">
-  <h1 id="WelcomeText">Welcome zum RawSauce</h1>
+
 </header>
 
   <div id="lillaSkit">
-      <button id="EatHere">Eat Here</button>
-      <button id="EatThere">Take Away</button>
+      <button id="EatHere" v-on:click="OrderOption()">Eat Here</button>
+      <button id="EatThere" v-on:click="OrderOption()">Take Away</button>
 
   </div>
 </div>
@@ -19,9 +19,17 @@
 
 
 <script>
+
+
+
 export default {
-  name: 'HomePage'
-}
+  name: 'HomePage',
+  methods: {
+    OrderOption: function (){
+      window.location = 'http://localhost:8080/#/Ordering'
+    },
+  }
+  }
 </script>
 
 
@@ -29,20 +37,28 @@ export default {
 
 
 <style lang="css">
+
 #TopHeader{
   font-size: 2em;
   text-align: center;
   overflow: hidden;
-}
-#headerImg{
-  width: 500px;
-  height: 100px;
+  background-color: black;
+
 
 }
+#headerImg{
+  width: 100%;
+  opacity: 0.8;
+  border-bottom: 2px dashed red;
+}
+
 
 
 #lillaSkit{
   display: grid;
+  background-color: black;
+  overflow: hidden;
+
 
 
 }
@@ -50,21 +66,31 @@ export default {
 /*  position: absolute;*/
   width: 400px;
   height: 300px;
-  color: red;
+  color: green;
   font-size: 50px;
-  text: bold;
+  border: 2px dashed black;
+  background-color: lightgrey;
   grid-column: 2;
   grid-row: 1;
 
+
+}
+#EatHere:hover{
+  background-color: darkblue;
+
 }
 #EatThere{
-/*  position: absolute; */
   width: 400px;
   height: 300px;
-  color: red;
+  color: green;
   font-size: 50px;
   text: bold;
+  border: 2px dashed black;
+  background-color: lightgrey;
   grid-column: 4;
   grid-row: 1;
+}
+#EatThere:hover{
+  background-color: darkblue;
 }
 </style>
