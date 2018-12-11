@@ -1,6 +1,6 @@
 <template>
-	<div>
-		{{orderId}} <br> {{order.type}} {{uiLabels.ingredients}} {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(", ") }}
+	<div class="order">
+		{{orderId}} <br> {{order.type}}  {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(", ") }}
 	</div>
 </template>
 <script>
@@ -15,5 +15,7 @@ export default {
 }
 </script>
 <style scoped>
-
+.order {
+	text-transform: capitalize;
+}
 </style>

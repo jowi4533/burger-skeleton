@@ -6,11 +6,12 @@
     <button id = "StorageButton" v-on:click="OpenStorage">
       {{uiLabels.storage}}
     </button>
-    <OrderItemToPrepare ref="OITP" class ="snygg"
-    v-bind:class="{'snygg': true, 'active': (order.status === 'started')}"
+    <OrderItemToPrepare ref="OITP"
+    v-bind:class = "['snygg', {'active': (order.status === 'started')}]"
     v-for="(order, key) in orders"
     v-if="order.status !== 'done' "
     v-on:done="markDone(key)"
+
     :ui-labels="uiLabels"
     :lang="lang"
     :key="key"
@@ -95,8 +96,8 @@ export default {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 300px 300px;
     grid-template-areas:
-    "a a a a"
-    "a a a a";
+    "grid grid grid grid"
+    "grid grid grid grid";
     background-color: white;
   }
 
@@ -110,12 +111,12 @@ export default {
   border-style: solid;
 }
 
-.snygg active {
+ .active {
   color: #100080;
   left: 10px;
   margin-left: 5pt;
   margin-top: 3pt;
-  background-color: #111111;
+  background-color: lightblue;
   border-color: black;
   border-style: solid;
 }
