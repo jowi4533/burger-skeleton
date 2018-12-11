@@ -33,6 +33,7 @@
   </div>
 </div>
 
+
 </template>
 
 <script>
@@ -79,8 +80,9 @@ export default {
 
 </script>
 <style id="style" scoped>
-	#orders {
-    margin: 0px 10px 5px 5px;
+
+  #orders {
+    margin: 0px 10px 5px 0px;
     font-size:13pt;
   }
 
@@ -90,7 +92,7 @@ export default {
   }
 
    #gridContainer {
-    margin: 5px 0px 25px 0px;
+    margin: 5px 0px 5px 0px;
     display: grid;
     grid-gap: 5px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -103,7 +105,6 @@ export default {
 
 .snygg {
   color: #100080;
-  left: 10px;
   margin-left: 5pt;
   margin-top: 3pt;
   background-color: #999999;
@@ -112,13 +113,7 @@ export default {
 }
 
  .active {
-  color: #100080;
-  left: 10px;
-  margin-left: 5pt;
-  margin-top: 3pt;
   background-color: lightblue;
-  border-color: black;
-  border-style: solid;
 }
 #StorageButton{
   width: 100px;
@@ -126,6 +121,13 @@ export default {
   position: absolute;
   top: 0;
   right: 0;
+}
+#footer {
+    position:fixed;
+    width:100%;
+    border-top:1px solid #aaa; /* you can change to whatever color you want */
+    background:#fff; /* this is important otherwise your background will be transparent, change the color based on your needs */
+    /* ... your other properties */
 }
 
 
