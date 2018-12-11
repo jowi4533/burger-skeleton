@@ -32,7 +32,6 @@
     </StorageItem>
   </div>
 </div>
-
 </template>
 
 <script>
@@ -90,6 +89,7 @@ export default {
   }
 
    #gridContainer {
+     size: relative;
     margin: 5px 0px 25px 0px;
     display: grid;
     grid-gap: 5px;
@@ -103,7 +103,6 @@ export default {
 
 .snygg {
   color: #100080;
-  left: 10px;
   margin-left: 5pt;
   margin-top: 3pt;
   background-color: #999999;
@@ -112,13 +111,7 @@ export default {
 }
 
  .active {
-  color: #100080;
-  left: 10px;
-  margin-left: 5pt;
-  margin-top: 3pt;
   background-color: lightblue;
-  border-color: black;
-  border-style: solid;
 }
 #StorageButton{
   width: 100px;
