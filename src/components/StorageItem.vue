@@ -1,77 +1,53 @@
 <template>
 	<div class = "StorageGrid">
 		<div class= "bread">
-			<h3> {{uiLabels.bread}} </h3>
-		<div v-for = "item in ingredients">
-			<div v-if = "item.category == 1">
-				<div id ="name">
-					{{item["ingredient_"+ lang]}} {{item.stock}}
-				</div>
-			</div>
-		</div>
+			<table style="width: 100%;">
+				<th>{{uiLabels.bread}}</th>
+				<tr v-for = "item in ingredients" v-if = "item.category == 1"> <td>{{item["ingredient_"+ lang]}}</td>
+      <td class="alignRight"> {{item.stock}} </td></tr>
+	</table>
 		</div>
 		<div class ="patty">
-			<h3> {{uiLabels.patty}} </h3>
-		<div v-for = "item in ingredients">
-			<div v-if = "item.category == 2">
-				<div id ="name">
-					{{item["ingredient_"+ lang]}}  <h20> {{item.stock}} </h20>
-				</div>
-		</div>
-		</div>
+			<table style="width: 100%;">
+				<th>{{uiLabels.patty}}</th>
+				<tr v-for = "item in ingredients" v-if = "item.category == 2"> <td>{{item["ingredient_"+ lang]}}</td>
+			<td class="alignRight"> {{item.stock}} </td></tr>
+	</table>
 	</div>
 		<div class= "toppings">
-		<h3> {{uiLabels.toppings}} </h3>
-		<div v-for = "item in ingredients">
-			<div v-if = "item.category == 3">
-				<div id ="name">
-					{{item["ingredient_"+ lang]}}  <h20> {{item.stock}} </h20>
-				</div>
-		</div>
-	</div>
+			<table style="width: 100%;">
+				<th>{{uiLabels.toppings}}</th>
+				<tr v-for = "item in ingredients" v-if = "item.category == 3"> <td>{{item["ingredient_"+ lang]}}</td>
+			<td class="alignRight"> {{item.stock}} </td></tr>
+	</table>
 		</div>
 		<div class= "veggies">
-		<h3> {{uiLabels.veggies}} </h3>
-		<div v-for = "item in ingredients">
-			<div  v-if = "item.category == 4">
-				<div id ="name">
-					{{item["ingredient_"+ lang]}}  <h20> {{item.stock}} </h20>
-				</div>
-		</div>
-		</div>
+			<table style="width: 100%;">
+				<th>{{uiLabels.veggies}}</th>
+				<tr v-for = "item in ingredients" v-if = "item.category == 4"> <td>{{item["ingredient_"+ lang]}}</td>
+			<td class="alignRight"> {{item.stock}} </td></tr>
+	</table>
 		</div>
 		<div class= "sauce">
-		<h3> {{uiLabels.sauce}} </h3>
-		<div v-for = "item in ingredients">
-			<div  v-if = "item.category == 5">
-				<div id ="name">
-					{{item["ingredient_"+ lang]}}  <h20> {{item.stock}} </h20>
-				</div>
-		</div>
-	</div>
+			<table style="width: 100%;">
+				<th>{{uiLabels.sauce}}</th>
+				<tr v-for = "item in ingredients" v-if = "item.category == 5"> <td>{{item["ingredient_"+ lang]}}</td>
+			<td class="alignRight"> {{item.stock}} </td></tr>
+	</table>
 		</div>
 		<div class= "sides">
-		<h3> {{uiLabels.sides}} </h3>
-		<div v-for = "item in ingredients">
-			<div v-if = "item.category == 6">
-				<div id ="name">
-					{{item["ingredient_"+ lang]}}  <h20> {{item.stock}} </h20>
-				</div>
-		</div>
-		</div>
+			<table style="width: 100%;">
+				<th>{{uiLabels.sides}}</th>
+				<tr v-for = "item in ingredients" v-if = "item.category == 6"> <td>{{item["ingredient_"+ lang]}}</td>
+			<td class="alignRight"> {{item.stock}} </td></tr>
+	</table>
 		</div>
 		<div class= "drinks">
-		<h3> {{uiLabels.drinks}} </h3>
-		<div v-for = "item in ingredients">
-			<div  v-if = "item.category == 7">
-				<div id ="name">
-					{{item["ingredient_"+ lang]}}
-				</div>
-				<div id ="stock">
-					{{item.stock}} pcs
-				</div>
-		</div>
-		</div>
+			<table style="width: 100%;">
+				<th>{{uiLabels.drinks}}</th>
+				<tr v-for = "item in ingredients" v-if = "item.category == 7"> <td>{{item["ingredient_"+ lang]}}</td>
+			<td class="alignRight"> {{item.stock}} </td></tr>
+		</table>
 		</div>
 
 </div>
@@ -108,12 +84,11 @@ export default {
 	grid-area: bread;
 
 }
-
-
 .patty { grid-area: patty;
 
 }
 .toppings { grid-area: toppings;
+
 
 }
 .veggies { grid-area: veggies;
@@ -128,15 +103,6 @@ export default {
 .drinks { grid-area: drinks;
 
 }
-#name {
- }
-
-#abc {
-
-	align: right;
-
- }
-
 
 .ingredient {
   border: 1px solid #ccd;
@@ -144,6 +110,19 @@ export default {
   background-color:  rgb(20,100,120);
   /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
+}
+td {
+  border-bottom: 1px solid #ddd;
+}
+tr:hover {background-color: #f5f5f5;}
+
+.alignRight {
+  float: right;
+}
+.bread , .patty , .toppings, .sauce, .sides, .drinks{
+	margin-right: 8px;
+	border-right: 1px solid #ccd;
+	border-bottom: 1px solid #ccd;
 }
 
 

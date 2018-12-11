@@ -73,6 +73,7 @@ export default {
 </script>
 <style scoped>
 	#orders {
+    margin: 0px 10px 5px 5px;
     font-size:13pt;
   }
 
