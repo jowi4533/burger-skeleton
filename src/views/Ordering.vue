@@ -31,7 +31,6 @@
         :ui-labels="uiLabels"
         :lang="lang"
         :key="key">
-        hej
       </OrderItem>
     </div>
   </div>
@@ -45,7 +44,6 @@
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
 //import MenuPage from '@/components/MenuPage.vue'
-
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 

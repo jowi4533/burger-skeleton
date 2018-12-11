@@ -1,5 +1,5 @@
 <template>
-<div id="orders">
+  <div id="orders">
   <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
 
   <div id= "gridContainer" v-if = "NewState == 'OrderState'">
@@ -9,7 +9,7 @@
     <OrderItemToPrepare ref="OITP" class ="snygg"
     v-bind:class="{'snygg': true, 'active': (order.status === 'started')}"
     v-for="(order, key) in orders"
-    v-if="order.status !== 'done'"
+    v-if="order.status !== 'done' "
     v-on:done="markDone(key)"
     :ui-labels="uiLabels"
     :lang="lang"
@@ -17,19 +17,21 @@
     :order-id="key"
     :order="order">
     </OrderItemToPrepare>
-
   </div>
 
   <div v-else-if= "NewState =='StorageState'">
     <button id = "StorageButton" v-on:click="BackToOrders">
       {{uiLabels.backtoorder}}
     </button>
+    <h1 align ="center"> Storage </h1>
     <StorageItem
-      :ui-labels="uiLabels"
-      :lang="lang">
+    :ingredients="ingredients"
+    :lang="lang"
+    :ui-labels="uiLabels">
     </StorageItem>
   </div>
 </div>
+
 </template>
 
 <script>
@@ -77,6 +79,7 @@ export default {
 </script>
 <style id="style" scoped>
 	#orders {
+    margin: 0px 10px 5px 5px;
     font-size:13pt;
   }
 
@@ -91,7 +94,6 @@ export default {
     grid-gap: 5px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 300px 300px;
-    /*border: 5px dashed #000000;*/
     grid-template-areas:
     "a a a a"
     "a a a a";
@@ -124,5 +126,6 @@ export default {
   top: 0;
   right: 0;
 }
+
 
 </style>
