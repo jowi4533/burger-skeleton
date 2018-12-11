@@ -89,7 +89,7 @@ export default {
   }
 
    #gridContainer {
-    margin: 5px 25px 25px 25px;
+    margin: 5px 0px 25px 0px;
     display: grid;
     grid-gap: 5px;
     grid-template-columns: 1fr 1fr 1fr 1fr;

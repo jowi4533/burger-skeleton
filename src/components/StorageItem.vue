@@ -1,51 +1,59 @@
 <template>
-	<div class = "StorageGrid">
+	<div class = "StorageGrid" >
 		<div class= "bread">
 			<table style="width: 100%;">
 				<th>{{uiLabels.bread}}</th>
-				<tr v-for = "item in ingredients" v-if = "item.category == 1"> <td>{{item["ingredient_"+ lang]}}</td>
+				<tr v-for = "item in ingredients" v-if = "item.category == 1">
+					<td v-bind:class ="['stockStatus',{'criticalStock':(item.stock <=15)}]">
+						{{item["ingredient_"+ lang]}}</td>
       <td class="alignRight"> {{item.stock}} </td></tr>
 	</table>
 		</div>
 		<div class ="patty">
 			<table style="width: 100%;">
 				<th>{{uiLabels.patty}}</th>
-				<tr v-for = "item in ingredients" v-if = "item.category == 2"> <td>{{item["ingredient_"+ lang]}}</td>
+				<tr v-for = "item in ingredients" v-if = "item.category == 2">
+					 <td v-bind:class ="['stockStatus',{'criticalStock':(item.stock <=15)}]">{{item["ingredient_"+ lang]}}</td>
 			<td class="alignRight"> {{item.stock}} </td></tr>
 	</table>
 	</div>
 		<div class= "toppings">
 			<table style="width: 100%;">
 				<th>{{uiLabels.toppings}}</th>
-				<tr v-for = "item in ingredients" v-if = "item.category == 3"> <td>{{item["ingredient_"+ lang]}}</td>
+				<tr v-for = "item in ingredients" v-if = "item.category == 3">
+					 <td v-bind:class ="['stockStatus',{'criticalStock':(item.stock <=15)}]">{{item["ingredient_"+ lang]}}</td>
 			<td class="alignRight"> {{item.stock}} </td></tr>
 	</table>
 		</div>
 		<div class= "veggies">
 			<table style="width: 100%;">
 				<th>{{uiLabels.veggies}}</th>
-				<tr v-for = "item in ingredients" v-if = "item.category == 4"> <td>{{item["ingredient_"+ lang]}}</td>
+				<tr v-for = "item in ingredients" v-if = "item.category == 4">
+					<td v-bind:class ="['stockStatus',{'criticalStock':(item.stock <=15)}]">{{item["ingredient_"+ lang]}}</td>
 			<td class="alignRight"> {{item.stock}} </td></tr>
 	</table>
 		</div>
 		<div class= "sauce">
 			<table style="width: 100%;">
 				<th>{{uiLabels.sauce}}</th>
-				<tr v-for = "item in ingredients" v-if = "item.category == 5"> <td>{{item["ingredient_"+ lang]}}</td>
+				<tr v-for = "item in ingredients" v-if = "item.category == 5">
+					<td v-bind:class ="['stockStatus',{'criticalStock':(item.stock <=15)}]">{{item["ingredient_"+ lang]}}</td>
 			<td class="alignRight"> {{item.stock}} </td></tr>
 	</table>
 		</div>
 		<div class= "sides">
 			<table style="width: 100%;">
 				<th>{{uiLabels.sides}}</th>
-				<tr v-for = "item in ingredients" v-if = "item.category == 6"> <td>{{item["ingredient_"+ lang]}}</td>
+				<tr v-for = "item in ingredients" v-if = "item.category == 6">
+					<td v-bind:class ="['stockStatus',{'criticalStock':(item.stock <=15)}]">{{item["ingredient_"+ lang]}}</td>
 			<td class="alignRight"> {{item.stock}} </td></tr>
 	</table>
 		</div>
 		<div class= "drinks">
 			<table style="width: 100%;">
 				<th>{{uiLabels.drinks}}</th>
-				<tr v-for = "item in ingredients" v-if = "item.category == 7"> <td>{{item["ingredient_"+ lang]}}</td>
+				<tr v-for = "item in ingredients" v-if = "item.category == 7">
+					<td v-bind:class ="['stockStatus',{'criticalStock':(item.stock <=15)}]">{{item["ingredient_"+ lang]}}</td>
 			<td class="alignRight"> {{item.stock}} </td></tr>
 		</table>
 		</div>
@@ -80,6 +88,8 @@ export default {
   grid-template-rows: 1fr 1fr;
   grid-template-areas: "bread patty toppings veggies"
 												"sauce sides drinks .";
+
+	text-transform: capitalize;
 }
 .bread {
 	grid-area: bread;
@@ -124,6 +134,14 @@ tr:hover {background-color: #f5f5f5;}
 	margin-right: 8px;
 	border-right: 1px solid #ccd;
 	border-bottom: 1px solid #ccd;
+}
+.stockStatus{
+
+}
+.criticalStock{
+	background-color: rgba(255, 0, 0, 0.7);
+
+
 }
 
 
