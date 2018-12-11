@@ -1,5 +1,5 @@
 <template>
-<div id="orders">
+  <div id="orders">
   <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
 
   <div id= "gridContainer" v-if = "NewState == 'OrderState'">
@@ -8,7 +8,7 @@
     </button>
     <OrderItemToPrepare id ="snygg"
     v-for="(order, key) in orders"
-    v-if="order.status !== 'done'"
+    v-if="order.status !== 'done' "
     v-on:done="markDone(key)"
     :ui-labels="uiLabels"
     :lang="lang"
@@ -16,19 +16,21 @@
     :order-id="key"
     :order="order">
     </OrderItemToPrepare>
-
   </div>
 
   <div v-else-if= "NewState =='StorageState'">
     <button id = "StorageButton" v-on:click="BackToOrders">
       {{uiLabels.backtoorder}}
     </button>
+    <h1 align ="center"> Storage </h1>
     <StorageItem
-      :ui-labels="uiLabels"
-      :lang="lang">
+    :ingredients="ingredients"
+    :lang="lang"
+    :ui-labels="uiLabels">
     </StorageItem>
   </div>
 </div>
+
 </template>
 
 <script>
@@ -51,7 +53,7 @@ export default {
     return {
       chosenIngredients: [],
       price: 0,
-      NewState: "OrderState"
+      NewState: "OrderState",
     }
   },
 
@@ -85,7 +87,6 @@ export default {
     grid-gap: 5px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 300px 300px;
-    /*border: 5px dashed #000000;*/
     grid-template-areas:
     "grid grid grid grid"
     "grid grid grid grid";
@@ -107,5 +108,6 @@ export default {
   top:0;
   right:0;
 }
+
 
 </style>

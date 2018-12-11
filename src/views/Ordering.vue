@@ -43,7 +43,6 @@
         :ui-labels="uiLabels"
         :lang="lang"
         :key="key">
-        hej
       </OrderItem>
     </div>
   </div>
@@ -55,7 +54,6 @@
 //components
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
-//import FrontPage from '@/components/FrontPage.vue'
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 
@@ -66,8 +64,8 @@ export default {
   name: 'Ordering',
   components: {
     Ingredient,
-    OrderItem,
-    //FrontPage
+    OrderItem
+
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
                             // the ordering system and the kitchen
