@@ -1,6 +1,7 @@
 <template>
 
 <div>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <header id="TopHeader">
   <img id="headerImg" src="https://i.imgur.com/1NLTXH0.png">
@@ -36,7 +37,6 @@ export default {
 
 
 <style lang="css">
-
 #TopHeader{
   font-size: 2em;
   text-align: center;
@@ -63,8 +63,8 @@ export default {
 }
 #EatHere{
 /*  position: absolute;*/
-  width: 400px;
-  height: 300px;
+  width: 100%;
+  height: auto;
   color: green;
   font-size: 50px;
   border: 2px dashed black;
@@ -79,8 +79,8 @@ export default {
 
 }
 #EatThere{
-  width: 400px;
-  height: 300px;
+  width: 100%;
+  height: auto;
   color: green;
   font-size: 50px;
   text: bold;
