@@ -67,11 +67,6 @@
 import MenuPage from '@/components/MenuPage.vue'
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
-<<<<<<< HEAD
-//import FrontPage from '@/components/FrontPage.vue'
-//import methods and data that are shared between ordering and kitchen views
-=======
->>>>>>> 8cc5eecb1e52deb8655eac0988324ce8277f2d6c
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 
@@ -82,10 +77,7 @@ export default {
   components: {
     Ingredient,
     OrderItem,
-<<<<<<< HEAD
-=======
     MenuPage
->>>>>>> 8cc5eecb1e52deb8655eac0988324ce8277f2d6c
     //FrontPage
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
