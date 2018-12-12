@@ -11,7 +11,6 @@
     v-for="(order, key) in orders"
     v-if="order.status !== 'done' "
     v-on:done="markDone(key)"
-
     :ui-labels="uiLabels"
     :lang="lang"
     :key="key"
@@ -21,7 +20,7 @@
   </div>
 
   <div v-else-if= "NewState =='StorageState'">
-    <button id = "StorageButton" v-on:click="BackToOrders">
+    <button id = "StorageButton2" v-on:click="BackToOrders">
       {{uiLabels.backtoorder}}
     </button>
     <h1 align ="center"> Storage </h1>
@@ -119,6 +118,13 @@ export default {
   height: 30px;
   position: absolute;
   top: 0;
+  right: 0;
+}
+#StorageButton2{
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  top: 30px;
   right: 0;
 }
 #footer {

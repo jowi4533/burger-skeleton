@@ -1,6 +1,12 @@
 <template>
 	<div class="order">
-		{{orderId}} <br> {{order.type}}  {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(", ") }}
+		<div class="orderId">
+			{{orderId}}
+		</div>
+		<div class="orderItems" v-if="this.item.category !== 5">
+
+					{{ order.ingredients.map(item=> item["ingredient_"+ lang]).join("\n") }}
+		</div>
 	</div>
 </template>
 <script>
@@ -17,5 +23,19 @@ export default {
 <style scoped>
 .order {
 	text-transform: capitalize;
+}
+
+.order .orderId{
+	text-align: center;
+	font-size: 12pt;
+	font-weight: bold;
+	background-color: gray;
+	border-bottom-style: solid;
+	border-bottom-width: 1pt;
+	border-bottom-color: black;
+}
+
+.orderItems {
+	white-space: pre-line;
 }
 </style>
