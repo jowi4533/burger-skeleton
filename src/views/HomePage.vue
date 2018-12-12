@@ -8,6 +8,7 @@
 
 <header id="TopHeader">
   <img id="headerImg" src="https://i.imgur.com/1NLTXH0.png">
+
 </header>
 
   <div class="wrapper" align="center">
@@ -20,25 +21,19 @@
 </template>
 
 
-
-
 <script>
-
-
 
 export default {
   name: 'HomePage',
+  state: '',
   methods: {
     OrderOption: function (){
-      window.location = 'http://localhost:8080/#/Ordering'
+      window.location = 'http://localhost:8080/#/Ordering';
+      this.state = "MenuPage";
     },
   }
-  }
+}
 </script>
-
-
-
-
 
 <style lang="css">
 #body{
