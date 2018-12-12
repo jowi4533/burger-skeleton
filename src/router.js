@@ -2,6 +2,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Ordering from './views/Ordering.vue'
+import Kitchen from './views/Kitchen.vue'
 
 Vue.use(Router)
 
@@ -20,7 +21,7 @@ let router = new Router({
       meta: {
         title: 'Kraft Burgers',
       },
-      name: 'ordering',
+      name: 'Ordering',
       component: Ordering
     },
     // {
