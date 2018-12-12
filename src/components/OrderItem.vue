@@ -1,6 +1,9 @@
 <template>
 	<div class="order">
-		{{orderId}} <br> {{order.type}}  {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(", ") }}
+		<div class="orderId">
+			{{orderId}}
+		</div>
+			{{order.ingredients.map(item=>item["ingredient_"+ lang]) }}
 	</div>
 </template>
 <script>
@@ -11,11 +14,22 @@ export default {
     order: Object,
     orderId: String,
     lang: String
-  }
+  },
+	data: function(){
+		return {
+			orderArray: []
+		}
+	}
 }
 </script>
 <style scoped>
 .order {
 	text-transform: capitalize;
+	padding-left: 0.2em;
+	padding-top: 0.2em;
+}
+.orderId{
+	font-size: 1.3em;
+
 }
 </style>
