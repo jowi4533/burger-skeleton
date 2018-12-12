@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import OverView from './components/OverView.vue'
+import Ordering from './views/Ordering.vue'
 import Kitchen from './views/Kitchen.vue'
 
 Vue.use(Router)
@@ -9,7 +9,7 @@ let router = new Router({
   routes: [
 
     {
-      path: '/OverView',
+      path: '/',
       meta: {
         title: 'Raw Sauce',
       },
@@ -21,8 +21,8 @@ let router = new Router({
       meta: {
         title: 'Kraft Burgers',
       },
-      name: 'overView',
-      component: OverView
+      name: 'Ordering',
+      component: Ordering
     },
 
     {
