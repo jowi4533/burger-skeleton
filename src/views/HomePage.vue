@@ -16,25 +16,19 @@
 </template>
 
 
-
-
 <script>
-
-
 
 export default {
   name: 'HomePage',
+  state: '',
   methods: {
     OrderOption: function (){
-      window.location = 'http://localhost:8080/#/Ordering'
+      window.location = 'http://localhost:8080/#/Ordering';
+      this.state = "MenuPage";
     },
   }
-  }
+}
 </script>
-
-
-
-
 
 <style lang="css">
 

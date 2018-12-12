@@ -2,27 +2,16 @@
   <div id="OrderingContainer">
 
 
-<div id="menupage" v-if="showMainMenu">
-
+<div id="menupage" ref="menupage" v-if="this.state === 'MenuPage'">
     <MenuPage>
 
-
     </MenuPage>
-    <button v-on:click = "klappatochKlart()"> TJAAAAA </button>
 </div>
-<div id="ordering" v-if="showOrdering">
+
+<div id="ordering" v-if="this.state === 'Ordering'">
   <img class="example-panel" src="@/assets/exampleImage.jpg">
   <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
-   <!-- <div id="frontpage">
-      <h1>TAJaa</h1>
-      <FrontPage> hello </FrontPage>
-      <button>Eat here</button>
-      <button>Take away</button>
 
-       v-on:click="placeToEat('Eat here')"
-      v-on:click="placeToEat('Take away')
-
-    </div> -->
 
     <div id="ingredients_">
     <h1>{{ uiLabels.ingredients }}</h1>
@@ -66,8 +55,6 @@
 import MenuPage from '@/components/MenuPage.vue'
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
-//import FrontPage from '@/components/FrontPage.vue'
-//import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 
@@ -88,21 +75,22 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      showMainMenu: true,
-      showOrdering: false,
+      state: 'MenuPage',
     }
   },
+
   created: function () {
     this.$store.state.socket.on('orderNumber', function (data) {
       this.orderNumber = data;
     }.bind(this));
   },
-  methods: {
-    klappatochKlart: function() {
-      this.showMainMenu = false;
-      this.showOrdering = true;
 
+  methods: {
+    changeToOrderingState: function (){
+      this.state = "Ordering";
+      console.log(this.state);
     },
+
     addToOrder: function (item) {
       this.chosenIngredients.push(item);
       this.price += +item.selling_price;
@@ -133,18 +121,13 @@ export default {
 #OrderingContainer{
   margin:auto;
   width: 40em;
-  background-color: rgb(0,100,200);
+  /*background-color: rgb(0,100,200);*/
   display: grid;
   grid-template-columns: 33% 33% 33%;
+  border-width: 1.5em;
+  border-style: double;
 
 }
-
-/* #frontpage {
-  height: 500px;
-  background-color: rgb(0,150,150);
-  grid-column: 1 / span 3;
-  grid-row: 1 / span 3;
-} */
 
 #ingredients_ {
   background-color: rgb(240,240,240);
@@ -163,12 +146,10 @@ export default {
 }
 
 #menupage {
-  width: 400px;
-  height: 400px;
-  background-color: green;
+  width: 40em;
+  height: auto;
+
 }
-
-
 
 .example-panel {
   position: fixed;
