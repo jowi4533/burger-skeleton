@@ -1,17 +1,22 @@
 <template>
 
-<div>
+<body id="body">
+
+
+<div id="all">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <header id="TopHeader">
   <img id="headerImg" src="https://i.imgur.com/1NLTXH0.png">
 </header>
 
-  <div id="lillaSkit">
-      <button id="EatHere" v-on:click="OrderOption()">Eat Here</button>
+  <div class="wrapper" align="center">
+      <button id="EatHere" v-on:click="OrderOption()" >Eat Here</button>
       <button id="EatThere" v-on:click="OrderOption()">Take Away</button>
 
   </div>
 </div>
+</body>
 </template>
 
 
@@ -36,11 +41,13 @@ export default {
 
 
 <style lang="css">
-
+#body{
+  background-color: black;
+  overflow: hidden;
+}
 #TopHeader{
   font-size: 2em;
   text-align: center;
-  overflow: hidden;
   background-color: black;
 
 
@@ -53,24 +60,34 @@ export default {
 
 
 
-#lillaSkit{
+.wrapper{
   display: grid;
+  grid-gap: 3%;
+  grid-template-columns: 50% 50%;
+  color: black;
   background-color: black;
-  overflow: hidden;
+
+
+
 
 
 
 }
 #EatHere{
 /*  position: absolute;*/
-  width: 400px;
-  height: 300px;
+  display: block;
   color: green;
-  font-size: 50px;
-  border: 2px dashed black;
+  font-size: 200%;
+  width: 80%;
   background-color: lightgrey;
-  grid-column: 2;
+  margin: 5%;
+  margin-bottom: 30%;
+  margin-top: 30%;
+  border: dashed 2px black;
+  grid-column: 1;
   grid-row: 1;
+
+
 
 
 }
@@ -79,17 +96,22 @@ export default {
 
 }
 #EatThere{
-  width: 400px;
-  height: 300px;
+  display: block;
   color: green;
-  font-size: 50px;
+  font-size: 200%;
+  width: 80%;
   text: bold;
-  border: 2px dashed black;
+  margin: 5%;
+  margin-bottom: 30%;
+  margin-top: 30%;
+  padding: 5%;
   background-color: lightgrey;
-  grid-column: 4;
+  border: dashed 2px black;
+  grid-column: 2;
   grid-row: 1;
 }
 #EatThere:hover{
   background-color: darkblue;
 }
+
 </style>
