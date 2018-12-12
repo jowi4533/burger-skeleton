@@ -48,9 +48,10 @@ export default {
     },
 
     orderStarted: function () {
-      this.order.status = 'started';
-      this.$emit('started');
-
+      this.$store.state.socket.emit('orderStarted', this.order.orderId);
+      //this.order.status = 'started';
+      // this.$parent.markStarted();    Det här ska gå att använda också istället för emit, då har man methoden markStarted i Kitchen.vue och där förändrar man .snygg tll blå bakgrund
+      //this.$emit('click');
     }
   }
 }
@@ -76,7 +77,6 @@ export default {
   right:0;
   width:70px;
   height:19px;
+
 }
-
-
 </style>

@@ -18,5 +18,14 @@
   "order" : "Min burgare",
   "language" : "English",
   "started" : "Påbörja",
-  "storage" : "Lager"
+  "storage" : "Lager",
+  "backtoorder" : "Tillbaka till beställningar",
+  "bread": "Bröd",
+  "patty" : "Bas",
+  "toppings": "Topping",
+  "veggies" : "Grönsaker",
+  "sauce" : "Sås",
+  "sides" : "Tillbehör",
+  "drinks" : "Dryck"
+
 }

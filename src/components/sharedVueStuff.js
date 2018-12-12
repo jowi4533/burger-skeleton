@@ -8,11 +8,12 @@ var sharedVueStuff = {
       uiLabels: {},
       ingredients: {},
       lang: "en",
-
     }
 
   },
   created: function () {
+    this.$store.state.socket.emit('pageLoaded');
+
     this.$store.state.socket.on('initialize', function (data) {
       this.orders = data.orders;
       this.uiLabels = data.uiLabels;

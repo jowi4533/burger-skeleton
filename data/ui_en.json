@@ -18,6 +18,13 @@
   "order" : "My burger",
   "language" : "Svenska",
   "started" : "Start",
-  "storage" : "Storage"
-
+  "storage" : "Storage",
+  "backtoorder" : "Back to orders",
+  "bread": "Bread",
+  "patty" : "Patty",
+  "toppings": "Toppings",
+  "veggies" : "Vegetables",
+  "sauce" : "Sauce",
+  "sides" : "Sides",
+  "drinks" : "Drinks"
 }
