@@ -22,33 +22,33 @@ ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,s
 21,chèvre,goat cheese,3,0,1,0,10
 22,blåmögel ost,blue cheese,3,0,1,0,10
 23,vegansk ost,vegan cheese,3,1,1,1,10
-24,krispsallad,lettuce,3,1,1,1,5
-25,tomat,tomato,3,1,1,1,5
-26,gurka,cucumber,3,1,1,1,5
-27,inlagd gurka,pickled cucumber,3,1,1,1,5
-28,inlagd rödlök,pickled red onion,3,1,1,1,5
-29,rå rödlök,raw red onion,3,1,1,1,5
-30,rå gul lök,raw yellow onion,3,1,1,1,5
-31,majonnäs,mayonnaise,4,1,1,0,5
-32,klassisk hamburgarsås,classic hamburger dressing,4,1,1,0,5
-33,ketchup,ketchup,4,1,1,1,5
-34,senap,mustard,4,1,1,1,5
-35,aioli,aioli,4,1,1,0,5
-36,barbecuesås,barbecue sauce,4,1,1,1,5
-37,guacamole,guacamole,4,1,1,1,10
-38,hot salsa,hot salsa,4,1,1,1,5
-39,sriracha,sriracha,4,1,1,1,5
-40,teriyakisås,teriyaki sauce,4,1,1,1,5
-41,tryffelmajonnäs,truffle mayonnaise,4,1,1,0,5
-42,tzatziki,tzatziki,4,0,1,0,5
-43,liten potatisstrips,small potato fries,5,1,1,1,10
-44,mellan potatisstrips,medium potato fries,5,1,1,1,15
-45,stor potatisstrips,large potato fries,5,1,1,1,20
-46,liten sötpotatisstrips,small sweet potato fries,5,1,1,1,12
-47,mellan sötpotatisstrips,medium sweet potato fries,5,1,1,1,17
-48,stor sötpotatisstrips,large sweet potato fries,5,1,1,1,22
-49,nachochips,nachos,5,1,0,1,20
-50,läsk,soda,6,1,1,1,20
-51,jordgubbsmilkshake,strawberry milk shake,6,0,1,0,40
-52,chokladmilkshake,chocolate milk shake,6,0,1,0,40
-53,pucko,pucko,6,0,1,0,25
+24,krispsallad,lettuce,4,1,1,1,5
+25,tomat,tomato,4,1,1,1,5
+26,gurka,cucumber,4,1,1,1,5
+27,inlagd gurka,pickled cucumber,4,1,1,1,5
+28,inlagd rödlök,pickled red onion,4,1,1,1,5
+29,rå rödlök,raw red onion,4,1,1,1,5
+30,rå gul lök,raw yellow onion,4,1,1,1,5
+31,majonnäs,mayonnaise,5,1,1,0,5
+32,klassisk hamburgarsås,classic hamburger dressing,5,1,1,0,5
+33,ketchup,ketchup,5,1,1,1,5
+34,senap,mustard,5,1,1,1,5
+35,aioli,aioli,5,1,1,0,5
+36,barbecuesås,barbecue sauce,5,1,1,1,5
+37,guacamole,guacamole,5,1,1,1,10
+38,hot salsa,hot salsa,5,1,1,1,5
+39,sriracha,sriracha,5,1,1,1,5
+40,teriyakisås,teriyaki sauce,5,1,1,1,5
+41,tryffelmajonnäs,truffle mayonnaise,5,1,1,0,5
+42,tzatziki,tzatziki,5,0,1,0,5
+43,liten potatisstrips,small potato fries,6,1,1,1,10
+44,mellan potatisstrips,medium potato fries,6,1,1,1,15
+45,stor potatisstrips,large potato fries,6,1,1,1,20
+46,liten sötpotatisstrips,small sweet potato fries,6,1,1,1,12
+47,mellan sötpotatisstrips,medium sweet potato fries,6,1,1,1,17
+48,stor sötpotatisstrips,large sweet potato fries,6,1,1,1,22
+49,nachochips,nachos,6,1,0,1,20
+50,läsk,soda,7,1,1,1,20
+51,jordgubbsmilkshake,strawberry milk shake,7,0,1,0,40
+52,chokladmilkshake,chocolate milk shake,7,0,1,0,40
+53,pucko,pucko,7,0,1,0,25

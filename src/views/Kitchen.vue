@@ -6,10 +6,12 @@
     <button id = "StorageButton" v-on:click="OpenStorage">
       {{uiLabels.storage}}
     </button>
-    <OrderItemToPrepare id ="snygg"
+    <OrderItemToPrepare ref="OITP"
+    v-bind:class = "['snygg', {'active': (order.status === 'started')}]"
     v-for="(order, key) in orders"
     v-if="order.status !== 'done' "
     v-on:done="markDone(key)"
+
     :ui-labels="uiLabels"
     :lang="lang"
     :key="key"
@@ -54,6 +56,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       NewState: "OrderState",
+      bgc: { backgroundColor: ''}
     }
   },
 
@@ -67,12 +70,18 @@ export default {
     },
     BackToOrders: function () {
       this.NewState = "OrderState";
+    },
+    // markStarted: function () {
+    //   this.
+    // }
     }
-  }
 }
+
 </script>
-<style scoped>
-	#orders {
+<style id="style" scoped>
+
+  #orders {
+    margin: 0px 10px 5px 0px;
     font-size:13pt;
   }
 
@@ -82,7 +91,7 @@ export default {
   }
 
    #gridContainer {
-    margin: 5px 25px 25px 25px;
+    margin: 5px 0px 5px 0px;
     display: grid;
     grid-gap: 5px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -92,21 +101,32 @@ export default {
     "grid grid grid grid";
     background-color: white;
   }
-#snygg {
-  color: #800080;
-  left: 10px;
+
+.snygg {
+  color: #100080;
   margin-left: 5pt;
   margin-top: 3pt;
-  background-color: #696969;
+  background-color: #999999;
   border-color: black;
   border-style: solid;
 }
+
+ .active {
+  background-color: lightblue;
+}
 #StorageButton{
-  width:100px;
-  height:30px;
-  position:absolute;
-  top:0;
-  right:0;
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#footer {
+    position:fixed;
+    width:100%;
+    border-top:1px solid #aaa; /* you can change to whatever color you want */
+    background:#fff; /* this is important otherwise your background will be transparent, change the color based on your needs */
+    /* ... your other properties */
 }
 
 
