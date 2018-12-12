@@ -13,7 +13,6 @@ var sharedVueStuff = {
   },
   created: function () {
     this.$store.state.socket.emit('pageLoaded');
-    
     this.$store.state.socket.on('initialize', function (data) {
       this.orders = data.orders;
       this.uiLabels = data.uiLabels;
@@ -39,7 +38,8 @@ var sharedVueStuff = {
         this.lang = "en";
       }
       this.$store.state.socket.emit('switchLang', this.lang);
-    }
+    },
+
   }
 };
 

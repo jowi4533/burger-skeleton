@@ -3,9 +3,9 @@
 		<div class="orderId">
 			{{orderId}}
 		</div>
-		<div class="orderItems" v-if="this.item.category !== 5">
+		<div class="orderItems" v-for="item in order.ingredients">
 
-					{{ order.ingredients.map(item=> item["ingredient_"+ lang]).join("\n") }}
+
 		</div>
 	</div>
 </template>
