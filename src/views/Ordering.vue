@@ -50,7 +50,7 @@ import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 /* instead of defining a Vue instance, export default allows the only
 necessary Vue instance (found in main.js) to import your data and methods */
-export default {
+export default {  
   name: 'Ordering',
   components: {
     Ingredient,

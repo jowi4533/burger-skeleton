@@ -3,7 +3,14 @@
 		<div class="orderId">
 			{{orderId}}
 		</div>
-			{{order.ingredients.map(item=>item["ingredient_"+ lang]) }}
+		<div class = "orderItems" v-for ="item in order.ingredients">
+			<div v-if ="item.category !== 7 && item.category !== 6">
+				{{item["ingredient_"+ lang]}}
+			</div>
+
+			<!-- {{order.ingredients.map(item =>item["ingredient_"+ lang]).join("\n")}}
+			{{order.ingredients.map(item=>item["category"]!==1).join("\n")}} -->
+		</div>
 	</div>
 </template>
 <script>
@@ -15,11 +22,10 @@ export default {
     orderId: String,
     lang: String
   },
-	data: function(){
-		return {
-			orderArray: []
-		}
-	}
+	data: function() { //Not that data is a function!
+    return {
+    }
+  }
 }
 </script>
 <style scoped>
@@ -29,7 +35,10 @@ export default {
 	padding-top: 0.2em;
 }
 .orderId{
+
 	font-size: 1.3em;
 
+}
+.orderItems{
 }
 </style>
