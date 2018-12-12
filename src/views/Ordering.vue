@@ -1,53 +1,104 @@
 <template>
   <div>
-    <div v-if = "showMainMenu" >
+    <div v-if = "allPages[0].showMenu">
       <MenuPage>
-
       </MenuPage>
-      <button v-on:click= "klappatochKlart()">Klart</button>
+
+      <button v-on:click= "showBurgerPage()">Build Your Burger!</button>
+      <button v-on:click= "showSidesAndDrinksPage()">Sides and Drinks</button>
+      <button v-on:click= "showOverViewPage()">Order Overview</button>
+
+    </div>
+
+    <div v-if = "allPages[0].showBreadAndPatty" >
+      <BreadAndPatty>
+      </BreadAndPatty>
+
+      <button v-on:click= "showMenuPage()">Previous</button>
+      <button v-on:click= "showToppingsPage()">Go to Toppings and Sauce</button>
+    </div>
+
+    <div v-if = "allPages[0].showToppingsAndSauce" >
+      <ToppingsAndSauce>
+      </ToppingsAndSauce>
+
+      <button v-on:click= "showBurgerPage()">Previous</button>
+      <button v-on:click= "showVegetablesPage()">Go to Vegetables</button>
+    </div>
+
+    <div v-if = "allPages[0].showVegetables" >
+      <Vegetables>
+      </Vegetables>
+
+      <button v-on:click= "showToppingsPage()">Previous</button>
+      <button v-on:click= "showSidesAndDrinksPage()">Go to Sides and Drinks</button>
+    </div>
+
+
+    <div v-if = "allPages[0].showSides" >
+      <Sides>
+      </Sides>
+
+      <button v-on:click= "showVegetablesPage()">Previous</button>
+      <button v-on:click= "showDrinksPage()">Go to Drinks </button>
+    </div>
+
+    <div v-if = "allPages[0].showDrinks" >
+      <Drinks>
+      </Drinks>
+
+      <button v-on:click= "showSidesAndDrinksPage()">Previous</button>
+      <button v-on:click= "showOverViewPage()">Go to Order Overview</button>
+    </div>
+
+    <div v-if = "allPages[0].showOverView" >
+      <OverView>
+      </OverView>
+
+      <button v-on:click= "showDrinksPage()">Previous</button>
     </div>
 
 
 
-  <div id="ordering" v-if = "showOrdering">
-    <img class="example-panel" src="@/assets/exampleImage.jpg">
-    <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+    <div id="ordering" v-if = "showOrdering">
+      <img class="example-panel" src="@/assets/exampleImage.jpg">
+      <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
 
 
-    <div id="ingredients_">
-      <h1>{{ uiLabels.ingredients }}</h1>
+      <div id="ingredients_">
+        <h1>{{ uiLabels.ingredients }}</h1>
 
-      <Ingredient
-      ref="ingredient"
-      v-for="item in ingredients"
-      v-on:increment="addToOrder(item)"
-      :item="item"
-      :lang="lang"
-      :key="item.ingredient_id">
-    </Ingredient>
+        <Ingredient
+        ref="ingredient"
+        v-for="item in ingredients"
+        v-on:increment="addToOrder(item)"
+        :item="item"
+        :lang="lang"
+        :key="item.ingredient_id">
+      </Ingredient>
+    </div>
+    <div id="chosen_ingredients">
+      <h1>{{ uiLabels.order }} hej</h1>
+      {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
+      <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+    </div>
+    <div id="order_item">
+      <h1>{{ uiLabels.ordersInQueue }} tja</h1>
+
+      <h1>{{ uiLabels.ordersInQueue }}</h1>
+      <div>
+        <OrderItem
+        v-for="(order, key) in orders"
+        v-if="order.status !== 'done'"
+        :order-id="key"
+        :order="order"
+        :ui-labels="uiLabels"
+        :lang="lang"
+        :key="key">
+        hej
+      </OrderItem>
+    </div>
   </div>
-  <div id="chosen_ingredients">
-    <h1>{{ uiLabels.order }} hej</h1>
-    {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
-    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
-  </div>
-  <div id="order_item">
-    <h1>{{ uiLabels.ordersInQueue }} tja</h1>
-
-    <h1>{{ uiLabels.ordersInQueue }}</h1>
-    <div>
-      <OrderItem
-      v-for="(order, key) in orders"
-      v-if="order.status !== 'done'"
-      :order-id="key"
-      :order="order"
-      :ui-labels="uiLabels"
-      :lang="lang"
-      :key="key">
-      hej
-    </OrderItem>
-  </div>
-</div>
 </div>
 </div>
 </template>
@@ -58,10 +109,18 @@
 //components
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
-//import FrontPage from '@/components/FrontPage.vue'
+import MenuPage from '@/components/MenuPage.vue'
+import OverView from '@/components/OverView.vue'
+
+import BreadAndPatty from '@/components/BuildYourBurger/BreadAndPatty.vue'
+import ToppingsAndSauce from '@/components/BuildYourBurger/ToppingsAndSauce.vue'
+import Vegetables from '@/components/BuildYourBurger/Vegetables.vue'
+
+import Sides from '@/components/SidesAndDrinks/Sides.vue'
+import Drinks from '@/components/SidesAndDrinks/Drinks.vue'
+
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
-import MenuPage from '@/components/MenuPage.vue'
 
 
 /* instead of defining a Vue instance, export default allows the only
@@ -72,6 +131,14 @@ export default {
     Ingredient,
     OrderItem,
     MenuPage,
+    OverView,
+
+    BreadAndPatty,
+    ToppingsAndSauce,
+    Vegetables,
+
+    Sides,
+    Drinks,
     //FrontPage
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
@@ -82,8 +149,22 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      showMainMenu: true,
-      showOrdering: false
+
+      //Variables for showing the different pages used in ordering -Start-
+
+      showOrdering: false, //temporary boolean for hiding original ordering
+
+      //Array of all the booleans for pages, for usage in method: hideAllPages
+      allPages: [
+        {
+        "showMenu": true,
+        "showBreadAndPatty": false,
+        "showToppingsAndSauce": false,
+        "showVegetables": false,
+        "showSides": false,
+        "showDrinks": false,
+        "showOverView": false}],
+      // -End-
     }
   },
   created: function () {
@@ -92,10 +173,48 @@ export default {
     }.bind(this));
   },
   methods: {
-    klappatochKlart: function () {
-      this.showOrdering = true;
-      this.showMainMenu = false;
+
+    hideAllPages: function() {
+      for (var key in this.allPages[0]){
+        this.allPages[0][key] = false;
+      }
     },
+
+    showMenuPage: function(){
+      this.hideAllPages();
+      this.allPages[0].showMenu = true;
+    },
+
+    showOverViewPage: function () {
+      this.hideAllPages();
+      this.allPages[0].showOverView = true;
+    },
+
+    showBurgerPage: function () {
+      this.hideAllPages();
+      this.allPages[0].showBreadAndPatty= true;
+    },
+
+    showToppingsPage: function () {
+      this.hideAllPages();
+      this.allPages[0].showToppingsAndSauce = true;
+    },
+
+    showVegetablesPage: function () {
+      this.hideAllPages();
+      this.allPages[0].showVegetables = true;
+    },
+
+    showSidesAndDrinksPage: function () {
+      this.hideAllPages();
+      this.allPages[0].showSides = true;
+    },
+
+    showDrinksPage: function () {
+      this.hideAllPages();
+      this.allPages[0].showDrinks = true;
+    },
+
 
     addToOrder: function (item) {
       this.chosenIngredients.push(item);
