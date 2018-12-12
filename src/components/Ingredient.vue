@@ -11,7 +11,8 @@ export default {
   name: 'Ingredient',
   props: {
     item: Object,
-    lang: String
+    lang: String,
+    uiLabels: Object
   },
     data: function () {
     return {
@@ -32,5 +33,5 @@ export default {
 }
 </script>
 <style scoped>
-  
+
 </style>

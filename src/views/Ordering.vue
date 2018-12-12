@@ -41,12 +41,12 @@
         :ui-labels="uiLabels"
         :lang="lang"
         :key="key">
-        hej
       </OrderItem>
     </div>
   </div>
   </div>
 </template>
+
 <script>
 
 //import the components that are used in the template, the name that you

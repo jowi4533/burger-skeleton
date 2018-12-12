@@ -1,34 +1,38 @@
 <template>
-<div id="orders">
+  <div id="orders">
   <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
 
   <div id= "gridContainer" v-if = "NewState == 'OrderState'">
     <button id = "StorageButton" v-on:click="OpenStorage">
       {{uiLabels.storage}}
     </button>
-    <OrderItemToPrepare id ="snygg"
+    <OrderItemToPrepare ref="OITP"
+    v-bind:class = "['snygg', {'active': (order.status === 'started')}]"
     v-for="(order, key) in orders"
-    v-if="order.status !== 'done'"
+    v-if="order.status !== 'done' "
     v-on:done="markDone(key)"
+
     :ui-labels="uiLabels"
     :lang="lang"
     :key="key"
     :order-id="key"
     :order="order">
     </OrderItemToPrepare>
-
   </div>
 
   <div v-else-if= "NewState =='StorageState'">
     <button id = "StorageButton" v-on:click="BackToOrders">
       {{uiLabels.backtoorder}}
     </button>
+    <h1 align ="center"> Storage </h1>
     <StorageItem
-      :ui-labels="uiLabels"
-      :lang="lang">
+    :ingredients="ingredients"
+    :lang="lang"
+    :ui-labels="uiLabels">
     </StorageItem>
   </div>
 </div>
+
 </template>
 
 <script>
@@ -51,7 +55,8 @@ export default {
     return {
       chosenIngredients: [],
       price: 0,
-      NewState: "OrderState"
+      NewState: "OrderState",
+      bgc: { backgroundColor: ''}
     }
   },
 
@@ -65,12 +70,18 @@ export default {
     },
     BackToOrders: function () {
       this.NewState = "OrderState";
+    },
+    // markStarted: function () {
+    //   this.
+    // }
     }
-  }
 }
+
 </script>
-<style scoped>
-	#orders {
+<style id="style" scoped>
+
+  #orders {
+    margin: 0px 10px 5px 0px;
     font-size:13pt;
   }
 
@@ -80,32 +91,43 @@ export default {
   }
 
    #gridContainer {
-    margin: 5px 25px 25px 25px;
+    margin: 5px 0px 5px 0px;
     display: grid;
     grid-gap: 5px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 300px 300px;
-    /*border: 5px dashed #000000;*/
     grid-template-areas:
     "grid grid grid grid"
     "grid grid grid grid";
     background-color: white;
   }
-#snygg {
-  color: #800080;
-  left: 10px;
+
+.snygg {
+  color: #100080;
   margin-left: 5pt;
   margin-top: 3pt;
-  background-color: #696969;
+  background-color: #999999;
   border-color: black;
   border-style: solid;
 }
-#StorageButton{
-  width:100px;
-  height:30px;
-  position:absolute;
-  top:0;
-  right:0;
+
+ .active {
+  background-color: lightblue;
 }
+#StorageButton{
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#footer {
+    position:fixed;
+    width:100%;
+    border-top:1px solid #aaa; /* you can change to whatever color you want */
+    background:#fff; /* this is important otherwise your background will be transparent, change the color based on your needs */
+    /* ... your other properties */
+}
+
 
 </style>

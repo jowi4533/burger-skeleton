@@ -19,5 +19,13 @@
   "language" : "English",
   "started" : "Påbörja",
   "storage" : "Lager",
-  "backtoorder" : "Tillbaka till beställningar"
+  "backtoorder" : "Tillbaka till beställningar",
+  "bread": "Bröd",
+  "patty" : "Bas",
+  "toppings": "Topping",
+  "veggies" : "Grönsaker",
+  "sauce" : "Sås",
+  "sides" : "Tillbehör",
+  "drinks" : "Dryck"
+
 }
