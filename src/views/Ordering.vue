@@ -1,9 +1,6 @@
 <template>
   <div id="OrderingContainer">
 
-      <button v-on:click= "showBurgerPage()">Build Your Burger!</button>
-      <button v-on:click= "showSidesAndDrinksPage()">Sides and Drinks</button>
-      <button v-on:click= "showOverViewPage()">Order Overview</button>
 
 <div id="menupage" ref="menupage" v-if="this.state === 'MenuPage'">
     <MenuPage>
@@ -16,87 +13,27 @@
   <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
 
 
-
-   <!-- <div id="frontpage">
-      <h1>TAJaa</h1>
-      <FrontPage> hello </FrontPage>
-      <button>Eat here</button>
-      <button>Take away</button>
-
-       v-on:click="placeToEat('Eat here')"
-      v-on:click="placeToEat('Take away')
-
-    </div> -->
-
     <div id="ingredients_">
     <h1>{{ uiLabels.ingredients }}</h1>
 
-      <button v-on:click= "showBurgerPage()">Previous</button>
-      <button v-on:click= "showVegetablesPage()">Go to Vegetables</button>
-    </div>
+    <Ingredient
+      ref="ingredient"
+      v-for="item in ingredients"
+      v-on:increment="addToOrder(item)"
+      :item="item"
+      :lang="lang"
+      :key="item.ingredient_id">
+    </Ingredient>
+  </div>
+  <div id="chosen_ingredients">
+    <h1>{{ uiLabels.order }} hej</h1>
+    {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
+    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+  </div>
+<div id="order_item">
+    <h1>{{ uiLabels.ordersInQueue }} tja</h1>
 
-    <div v-if = "allPages[0].showVegetables" >
-      <Vegetables>
-      </Vegetables>
-
-      <button v-on:click= "showToppingsPage()">Previous</button>
-      <button v-on:click= "showSidesAndDrinksPage()">Go to Sides and Drinks</button>
-    </div>
-
-
-    <div v-if = "allPages[0].showSides" >
-      <Sides>
-      </Sides>
-
-      <button v-on:click= "showVegetablesPage()">Previous</button>
-      <button v-on:click= "showDrinksPage()">Go to Drinks </button>
-    </div>
-
-    <div v-if = "allPages[0].showDrinks" >
-      <Drinks>
-      </Drinks>
-
-      <button v-on:click= "showSidesAndDrinksPage()">Previous</button>
-      <button v-on:click= "showOverViewPage()">Go to Order Overview</button>
-    </div>
-
-    <div v-if = "allPages[0].showOverView" >
-      <OverView>
-      </OverView>
-
-      <button v-on:click= "showDrinksPage()">Previous</button>
-    </div>
-
-
-
-    <div id="ordering" v-if = "showOrdering">
-      <img class="example-panel" src="@/assets/exampleImage.jpg">
-      <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
-
-
-      <div id="ingredients_">
-        <h1>{{ uiLabels.ingredients }}</h1>
-
-        <Ingredient
-        ref="ingredient"
-        v-for="item in ingredients"
-        v-on:increment="addToOrder(item)"
-        :item="item"
-        :lang="lang"
-        :key="item.ingredient_id">
-      </Ingredient>
-    </div>
-    <div id="chosen_ingredients">
-      <h1>{{ uiLabels.order }} hej</h1>
-      {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
-      <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
-    </div>
-    <div id="order_item">
-      <h1>{{ uiLabels.ordersInQueue }} tja</h1>
-
-      <h1>{{ uiLabels.ordersInQueue }}</h1>
-      <div>
-        <OrderItem
+      <OrderItem
         v-for="(order, key) in orders"
         v-if="order.status !== 'done'"
         :order-id="key"
@@ -104,12 +41,12 @@
         :ui-labels="uiLabels"
         :lang="lang"
         :key="key">
-        hej
       </OrderItem>
     </div>
   </div>
   </div>
 </template>
+
 <script>
 
 //import the components that are used in the template, the name that you
@@ -132,8 +69,7 @@ export default {
     //FrontPage
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
-  // the ordering system and the kitchen
-
+                            // the ordering system and the kitchen
   data: function() { //Not that data is a function!
     return {
       chosenIngredients: [],
@@ -152,21 +88,19 @@ export default {
   methods: {
     changeToOrderingState: function (){
       this.state = "Ordering";
-      console.log(this.state);
     },
 
     addToOrder: function (item) {
       this.chosenIngredients.push(item);
       this.price += +item.selling_price;
     },
-
     placeOrder: function () {
       var i,
       //Wrap the order in an object
-      order = {
-        ingredients: this.chosenIngredients,
-        price: this.price
-      };
+        order = {
+          ingredients: this.chosenIngredients,
+          price: this.price
+        };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       this.$store.state.socket.emit('order', {order: order});
       //set all counters to 0. Notice the use of $refs
@@ -228,6 +162,5 @@ export default {
   background-color:  rgb(20,100,120);
   /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
-
 }
 </style>
