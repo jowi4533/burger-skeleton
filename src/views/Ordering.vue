@@ -88,7 +88,6 @@ export default {
   methods: {
     changeToOrderingState: function (){
       this.state = "Ordering";
-      console.log(this.state);
     },
 
     addToOrder: function (item) {
