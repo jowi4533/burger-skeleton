@@ -16,9 +16,20 @@
   <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
 
 
-    <div v-if = "allPages[0].showToppingsAndSauce" >
-      <ToppingsAndSauce>
-      </ToppingsAndSauce>
+
+   <!-- <div id="frontpage">
+      <h1>TAJaa</h1>
+      <FrontPage> hello </FrontPage>
+      <button>Eat here</button>
+      <button>Take away</button>
+
+       v-on:click="placeToEat('Eat here')"
+      v-on:click="placeToEat('Take away')
+
+    </div> -->
+
+    <div id="ingredients_">
+    <h1>{{ uiLabels.ingredients }}</h1>
 
       <button v-on:click= "showBurgerPage()">Previous</button>
       <button v-on:click= "showVegetablesPage()">Go to Vegetables</button>
@@ -93,12 +104,12 @@
         :ui-labels="uiLabels"
         :lang="lang"
         :key="key">
+        hej
       </OrderItem>
     </div>
   </div>
   </div>
 </template>
-
 <script>
 
 //import the components that are used in the template, the name that you
