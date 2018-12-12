@@ -38,7 +38,8 @@ var sharedVueStuff = {
         this.lang = "en";
       }
       this.$store.state.socket.emit('switchLang', this.lang);
-    }
+    },
+
   }
 };
 

@@ -13,18 +13,6 @@
   <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
 
 
-
-   <!-- <div id="frontpage">
-      <h1>TAJaa</h1>
-      <FrontPage> hello </FrontPage>
-      <button>Eat here</button>
-      <button>Take away</button>
-
-       v-on:click="placeToEat('Eat here')"
-      v-on:click="placeToEat('Take away')
-
-    </div> -->
-
     <div id="ingredients_">
     <h1>{{ uiLabels.ingredients }}</h1>
 
@@ -53,12 +41,12 @@
         :ui-labels="uiLabels"
         :lang="lang"
         :key="key">
-        hej
       </OrderItem>
     </div>
   </div>
   </div>
 </template>
+
 <script>
 
 //import the components that are used in the template, the name that you
@@ -100,7 +88,6 @@ export default {
   methods: {
     changeToOrderingState: function (){
       this.state = "Ordering";
-      console.log(this.state);
     },
 
     addToOrder: function (item) {
