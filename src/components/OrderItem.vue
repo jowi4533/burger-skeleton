@@ -4,8 +4,9 @@
 			{{orderId}}
 		</div>
 		<div class="orderItems" v-for="item in order.ingredients">
-
-
+			<div v-if="item.catergory !== 7 && item.catergory !== 6">
+				{{item["ingredint_"+ lang]}}
+			</div>
 		</div>
 	</div>
 </template>
