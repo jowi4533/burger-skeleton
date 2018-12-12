@@ -78,16 +78,16 @@ export default {
   margin: 5%;
   margin-bottom: 30%;
   margin-top: 30%;
-  border: dashed 2px black;
   grid-column: 1;
   grid-row: 1;
+  opacity: 0.7;
 
 
 
 
 }
 #EatHere:hover{
-  background-color: darkblue;
+  opacity: 1;
 
 }
 #EatThere{
@@ -101,12 +101,12 @@ export default {
   margin-top: 30%;
   padding: 5%;
   background-color: lightgrey;
-  border: dashed 2px black;
   grid-column: 2;
   grid-row: 1;
+  opacity: 0.7;
 }
 #EatThere:hover{
-  background-color: darkblue;
+  opacity: 1;
 }
 
 </style>
