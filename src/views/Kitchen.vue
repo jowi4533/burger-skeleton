@@ -1,13 +1,12 @@
 <template>
   <div id="orders">
   <h1 align ="center"> Raw Sauce Burgers Kitchen System</h1>
-
   <div id= "gridContainer" v-if = "NewState == 'OrderState'">
     <button id = "StorageButton" v-on:click="OpenStorage">
       {{uiLabels.storage}}
     </button>
     <OrderItemToPrepare ref="OITP"
-    v-bind:class = "['snygg', {'active': (order.status === 'started')}]"
+    v-bind:class = "['orderBox', {'active': (order.status === 'started')}]"
     v-for="(order, key) in orders"
     v-if="order.status !== 'done' "
     v-on:done="markDone(key)"
@@ -101,7 +100,7 @@ export default {
     background-color: white;
   }
 
-.snygg {
+.orderBox {
   color: #100080;
   margin-left: 5pt;
   margin-top: 3pt;
