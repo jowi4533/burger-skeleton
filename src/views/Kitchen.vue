@@ -5,6 +5,7 @@
     <button id = "StorageButton" v-on:click="OpenStorage">
       {{uiLabels.storage}}
     </button>
+    <!-- (HJÄLP) -->
     <OrderItemToPrepare
     v-bind:class = "['orderBox', {'active': (order.status === 'started')}]"
     v-for="(order, key) in orders"
