@@ -6,6 +6,7 @@
 		<div class = "orderItems" v-for ="item in order.ingredients">
 			<div v-if ="item.category !== 7 && item.category !== 6">
 				{{item["ingredient_"+ lang]}}
+
 			</div>
 		</div>
 	</div>
