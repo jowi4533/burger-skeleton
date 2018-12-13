@@ -8,7 +8,13 @@
 
 <script>
 export default{
-  name: 'MenuPage',
+  name: 'OverView',
+
+  data: function(){
+      return{
+        state: 'OverView',
+      }
+  },
 }
 </script>
 

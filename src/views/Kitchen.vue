@@ -5,12 +5,12 @@
     <button id = "StorageButton" v-on:click="OpenStorage">
       {{uiLabels.storage}}
     </button>
-    <OrderItemToPrepare ref="OITP"
+    <!-- (HJÄLP) -->
+    <OrderItemToPrepare
     v-bind:class = "['orderBox', {'active': (order.status === 'started')}]"
     v-for="(order, key) in orders"
     v-if="order.status !== 'done' "
     v-on:done="markDone(key)"
-
     :ui-labels="uiLabels"
     :lang="lang"
     :key="key"
@@ -20,7 +20,7 @@
   </div>
 
   <div v-else-if= "NewState =='StorageState'">
-    <button id = "StorageButton" v-on:click="BackToOrders">
+    <button id = "StorageButton2" v-on:click="BackToOrders">
       {{uiLabels.backtoorder}}
     </button>
     <h1 align ="center"> Storage </h1>
@@ -31,7 +31,6 @@
     </StorageItem>
   </div>
 </div>
-
 </template>
 
 <script>
@@ -120,13 +119,20 @@ export default {
   top: 0;
   right: 0;
 }
+#StorageButton2{
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  top: 30px;
+  right: 0;
+}
 #footer {
     position:fixed;
     width:100%;
-    border-top:1px solid #aaa; /* you can change to whatever color you want */
-    background:#fff; /* this is important otherwise your background will be transparent, change the color based on your needs */
-    /* ... your other properties */
+    border-top:1px solid #aaa;
+    background:#fff;
 }
+
 
 
 </style>
