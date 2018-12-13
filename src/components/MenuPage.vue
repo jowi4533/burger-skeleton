@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import sharedVueStuff from '@/components/sharedVueStuff.js'
+  
 
   export default {
   name: 'Ordering',
