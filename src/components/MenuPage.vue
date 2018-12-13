@@ -1,46 +1,47 @@
 <template>
   <div id ="MenuPageContainer">
     <title>MenuPage</title>
-      <h1 id="welcome"> Choose a step to begin with </h1>
+    <h1 id="welcome"> Choose a step to begin with </h1>
 
-      <div id="buttons">
+    <div id="buttons">
 
-        <button v-on:click= "klappatochKlart()" class="pictureButtton" id="buttonPicOne"><img src="https://classroomclipart.com/images/gallery/Animations/Food/TN_animated-clipart-gif-building-cheese-burger-animation-05c.jpg"></button>
-        <button class="pictureButtton" id="buttonPicTwo"><img src="https://st3.depositphotos.com/5934840/12771/v/950/depositphotos_127717872-stock-illustration-french-fries-and-soda-design.jpg"></button>
-        <button class="pictureButtton" id="buttonPicThree"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPrk3fOyuSsjA4DKyItpI_9Wh2Cfff8iIEZZnIZCMA3yM7XYfn"></button>
-        <button class="pictureButtton" id="buttonPicFour"><img src="http://www.smalandselfstorage.se/wp-content/uploads/2017/05/cash-payment-icon-5.jpg"></button>
+      <button v-on:click= "switchToBreadAndPatty()" class="pictureButtton" id="buttonPicOne"><img src="https://classroomclipart.com/images/gallery/Animations/Food/TN_animated-clipart-gif-building-cheese-burger-animation-05c.jpg"></button>
+      <button v-on:click= "switchToSidesAndDrinks()" class="pictureButtton" id="buttonPicTwo"><img src="https://st3.depositphotos.com/5934840/12771/v/950/depositphotos_127717872-stock-illustration-french-fries-and-soda-design.jpg"></button>
+      <button v-on:click= "switchToOverView()" class="pictureButtton" id="buttonPicThree"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPrk3fOyuSsjA4DKyItpI_9Wh2Cfff8iIEZZnIZCMA3yM7XYfn"></button>
+      <button class="pictureButtton" id="buttonPicFour"><img src="http://www.smalandselfstorage.se/wp-content/uploads/2017/05/cash-payment-icon-5.jpg"></button>
 
-        <button v-on:click= "klappatochKlart()" class="textButton" id="buttonTextOne">1: Build your own burger </button>
-        <button class="textButton" id="buttonTextTwo">2: Sides and drinks</button>
-        <button class="textButton" id="buttonTextThree">3: Order overview</button>
-        <button class="textButton" id="buttonTextFour">4: Payment</button>
+      <button v-on:click= "switchToBreadAndPatty()" class="textButton" id="buttonTextOne">1: Build your own burger </button>
+      <button v-on:click= "switchToSidesAndDrinks()" class="textButton" id="buttonTextTwo">2: Sides and drinks</button>
+      <button v-on:click= "switchToOverView()" class="textButton" id="buttonTextThree">3: Order overview</button>
+      <button class="textButton" id="buttonTextFour">4: Payment</button>
 
-      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  import sharedVueStuff from '@/components/sharedVueStuff.js'
 
-  export default {
-  name: 'Ordering',
-  state: '',
-  showMenuPage: '',
-  showOrdering: '',
+export default {
+  name: 'menupage',
 
-
-data: function() {
-  return {
-    state: 'MenuPage',
-  }
-},
-
-methods: {
-  klappatochKlart: function() {
-      // this.$emit('click');
-      this.$parent.changeToOrderingState();
-      }
+  data: function() {
+    return {
     }
+  },
+
+  methods: {
+
+    //Changes to the different components, these are used for navigating with the buttons
+    switchToBreadAndPatty: function() {
+      this.$parent.state = "BreadAndPatty";
+    },
+    switchToSidesAndDrinks: function() {
+      this.$parent.state = "ToppingsAndSauce"
+    },
+    switchToOverView: function() {
+      this.$parent.state = "OverView"
+    }
+  }
 }
 </script>
 
