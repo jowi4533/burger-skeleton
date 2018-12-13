@@ -32,10 +32,15 @@ export default {
 	padding-top: 0.2em;
 }
 .orderId{
-
+	text-align: center;
 	font-size: 1.3em;
-
+	font-weight: bold;
+	background-color: gray;
+	border-bottom-style: solid;
+	border-bottom-width: 1pt;
+	border-bottom-color: black;
 }
+
 .orderItems{
 }
 </style>
