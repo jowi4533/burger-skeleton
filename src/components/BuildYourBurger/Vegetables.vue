@@ -15,7 +15,7 @@
 <script>
 
 export default{
-  name: 'BreadAndPatty',
+  name: 'Vegetables',
 
   data: function() {
     return {
@@ -23,6 +23,9 @@ export default{
   },
 
   methods: {
+    switchToToppingsAndSauce: function() {
+      this.$parent.state = "ToppingsAndSauce";
+    },
 
     switchToVegetables: function() {
       this.$parent.state = "Vegetables"
