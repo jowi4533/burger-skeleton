@@ -1,6 +1,7 @@
 //import Kitchen from './views/Kitchen.vue'
 import Vue from 'vue'
 import Router from 'vue-router'
+import Kitchen from './views/Kitchen.vue'
 import Ordering from './views/Ordering.vue'
 
 
