@@ -5,7 +5,7 @@
     <button id = "StorageButton" v-on:click="OpenStorage">
       {{uiLabels.storage}}
     </button>
-    <OrderItemToPrepare ref="OITP"
+    <OrderItemToPrepare
     v-bind:class = "['orderBox', {'active': (order.status === 'started')}]"
     v-for="(order, key) in orders"
     v-if="order.status !== 'done' "
@@ -31,7 +31,6 @@
     </StorageItem>
   </div>
 </div>
-
 </template>
 
 <script>
@@ -123,10 +122,10 @@ export default {
 #footer {
     position:fixed;
     width:100%;
-    border-top:1px solid #aaa; /* you can change to whatever color you want */
-    background:#fff; /* this is important otherwise your background will be transparent, change the color based on your needs */
-    /* ... your other properties */
+    border-top:1px solid #aaa;
+    background:#fff;
 }
+
 
 
 </style>
