@@ -2,36 +2,57 @@
   <div id="OrderingContainer">
 
     <div id ="menupage" v-if ="this.state === 'MenuPage'">
+
       <MenuPage>
       </MenuPage>
     </div>
 
     <div id = "overview" v-if = "this.state === 'OverView'">
+      <TopPanel
+      :parentState =  "this.state">
+
+      </TopPanel>
       <OverView>
       </Overview>
     </div>
 
     <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
+      <TopPanel
+        :parentState =  "this.state">
+      </TopPanel>
       <BreadAndPatty>
       </BreadAndPatty>
     </div>
 
     <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
+      <TopPanel
+      :parentState =  "this.state">
+      </TopPanel>
       <ToppingsAndSauce>
       </ToppingsAndSauce>
     </div>
 
     <div id = "vegetables" v-if = "this.state === 'Vegetables'">
+      <TopPanel
+      :parentState =  "this.state">
+      </TopPanel>
       <Vegetables>
       </Vegetables>
     </div>
 
     <div id = "drinks" v-if = "this.state === 'Drinks'">
+      <TopPanel
+      :parentState =  "this.state">
+
+      </TopPanel>
       <Drinks>
       </Drinks>
     </div>
 
     <div id = "sides" v-if = "this.state === 'Sides'">
+      <TopPanel
+      :parentState =  "this.state">
+      </TopPanel>
       <Sides>
       </Sides>
     </div>
@@ -83,6 +104,7 @@
 //components
 import MenuPage from '@/components/MenuPage.vue'
 import OverView from '@/components/OverView.vue'
+import TopPanel from '@/components/OrderingInterface/TopPanel.vue'
 
 import BreadAndPatty from '@/components/BuildYourBurger/BreadAndPatty.vue'
 import ToppingsAndSauce from '@/components/BuildYourBurger/ToppingsAndSauce.vue'
@@ -106,6 +128,7 @@ export default {
     //The different components used for orientation through pages
     MenuPage,
     OverView,
+    TopPanel,
     BreadAndPatty,
     ToppingsAndSauce,
     Vegetables,
