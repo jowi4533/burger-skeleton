@@ -100,6 +100,8 @@ Data.prototype.getAllOrders = function () {
 
 Data.prototype.markOrderDone = function (orderId) {
   this.orders[orderId].status = "done";
+  // this.orders.splice(orderId, 1);
+
 };
 
 Data.prototype.markOrderStarted = function (orderId) {
