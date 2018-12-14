@@ -58,7 +58,13 @@ export default{
     switchToOverView: function() {
       this.$parent.state = "OverView"
     },
+  },
+
+  computed: {
+    updateParentState: function() {
+      parentState=this.$parent.state;
   }
+}
 }
 
 

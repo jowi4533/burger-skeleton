@@ -8,8 +8,7 @@
     </div>
 
     <div id = "overview" v-if = "this.state === 'OverView'">
-      <TopPanel
-      :parentState =  "this.state">
+      <TopPanel ref = "TopPanel">
 
       </TopPanel>
       <OverView>
