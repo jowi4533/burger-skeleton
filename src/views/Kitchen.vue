@@ -10,12 +10,17 @@
     v-for="(order, key) in orders"
     v-if="order.status !== 'done' "
     v-on:done="markDone(key)"
+
     :ui-labels="uiLabels"
     :lang="lang"
     :key="key"
     :order-id="key"
     :order="order">
     </OrderItemToPrepare>
+
+    <div class="orderCount">
+      {{ countOrders }}
+    </div>
   </div>
 
   <div v-else-if= "NewState =='StorageState'">
@@ -54,7 +59,6 @@ export default {
       chosenIngredients: [],
       price: 0,
       NewState: "OrderState",
-      bgc: { backgroundColor: ''}
     }
   },
 
@@ -69,10 +73,45 @@ export default {
     BackToOrders: function () {
       this.NewState = "OrderState";
     },
-    // markStarted: function () {
-    //   this.
+
+    // countOrdersNotDone: function (orders) {
+    //   var ordersNotDone = 0;
+    //   for each (orders.status !== "done" in orders) {
+    //     ordersNotDone ++;
+    //   }
+    // return
     // }
-    }
+
+    // countOrders: function () {
+    //     console.log("horunge")
+    //     for (let i = 0; i < this.orders.length; i++) {
+    //       console.log("horunge2")
+    //       console.log("hej1")
+    //       if (this.orders[i].status !== "done") {
+    //         console.log("hej2")
+    //         this.ordersNotDone=this.ordersNotDone+1;
+    //       }
+    //     }
+    //     //console.log(ordersNotDone)
+    //   return this.ordersNotDone;
+    // }
+},
+
+computed: {
+  countOrders: function () {
+      //console.log("func")
+      var ordersNotDone = 0;
+      var i=0;
+      for (this.order in this.orders) {
+        i = i+1;
+        if (this.orders[i].status !== 'done') {
+          ordersNotDone=ordersNotDone+1;
+        }
+      }
+    return ordersNotDone;
+  }
+}
+
 }
 
 </script>
@@ -112,6 +151,17 @@ export default {
  .active {
   background-color: lightblue;
 }
+
+.orderCount {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-color: black;
+  border-style: solid;
+}
+
 #StorageButton{
   width: 100px;
   height: 30px;

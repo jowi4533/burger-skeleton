@@ -42,6 +42,7 @@ export default {
       // sending 'done' message to parent component or view so that it
       // can catch it with v-on:done in the component declaration
       this.$emit('done');
+      this.$emit('order');
     },
     cancelOrder: function () {
       // not implemented
