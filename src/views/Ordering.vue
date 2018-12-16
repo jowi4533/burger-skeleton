@@ -1,50 +1,99 @@
 <template>
   <div id="OrderingContainer">
 
+    <div id ="menupage" v-if ="this.state === 'MenuPage'">
 
-<div id="menupage" ref="menupage" v-if="this.state === 'MenuPage'">
-    <MenuPage>
+      <MenuPage>
+      </MenuPage>
+    </div>
 
-    </MenuPage>
-</div>
+    <div id = "overview" v-if = "this.state === 'OverView'">
+      <TopPanel ref = "TopPanel">
 
-<div id="ordering" v-if="this.state === 'Ordering'">
-  <img class="example-panel" src="@/assets/exampleImage.jpg">
-  <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+      </TopPanel>
+      <OverView>
+      </Overview>
+    </div>
+
+    <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
+      <TopPanel
+        :parentState =  "this.state">
+      </TopPanel>
+      <BreadAndPatty>
+      </BreadAndPatty>
+    </div>
+
+    <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
+      <TopPanel
+      :parentState =  "this.state">
+      </TopPanel>
+      <ToppingsAndSauce>
+      </ToppingsAndSauce>
+    </div>
+
+    <div id = "vegetables" v-if = "this.state === 'Vegetables'">
+      <TopPanel
+      :parentState =  "this.state">
+      </TopPanel>
+      <Vegetables>
+      </Vegetables>
+    </div>
+
+    <div id = "drinks" v-if = "this.state === 'Drinks'">
+      <TopPanel
+      :parentState =  "this.state">
+
+      </TopPanel>
+      <Drinks>
+      </Drinks>
+    </div>
+
+    <div id = "sides" v-if = "this.state === 'Sides'">
+      <TopPanel
+      :parentState =  "this.state">
+      </TopPanel>
+      <Sides>
+      </Sides>
+    </div>
 
 
-    <div id="ingredients_">
-    <h1>{{ uiLabels.ingredients }}</h1>
+    <div id="ordering" v-if="this.state === 'Ordering'">
+      <img class="example-panel" src="@/assets/exampleImage.jpg">
+      <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
 
-    <Ingredient
-      ref="ingredient"
-      v-for="item in ingredients"
-      v-on:increment="addToOrder(item)"
-      :item="item"
-      :lang="lang"
-      :key="item.ingredient_id">
-    </Ingredient>
-  </div>
-  <div id="chosen_ingredients">
-    <h1>{{ uiLabels.order }} hej</h1>
-    {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
-    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
-  </div>
-<div id="order_item">
-    <h1>{{ uiLabels.ordersInQueue }} tja</h1>
+
+      <div id="ingredients_">
+        <h1>{{ uiLabels.ingredients }}</h1>
+
+        <Ingredient
+        ref="ingredient"
+        v-for="item in ingredients"
+        v-on:increment="addToOrder(item)"
+        :item="item"
+        :lang="lang"
+        :key="item.ingredient_id">
+      </Ingredient>
+    </div>
+    <div id="chosen_ingredients">
+      <h1>{{ uiLabels.order }} hej</h1>
+      {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
+      <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+    </div>
+    <div id="order_item">
+      <h1>{{ uiLabels.ordersInQueue }} tja</h1>
 
       <OrderItem
-        v-for="(order, key) in orders"
-        v-if="order.status !== 'done'"
-        :order-id="key"
-        :order="order"
-        :ui-labels="uiLabels"
-        :lang="lang"
-        :key="key">
-      </OrderItem>
-    </div>
+      v-for="(order, key) in orders"
+      v-if="order.status !== 'done'"
+      :order-id="key"
+      :order="order"
+      :ui-labels="uiLabels"
+      :lang="lang"
+      :key="key">
+    </OrderItem>
   </div>
-  </div>
+</div>
+</div>
 </template>
 
 <script>
@@ -53,10 +102,19 @@
 //use for importing will be used in the template above and also below in
 //components
 import MenuPage from '@/components/MenuPage.vue'
+import OverView from '@/components/OverView.vue'
+import TopPanel from '@/components/OrderingInterface/TopPanel.vue'
+
+import BreadAndPatty from '@/components/BuildYourBurger/BreadAndPatty.vue'
+import ToppingsAndSauce from '@/components/BuildYourBurger/ToppingsAndSauce.vue'
+import Vegetables from '@/components/BuildYourBurger/Vegetables.vue'
+
+import Drinks from '@/components/SidesAndDrinks/Drinks.vue'
+import Sides from '@/components/SidesAndDrinks/Sides.vue'
+
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
 import sharedVueStuff from '@/components/sharedVueStuff.js'
-
 
 /* instead of defining a Vue instance, export default allows the only
 necessary Vue instance (found in main.js) to import your data and methods */
@@ -65,11 +123,19 @@ export default {
   components: {
     Ingredient,
     OrderItem,
-    MenuPage
-    //FrontPage
+
+    //The different components used for orientation through pages
+    MenuPage,
+    OverView,
+    TopPanel,
+    BreadAndPatty,
+    ToppingsAndSauce,
+    Vegetables,
+    Drinks,
+    Sides
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
-                            // the ordering system and the kitchen
+  // the ordering system and the kitchen
   data: function() { //Not that data is a function!
     return {
       chosenIngredients: [],
@@ -86,9 +152,6 @@ export default {
   },
 
   methods: {
-    changeToOrderingState: function (){
-      this.state = "Ordering";
-    },
 
     addToOrder: function (item) {
       this.chosenIngredients.push(item);
@@ -97,10 +160,10 @@ export default {
     placeOrder: function () {
       var i,
       //Wrap the order in an object
-        order = {
-          ingredients: this.chosenIngredients,
-          price: this.price
-        };
+      order = {
+        ingredients: this.chosenIngredients,
+        price: this.price
+      };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       this.$store.state.socket.emit('order', {order: order});
       //this.$emit('order');

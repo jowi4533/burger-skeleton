@@ -6,10 +6,8 @@
 		<div class = "orderItems" v-for ="item in order.ingredients">
 			<div v-if ="item.category !== 7 && item.category !== 6">
 				{{item["ingredient_"+ lang]}}
-			</div>
 
-			<!-- {{order.ingredients.map(item =>item["ingredient_"+ lang]).join("\n")}}
-			{{order.ingredients.map(item=>item["category"]!==1).join("\n")}} -->
+			</div>
 		</div>
 	</div>
 </template>
