@@ -163,7 +163,8 @@ export default {
   width: 40em;
   /*background-color: rgb(0,100,200);*/
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 15% 85%;
   border-width: 1.5em;
   border-style: double;
 
@@ -189,6 +190,10 @@ export default {
   width: 40em;
   height: auto;
 
+}
+#breadandpatty{
+grid-row: 2;
+grid-column: 1 / span 2;
 }
 
 .example-panel {
