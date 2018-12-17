@@ -6,7 +6,7 @@
   <button v-on:click= "switchToToppingsAndSauce()">Toppings and Sauce</button>
   <button>Vegetables</button>
   <button v-on:click= "switchToToppingsAndSauce()">Previous</button>
-  <button v-on:click= "switchToDrinks()">Go to Vegetables (next)</button>
+  <button v-on:click= "switchToDrinks()">Go to Drinks (next)</button>
 
 </div>
 

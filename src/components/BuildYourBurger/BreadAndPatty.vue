@@ -14,8 +14,11 @@
 <script>
 
 export default{
+
   name: 'BreadAndPatty',
 
+  components: {
+  },
   data: function() {
     return {
     }

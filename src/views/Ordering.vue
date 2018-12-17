@@ -2,36 +2,56 @@
   <div id="OrderingContainer">
 
     <div id ="menupage" v-if ="this.state === 'MenuPage'">
+
       <MenuPage>
       </MenuPage>
     </div>
 
     <div id = "overview" v-if = "this.state === 'OverView'">
+      <TopPanel ref = "TopPanel">
+
+      </TopPanel>
       <OverView>
       </Overview>
     </div>
 
     <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
+      <TopPanel
+        :parentState =  "this.state">
+      </TopPanel>
       <BreadAndPatty>
       </BreadAndPatty>
     </div>
 
     <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
+      <TopPanel
+      :parentState =  "this.state">
+      </TopPanel>
       <ToppingsAndSauce>
       </ToppingsAndSauce>
     </div>
 
     <div id = "vegetables" v-if = "this.state === 'Vegetables'">
+      <TopPanel
+      :parentState =  "this.state">
+      </TopPanel>
       <Vegetables>
       </Vegetables>
     </div>
 
     <div id = "drinks" v-if = "this.state === 'Drinks'">
+      <TopPanel
+      :parentState =  "this.state">
+
+      </TopPanel>
       <Drinks>
       </Drinks>
     </div>
 
     <div id = "sides" v-if = "this.state === 'Sides'">
+      <TopPanel
+      :parentState =  "this.state">
+      </TopPanel>
       <Sides>
       </Sides>
     </div>
@@ -60,20 +80,22 @@
       <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
     </div>
     <div id="order_item">
-      <h1>{{ uiLabels.ordersInQueue }} tja</h1>
-
-      <OrderItem
+      <YourOrder
       v-for="(order, key) in orders"
-      v-if="order.status !== 'done'"
       :order-id="key"
       :order="order"
       :ui-labels="uiLabels"
-      :lang="lang"
-      :key="key">
-    </OrderItem>
+      :lang="lang">
+      </YourOrder>
+      <h1>{{ uiLabels.ordersInQueue }}</h1>
   </div>
+
 </div>
+
 </div>
+
+
+
 </template>
 
 <script>
@@ -83,6 +105,7 @@
 //components
 import MenuPage from '@/components/MenuPage.vue'
 import OverView from '@/components/OverView.vue'
+import TopPanel from '@/components/OrderingInterface/TopPanel.vue'
 
 import BreadAndPatty from '@/components/BuildYourBurger/BreadAndPatty.vue'
 import ToppingsAndSauce from '@/components/BuildYourBurger/ToppingsAndSauce.vue'
@@ -93,7 +116,9 @@ import Sides from '@/components/SidesAndDrinks/Sides.vue'
 
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
+import YourOrder from '@/components/YourOrder.vue'
 import sharedVueStuff from '@/components/sharedVueStuff.js'
+
 
 /* instead of defining a Vue instance, export default allows the only
 necessary Vue instance (found in main.js) to import your data and methods */
@@ -106,11 +131,13 @@ export default {
     //The different components used for orientation through pages
     MenuPage,
     OverView,
+    TopPanel,
     BreadAndPatty,
     ToppingsAndSauce,
     Vegetables,
     Drinks,
-    Sides
+    Sides,
+    YourOrder
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
   // the ordering system and the kitchen
