@@ -31,10 +31,10 @@ export default{
       this.$parent.state = "ToppingsAndSauce";
     },
     switchToVegetables: function() {
-      this.$parent.state = "Vegetables"
+      this.$parent.state = "Vegetables";
     },
     switchToMenuPage: function() {
-      this.$parent.state = "MenuPage"
+      this.$parent.state = "MenuPage";
     },
   }
 }

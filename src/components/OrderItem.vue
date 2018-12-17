@@ -36,9 +36,9 @@ export default {
 	text-align: center;
 	font-size: 1.3em;
 	font-weight: bold;
-	background-color: gray;
+	background-color: #5e6b6d;
 	border-bottom-style: solid;
-	border-bottom-width: 1pt;
+	border-bottom-width: 1.5pt;
 	border-bottom-color: black;
 }
 

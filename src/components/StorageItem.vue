@@ -64,7 +64,7 @@
 																	</table>
 																</div>
 
-															</div>
+	</div>
 </template>
 
 <script>
@@ -84,8 +84,10 @@ export default {
 	</script>
 
 	<style scoped>
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 	.StorageGrid{
+		font-family: 'Quicksand', sans-serif;
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr ;
 		grid-template-rows: 1fr 1fr;

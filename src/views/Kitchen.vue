@@ -9,7 +9,7 @@
       <OrderItemToPrepare
       v-bind:class = "['orderBox', {'active': (order.status === 'started')}]"
       v-for="(order, key, index) in orders"
-      v-if="order.status !== 'done' && index <= 8"
+      v-if="order.status !== 'done'"
       v-on:done="markDone(key)"
       :ui-labels="uiLabels"
       :lang="lang"
@@ -20,8 +20,7 @@
     <div v-bind:class="['NumberOfOrders ',{'ManyOrders':(orderCount >= 15)}]">
       Total orders: {{orderCount}}
       </div>
-      <div class="test123">
-      </div>
+
   </div>
 
   <div v-else-if= "NewState =='StorageState'">
@@ -93,10 +92,13 @@ export default {
 }
 </script>
 <style id="style" scoped>
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 #orders {
+  font-family: 'Quicksand', sans-serif;
   margin: 0px 10px 5px 0px;
   font-size:13pt;
+  font-weight: bold;
 }
 
 h1 {
@@ -117,16 +119,16 @@ h1 {
 }
 
 .orderBox {
-  color: #100080;
+  color: #black;
   margin-left: 5pt;
   margin-top: 3pt;
-  background-color: #999999;
+  background-color: #8b999b;
   border-color: black;
   border-style: solid;
 }
 
 .active {
-  background-color: lightblue;
+  background-color: #fcf574;
 }
 
 .orderCount {

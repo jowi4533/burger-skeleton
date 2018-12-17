@@ -28,7 +28,7 @@ export default{
     },
 
     switchToVegetables: function() {
-      this.$parent.state = "Vegetables"
+      this.$parent.state = "Vegetables";
     },
 
     switchToBreadAndPatty: function() {
@@ -37,6 +37,8 @@ export default{
 
     switchToDrinks: function() {
       this.$parent.state = "Drinks";
+      this.$refs.TopPanel.switchToDrinks();
+
     }
   }
 }
