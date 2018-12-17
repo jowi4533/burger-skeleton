@@ -9,7 +9,7 @@
       <OrderItemToPrepare
       v-bind:class = "['orderBox', {'active': (order.status === 'started')}]"
       v-for="(order, key, index) in orders"
-      v-if="order.status !== 'done' && index <= 8"
+      v-if="order.status !== 'done' "
       v-on:done="markDone(key)"
       :ui-labels="uiLabels"
       :lang="lang"
