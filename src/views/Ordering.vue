@@ -81,9 +81,7 @@
     </div>
     <div id="order_item">
       <YourOrder
-      v-for="(order, key) in orders"
-      :order-id="key"
-      :order="order"
+      :chosenIngredients ="chosenIngredients"
       :ui-labels="uiLabels"
       :lang="lang">
       </YourOrder>

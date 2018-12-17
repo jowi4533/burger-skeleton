@@ -4,8 +4,8 @@
     <span class ="YourOrderText">{{uiLabels.yourOrder}}</span>
   </div>
 
-  <div class="theIngedients" v-for ="item in order.ingredients">
-      <li>{{item["ingredient_"+ lang]}}</li>
+  <div class="theIngedients" v-for ="ingredient in chosenIngredients">
+      <li>{{ingredient["ingredient_"+ lang]}}</li>
   </div>
 </div>
 </template>
@@ -15,9 +15,8 @@ export default {
   name: 'YourOrder',
 props:{
   uiLabels: Object,
-  order: Object,
-  orderId: String,
-  lang: String
+  lang: String,
+  chosenIngredients: Array
 },
 
 
