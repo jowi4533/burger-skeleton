@@ -76,11 +76,12 @@ export default {
 	lang: String,
 	ingredients: Array,
 	item: Object
-},
+	},
+
 	components: {
 	Ingredient
-}
 	}
+}
 	</script>
 
 	<style scoped>

@@ -9,31 +9,44 @@
 </div>
 
 <div id="BreadAndPatty">
-  <p>hej</p>
+
+<Ingredient
+ref="ingredient"
+v-for="item in ingredients"
+v-if="item.category == 1"
+v-on:increment="addToOrder(item)"
+:ui-labels="uiLabels"
+:item="item"
+:lang="lang"
+:key="item.ingredient_id">
+</Ingredient>
 </div>
 
 <div id="ToggleBar">
-
-  <button id="previous" v-on:click= "switchToMenuPage()">Previous</button>
   <button id="next" v-on:click= "switchToToppingsAndSauce()">Go to Topping and Sauce (next)</button>
+  <button id="previous" v-on:click= "switchToMenuPage()">Previous</button>
+
 </div>
 </div>
 
 </template>
 
 <script>
-
-export default{
-
+import Ingredient from '@/components/Ingredient.vue'
+import sharedVueStuff from '@/components/sharedVueStuff.js'
+export default {
   name: 'BreadAndPatty',
+	// props: {
+	// uiLabels: Object,
+	// lang: String,
+	// ingredients: Array,
+	// item: Object
+  // },
 
   components: {
+    Ingredient
   },
-  data: function() {
-    return {
-    }
-  },
-
+mixins: [sharedVueStuff],
 
   methods: {
 
@@ -87,16 +100,18 @@ grid-column: 5;
   grid-column: 1 / span 6;
 
 }
-
-#previous{
-grid-column: 5;
-grid-row: 4;
-
-}
 #next{
 grid-column: 6;
 grid-row: 4;
-
+float: right;
 }
+#previous{
+grid-column: 5;
+grid-row: 4;
+float:right;
+}
+
+
+
 /*  --------------------------  */
 </style>
