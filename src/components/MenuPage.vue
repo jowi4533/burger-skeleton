@@ -36,7 +36,7 @@ export default {
       this.$parent.state = "BreadAndPatty";
     },
     switchToSidesAndDrinks: function() {
-      this.$parent.state = "ToppingsAndSauce"
+      this.$parent.state = "Drinks"
     },
     switchToOverView: function() {
       this.$parent.state = "OverView"
