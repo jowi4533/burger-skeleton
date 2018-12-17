@@ -119,7 +119,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      state: 'MenuPage',
+      state: 'Ordering',
     }
   },
 
