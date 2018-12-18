@@ -26,12 +26,20 @@
       <button v-on:click= "switchToMenuPage()">Cancel</button>
     </div>
 
+  <div id = "overViewPage" v-if = "parentState === 'OverView'">
+    <button v-on:click= "switchToBreadAndPatty()">1</button>
+    <button v-on:click= "switchToDrinks()">2</button>
+    <button> 3 </button>
+    <h1> Hello this is 3: Overview </h1>
+    <button v-on:click= "switchToMenuPage()">Cancel</button>
   </div>
+
+</div>
 </template>
 
 <script ref = "topPanel">
 
-export default{
+export default{ 
 
   name: 'TopPanel',
 
@@ -63,6 +71,9 @@ export default{
       this.$parent.state = "OverView";
       this.parentState = "OverView";
     },
+<<<<<<< HEAD
+  }
+=======
   },
 
   // computed: {
@@ -73,6 +84,7 @@ export default{
   //     }
   //   }
   // }
+>>>>>>> bca6b8d90ed9e6118a4296038aa7959d0ce76b61
 }
 
 
