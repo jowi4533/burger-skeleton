@@ -185,12 +185,13 @@ export default {
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #OrderingContainer{
   margin:auto;
-  width: 40em;
-  /*background-color: rgb(0,100,200);*/
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-  border-width: 0.5em;
-  border: solid rgb(0, 125, 149);
+    width: 40em;
+    /*background-color: rgb(0,100,200);*/
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 15% 85%;
+    border-width: 1.5em;
+    border-style: double;
 
 
 }
