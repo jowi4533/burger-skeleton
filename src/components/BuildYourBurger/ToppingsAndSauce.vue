@@ -1,6 +1,6 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
-<h1> Hello! This is the ToppingsAndSauce, whalecum! </h1>
+<h1> This is the ToppingsAndSauce! </h1>
   <button v-on:click= "switchToBreadAndPatty()">Bread and Patty</button>
   <button> Toppings and Sauce</button>
   <button v-on:click= "switchToVegetables()">Vegetables</button>
