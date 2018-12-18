@@ -23,8 +23,9 @@ v-on:increment="addToOrder(item)"
 </div>
 
 <div id="ToggleBar">
-  <button id="next" v-on:click= "switchTab('ToppingsAndSauce')">Next (//Insert uiLabel here// Toppings and Sauce)</button>
-  <button id="previous" v-on:click= "switchStage('MenuPage')">Previous (//Insert uiLabel here// Menupage)</button>
+  <button id="next" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.next}} </button>
+  <button id="previous" v-on:click= "switchStage('MenuPage')"> {{uiLabels.previous}} </button>
+
 
 </div>
 </div>
@@ -46,6 +47,7 @@ export default {
   components: {
     Ingredient
   },
+
 mixins: [sharedVueStuff],
 
   methods: {
@@ -108,14 +110,14 @@ grid-column: 5;
 
 }
 #next{
-grid-column: 6;
-grid-row: 4;
-float: right;
+  position: relative;
+  bottom: 0;
+  float: right;
 }
 #previous{
-grid-column: 5;
-grid-row: 4;
-float:right;
+  position: relative;
+  bottom: 0;
+  float: right;
 }
 
 

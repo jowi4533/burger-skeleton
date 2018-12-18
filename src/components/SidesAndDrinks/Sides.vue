@@ -10,8 +10,8 @@
 
 
   <div id="ToggleBar">
-    <button id="next" v-on:click= "switchStage('OverView')">Next (//Insert uiLabel here// Order overview)</button>
-    <button id="previous" v-on:click= "switchTab('Drinks')">Previous (//Insert uiLabel here// Drinks)</button>
+    <button id="next" v-on:click= "switchStage('OverView')"> {{uiLabels.next}} </button>
+    <button id="previous" v-on:click= "switchTab('Drinks')"> {{uiLabels.previous}} </button>
   </div>
 
 </div>
@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import Ingredient from '@/components/Ingredient.vue'
+import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default{
   name: 'Drinks',
@@ -27,6 +29,12 @@ export default{
     return {
     }
   },
+
+  components: {
+    Ingredient
+  },
+
+  mixins: [sharedVueStuff],
 
   methods: {
     switchTab: function(tab) {
@@ -44,6 +52,15 @@ export default{
 
 
 <style scoped>
-
+#next{
+  position: relative;
+  bottom: 0;
+  float: right;
+}
+#previous{
+  position: relative;
+  bottom: 0;
+  float: right;
+}
 
 </style>

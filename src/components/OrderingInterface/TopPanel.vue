@@ -1,12 +1,12 @@
 <template>
   <div id = "TopPanelContainer">
-
     <div id = "buildYourBurgerPage">
       <button v-on:click= "switchStage('BreadAndPatty')" :class="{thisButton1 : parentState !== 'Drinks' && parentState !== 'Sides' && parentState !== 'OverView'}"> 1 </button>
       <button v-on:click= "switchStage('Drinks')" :class="{thisButton1 : parentState === 'Drinks' || parentState === 'Sides' }">2</button>
       <button v-on:click= "switchStage('OverView')" :class="{thisButton1 : parentState === 'OverView' }">3</button>
-      <h1> 1: Build Your Burger </h1>
+
       <button v-on:click= "switchStage('MenuPage')">Cancel</button>
+
     </div>
 <!--
     <div id = "sidesAndDrinksPage" v-if = "parentState === 'Drinks' || parentState === 'Sides'">
@@ -44,7 +44,7 @@ export default{
     }
   },
   methods: {
-    
+
     switchStage: function(stage) {
       this.$emit('switchStage', stage);
     },
