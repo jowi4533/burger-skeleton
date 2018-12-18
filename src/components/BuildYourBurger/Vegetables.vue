@@ -6,7 +6,12 @@
   <button v-on:click= "switchTab('ToppingsAndSauce')">Toppings and Sauce</button>
   <button>Vegetables</button>
   <button v-on:click= "switchTab('ToppingsAndSauce')">Previous</button>
-  <button v-on:click= "switchTab('Drinks')">Go to Drinks (next)</button>
+  <button v-on:click= "switchStage('Drinks')">Go to Drinks (next)</button>
+
+  <div id="ToggleBar">
+    <button id="next" v-on:click= "switchStage('Drinks')">Next (//Insert uiLabel here// Drinks)</button>
+    <button id="previous" v-on:click= "switchTab('ToppingsAndSauce')">Previous (//Insert uiLabel here// Toppings and Sauce)</button>
+  </div>
 
 </div>
 
@@ -23,9 +28,12 @@ export default{
   },
 
   methods: {
-
     switchTab: function(tab) {
       this.$emit('switchTab', tab);
+    },
+
+    switchStage: function(stage) {
+      this.$emit('switchStage', stage);
     },
   }
 }

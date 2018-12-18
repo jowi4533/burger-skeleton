@@ -4,8 +4,8 @@
 <div id="ingredientButtons">
 
   <button id="BreadAndPattyTab">Bread and Patty</button>
-  <button id="ToppingsAndSauceTab" v-on:click= "switchToToppingsAndSauce()">Toppings and Sauce</button>
-  <button id="VegetablesTab" v-on:click= "switchToVegetables()">Vegetables</button>
+  <button id="ToppingsAndSauceTab" v-on:click= "switchTab('ToppingsAndSauce')">Toppings and Sauce</button>
+  <button id="VegetablesTab" v-on:click= "switchTab('Vegetables')">Vegetables</button>
 </div>
 
 <div id="BreadAndPatty">
@@ -23,8 +23,8 @@ v-on:increment="addToOrder(item)"
 </div>
 
 <div id="ToggleBar">
-  <button id="next" v-on:click= "switchToToppingsAndSauce()">Go to Topping and Sauce (next)</button>
-  <button id="previous" v-on:click= "switchToMenuPage()">Previous</button>
+  <button id="next" v-on:click= "switchTab('ToppingsAndSauce')">Next (//Insert uiLabel here// Toppings and Sauce)</button>
+  <button id="previous" v-on:click= "switchStage('MenuPage')">Previous (//Insert uiLabel here// Menupage)</button>
 
 </div>
 </div>
@@ -49,6 +49,13 @@ export default {
 mixins: [sharedVueStuff],
 
   methods: {
+    switchTab: function(tab) {
+      this.$emit('switchTab', tab);
+    },
+
+    switchStage: function(stage) {
+      this.$emit('switchStage', stage);
+    },
 
     //Changes to the different components, these are used for navigating with the buttons
     switchToToppingsAndSauce: function() {

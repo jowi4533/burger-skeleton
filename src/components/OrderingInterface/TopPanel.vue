@@ -44,9 +44,7 @@ export default{
     }
   },
   methods: {
-    reset () {
-      this.name = 'RESETED'
-    },
+    
     switchStage: function(stage) {
       this.$emit('switchStage', stage);
     },
