@@ -8,8 +8,7 @@
       <!-- (HJÄLP) -->
       <OrderItemToPrepare
       v-bind:class = "['orderBox', {'active': (order.status === 'started')}]"
-      v-for="(order, key, index) in orders"
-      v-if="order.status !== 'done'"
+      v-for="(order, key) in undoneOrders"
       v-on:done="markDone(key)"
       :ui-labels="uiLabels"
       :lang="lang"
@@ -87,7 +86,19 @@ export default {
 
           }
           return orderCount1
-      }
+    },
+
+    undoneOrders: function () {
+      let undone = {};
+      let count = 0;
+       for (let o in this.orders) {
+         if (this.orders[o].status !== 'done' && count < 8) {
+           undone[o] = this.orders[o];
+           count += 1;
+         }
+       }
+       return undone;
+    }
   }
 }
 </script>
