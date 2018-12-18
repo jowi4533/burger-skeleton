@@ -144,7 +144,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      state: 'Ordering',
+      state: 'MenuPage',
     }
   },
 
