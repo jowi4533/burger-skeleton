@@ -1,6 +1,6 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
-<h1> Hello! This is the Vegetables, whalecum! </h1>
+<h1> This is the Vegetables! </h1>
 
   <button v-on:click= "switchToBreadAndPatty()">Bread and Patty</button>
   <button v-on:click= "switchToToppingsAndSauce()">Toppings and Sauce</button>
@@ -28,7 +28,7 @@ export default{
     },
 
     switchToVegetables: function() {
-      this.$parent.state = "Vegetables"
+      this.$parent.state = "Vegetables";
     },
 
     switchToBreadAndPatty: function() {
@@ -37,6 +37,8 @@ export default{
 
     switchToDrinks: function() {
       this.$parent.state = "Drinks";
+      this.$refs.TopPanel.switchToDrinks();
+
     }
   }
 }

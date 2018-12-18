@@ -14,7 +14,6 @@
   <div class="wrapper" align="center">
       <button id="EatHere" v-on:click="OrderOption()" >Eat Here</button>
       <button id="EatThere" v-on:click="OrderOption()">Take Away</button>
-
   </div>
 </div>
 </body>

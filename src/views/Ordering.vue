@@ -2,58 +2,56 @@
   <div id="OrderingContainer">
 
     <div id ="menupage" v-if ="this.state === 'MenuPage'">
-
       <MenuPage>
       </MenuPage>
     </div>
 
-    <div id = "overview" v-if = "this.state === 'OverView'">
-      <TopPanel ref = "TopPanel">
 
-      </TopPanel>
-      <OverView>
-      </Overview>
-    </div>
+    <div id = "orderingComponents" v-if = "this.state !== 'MenuPage'">
+      <!-- Everything that uses topPanel  -->
 
-    <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
-      <TopPanel
-        :parentState =  "this.state">
-      </TopPanel>
-      <BreadAndPatty>
-      </BreadAndPatty>
-    </div>
+      <div id = "overview" v-if = "this.state === 'OverView'">
 
-    <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
-      <TopPanel
-      :parentState =  "this.state">
-      </TopPanel>
-      <ToppingsAndSauce>
-      </ToppingsAndSauce>
-    </div>
+        <TopPanel  parentState = "'hej'">
+        </TopPanel>
+        <OverView>
+        </Overview>
+      </div>
 
-    <div id = "vegetables" v-if = "this.state === 'Vegetables'">
-      <TopPanel
-      :parentState =  "this.state">
-      </TopPanel>
-      <Vegetables>
-      </Vegetables>
-    </div>
+      <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
+        <TopPanel  parentState = "'hej'">
+        </TopPanel>
+        <BreadAndPatty>
+        </BreadAndPatty>
+      </div>
 
-    <div id = "drinks" v-if = "this.state === 'Drinks'">
-      <TopPanel
-      :parentState =  "this.state">
+      <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
+        <TopPanel  parentState = "'hej'">
+        </TopPanel>
+        <ToppingsAndSauce>
+        </ToppingsAndSauce>
+      </div>
 
-      </TopPanel>
-      <Drinks>
-      </Drinks>
-    </div>
+      <div id = "vegetables" v-if = "this.state === 'Vegetables'">
+        <TopPanel  parentState = this.state>
+        </TopPanel>
+        <Vegetables>
+        </Vegetables>
+      </div>
 
-    <div id = "sides" v-if = "this.state === 'Sides'">
-      <TopPanel
-      :parentState =  "this.state">
-      </TopPanel>
-      <Sides>
-      </Sides>
+      <div id = "drinks" v-if = "this.state === 'Drinks'">
+        <TopPanel  parentState = "'hej'">
+        </TopPanel>
+        <Drinks>
+        </Drinks>
+      </div>
+
+      <div id = "sides" v-if = "this.state === 'Sides'">
+        <TopPanel  parentState = "'hej'">
+        </TopPanel>
+        <Sides>
+        </Sides>
+      </div>
     </div>
 
 
@@ -144,7 +142,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      state: 'MenuPage',
+      state: 'MenuPage', //denna var MenuPage
     }
   },
 
@@ -169,6 +167,7 @@ export default {
       };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       this.$store.state.socket.emit('order', {order: order});
+      //this.$emit('order');
       //set all counters to 0. Notice the use of $refs
       for (i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();
@@ -188,10 +187,10 @@ export default {
   width: 40em;
   /*background-color: rgb(0,100,200);*/
   display: grid;
-  grid-template-columns: 80% 20%;
-  grid-template-rows: 15% 85%;
-  border-width: 1.5em;
-  border-style: double;
+  grid-template-columns: 33% 33% 33%;
+  border-width: 0.5em;
+  border: solid rgb(0, 125, 149);
+
 
 }
 

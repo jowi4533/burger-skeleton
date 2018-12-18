@@ -1,6 +1,6 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
-  <h1> Hello! This is the Sides, whalecum! </h1>
+  <h1> This is the Sides! </h1>
 
   <button v-on:click= "switchToDrinks()">Drinks</button>
   <button>Sides</button>
@@ -24,7 +24,8 @@ export default{
   methods: {
 
     switchToOverView: function() {
-      this.$parent.state = "OverView"
+      this.$parent.state = "OverView";
+      this.$refs.topPanel.switchToOverView();
     },
 
     switchToDrinks: function() {
