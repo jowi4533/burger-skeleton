@@ -4,8 +4,10 @@
 
   <button v-on:click= "switchTab('Drinks')">Drinks</button>
   <button>Sides</button>
-  <button v-on:click= "switchTab('Drinks')">Previous</button>
-  <button v-on:click= "switchStage('OverView')">Go to menu Overview (next)</button>
+
+  <br>
+  <br>
+
 
   <div id="ToggleBar">
     <button id="next" v-on:click= "switchStage('OverView')">Next (//Insert uiLabel here// Order overview)</button>

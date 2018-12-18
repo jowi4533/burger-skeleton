@@ -4,12 +4,13 @@
   <button v-on:click= "switchTab('BreadAndPatty')">Bread and Patty</button>
   <button> Toppings and Sauce</button>
   <button v-on:click= "switchTab('Vegetables')">Vegetables</button>
-  <button v-on:click= "switchTab('BreadAndPatty')">Previous</button>
-  <button v-on:click= "switchTab('Vegetables')">Go to Vegetables (next)</button>
+
+  <br>
+  <br>
 
   <div id="ToggleBar">
-    <button id="next" v-on:click= "switchTab('BreadAndPatty')">Next (//Insert uiLabel here// Bread and Patty)</button>
-    <button id="previous" v-on:click= "switchTab('Vegetables')">Previous (//Insert uiLabel here// Vegetables)</button>
+    <button id="next" v-on:click= "switchTab('Vegetables')">Next (//Insert uiLabel here// Vegetables)</button>
+    <button id="previous" v-on:click= "switchTab('BreadAndPatty')">Previous (//Insert uiLabel here// Bread and Patty)</button>
   </div>
 
 </div>
