@@ -24,7 +24,7 @@ export default{
   methods: {
 
     switchToVegetables: function() {
-      this.$parent.state = "Vegetables"
+      this.$parent.state = "Vegetables";
     },
 
     switchToBreadAndPatty: function() {
