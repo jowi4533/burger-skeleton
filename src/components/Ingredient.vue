@@ -14,7 +14,7 @@ export default {
     lang: String,
     uiLabels: Object
   },
-    data: function () {
+  data: function () {
     return {
       counter: 0
     };
