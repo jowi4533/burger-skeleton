@@ -80,20 +80,20 @@
       <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
     </div>
     <div id="order_item">
-      <h1>{{ uiLabels.ordersInQueue }} tja</h1>
-
-      <OrderItem
-      v-for="(order, key) in orders"
-      v-if="order.status !== 'done'"
-      :order-id="key"
-      :order="order"
+      <YourOrder
+      :chosenIngredients ="chosenIngredients"
       :ui-labels="uiLabels"
-      :lang="lang"
-      :key="key">
-    </OrderItem>
+      :lang="lang">
+      </YourOrder>
+      <h1>{{ uiLabels.ordersInQueue }}</h1>
   </div>
+
 </div>
+
 </div>
+
+
+
 </template>
 
 <script>
@@ -114,7 +114,9 @@ import Sides from '@/components/SidesAndDrinks/Sides.vue'
 
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
+import YourOrder from '@/components/YourOrder.vue'
 import sharedVueStuff from '@/components/sharedVueStuff.js'
+
 
 /* instead of defining a Vue instance, export default allows the only
 necessary Vue instance (found in main.js) to import your data and methods */
@@ -132,7 +134,8 @@ export default {
     ToppingsAndSauce,
     Vegetables,
     Drinks,
-    Sides
+    Sides,
+    YourOrder
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
   // the ordering system and the kitchen
@@ -141,7 +144,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      state: 'MenuPage',
+      state: 'MenuPage', //denna var MenuPage
     }
   },
 
@@ -166,6 +169,7 @@ export default {
       };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       this.$store.state.socket.emit('order', {order: order});
+      //this.$emit('order');
       //set all counters to 0. Notice the use of $refs
       for (i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();
@@ -212,6 +216,10 @@ export default {
   width: 40em;
   height: auto;
 
+}
+#breadandpatty{
+grid-row: 2;
+grid-column: 1 / span 2;
 }
 
 .example-panel {

@@ -24,7 +24,8 @@ export default{
   methods: {
 
     switchToVegetables: function() {
-      this.$parent.state = "Vegetables"
+      this.$parent.state = "Vegetables";
+      this.$refs.topPanel.parentState = "Vegetables";
     },
 
     switchToSides: function() {
