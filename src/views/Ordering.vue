@@ -142,9 +142,10 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      state: 'Ordering', //denna var MenuPage
+      state: 'MenuPage', //denna var MenuPage
     }
   },
+
 
   created: function () {
     this.$store.state.socket.on('orderNumber', function (data) {
