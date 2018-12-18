@@ -2,58 +2,56 @@
   <div id="OrderingContainer">
 
     <div id ="menupage" v-if ="this.state === 'MenuPage'">
-
       <MenuPage>
       </MenuPage>
     </div>
 
-    <div id = "overview" v-if = "this.state === 'OverView'">
-      <TopPanel ref = "TopPanel">
 
-      </TopPanel>
-      <OverView>
-      </Overview>
-    </div>
+    <div id = "orderingComponents" v-if = "this.state !== 'MenuPage'">
+      <!-- Everything that uses topPanel  -->
 
-    <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
-      <TopPanel
-        :parentState =  "this.state">
-      </TopPanel>
-      <BreadAndPatty>
-      </BreadAndPatty>
-    </div>
+      <div id = "overview" v-if = "this.state === 'OverView'">
 
-    <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
-      <TopPanel
-      :parentState =  "this.state">
-      </TopPanel>
-      <ToppingsAndSauce>
-      </ToppingsAndSauce>
-    </div>
+        <TopPanel  parentState = "'hej'">
+        </TopPanel>
+        <OverView>
+        </Overview>
+      </div>
 
-    <div id = "vegetables" v-if = "this.state === 'Vegetables'">
-      <TopPanel
-      :parentState =  "this.state">
-      </TopPanel>
-      <Vegetables>
-      </Vegetables>
-    </div>
+      <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
+        <TopPanel  parentState = "'hej'">
+        </TopPanel>
+        <BreadAndPatty>
+        </BreadAndPatty>
+      </div>
 
-    <div id = "drinks" v-if = "this.state === 'Drinks'">
-      <TopPanel
-      :parentState =  "this.state">
+      <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
+        <TopPanel  parentState = "'hej'">
+        </TopPanel>
+        <ToppingsAndSauce>
+        </ToppingsAndSauce>
+      </div>
 
-      </TopPanel>
-      <Drinks>
-      </Drinks>
-    </div>
+      <div id = "vegetables" v-if = "this.state === 'Vegetables'">
+        <TopPanel  parentState = this.state>
+        </TopPanel>
+        <Vegetables>
+        </Vegetables>
+      </div>
 
-    <div id = "sides" v-if = "this.state === 'Sides'">
-      <TopPanel
-      :parentState =  "this.state">
-      </TopPanel>
-      <Sides>
-      </Sides>
+      <div id = "drinks" v-if = "this.state === 'Drinks'">
+        <TopPanel  parentState = "'hej'">
+        </TopPanel>
+        <Drinks>
+        </Drinks>
+      </div>
+
+      <div id = "sides" v-if = "this.state === 'Sides'">
+        <TopPanel  parentState = "'hej'">
+        </TopPanel>
+        <Sides>
+        </Sides>
+      </div>
     </div>
 
 
@@ -148,6 +146,7 @@ export default {
     }
   },
 
+
   created: function () {
     this.$store.state.socket.on('orderNumber', function (data) {
       this.orderNumber = data;
@@ -186,12 +185,13 @@ export default {
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #OrderingContainer{
   margin:auto;
-  width: 40em;
-  /*background-color: rgb(0,100,200);*/
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-  border-width: 0.5em;
-  border: solid rgb(0, 125, 149);
+    width: 40em;
+    /*background-color: rgb(0,100,200);*/
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 15% 85%;
+    border-width: 1.5em;
+    border-style: double;
 
 
 }

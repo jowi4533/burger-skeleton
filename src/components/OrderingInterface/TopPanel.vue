@@ -6,27 +6,35 @@
       <button id="thisButton1"> 1 </button>
       <button v-on:click= "switchToDrinks()">2</button>
       <button v-on:click= "switchToOverView()">3</button>
-      <h1> 1: Build Your Burger </h1>
-      <button v-on:click= "switchToMenuPage()">Cancel</button>
+      <h1 id="DescriptionText"> 1: Build Your Burger </h1>
+      <button id="Cancel" v-on:click= "switchToMenuPage()">Cancel</button>
     </div>
 
     <div id = "sidesAndDrinksPage" v-if = "parentState === 'Drinks' || parentState === 'Sides'">
       <button v-on:click= "switchToBreadAndPatty()">1</button>
       <button id="thisButton2"> 2 </button>
       <button v-on:click= "switchToOverView()">3</button>
+      <button id="Cancel" v-on:click= "switchToMenuPage()">Cancel</button>
       <h1> 2: Sides and Drinks </h1>
-      <button v-on:click= "switchToMenuPage()">Cancel</button>
     </div>
 
     <div id = "overViewPage" v-if = "parentState === 'OverView'">
       <button v-on:click= "switchToBreadAndPatty()">1</button>
       <button v-on:click= "switchToDrinks()">2</button>
       <button id="thisButton3"> 3 </button>
+      <button id="Cancel" v-on:click= "switchToMenuPage()">Cancel</button>
       <h1> 3: Overview </h1>
-      <button v-on:click= "switchToMenuPage()">Cancel</button>
     </div>
 
+  <div id = "overViewPage" v-if = "parentState === 'OverView'">
+    <button v-on:click= "switchToBreadAndPatty()">1</button>
+    <button v-on:click= "switchToDrinks()">2</button>
+    <button> 3 </button>
+    <button id="Cancel" v-on:click= "switchToMenuPage()">Cancel</button>
+    <h1> Hello this is 3: Overview </h1>
   </div>
+
+</div>
 </template>
 
 <script ref = "topPanel">
@@ -63,6 +71,7 @@ export default{
       this.$parent.state = "OverView";
       this.parentState = "OverView";
     },
+
   },
 
   // computed: {
@@ -82,7 +91,7 @@ export default{
 <style scoped>
 
 #TopPanelContainer {
-  display: grid;
+
 }
 
 #thisButton1 {
@@ -94,19 +103,23 @@ export default{
 #thisButton3 {
   background-color: yellow;
 }
-#buildYourBurgerPage {
+/* #buildYourBurgerPage {
   grid-column: 1;
   grid-row: 1;
 }
 #sidesAndDrinksPage {
+
   grid-column: 2;
   grid-row: 1;
 }
 #overViewPage {
   grid-column: 3;
   grid-row: 1;
+} */
+#DescriptionText{
+    font-size: 1em;
 }
-.cancel {
+#Cancel {
   float: right;
 }
 

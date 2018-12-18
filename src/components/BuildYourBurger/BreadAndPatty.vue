@@ -1,7 +1,7 @@
 <template>
 <div id = "BreadAndPattyContainer">
 <h1> This is the BreadAndPatty! </h1>
-  
+
 
 <div id="ingredientButtons">
 
@@ -57,10 +57,10 @@ mixins: [sharedVueStuff],
       this.$parent.state = "ToppingsAndSauce";
     },
     switchToVegetables: function() {
-      this.$parent.state = "Vegetables";
+      this.$parent.state = "Vegetables"
     },
     switchToMenuPage: function() {
-      this.$parent.state = "MenuPage";
+      this.$parent.state = "MenuPage"
     },
   }
 }
