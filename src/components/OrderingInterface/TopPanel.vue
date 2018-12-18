@@ -26,13 +26,7 @@
       <h1> 3: Overview </h1>
     </div>
 
-  <div id = "overViewPage" v-if = "parentState === 'OverView'">
-    <button v-on:click= "switchToBreadAndPatty()">1</button>
-    <button v-on:click= "switchToDrinks()">2</button>
-    <button> 3 </button>
-    <button id="Cancel" v-on:click= "switchToMenuPage()">Cancel</button>
-    <h1> Hello this is 3: Overview </h1>
-  </div>
+  
 
 </div>
 </template>
