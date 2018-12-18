@@ -39,7 +39,7 @@
 
 <script ref = "topPanel">
 
-export default{ 
+export default{
 
   name: 'TopPanel',
 
@@ -71,9 +71,7 @@ export default{
       this.$parent.state = "OverView";
       this.parentState = "OverView";
     },
-<<<<<<< HEAD
-  }
-=======
+
   },
 
   // computed: {
@@ -84,7 +82,6 @@ export default{
   //     }
   //   }
   // }
->>>>>>> bca6b8d90ed9e6118a4296038aa7959d0ce76b61
 }
 
 
