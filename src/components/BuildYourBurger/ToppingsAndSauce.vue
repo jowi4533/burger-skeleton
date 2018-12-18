@@ -1,9 +1,9 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
-<h1> This is the ToppingsAndSauce! </h1>
-  <button v-on:click= "switchTab('BreadAndPatty')">Bread and Patty</button>
-  <button> Toppings and Sauce</button>
-  <button v-on:click= "switchTab('Vegetables')">Vegetables</button>
+
+  <button v-on:click= "switchTab('BreadAndPatty')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+  <button :class="{tabButton : parentState === 'ToppingsAndSauce'}"> {{uiLabels.toppingsandsauce}} </button>
+  <button v-on:click= "switchTab('Vegetables')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.veggies}} </button>
 
   <br>
   <br>
@@ -28,6 +28,11 @@ export default{
     return {
     }
   },
+
+  props: {
+    parentState: String
+  },
+
   components: {
     Ingredient
   },
@@ -46,6 +51,10 @@ export default{
 
 
 <style scoped>
+.tabButton {
+  background-color: green;
+}
+
 #next{
   position: relative;
   bottom: 0;

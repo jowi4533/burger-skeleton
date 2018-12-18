@@ -1,25 +1,43 @@
 <template>
 <div id = "BreadAndPattyContainer">
-
 <div id="ingredientButtons">
 
-  <button id="BreadAndPattyTab">Bread and Patty</button>
-  <button id="ToppingsAndSauceTab" v-on:click= "switchTab('ToppingsAndSauce')">Toppings and Sauce</button>
-  <button id="VegetablesTab" v-on:click= "switchTab('Vegetables')">Vegetables</button>
+  <button :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+  <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
+  <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
+
 </div>
 
 <div id="BreadAndPatty">
+  <div id="Bread">
+    <h4> {{uiLabels.bread}} </h4>
+    <Ingredient
+    class="ingredients"
+    ref="ingredient"
+    v-for="item in ingredients"
+    v-if="item.category == 1"
+    v-on:increment="addToOrder(item)"
+    :ui-labels="uiLabels"
+    :item="item"
+    :lang="lang"
+    :key="item.ingredient_id">
+    </Ingredient>
+  </div>
 
-<Ingredient
-ref="ingredient"
-v-for="item in ingredients"
-v-if="item.category == 1"
-v-on:increment="addToOrder(item)"
-:ui-labels="uiLabels"
-:item="item"
-:lang="lang"
-:key="item.ingredient_id">
-</Ingredient>
+  <div id="Patty">
+    <h4> {{uiLabels.patty}} </h4>
+    <Ingredient
+    class="ingredients"
+    ref="ingredient"
+    v-for="item in ingredients"
+    v-if="item.category == 2"
+    v-on:increment="addToOrder(item)"
+    :ui-labels="uiLabels"
+    :item="item"
+    :lang="lang"
+    :key="item.ingredient_id">
+    </Ingredient>
+  </div>
 </div>
 
 <div id="ToggleBar">
@@ -44,6 +62,9 @@ export default {
 	// item: Object
   // },
 
+  props: {
+    parentState: String
+  },
   components: {
     Ingredient
   },
@@ -59,16 +80,6 @@ mixins: [sharedVueStuff],
       this.$emit('switchStage', stage);
     },
 
-    //Changes to the different components, these are used for navigating with the buttons
-    switchToToppingsAndSauce: function() {
-      this.$parent.state = "ToppingsAndSauce";
-    },
-    switchToVegetables: function() {
-      this.$parent.state = "Vegetables"
-    },
-    switchToMenuPage: function() {
-      this.$parent.state = "MenuPage"
-    },
   }
 }
 
@@ -77,6 +88,18 @@ mixins: [sharedVueStuff],
 
 
 <style scoped>
+h4 {
+  margin: 1%;
+}
+
+.ingredients {
+  text-transform: capitalize;
+}
+
+.tabButton {
+  background-color: green;
+}
+
 #BreadAndPattyContainer{
   display: grid;
   grid-template-rows: 20% 30% 30% 20%;
@@ -119,6 +142,7 @@ grid-column: 5;
   bottom: 0;
   float: right;
 }
+
 
 
 

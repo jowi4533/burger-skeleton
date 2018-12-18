@@ -1,9 +1,8 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
-  <h1> This is the Drinks! </h1>
 
-  <button>Drinks</button>
-  <button v-on:click= "switchTab('Sides')">Sides</button>
+  <button :class="{tabButton : parentState === 'Drinks'}"> {{uiLabels.drinks}} </button>
+  <button v-on:click= "switchTab('Sides')"> {{uiLabels.sides}} </button>
 
   <br>
   <br>
@@ -30,6 +29,10 @@ export default{
     }
   },
 
+  props: {
+    parentState: String
+  },
+
   components: {
     Ingredient
   },
@@ -52,6 +55,10 @@ export default{
 
 
 <style scoped>
+.tabButton {
+  background-color: green;
+}
+
 #next{
   position: relative;
   bottom: 0;
