@@ -40,7 +40,7 @@
 
 <script ref = "topPanel">
 
-export default{
+export default{ 
 
   name: 'TopPanel',
 
