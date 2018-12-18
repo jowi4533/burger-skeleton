@@ -80,20 +80,20 @@
       <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
     </div>
     <div id="order_item">
-      <h1>{{ uiLabels.ordersInQueue }} tja</h1>
-
-      <OrderItem
-      v-for="(order, key) in orders"
-      v-if="order.status !== 'done'"
-      :order-id="key"
-      :order="order"
+      <YourOrder
+      :chosenIngredients ="chosenIngredients"
       :ui-labels="uiLabels"
-      :lang="lang"
-      :key="key">
-    </OrderItem>
+      :lang="lang">
+      </YourOrder>
+      <h1>{{ uiLabels.ordersInQueue }}</h1>
   </div>
+
 </div>
+
 </div>
+
+
+
 </template>
 
 <script>
@@ -114,7 +114,9 @@ import Sides from '@/components/SidesAndDrinks/Sides.vue'
 
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
+import YourOrder from '@/components/YourOrder.vue'
 import sharedVueStuff from '@/components/sharedVueStuff.js'
+
 
 /* instead of defining a Vue instance, export default allows the only
 necessary Vue instance (found in main.js) to import your data and methods */
@@ -132,7 +134,8 @@ export default {
     ToppingsAndSauce,
     Vegetables,
     Drinks,
-    Sides
+    Sides,
+    YourOrder
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
   // the ordering system and the kitchen
@@ -186,7 +189,8 @@ export default {
   width: 40em;
   /*background-color: rgb(0,100,200);*/
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 15% 85%;
   border-width: 1.5em;
   border-style: double;
 
@@ -212,6 +216,10 @@ export default {
   width: 40em;
   height: auto;
 
+}
+#breadandpatty{
+grid-row: 2;
+grid-column: 1 / span 2;
 }
 
 .example-panel {
