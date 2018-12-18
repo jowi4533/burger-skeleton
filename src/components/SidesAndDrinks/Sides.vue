@@ -25,7 +25,6 @@ export default{
 
     switchToOverView: function() {
       this.$parent.state = "OverView";
-      this.$refs.topPanel.switchToOverView();
     },
 
     switchToDrinks: function() {

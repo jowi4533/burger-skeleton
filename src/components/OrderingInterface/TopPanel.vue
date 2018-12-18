@@ -1,17 +1,16 @@
 <template>
   <div id = "TopPanelContainer">
 
-    <div id = "buildYourBurgerPage" v-if = "parentState === 'BreadAndPatty' ||
-      parentState === 'ToppingsAndSauce' || parentState === 'Vegetables' ">
-      <button id="thisButton1"> 1 </button>
-      <button v-on:click= "switchToDrinks()">2</button>
-      <button v-on:click= "switchToOverView()">3</button>
+    <div id = "buildYourBurgerPage">
+      <button v-on:click= "switchStage('BreadAndPatty')" :class="{thisButton1 : parentState !== 'Drinks' && parentState !== 'Sides' && parentState !== 'OverView'}"> 1 </button>
+      <button v-on:click= "switchStage('Drinks')" :class="{thisButton1 : parentState === 'Drinks' || parentState === 'Sides' }">2</button>
+      <button v-on:click= "switchStage('OverView')" :class="{thisButton1 : parentState === 'OverView' }">3</button>
       <h1> 1: Build Your Burger </h1>
-      <button v-on:click= "switchToMenuPage()">Cancel</button>
+      <button v-on:click= "switchStage('MenuPage')">Cancel</button>
     </div>
-
+<!--
     <div id = "sidesAndDrinksPage" v-if = "parentState === 'Drinks' || parentState === 'Sides'">
-      <button v-on:click= "switchToBreadAndPatty()">1</button>
+      <button>1</button>
       <button id="thisButton2"> 2 </button>
       <button v-on:click= "switchToOverView()">3</button>
       <h1> 2: Sides and Drinks </h1>
@@ -24,67 +23,33 @@
       <button id="thisButton3"> 3 </button>
       <h1> 3: Overview </h1>
       <button v-on:click= "switchToMenuPage()">Cancel</button>
-    </div>
+    </div> -->
 
-  <div id = "overViewPage" v-if = "parentState === 'OverView'">
-    <button v-on:click= "switchToBreadAndPatty()">1</button>
-    <button v-on:click= "switchToDrinks()">2</button>
-    <button> 3 </button>
-    <h1> Hello this is 3: Overview </h1>
-    <button v-on:click= "switchToMenuPage()">Cancel</button>
-  </div>
+
 
 </div>
 </template>
 
 <script ref = "topPanel">
 
-export default{ 
+export default{
 
   name: 'TopPanel',
-
+  props: {
+    parentState: String
+  },
   data: function() {
     return {
-      parentState: this.$parent.state,
     }
   },
-
   methods: {
     reset () {
       this.name = 'RESETED'
     },
-    switchToBreadAndPatty: function() {
-      this.$parent.state = "BreadAndPatty";
-      this.parentState = "BreadAndPatty";
+    switchStage: function(stage) {
+      this.$emit('switchStage', stage);
     },
-
-    switchToDrinks: function() {
-      this.$parent.state = "Drinks";
-      this.parentState = "Drinks";
-    },
-    switchToMenuPage: function() {
-      this.$parent.state = "MenuPage";
-      this.parentState = "MenuPage";
-    },
-
-    switchToOverView: function() {
-      this.$parent.state = "OverView";
-      this.parentState = "OverView";
-    },
-<<<<<<< HEAD
-  }
-=======
   },
-
-  // computed: {
-  //   updateParentState: function() {
-  //     parentState=this.$parent.state;
-  //     return {
-  //       parentState
-  //     }
-  //   }
-  // }
->>>>>>> bca6b8d90ed9e6118a4296038aa7959d0ce76b61
 }
 
 
@@ -97,7 +62,7 @@ export default{
   display: grid;
 }
 
-#thisButton1 {
+.thisButton1 {
   background-color: yellow;
 }
 #thisButton2 {
