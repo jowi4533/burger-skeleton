@@ -2,11 +2,18 @@
 <div id = "ToppingsAndSauceContainer">
 <h1> This is the Vegetables! </h1>
 
-  <button v-on:click= "switchToBreadAndPatty()">Bread and Patty</button>
-  <button v-on:click= "switchToToppingsAndSauce()">Toppings and Sauce</button>
+  <button v-on:click= "switchTab('BreadAndPatty')">Bread and Patty</button>
+  <button v-on:click= "switchTab('ToppingsAndSauce')">Toppings and Sauce</button>
   <button>Vegetables</button>
-  <button v-on:click= "switchToToppingsAndSauce()">Previous</button>
-  <button v-on:click= "switchToDrinks()">Go to Drinks (next)</button>
+
+  <br>
+  <br>
+
+
+  <div id="ToggleBar">
+    <button id="next" v-on:click= "switchStage('Drinks')">Next (//Insert uiLabel here// Drinks)</button>
+    <button id="previous" v-on:click= "switchTab('ToppingsAndSauce')">Previous (//Insert uiLabel here// Toppings and Sauce)</button>
+  </div>
 
 </div>
 
@@ -23,23 +30,13 @@ export default{
   },
 
   methods: {
-    switchToToppingsAndSauce: function() {
-      this.$parent.state = "ToppingsAndSauce";
+    switchTab: function(tab) {
+      this.$emit('switchTab', tab);
     },
 
-    switchToVegetables: function() {
-      this.$parent.state = "Vegetables";
+    switchStage: function(stage) {
+      this.$emit('switchStage', stage);
     },
-
-    switchToBreadAndPatty: function() {
-      this.$parent.state = "BreadAndPatty";
-    },
-
-    switchToDrinks: function() {
-      this.$parent.state = "Drinks";
-      this.$refs.TopPanel.switchToDrinks();
-
-    }
   }
 }
 

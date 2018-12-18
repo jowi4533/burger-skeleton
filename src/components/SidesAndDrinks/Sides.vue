@@ -2,10 +2,17 @@
 <div id = "ToppingsAndSauceContainer">
   <h1> This is the Sides! </h1>
 
-  <button v-on:click= "switchToDrinks()">Drinks</button>
+  <button v-on:click= "switchTab('Drinks')">Drinks</button>
   <button>Sides</button>
-  <button v-on:click= "switchToDrinks()">Previous</button>
-  <button v-on:click= "switchToOverView()">Go to menu Overview (next)</button>
+
+  <br>
+  <br>
+
+
+  <div id="ToggleBar">
+    <button id="next" v-on:click= "switchStage('OverView')">Next (//Insert uiLabel here// Order overview)</button>
+    <button id="previous" v-on:click= "switchTab('Drinks')">Previous (//Insert uiLabel here// Drinks)</button>
+  </div>
 
 </div>
 
@@ -22,15 +29,13 @@ export default{
   },
 
   methods: {
-
-    switchToOverView: function() {
-      this.$parent.state = "OverView";
-      this.$refs.topPanel.switchToOverView();
+    switchTab: function(tab) {
+      this.$emit('switchTab', tab);
     },
 
-    switchToDrinks: function() {
-      this.$parent.state = "Drinks";
-    }
+    switchStage: function(stage) {
+      this.$emit('switchStage', stage);
+    },
   }
 }
 

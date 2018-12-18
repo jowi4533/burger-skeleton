@@ -3,9 +3,16 @@
   <h1> This is the Drinks! </h1>
 
   <button>Drinks</button>
-  <button v-on:click= "switchToSides()">Sides</button>
-  <button v-on:click= "switchToVegetables()">Previous</button>
-  <button v-on:click= "switchToSides()">Go to Sides (next)</button>
+  <button v-on:click= "switchTab('Sides')">Sides</button>
+
+  <br>
+  <br>
+
+
+  <div id="ToggleBar">
+    <button id="next" v-on:click= "switchTab('Sides')">Next (//Insert uiLabel here// Sides)</button>
+    <button id="previous" v-on:click= "switchStage('Vegetables')">Previous (//Insert uiLabel here// Vegetables)</button>
+  </div>
 
 </div>
 
@@ -22,15 +29,13 @@ export default{
   },
 
   methods: {
-
-    switchToVegetables: function() {
-      this.$parent.state = "Vegetables";
-      this.$refs.topPanel.parentState = "Vegetables";
+    switchTab: function(tab) {
+      this.$emit('switchTab', tab);
     },
 
-    switchToSides: function() {
-      this.$parent.state = "Sides";
-    }
+    switchStage: function(stage) {
+      this.$emit('switchStage', stage);
+    },
   }
 }
 

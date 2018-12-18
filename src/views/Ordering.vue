@@ -9,47 +9,37 @@
 
     <div id = "orderingComponents" v-if = "this.state !== 'MenuPage'">
       <!-- Everything that uses topPanel  -->
+      <TopPanel :parentState="state" @switchStage="state=$event">
+      </TopPanel>
 
       <div id = "overview" v-if = "this.state === 'OverView'">
 
-        <TopPanel  parentState = "'hej'">
-        </TopPanel>
-        <OverView>
+        <OverView @switchStage="state=$event">
         </Overview>
       </div>
 
       <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
-        <TopPanel  parentState = "'hej'">
-        </TopPanel>
-        <BreadAndPatty>
+        <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event">
         </BreadAndPatty>
       </div>
 
       <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
-        <TopPanel  parentState = "'hej'">
-        </TopPanel>
-        <ToppingsAndSauce>
+        <ToppingsAndSauce @switchTab="state=$event">
         </ToppingsAndSauce>
       </div>
 
       <div id = "vegetables" v-if = "this.state === 'Vegetables'">
-        <TopPanel  parentState = this.state>
-        </TopPanel>
-        <Vegetables>
+        <Vegetables @switchStage="state=$event" @switchTab="state=$event">
         </Vegetables>
       </div>
 
       <div id = "drinks" v-if = "this.state === 'Drinks'">
-        <TopPanel  parentState = "'hej'">
-        </TopPanel>
-        <Drinks>
+        <Drinks @switchStage="state=$event" @switchTab="state=$event">
         </Drinks>
       </div>
 
       <div id = "sides" v-if = "this.state === 'Sides'">
-        <TopPanel  parentState = "'hej'">
-        </TopPanel>
-        <Sides>
+        <Sides @switchStage="state=$event" @switchTab="state=$event">
         </Sides>
       </div>
     </div>

@@ -1,17 +1,16 @@
 <template>
   <div id = "TopPanelContainer">
 
-    <div id = "buildYourBurgerPage" v-if = "parentState === 'BreadAndPatty' ||
-      parentState === 'ToppingsAndSauce' || parentState === 'Vegetables' ">
-      <button id="thisButton1"> 1 </button>
-      <button v-on:click= "switchToDrinks()">2</button>
-      <button v-on:click= "switchToOverView()">3</button>
-      <h1 id="DescriptionText"> 1: Build Your Burger </h1>
-      <button id="Cancel" v-on:click= "switchToMenuPage()">Cancel</button>
+    <div id = "buildYourBurgerPage">
+      <button v-on:click= "switchStage('BreadAndPatty')" :class="{thisButton1 : parentState !== 'Drinks' && parentState !== 'Sides' && parentState !== 'OverView'}"> 1 </button>
+      <button v-on:click= "switchStage('Drinks')" :class="{thisButton1 : parentState === 'Drinks' || parentState === 'Sides' }">2</button>
+      <button v-on:click= "switchStage('OverView')" :class="{thisButton1 : parentState === 'OverView' }">3</button>
+      <h1> 1: Build Your Burger </h1>
+      <button v-on:click= "switchStage('MenuPage')">Cancel</button>
     </div>
-
+<!--
     <div id = "sidesAndDrinksPage" v-if = "parentState === 'Drinks' || parentState === 'Sides'">
-      <button v-on:click= "switchToBreadAndPatty()">1</button>
+      <button>1</button>
       <button id="thisButton2"> 2 </button>
       <button v-on:click= "switchToOverView()">3</button>
       <button id="Cancel" v-on:click= "switchToMenuPage()">Cancel</button>
@@ -24,9 +23,10 @@
       <button id="thisButton3"> 3 </button>
       <button id="Cancel" v-on:click= "switchToMenuPage()">Cancel</button>
       <h1> 3: Overview </h1>
-    </div>
+      <button v-on:click= "switchToMenuPage()">Cancel</button>
+    </div> -->
 
-  
+
 
 </div>
 </template>
@@ -36,46 +36,19 @@
 export default{
 
   name: 'TopPanel',
-
+  props: {
+    parentState: String
+  },
   data: function() {
     return {
-      parentState: this.$parent.state,
     }
   },
-
   methods: {
-    reset () {
-      this.name = 'RESETED'
-    },
-    switchToBreadAndPatty: function() {
-      this.$parent.state = "BreadAndPatty";
-      this.parentState = "BreadAndPatty";
-    },
 
-    switchToDrinks: function() {
-      this.$parent.state = "Drinks";
-      this.parentState = "Drinks";
+    switchStage: function(stage) {
+      this.$emit('switchStage', stage);
     },
-    switchToMenuPage: function() {
-      this.$parent.state = "MenuPage";
-      this.parentState = "MenuPage";
-    },
-
-    switchToOverView: function() {
-      this.$parent.state = "OverView";
-      this.parentState = "OverView";
-    },
-
   },
-
-  // computed: {
-  //   updateParentState: function() {
-  //     parentState=this.$parent.state;
-  //     return {
-  //       parentState
-  //     }
-  //   }
-  // }
 }
 
 
@@ -88,7 +61,7 @@ export default{
 
 }
 
-#thisButton1 {
+.thisButton1 {
   background-color: yellow;
 }
 #thisButton2 {
