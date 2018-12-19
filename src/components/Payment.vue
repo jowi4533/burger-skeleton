@@ -2,10 +2,9 @@
   <div id = "PaymentContainer">
     <h1> Hello! This is the Payment whalecum! </h1>
 
-    <button v-on:click= "switchToSides()">Previous</button>
-    <button> Add item to Order</button>
-    <button> Edit </button>
-    <button>Purchase selected items</button>
+    <button v-on:click= "switchStage('OverView')">Previous</button>
+    <button>Pay</button>
+
 
   </div>
 
@@ -14,7 +13,7 @@
 <script>
 
 export default{
-  name: 'overview',
+  name: 'payment',
 
   data: function() {
     return {
@@ -22,9 +21,8 @@ export default{
   },
 
   methods: {
-
-    switchToSides: function() {
-      this.$parent.state = "Sides";
+    switchStage: function(stage) {
+      this.$emit('switchStage', stage);
     }
   }
 }

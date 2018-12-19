@@ -2,7 +2,7 @@
   <div id = "OverViewContainer">
     <h1> Overview of your order: </h1>
     <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">Previous</button>
-    <button class="overviewButtons" id="purchaseButton"> Purchase selected items </button>
+    <button class="overviewButtons" id="purchaseButton" v-on:click= "switchStage('Payment')"> Purchase selected items </button>
     <div id="wrapper">
       <button class="overviewButtons" id="addButton"> Add item to order </button>
       <button class="overviewButtons" id="removeButton"> Remove item from order </button>

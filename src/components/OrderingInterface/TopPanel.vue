@@ -1,12 +1,11 @@
 <template>
   <div id = "TopPanelContainer">
 
-    <div id = "buildYourBurgerPage">
+    <div id = "buildYourBurgerPage" v-if = "parentState !== 'Payment'">
 
       <button v-on:click= "switchStage('BreadAndPatty')" :class="{stageButton : parentState === 'BreadAndPatty' || parentState === 'ToppingsAndSauce' || parentState === 'Vegetables'}"> 1 </button>
       <button v-on:click= "switchStage('Drinks')" :class="{stageButton : parentState === 'Drinks' || parentState === 'Sides' }">2</button>
       <button v-on:click= "switchStage('OverView')" :class="{stageButton : parentState === 'OverView' }">3</button>
-
       <button v-on:click= "switchStage('MenuPage')">Cancel</button>
 
       <h3 v-if="parentState == 'BreadAndPatty'
