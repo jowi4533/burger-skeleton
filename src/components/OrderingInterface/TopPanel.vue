@@ -89,29 +89,20 @@ export default{
 
 }
 button {
-  border-style: hidden;
+  border-style: solid;
 }
 
-<<<<<<< HEAD
-.thisButton1 {
-  background-color: yellow;
-}
-/* #thisButton2 {
-  background-color: yellow;
-}
-#thisButton3 {
-  background-color: yellow;
-} */
-=======
+
 .stageButton {
   background-color: yellow;
 }
 
->>>>>>> 39bf9b61ab3095f738f4d9e3ac0d969310075214
+
 /* #buildYourBurgerPage {
   grid-column: 1;
   grid-row: 1;
 }
+
 #sidesAndDrinksPage {
 
   grid-column: 2;
