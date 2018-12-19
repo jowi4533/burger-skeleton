@@ -78,7 +78,7 @@ mixins: [sharedVueStuff],
 #BreadAndPattyContainer{
   display: grid;
   grid-template-rows: 20% 30% 30% 20%;
-  grid-template-columns: 15% 15% 15% 15% 15% 15%
+  grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%
 }
 /*  --------------------------  */
 #ingredientButtons{

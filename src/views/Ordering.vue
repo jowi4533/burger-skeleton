@@ -9,8 +9,11 @@
 
     <div id = "orderingComponents" v-if = "this.state !== 'MenuPage'">
       <!-- Everything that uses topPanel  -->
+      <div id="TopPanel">
+
       <TopPanel :parentState="state" @switchStage="state=$event">
       </TopPanel>
+      </div>
 
       <div id = "overview" v-if = "this.state === 'OverView'">
 
@@ -206,6 +209,9 @@ export default {
   width: 40em;
   height: auto;
 
+}
+#TopPanel{
+grid-row: 1;
 }
 #breadandpatty{
 grid-row: 2;
