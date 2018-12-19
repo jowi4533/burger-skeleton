@@ -5,9 +5,9 @@
 
 <div id="ingredientButtons">
 
-  <button id="BreadAndPattyTab">Bread and Patty</button>
-  <button id="ToppingsAndSauceTab" v-on:click= "switchTab('ToppingsAndSauce')">Toppings and Sauce</button>
-  <button id="VegetablesTab" v-on:click= "switchTab('Vegetables')">Vegetables</button>
+  <button class="tabButtons" id="BreadAndPattyTab">Bread and Patty</button>
+  <button class="tabButtons" id="ToppingsAndSauceTab" v-on:click= "switchTab('ToppingsAndSauce')">Toppings and Sauce</button>
+  <button class="tabButtons" id="VegetablesTab" v-on:click= "switchTab('Vegetables')">Vegetables</button>
 </div>
 
 <div id="BreadAndPatty">
@@ -113,11 +113,23 @@ grid-column: 5;
 grid-column: 6;
 grid-row: 4;
 float: right;
+background-color: rgb(30,200,100);
+
 }
+
 #previous{
 grid-column: 5;
 grid-row: 4;
 float:right;
+background-color: rgb(30,100,200);
+
+}
+button {
+  border-style: hidden;
+  height: 3em;
+}
+.tabButtons {
+  background-color: rgb(234,234,234);
 }
 
 

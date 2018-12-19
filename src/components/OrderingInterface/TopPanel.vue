@@ -6,7 +6,7 @@
       <button v-on:click= "switchStage('Drinks')" :class="{thisButton1 : parentState === 'Drinks' || parentState === 'Sides' }">2</button>
       <button v-on:click= "switchStage('OverView')" :class="{thisButton1 : parentState === 'OverView' }">3</button>
       <h1> 1: Build Your Burger </h1>
-      <button v-on:click= "switchStage('MenuPage')">Cancel</button>
+      <button id = "Cancel" v-on:click= "switchStage('MenuPage')">Cancel</button>
     </div>
 <!--
     <div id = "sidesAndDrinksPage" v-if = "parentState === 'Drinks' || parentState === 'Sides'">
@@ -60,16 +60,19 @@ export default{
 #TopPanelContainer {
 
 }
+button {
+  border-style: hidden;
+}
 
 .thisButton1 {
   background-color: yellow;
 }
-#thisButton2 {
+/* #thisButton2 {
   background-color: yellow;
 }
 #thisButton3 {
   background-color: yellow;
-}
+} */
 /* #buildYourBurgerPage {
   grid-column: 1;
   grid-row: 1;
@@ -88,6 +91,11 @@ export default{
 }
 #Cancel {
   float: right;
+  border-radius: 3px;
+  background-color: rgb(254, 69, 69);
+  width: 10em;
+  height: 3em;
+
 }
 
 </style>

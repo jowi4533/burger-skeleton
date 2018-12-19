@@ -4,6 +4,9 @@
     <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">Previous</button>
     <button class="overviewButtons" id="purchaseButton"> Purchase selected items </button>
     <div id="wrapper">
+      <section id="orderlist">
+        <p> tja </p>
+      </section>
       <button class="overviewButtons" id="addButton"> Add item to order </button>
       <button class="overviewButtons" id="removeButton"> Remove item from order </button>
     </div>
@@ -75,15 +78,26 @@ h1 {
   grid-column: 3;
   grid-row: 3;
 }
+#orderlist {
+  grid-row: 1;
+  grid-column: 1 / span 2;
+  background-color: rgb(244,244,244);
+  height: 9em;
+  width: 18em;
+  margin-top: 1em;
+}
 
 #addButton {
   background-color: rgb(251, 248, 198);
   grid-row: 2;
+  grid-column: 1;
 }
 
 #removeButton {
   background-color: rgb(254, 177, 43);
   grid-row: 2;
+  grid-column: 2;
 }
+
 
 </style>

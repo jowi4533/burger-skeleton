@@ -2,12 +2,11 @@
 <div id = "ToppingsAndSauceContainer">
   <h1> This is the Drinks! </h1>
 
-  <button>Drinks</button>
-  <button v-on:click= "switchTab('Sides')">Sides</button>
+  <button class="tabButtons">Drinks</button>
+  <button class="tabButtons" v-on:click= "switchTab('Sides')">Sides</button>
 
   <br>
   <br>
-
 
   <div id="ToggleBar">
     <button id="next" v-on:click= "switchTab('Sides')">Next (//Insert uiLabel here// Sides)</button>
@@ -39,11 +38,24 @@ export default{
   }
 }
 
-
 </script>
 
 
 <style scoped>
+button {
+  border-style: hidden;
+  height: 3em;
+}
+.tabButtons {
+  background-color: rgb(234,234,234);
+}
+#next {
+  background-color: rgb(30,200,100);
 
+}
+#previous {
+  background-color: rgb(30,100,200);
+
+}
 
 </style>

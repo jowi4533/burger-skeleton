@@ -2,8 +2,8 @@
 <div id = "ToppingsAndSauceContainer">
   <h1> This is the Sides! </h1>
 
-  <button v-on:click= "switchTab('Drinks')">Drinks</button>
-  <button>Sides</button>
+  <button class="tabButtons" v-on:click= "switchTab('Drinks')">Drinks</button>
+  <button class="tabButtons">Sides</button>
 
   <br>
   <br>
@@ -45,5 +45,21 @@ export default{
 
 <style scoped>
 
+button {
+  border-style: hidden;
+  height: 3em;
+}
+.tabButtons {
+  background-color: rgb(234, 234, 234);
+}
+#previous {
+  background-color: rgb(30,100,200);
+
+}
+
+#next {
+  background-color: rgb(30,200,100);
+
+}
 
 </style>
