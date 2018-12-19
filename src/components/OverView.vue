@@ -15,12 +15,22 @@
 </template>
 
 <script>
+import Ingredient from '@/components/Ingredient.vue'
+import sharedVueStuff from '@/components/sharedVueStuff.js'
+
 export default{
   name: 'overview',
   data: function() {
     return {
     }
   },
+
+  components: {
+    Ingredient
+  },
+
+  mixins: [sharedVueStuff],
+
   methods: {
     switchStage: function(stage) {
       this.$emit('switchStage', stage);

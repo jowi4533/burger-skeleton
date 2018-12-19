@@ -1,18 +1,17 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
-<h1> This is the Vegetables! </h1>
 
-  <button class="tabButtons" v-on:click= "switchTab('BreadAndPatty')">Bread and Patty</button>
-  <button class="tabButtons" v-on:click= "switchTab('ToppingsAndSauce')">Toppings and Sauce</button>
-  <button class="tabButtons" >Vegetables</button>
+  <button v-on:click= "switchTab('BreadAndPatty')"> {{uiLabels.breadandpatty}} </button>
+  <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
+  <button :class="{tabButton : parentState === 'Vegetables'}"> {{uiLabels.veggies}} </button>
 
   <br>
   <br>
 
 
   <div id="ToggleBar">
-    <button id="next" v-on:click= "switchStage('Drinks')">Next (//Insert uiLabel here// Drinks)</button>
-    <button id="previous" v-on:click= "switchTab('ToppingsAndSauce')">Previous (//Insert uiLabel here// Toppings and Sauce)</button>
+    <button id="next" v-on:click= "switchStage('Drinks')"> {{uiLabels.next}} </button>
+    <button id="previous" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.previous}} </button>
   </div>
 
 </div>
@@ -20,6 +19,8 @@
 </template>
 
 <script>
+import Ingredient from '@/components/Ingredient.vue'
+import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default{
   name: 'Vegetables',
@@ -28,6 +29,16 @@ export default{
     return {
     }
   },
+
+  props: {
+    parentState: String
+  },
+
+  components: {
+    Ingredient
+  },
+
+  mixins: [sharedVueStuff],
 
   methods: {
     switchTab: function(tab) {
@@ -45,22 +56,20 @@ export default{
 
 
 <style scoped>
-button {
-  border-style: hidden;
-  height: 3em;
-}
-.tabButtons {
-  background-color: rgb(234, 234, 234);
+
+.tabButton {
+  background-color: green;
 }
 
-#previous {
-  background-color: rgb(30,100,200);
-
+#next{
+  position: relative;
+  bottom: 0;
+  float: right;
 }
-
-#next {
-  background-color: rgb(30,200,100);
-
+#previous{
+  position: relative;
+  bottom: 0;
+  float: right;
 }
 
 </style>
