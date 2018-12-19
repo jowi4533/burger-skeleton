@@ -1,6 +1,7 @@
 {
   "cancelOrder" : "Cancel order",
   "next" : "Next",
+  "previous" : "Previous",
   "changeIng" : "Change ingredient",
   "content" : "Content",
   "thankOrder" : "Thank you for your order!",
@@ -22,9 +23,19 @@
   "backtoorder" : "Back to orders",
   "bread": "Bread",
   "patty" : "Patty",
+  "breadandpatty" : "Bread and Patty",
   "toppings": "Toppings",
+  "toppingsandsauce" : "Toppings and Sauce",
   "veggies" : "Vegetables",
   "sauce" : "Sauce",
   "sides" : "Sides",
-  "drinks" : "Drinks"
+  "drinks" : "Drinks",
+  "sidesanddrinks" : "Sides and Drinks",
+  "stageOne" : "1: Build your Burger",
+  "stageTwo" : "2: Drinks and Sides",
+  "stageThree" : "3: Order overview",
+  "stageOneTabOne" : "Bread and Patty",
+  "stageOneTabTwo" : "Toppings and Sauce",
+  "stageOneTabThree" : "Vegetables",
+  "menupage" : "Menupage"
 }

@@ -1,30 +1,49 @@
 <template>
 <div id = "BreadAndPattyContainer">
-
 <div id="ingredientButtons">
 
-  <button id="BreadAndPattyTab">Bread and Patty</button>
-  <button id="ToppingsAndSauceTab" v-on:click= "switchToToppingsAndSauce()">Toppings and Sauce</button>
-  <button id="VegetablesTab" v-on:click= "switchToVegetables()">Vegetables</button>
+  <button :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+  <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
+  <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
+
 </div>
 
 <div id="BreadAndPatty">
+  <div id="Bread">
+    <h4> {{uiLabels.bread}} </h4>
+    <Ingredient
+    class="ingredients"
+    ref="ingredient"
+    v-for="item in ingredients"
+    v-if="item.category == 1"
+    v-on:increment="addToOrder(item)"
+    :ui-labels="uiLabels"
+    :item="item"
+    :lang="lang"
+    :key="item.ingredient_id">
+    </Ingredient>
+  </div>
 
-<Ingredient
-ref="ingredient"
-v-for="item in ingredients"
-v-if="item.category == 1"
-v-on:increment="addToOrder(item)"
-:ui-labels="uiLabels"
-:item="item"
-:lang="lang"
-:key="item.ingredient_id">
-</Ingredient>
+  <div id="Patty">
+    <h4> {{uiLabels.patty}} </h4>
+    <Ingredient
+    class="ingredients"
+    ref="ingredient"
+    v-for="item in ingredients"
+    v-if="item.category == 2"
+    v-on:increment="addToOrder(item)"
+    :ui-labels="uiLabels"
+    :item="item"
+    :lang="lang"
+    :key="item.ingredient_id">
+    </Ingredient>
+  </div>
 </div>
 
 <div id="ToggleBar">
-  <button id="next" v-on:click= "switchToToppingsAndSauce()">Go to Topping and Sauce (next)</button>
-  <button id="previous" v-on:click= "switchToMenuPage()">Previous</button>
+  <button id="next" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.next}} </button>
+  <button id="previous" v-on:click= "switchStage('MenuPage')"> {{uiLabels.previous}} </button>
+
 
 </div>
 </div>
@@ -43,23 +62,24 @@ export default {
 	// item: Object
   // },
 
+  props: {
+    parentState: String
+  },
   components: {
     Ingredient
   },
+
 mixins: [sharedVueStuff],
 
   methods: {
+    switchTab: function(tab) {
+      this.$emit('switchTab', tab);
+    },
 
-    //Changes to the different components, these are used for navigating with the buttons
-    switchToToppingsAndSauce: function() {
-      this.$parent.state = "ToppingsAndSauce";
+    switchStage: function(stage) {
+      this.$emit('switchStage', stage);
     },
-    switchToVegetables: function() {
-      this.$parent.state = "Vegetables"
-    },
-    switchToMenuPage: function() {
-      this.$parent.state = "MenuPage"
-    },
+
   }
 }
 
@@ -68,6 +88,18 @@ mixins: [sharedVueStuff],
 
 
 <style scoped>
+h4 {
+  margin: 1%;
+}
+
+.ingredients {
+  text-transform: capitalize;
+}
+
+.tabButton {
+  background-color: green;
+}
+
 #BreadAndPattyContainer{
   display: grid;
   grid-template-rows: 20% 30% 30% 20%;
@@ -101,15 +133,16 @@ grid-column: 5;
 
 }
 #next{
-grid-column: 6;
-grid-row: 4;
-float: right;
+  position: relative;
+  bottom: 0;
+  float: right;
 }
 #previous{
-grid-column: 5;
-grid-row: 4;
-float:right;
+  position: relative;
+  bottom: 0;
+  float: right;
 }
+
 
 
 

@@ -14,32 +14,32 @@
 
       <div id = "overview" v-if = "this.state === 'OverView'">
 
-        <OverView>
+        <OverView @switchStage="state=$event">
         </Overview>
       </div>
 
       <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
-        <BreadAndPatty>
+        <BreadAndPatty :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
         </BreadAndPatty>
       </div>
 
       <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
-        <ToppingsAndSauce>
+        <ToppingsAndSauce :parentState="state" @switchTab="state=$event">
         </ToppingsAndSauce>
       </div>
 
       <div id = "vegetables" v-if = "this.state === 'Vegetables'">
-        <Vegetables  @switchTab="state=$event">
+        <Vegetables :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
         </Vegetables>
       </div>
 
       <div id = "drinks" v-if = "this.state === 'Drinks'">
-        <Drinks>
+        <Drinks :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
         </Drinks>
       </div>
 
       <div id = "sides" v-if = "this.state === 'Sides'">
-        <Sides>
+        <Sides :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
         </Sides>
       </div>
     </div>

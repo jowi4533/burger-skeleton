@@ -1,17 +1,25 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
-  <h1> This is the Sides! </h1>
 
-  <button v-on:click= "switchToDrinks()">Drinks</button>
-  <button>Sides</button>
-  <button v-on:click= "switchToDrinks()">Previous</button>
-  <button v-on:click= "switchToOverView()">Go to menu Overview (next)</button>
+  <button v-on:click= "switchTab('Drinks')"> {{uiLabels.drinks}} </button>
+  <button :class="{tabButton : parentState === 'Sides'}"> {{uiLabels.sides}} </button>
+
+  <br>
+  <br>
+
+
+  <div id="ToggleBar">
+    <button id="next" v-on:click= "switchStage('OverView')"> {{uiLabels.next}} </button>
+    <button id="previous" v-on:click= "switchTab('Drinks')"> {{uiLabels.previous}} </button>
+  </div>
 
 </div>
 
 </template>
 
 <script>
+import Ingredient from '@/components/Ingredient.vue'
+import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default{
   name: 'Drinks',
@@ -21,15 +29,24 @@ export default{
     }
   },
 
-  methods: {
+  props: {
+    parentState: String
+  },
 
-    switchToOverView: function() {
-      this.$parent.state = "OverView";
+  components: {
+    Ingredient
+  },
+
+  mixins: [sharedVueStuff],
+
+  methods: {
+    switchTab: function(tab) {
+      this.$emit('switchTab', tab);
     },
 
-    switchToDrinks: function() {
-      this.$parent.state = "Drinks";
-    }
+    switchStage: function(stage) {
+      this.$emit('switchStage', stage);
+    },
   }
 }
 
@@ -38,6 +55,19 @@ export default{
 
 
 <style scoped>
+.tabButton {
+  background-color: green;
+}
 
+#next{
+  position: relative;
+  bottom: 0;
+  float: right;
+}
+#previous{
+  position: relative;
+  bottom: 0;
+  float: right;
+}
 
 </style>
