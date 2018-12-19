@@ -97,51 +97,57 @@ h4 {
 }
 
 .tabButton {
-  background-color: green;
+  background-color: rgb(40,170,150);
 }
 
 #BreadAndPattyContainer{
   display: grid;
-  grid-template-rows: 20% 30% 30% 20%;
-  grid-template-columns: 15% 15% 15% 15% 15% 15%
+  grid-template-areas: "ingredientButtons BreadAndPatty ToggleBar";
+  grid-template-rows: 10% 70% 20%;
+    /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
+  overflow:hidden;
 }
-/*  --------------------------  */
 #ingredientButtons{
   grid-row: 1;
-  grid-column: 1/ span 6;
 }
-
-#BreadAndPattyTab{
-grid-column: 1;
-}
-#ToppingsAndSauceTab{
-grid-column: 3;
-}
-#VegetablesTab{
-grid-column: 5;
-}
-/*  ----------------------------  */
-
-#BreadAndPatty{
-  grid-row: 2/ span 2;
-  grid-column: 1 / span 6;
-}
-/*  --------------------------  */
 #ToggleBar{
-  grid-row: 4;
-  grid-column: 1 / span 6;
+  grid-row: 3;
+  /* grid-column: 1 / span 6; */
 
 }
+#BreadAndPatty{
+  display: grid;
+  grid-template-areas: "Bread Patty";
+  grid-template-rows:50% 50% ;
+  grid-template-columns: ;
+}
+
 #next{
   position: relative;
   bottom: 0;
+
+  grid-column: 6;
+  grid-row: 4;
   float: right;
+  background-color: rgb(30,200,100);
 }
+
 #previous{
+  grid-column: 5;
+  grid-row: 4;
+
+  background-color: rgb(30,100,200);
   position: relative;
   bottom: 0;
   float: right;
 }
+
+
+button {
+  border-style: solid;
+  height: 3em;
+}
+
 
 
 

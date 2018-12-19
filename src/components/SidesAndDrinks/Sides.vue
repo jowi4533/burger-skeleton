@@ -1,11 +1,29 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
 
+
+
   <button v-on:click= "switchTab('Drinks')"> {{uiLabels.drinks}} </button>
   <button :class="{tabButton : parentState === 'Sides'}"> {{uiLabels.sides}} </button>
 
+
   <br>
   <br>
+  <div id="Sides">
+
+      <h4> {{uiLabels.sides}} </h4>
+      <Ingredient
+      class="ingredients"
+      ref="ingredient"
+      v-for="item in ingredients"
+      v-if="item.category == 6"
+      v-on:increment="addToOrder(item)"
+      :ui-labels="uiLabels"
+      :item="item"
+      :lang="lang"
+      :key="item.ingredient_id">
+      </Ingredient>
+    </div>
 
 
   <div id="ToggleBar">
@@ -56,18 +74,25 @@ export default{
 
 <style scoped>
 .tabButton {
-  background-color: green;
+  background-color: rgb(40,170,150);
 }
 
 #next{
   position: relative;
   bottom: 0;
   float: right;
+  background-color: rgb(30,200,100);
 }
 #previous{
   position: relative;
   bottom: 0;
   float: right;
+    background-color: rgb(30,100,200);
 }
+button {
+      border-style: solid;
+      height: 3em;
+    }
+
 
 </style>
