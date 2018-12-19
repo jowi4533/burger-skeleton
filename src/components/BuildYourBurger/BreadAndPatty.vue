@@ -135,7 +135,7 @@ grid-column: 5;
 #next{
   position: relative;
   bottom: 0;
-  float: right;
+
   grid-column: 6;
   grid-row: 4;
   float: right;
@@ -145,14 +145,14 @@ grid-column: 5;
 #previous{
   grid-column: 5;
   grid-row: 4;
-  float:right;
+
   background-color: rgb(30,100,200);
   position: relative;
   bottom: 0;
   float: right;
 }
 
-}
+
 button {
   border-style: hidden;
   height: 3em;
