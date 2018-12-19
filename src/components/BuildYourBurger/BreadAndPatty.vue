@@ -97,7 +97,7 @@ h4 {
 }
 
 .tabButton {
-  background-color: green;
+  background-color: rgb(40,170,150);
 }
 
 #BreadAndPattyContainer{
@@ -125,13 +125,29 @@ h4 {
 #next{
   position: relative;
   bottom: 0;
+
+  grid-column: 6;
+  grid-row: 4;
   float: right;
+  background-color: rgb(30,200,100);
 }
+
 #previous{
+  grid-column: 5;
+  grid-row: 4;
+
+  background-color: rgb(30,100,200);
   position: relative;
   bottom: 0;
   float: right;
 }
+
+
+button {
+  border-style: solid;
+  height: 3em;
+}
+
 
 
 

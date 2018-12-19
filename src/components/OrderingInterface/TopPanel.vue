@@ -88,15 +88,21 @@ export default{
 #TopPanelContainer {
 
 }
+button {
+  border-style: solid;
+}
+
 
 .stageButton {
   background-color: yellow;
 }
 
+
 /* #buildYourBurgerPage {
   grid-column: 1;
   grid-row: 1;
 }
+
 #sidesAndDrinksPage {
 
   grid-column: 2;
@@ -113,6 +119,11 @@ export default{
 }
 #Cancel {
   float: right;
+  border-radius: 3px;
+  background-color: rgb(254, 69, 69);
+  width: 10em;
+  height: 3em;
+
 }
 
 </style>

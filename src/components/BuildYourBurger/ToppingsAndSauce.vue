@@ -7,6 +7,39 @@
 
   <br>
   <br>
+<div id="ToppingsAndSauce">
+  <div id="Toppings">
+
+      <h4> {{uiLabels.toppings}} </h4>
+      <Ingredient
+      class="ingredients"
+      ref="ingredient"
+      v-for="item in ingredients"
+      v-if="item.category == 3"
+      v-on:increment="addToOrder(item)"
+      :ui-labels="uiLabels"
+      :item="item"
+      :lang="lang"
+      :key="item.ingredient_id">
+      </Ingredient>
+    </div>
+
+    <div id="Sauce">
+
+        <h4> {{uiLabels.sauce}} </h4>
+        <Ingredient
+        class="ingredients"
+        ref="ingredient"
+        v-for="item in ingredients"
+        v-if="item.category == 5"
+        v-on:increment="addToOrder(item)"
+        :ui-labels="uiLabels"
+        :item="item"
+        :lang="lang"
+        :key="item.ingredient_id">
+        </Ingredient>
+      </div>
+    </div>
 
   <div id="ToggleBar">
     <button id="next" v-on:click= "switchTab('Vegetables')"> {{uiLabels.next}} </button>
@@ -51,19 +84,28 @@ export default{
 
 
 <style scoped>
+
 .tabButton {
-  background-color: green;
+  background-color: rgb(40,170,150);
+}
+
+button {
+  border-style: solid;
+  height: 3em;
 }
 
 #next{
   position: relative;
   bottom: 0;
   float: right;
+  background-color: rgb(30,200,100);
 }
+
 #previous{
   position: relative;
   bottom: 0;
   float: right;
+  background-color: rgb(30,100,200);
 }
 
 </style>

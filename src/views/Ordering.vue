@@ -183,8 +183,9 @@ export default {
     display: grid;
     grid-template-columns: 80% 20%;
     grid-template-rows: 15% 85%;
-    border-width: 1.5em;
-    border-style: double;
+    border-width: 0.4em;
+    border-style: solid;
+    border-color: rgb(0, 125, 149);
 
 
 }

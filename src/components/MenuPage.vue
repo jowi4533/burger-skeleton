@@ -76,6 +76,7 @@ button {
   width: 10em;
   opacity: 0.7;
   transition: 0.3s;
+  border-style: hidden;
 }
 
 img {
