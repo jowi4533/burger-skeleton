@@ -1,6 +1,7 @@
 {
   "cancelOrder" : "Avbryt köp",
   "next" : "Nästa",
+  "previous" : "Föregående",
   "changeIng" : "Byt ut ingrediens",
   "content": "Innehåll",
   "thankOrder" : "Tack för din beställning!",
@@ -22,10 +23,20 @@
   "backtoorder" : "Tillbaka till beställningar",
   "bread": "Bröd",
   "patty" : "Bas",
+  "breadandpatty" : "Bröd och bas",
   "toppings": "Topping",
+  "toppingsandsauce" : "Topping och sås",
   "veggies" : "Grönsaker",
   "sauce" : "Sås",
   "sides" : "Tillbehör",
-  "drinks" : "Dryck"
+  "drinks" : "Dryck",
+  "sidesanddrinks" : "Tillbehör och dryck",
+  "stageOne" : "1: Bygg din burgare",
+  "stageTwo" : "2: Dryck och tillbehör",
+  "stageThree" : "3: Order översikt",
+  "stageOneTabOne" : "Bröd och bas",
+  "stageOneTabTwo" : "Topping och sås",
+  "stageOneTabThree" : "Grönsaker",
+
 
 }
