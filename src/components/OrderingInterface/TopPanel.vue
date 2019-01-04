@@ -1,12 +1,11 @@
 <template>
   <div id = "TopPanelContainer">
 
-    <div id = "buildYourBurgerPage">
+    <div id = "buildYourBurgerPage" v-if = "parentState !== 'Payment'">
 
       <button v-on:click= "switchStage('BreadAndPatty')" :class="{stageButton : parentState === 'BreadAndPatty' || parentState === 'ToppingsAndSauce' || parentState === 'Vegetables'}"> 1 </button>
       <button v-on:click= "switchStage('Drinks')" :class="{stageButton : parentState === 'Drinks' || parentState === 'Sides' }">2</button>
       <button v-on:click= "switchStage('OverView')" :class="{stageButton : parentState === 'OverView' }">3</button>
-
       <button v-on:click= "switchStage('MenuPage')">Cancel</button>
 
       <h3 v-if="parentState == 'BreadAndPatty'
@@ -88,15 +87,21 @@ export default{
 #TopPanelContainer {
 
 }
+button {
+  border-style: solid;
+}
+
 
 .stageButton {
   background-color: yellow;
 }
 
+
 /* #buildYourBurgerPage {
   grid-column: 1;
   grid-row: 1;
 }
+
 #sidesAndDrinksPage {
 
   grid-column: 2;
@@ -108,9 +113,16 @@ export default{
 } */
 #DescriptionText{
     font-size: 1em;
+    float: right;
+    margin: 0em;
 }
 #Cancel {
   float: right;
+  border-radius: 3px;
+  background-color: rgb(254, 69, 69);
+  width: 10em;
+  height: 3em;
+
 }
 
 </style>
