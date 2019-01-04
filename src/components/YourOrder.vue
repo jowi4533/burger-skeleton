@@ -18,10 +18,6 @@ props:{
   lang: String,
   chosenIngredients: Array
 },
-
-
-
-
 }
 
 
