@@ -1,3 +1,4 @@
+
 <template>
   <div id="OrderingContainer">
 
@@ -7,15 +8,19 @@
     </div>
 
 
-    <div id = "orderingComponents" v-if = "this.state !== 'MenuPage'">
+    <!-- <div id = "orderingComponents" v-if = "this.state !== 'MenuPage'"> -->
       <!-- Everything that uses topPanel  -->
-      <div id="TopPanel">
+      <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
 
       <TopPanel :parentState="state" @switchStage="state=$event">
       </TopPanel>
       </div>
 
-      <div id = "overview" v-if = "this.state === 'OverView'">
+
+
+      <div id="MiddlePanel" v-if = "this.state !== 'MenuPage'">
+
+            <div id = "overview" v-if = "this.state === 'OverView'">
 
         <OverView @switchStage="state=$event">
         </Overview>
@@ -47,6 +52,14 @@
       </div>
     </div>
 
+<!-- </div> -->
+
+<div id="ToggleBar">
+  <button id="next" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.next}} </button>
+  <button id="previous" v-on:click= "switchStage('MenuPage')"> {{uiLabels.previous}} </button>
+
+
+</div>
 
     <div id="ordering" v-if="this.state === 'Ordering'">
       <img class="example-panel" src="@/assets/exampleImage.jpg">
@@ -135,7 +148,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      state: 'Ordering', //denna var MenuPage
+      state: 'MenuPage', //denna var MenuPage
     }
   },
 
@@ -178,19 +191,21 @@ export default {
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #OrderingContainer{
   margin:auto;
-    width: 40em;
+    /* width: 40em; */
     /*background-color: rgb(0,100,200);*/
     display: grid;
-    grid-template-columns: 80% 20%;
-    grid-template-rows: 15% 85%;
+    grid-template-areas: "TopPanel MiddlePanel ToggleBar";
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 1fr 0.1fr;
     border-width: 0.4em;
     border-style: solid;
     border-color: rgb(0, 125, 149);
 
 
+
 }
 
-#ingredients_ {
+/* #ingredients_ {
   background-color: rgb(240,240,240);
   grid-column: 1;
   grid-row: 2 / span 3;
@@ -204,7 +219,7 @@ export default {
   background-color: rgb(200,200,200);
   grid-column: 3;
   grid-row: 2 / span 3;
-}
+} */
 
 #menupage {
   width: 40em;
@@ -214,9 +229,16 @@ export default {
 #TopPanel{
 grid-row: 1;
 }
-#breadandpatty{
+#MiddlePanel{
 grid-row: 2;
-grid-column: 1 / span 2;
+display: grid;
+grid-template-areas: "AllFoodTabs Kundkorg";
+grid-template-columns: 80% 20%;
+grid-template-rows: 1fr;
+}
+
+#ToggleBar{
+  grid-row: 3;
 }
 
 .example-panel {
