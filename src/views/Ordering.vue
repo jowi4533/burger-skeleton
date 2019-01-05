@@ -6,7 +6,6 @@
       </MenuPage>
     </div>
 
-
     <div id = "orderingComponents" v-if = "this.state !== 'MenuPage'">
       <!-- Everything that uses topPanel  -->
       <div id="TopPanel">
@@ -135,7 +134,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      state: 'Ordering', //denna var MenuPage
+      state: 'MenuPage', //denna var MenuPage
     }
   },
 
@@ -181,12 +180,14 @@ export default {
     width: 40em;
     /*background-color: rgb(0,100,200);*/
     display: grid;
-    grid-template-columns: 80% 20%;
-    grid-template-rows: 15% 85%;
+    grid-template-areas: "TopPanel TopPanel"
+                          "IngredientArea  Basket"
+                          "ToggleBar ToggleBar";
+    grid-template-columns: 1fr 0.4fr;
+    grid-template-rows: 0.3fr 1fr 0.3fr;
     border-width: 0.4em;
     border-style: solid;
     border-color: rgb(0, 125, 149);
-
 
 }
 

@@ -92,15 +92,18 @@ export default {
       let undone = {};
       let count = 0;
        for (let o in this.orders) {
-         if (this.orders[o].status !== 'done' && count < 8) {
-           undone[o] = this.orders[o];
-           count += 1;
+         for (let item in this.orders[o].ingredients){
+           if (item.category == 1 || item.category == 2 || item.category == 3 ||item.category == 4||item.category == 5){
+             if (this.orders[o].status !== 'done' && count < 8) {
+               undone[o] = this.orders[o];
+               count += 1;
+             }
+           }
          }
        }
-       return undone;
+        return undone;
     }
-  }
-}
+  }}
 </script>
 <style id="style" scoped>
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
