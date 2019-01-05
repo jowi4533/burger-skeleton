@@ -1,10 +1,10 @@
 <template>
-  <div class="ingredient">
+  <span class="ingredient">
     <label>
       <button v-on:click="incrementCounter">{{ counter }}</button>
       {{item["ingredient_"+ lang]}}, {{item.selling_price}}:-
     </label>
-  </div>
+  </span>
 </template>
 <script>
 export default {
