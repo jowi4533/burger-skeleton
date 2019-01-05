@@ -42,6 +42,7 @@ export default {
       // sending 'done' message to parent component or view so that it
       // can catch it with v-on:done in the component declaration
       this.$emit('done');
+      this.$emit('order');
     },
     cancelOrder: function () {
       // not implemented
@@ -57,6 +58,7 @@ export default {
 }
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 .displayNewOrder{
   position:relative;
@@ -64,19 +66,26 @@ export default {
 
 }
 .OrderDoneButton {
+  font-family: 'Quicksand', sans-serif;
+  font-weight:  bold;
+  background-color: #3e8e47;
   position:absolute;
-  bottom:0;
-  left:0;
+  bottom: 2px;
+  left: 2px;
   width: 70px;
-  height: 19px;
-
+  height: 25px;
+  border-radius: 8px;
 }
 .OrderStartedButton {
+  font-family: 'Quicksand', sans-serif;
+  font-weight:  bold;
+  background-color: #fcf574;
   position:absolute;
-  bottom:0;
-  right:0;
-  width:70px;
-  height:19px;
+  bottom: 2px;
+  right: 2px;
+  width: 70px;
+  height: 25px;
+  border-radius: 8px;
 
 }
 </style>

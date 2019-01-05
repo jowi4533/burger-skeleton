@@ -1,18 +1,42 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
-<h1> Hello! This is the Vegetables, whalecum! </h1>
 
-  <button v-on:click= "switchToBreadAndPatty()">Bread and Patty</button>
-  <button v-on:click= "switchToToppingsAndSauce()">Toppings and Sauce</button>
-  <button>Vegetables</button>
-  <button v-on:click= "switchToToppingsAndSauce()">Previous</button>
-  <button v-on:click= "switchToDrinks()">Go to Drinks (next)</button>
+  <button v-on:click= "switchTab('BreadAndPatty')"> {{uiLabels.breadandpatty}} </button>
+  <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
+  <button :class="{tabButton : parentState === 'Vegetables'}"> {{uiLabels.veggies}} </button>
+
+  <br>
+  <br>
+
+  <div id="Vegetables">
+
+      <h4> {{uiLabels.veggies}} </h4>
+      <Ingredient
+      class="ingredients"
+      ref="ingredient"
+      v-for="item in ingredients"
+      v-if="item.category == 4"
+      v-on:increment="addToOrder(item)"
+      :ui-labels="uiLabels"
+      :item="item"
+      :lang="lang"
+      :key="item.ingredient_id">
+      </Ingredient>
+    </div>
+
+
+  <div id="ToggleBar">
+    <button id="next" v-on:click= "switchStage('Drinks')"> {{uiLabels.next}} </button>
+    <button id="previous" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.previous}} </button>
+  </div>
 
 </div>
 
 </template>
 
 <script>
+import Ingredient from '@/components/Ingredient.vue'
+import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default{
   name: 'Vegetables',
@@ -22,22 +46,24 @@ export default{
     }
   },
 
+  props: {
+    parentState: String
+  },
+
+  components: {
+    Ingredient
+  },
+
+  mixins: [sharedVueStuff],
+
   methods: {
-    switchToToppingsAndSauce: function() {
-      this.$parent.state = "ToppingsAndSauce";
+    switchTab: function(tab) {
+      this.$emit('switchTab', tab);
     },
 
-    switchToVegetables: function() {
-      this.$parent.state = "Vegetables"
+    switchStage: function(stage) {
+      this.$emit('switchStage', stage);
     },
-
-    switchToBreadAndPatty: function() {
-      this.$parent.state = "BreadAndPatty";
-    },
-
-    switchToDrinks: function() {
-      this.$parent.state = "Drinks";
-    }
   }
 }
 
@@ -47,5 +73,26 @@ export default{
 
 <style scoped>
 
+.tabButton {
+  background-color: rgb(40,170,150);
+}
+button {
+  border-style: solid;
+  height: 3em;
+}
+
+
+#next{
+  position: relative;
+  bottom: 0;
+  float: right;
+  background-color: rgb(30,200,100);
+}
+#previous{
+  position: relative;
+  bottom: 0;
+  float: right;
+  background-color: rgb(30,100,200);
+}
 
 </style>

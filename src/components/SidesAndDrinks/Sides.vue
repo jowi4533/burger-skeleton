@@ -1,17 +1,43 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
-  <h1> Hello! This is the Sides, whalecum! </h1>
 
-  <button v-on:click= "switchToDrinks()">Drinks</button>
-  <button>Sides</button>
-  <button v-on:click= "switchToDrinks()">Previous</button>
-  <button v-on:click= "switchToOverView()">Go to menu Overview (next)</button>
+
+
+  <button v-on:click= "switchTab('Drinks')"> {{uiLabels.drinks}} </button>
+  <button :class="{tabButton : parentState === 'Sides'}"> {{uiLabels.sides}} </button>
+
+
+  <br>
+  <br>
+  <div id="Sides">
+
+      <h4> {{uiLabels.sides}} </h4>
+      <Ingredient
+      class="ingredients"
+      ref="ingredient"
+      v-for="item in ingredients"
+      v-if="item.category == 6"
+      v-on:increment="addToOrder(item)"
+      :ui-labels="uiLabels"
+      :item="item"
+      :lang="lang"
+      :key="item.ingredient_id">
+      </Ingredient>
+    </div>
+
+
+  <div id="ToggleBar">
+    <button id="next" v-on:click= "switchStage('OverView')"> {{uiLabels.next}} </button>
+    <button id="previous" v-on:click= "switchTab('Drinks')"> {{uiLabels.previous}} </button>
+  </div>
 
 </div>
 
 </template>
 
 <script>
+import Ingredient from '@/components/Ingredient.vue'
+import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default{
   name: 'Drinks',
@@ -21,15 +47,24 @@ export default{
     }
   },
 
-  methods: {
+  props: {
+    parentState: String
+  },
 
-    switchToOverView: function() {
-      this.$parent.state = "OverView"
+  components: {
+    Ingredient
+  },
+
+  mixins: [sharedVueStuff],
+
+  methods: {
+    switchTab: function(tab) {
+      this.$emit('switchTab', tab);
     },
 
-    switchToDrinks: function() {
-      this.$parent.state = "Drinks";
-    }
+    switchStage: function(stage) {
+      this.$emit('switchStage', stage);
+    },
   }
 }
 
@@ -38,6 +73,26 @@ export default{
 
 
 <style scoped>
+.tabButton {
+  background-color: rgb(40,170,150);
+}
+
+#next{
+  position: relative;
+  bottom: 0;
+  float: right;
+  background-color: rgb(30,200,100);
+}
+#previous{
+  position: relative;
+  bottom: 0;
+  float: right;
+    background-color: rgb(30,100,200);
+}
+button {
+      border-style: solid;
+      height: 3em;
+    }
 
 
 </style>
