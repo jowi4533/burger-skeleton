@@ -5,7 +5,7 @@
   </div>
 
   <div class="theIngedients" v-for ="ingredient in chosenIngredients">
-      <li>{{ingredient["ingredient_"+ lang]}}</li>
+      <li>{{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-</li>
   </div>
 </div>
 </template>

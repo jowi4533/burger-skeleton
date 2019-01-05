@@ -92,7 +92,7 @@ export default {
       let undone = {};
       let count = 0;
        for (let o in this.orders) {
-         if (this.orders[o].status !== 'done' && count < 7) {
+         if (this.orders[o].status !== 'done' && count < 8) {
            undone[o] = this.orders[o];
            count += 1;
          }
