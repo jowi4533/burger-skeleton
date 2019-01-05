@@ -148,7 +148,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      state: 'MenuPage', //denna var MenuPage
+      state: 'Ordering', //denna var MenuPage
     }
   },
 
