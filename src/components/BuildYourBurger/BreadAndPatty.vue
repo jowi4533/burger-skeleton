@@ -40,12 +40,7 @@
   </div>
 </div>
 
-<div id="ToggleBar">
-  <button id="next" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.next}} </button>
-  <button id="previous" v-on:click= "switchStage('MenuPage')"> {{uiLabels.previous}} </button>
 
-
-</div>
 </div>
 
 </template>
@@ -103,8 +98,8 @@ h4 {
 
 #BreadAndPattyContainer{
   display: grid;
-  grid-template-areas: "ingredientButtons BreadAndPatty ToggleBar";
-  grid-template-rows: 10% 70% 20%;
+  grid-template-areas: "ingredientButtons BreadAndPatty ";
+  grid-template-rows: 15% 85%;
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
   overflow:hidden;
@@ -112,19 +107,8 @@ h4 {
 #ingredientButtons{
   grid-row: 1;
 }
-#ToggleBar{
-  grid-row: 3;
-  /* grid-column: 1 / span 6; */
 
-}
-#BreadAndPatty{
-  grid-row: 2;
-  /* grid-template-areas: "Bread Patty"; */
-  /* grid-template-rows:50% 50% ; */
-  /* grid-template-columns: ; */
-}
-
-#next{
+/* #next{
   position: relative;
   bottom: 0;
 
@@ -142,14 +126,30 @@ h4 {
   position: relative;
   bottom: 0;
   float: right;
+} */
+
+#BreadAndPatty{
+  grid-row: 2;
+  display: grid;
+  grid-template-areas: "Bread Patty";
+   grid-template-rows:50% 50% ;
+   grid-template-columns: 2fr;
 }
+#Bread{
+  grid-row: 1;
+}
+#Patty{
+  grid-row: 2;
+}
+
 
 
 button {
   border-style: solid;
   height: 3em;
-  width: 7em;
-  font-size: 0.5em;
+  width: 15em;
+  font-size: 0.6em;
+  padding: 0;
 
 }
 
