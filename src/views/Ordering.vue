@@ -6,11 +6,6 @@
       </MenuPage>
     </div>
 
-    <div id = "payment" v-if = "this.state === 'Payment'">
-      <Payment :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
-      </Payment>
-
-    </div>
 
     <div id = "orderingComponents" v-if = "this.state !== 'MenuPage'">
       <!-- Everything that uses topPanel  -->
@@ -50,9 +45,7 @@
         <Sides :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
         </Sides>
       </div>
-
     </div>
-
 
 
     <div id="ordering" v-if="this.state === 'Ordering'">
@@ -101,7 +94,6 @@
 //components
 import MenuPage from '@/components/MenuPage.vue'
 import OverView from '@/components/OverView.vue'
-import Payment from '@/components/Payment.vue'
 import TopPanel from '@/components/OrderingInterface/TopPanel.vue'
 
 import BreadAndPatty from '@/components/BuildYourBurger/BreadAndPatty.vue'
@@ -134,7 +126,6 @@ export default {
     Vegetables,
     Drinks,
     Sides,
-    Payment,
     YourOrder
   },
   mixins: [sharedVueStuff], // include stuff that is used in both

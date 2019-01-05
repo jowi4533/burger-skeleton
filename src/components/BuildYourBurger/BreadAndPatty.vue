@@ -98,12 +98,14 @@ h4 {
 
 .tabButton {
   background-color: rgb(40,170,150);
+
 }
 
 #BreadAndPattyContainer{
   display: grid;
   grid-template-areas: "ingredientButtons BreadAndPatty ToggleBar";
   grid-template-rows: 10% 70% 20%;
+  grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
   overflow:hidden;
 }
@@ -116,10 +118,10 @@ h4 {
 
 }
 #BreadAndPatty{
-  display: grid;
-  grid-template-areas: "Bread Patty";
-  grid-template-rows:50% 50% ;
-  grid-template-columns: ;
+  grid-row: 2;
+  /* grid-template-areas: "Bread Patty"; */
+  /* grid-template-rows:50% 50% ; */
+  /* grid-template-columns: ; */
 }
 
 #next{
@@ -146,6 +148,9 @@ h4 {
 button {
   border-style: solid;
   height: 3em;
+  width: 7em;
+  font-size: 0.5em;
+
 }
 
 
