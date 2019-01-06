@@ -77,6 +77,9 @@ export default{
     switchTab: function(tab) {
       this.$emit('switchTab', tab);
     },
+    addToOrder : function(item) {
+      this.$parent.addToOrder(item);
+    }
   }
 }
 
