@@ -2,25 +2,24 @@
   <div id="OrderingContainer">
 
     <div id ="menupage" v-if ="this.state === 'MenuPage'">
-      <MenuPage>
+      <MenuPage @switchStage="state=$event" @switchLanguage="switchLang()"
+      :ui-labels="uiLabels"
+      :lang="lang">
       </MenuPage>
+
     </div>
 
     <div id = "payment" v-if = "this.state === 'Payment'">
-<<<<<<< HEAD
-      <Payment :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
-=======
       <Payment @switchStage="state=$event"
       :parentState="state"
       :lang="lang">
->>>>>>> 837b8a76598486a7e90f1333965b7faac2ba60c2
       </Payment>
 
     </div>
 
-    <div id = "orderingComponents" v-if = "this.state !== 'MenuPage'">
+    <!-- <div id = "orderingComponents" v-if = "this.state !== 'MenuPage'"> -->
       <!-- Everything that uses topPanel  -->
-      <div id="TopPanel">
+      <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
 
       <TopPanel @switchStage="state=$event"
       :parentState="state"
@@ -28,11 +27,8 @@
       </TopPanel>
       </div>
 
-<<<<<<< HEAD
-=======
       <div id="MiddlePanel" v-if = "this.state !== 'MenuPage'">
 
->>>>>>> 837b8a76598486a7e90f1333965b7faac2ba60c2
       <div id = "overview" v-if = "this.state === 'OverView'">
 
         <OverView @switchStage="state=$event"
@@ -75,43 +71,52 @@
         :lang="lang">
         </Sides>
       </div>
-
-    </div>
-
-
-
-    <div id="ordering" v-if="this.state === 'Ordering'">
-      <img class="example-panel" src="@/assets/exampleImage.jpg">
-      <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
-
-
-      <div id="ingredients_">
-        <h1>{{ uiLabels.ingredients }}</h1>
-
-        <Ingredient
-        ref="ingredient"
-        v-for="item in ingredients"
-        v-on:increment="addToOrder(item)"
-        :item="item"
-        :lang="lang"
-        :key="item.ingredient_id">
-      </Ingredient>
-    </div>
-    <div id="chosen_ingredients">
-      <h1>{{ uiLabels.order }} hej</h1>
-      {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
-      <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
-    </div>
-    <div id="order_item">
       <YourOrder
       :chosenIngredients ="chosenIngredients"
       :ui-labels="uiLabels"
       :lang="lang">
       </YourOrder>
       <h1>{{ uiLabels.ordersInQueue }}</h1>
-  </div>
+    </div>
+
+<!-- </div> -->
+
+<div id="ToggleBar">
+  <button id="next" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.next}} </button>
+  <button id="previous" v-on:click= "switchStage('MenuPage')"> {{uiLabels.previous}} </button>
+
 
 </div>
+
+    <div id="ordering" v-if="this.state === 'Ordering'">
+      <img class="example-panel" src="@/assets/exampleImage.jpg">
+      <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+      <div id="ingredients_">
+        <h1>{{ uiLabels.ingredients }}</h1>
+
+          <Ingredient
+            ref="ingredient"
+            v-for="item in ingredients"
+            v-on:increment="addToOrder(item)"
+            :item="item"
+            :lang="lang"
+            :key="item.ingredient_id">
+          </Ingredient>
+      </div>
+      <div id="chosen_ingredients">
+        <h1>{{ uiLabels.order }} hej</h1>
+          {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
+          <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+      </div>
+      <div id="order_item">
+        <YourOrder
+          :chosenIngredients ="chosenIngredients"
+          :ui-labels="uiLabels"
+          :lang="lang">
+        </YourOrder>
+        <h1>{{ uiLabels.ordersInQueue }}</h1>
+      </div>
+    </div>
 
 </div>
 
@@ -126,7 +131,6 @@
 //components
 import MenuPage from '@/components/MenuPage.vue'
 import OverView from '@/components/OverView.vue'
-import Payment from '@/components/Payment.vue'
 import TopPanel from '@/components/OrderingInterface/TopPanel.vue'
 
 import BreadAndPatty from '@/components/BuildYourBurger/BreadAndPatty.vue'
@@ -159,12 +163,11 @@ export default {
     Vegetables,
     Drinks,
     Sides,
-    Payment,
     YourOrder
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
   // the ordering system and the kitchen
-  data: function() { //Not that data is a function!
+  data: function() { //Note that data is a function!
     return {
       chosenIngredients: [],
       price: 0,
@@ -172,7 +175,6 @@ export default {
       state: 'MenuPage', //denna var MenuPage
     }
   },
-
 
   created: function () {
     this.$store.state.socket.on('orderNumber', function (data) {
@@ -188,26 +190,14 @@ export default {
     },
     placeOrder: function () {
       var i,
-
       //Wrap the order in an object
       order = {
         ingredients: this.chosenIngredients,
         price: this.price
-      }
-
-      for (let z in this.chosenIngredients) {
-        if (this.chosenIngredients[z].category !== 6 && this.chosenIngredients[z].category !== 7) {
-          order = {
-            ingredients: this.chosenIngredients,
-            price: this.price
-          }
-          this.$store.state.socket.emit('order', {order: order});
-        }
-      }
-
+      };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-
-
+      this.$store.state.socket.emit('order', {order: order});
+      //this.$emit('order');
       //set all counters to 0. Notice the use of $refs
       for (i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();
@@ -224,19 +214,21 @@ export default {
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #OrderingContainer{
   margin:auto;
-    width: 40em;
+    width: auto;
     /*background-color: rgb(0,100,200);*/
     display: grid;
-    grid-template-columns: 80% 20%;
-    grid-template-rows: 15% 85%;
+    grid-template-areas: "TopPanel MiddlePanel ToggleBar";
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 1fr 0.1fr;
     border-width: 0.4em;
     border-style: solid;
     border-color: rgb(0, 125, 149);
 
 
+
 }
 
-#ingredients_ {
+/* #ingredients_ {
   background-color: rgb(240,240,240);
   grid-column: 1;
   grid-row: 2 / span 3;
@@ -250,19 +242,26 @@ export default {
   background-color: rgb(200,200,200);
   grid-column: 3;
   grid-row: 2 / span 3;
-}
+} */
 
 #menupage {
-  width: 40em;
+  width: auto;
   height: auto;
 
 }
 #TopPanel{
 grid-row: 1;
 }
-#breadandpatty{
+#MiddlePanel{
 grid-row: 2;
-grid-column: 1 / span 2;
+display: grid;
+grid-template-areas: "AllFoodTabs Kundkorg";
+grid-template-columns: 80% 20%;
+grid-template-rows: 1fr;
+}
+
+#ToggleBar{
+  grid-row: 3;
 }
 
 .example-panel {
