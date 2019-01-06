@@ -51,6 +51,18 @@
         <Sides :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
         </Sides>
       </div>
+<<<<<<< HEAD
+=======
+      <YourOrder
+      :chosenIngredients ="chosenIngredients"
+      :ui-labels="uiLabels"
+      :lang="lang">
+      </YourOrder>
+      <h1>{{ uiLabels.ordersInQueue }}</h1>
+    </div>
+
+<!-- </div> -->
+>>>>>>> 12bac4ebe5f3b6d59cd1cf848f343af840bc124b
 
     </div>
 
