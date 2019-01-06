@@ -154,7 +154,6 @@ button {
   width: 15em;
   font-size: 0.6em;
   padding: 0;
-
 }
 
 </style>

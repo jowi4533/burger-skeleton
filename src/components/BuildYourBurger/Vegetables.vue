@@ -89,6 +89,9 @@ export default{
 button {
   border-style: solid;
   height: 3em;
+  width: 15em;
+  font-size: 0.6em;
+  padding: 0;
 }
 
 
