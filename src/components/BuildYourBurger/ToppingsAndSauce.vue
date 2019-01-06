@@ -52,7 +52,7 @@
 
 <script>
 import Ingredient from '@/components/Ingredient.vue'
-import sharedVueStuff from '@/components/sharedVueStuff.js'
+//import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default{
   name: 'BreadAndPatty',
@@ -64,14 +64,16 @@ export default{
 
   props: {
     parentState: String,
-    lang: String
+    lang: String,
+    uiLabels: Object,
+    ingredients: Array
   },
 
   components: {
     Ingredient
   },
 
-  mixins: [sharedVueStuff],
+  //mixins: [sharedVueStuff],
 
   methods: {
     switchTab: function(tab) {
@@ -91,6 +93,10 @@ export default{
 
 .tabButton {
   background-color: rgb(40,170,150);
+}
+
+.ingredients {
+  text-transform: capitalize;
 }
 
 button {

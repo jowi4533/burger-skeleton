@@ -3,8 +3,8 @@
 <div id="ingredientButtons">
 
   <button :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
-  <button class="toppingsTab" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
-  <button class="vegetablesTab" v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
+  <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
+  <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
 
 </div>
 
@@ -47,7 +47,7 @@
 
 <script>
 import Ingredient from '@/components/Ingredient.vue'
-import sharedVueStuff from '@/components/sharedVueStuff.js'
+//import sharedVueStuff from '@/components/sharedVueStuff.js'
 export default {
   name: 'BreadAndPatty',
 	// props: {
@@ -59,13 +59,15 @@ export default {
 
   props: {
     parentState: String,
-    lang: String
+    lang: String,
+    uiLabels: Object,
+    ingredients: Array
   },
   components: {
     Ingredient
   },
 
-mixins: [sharedVueStuff],
+//mixins: [sharedVueStuff],
 
   methods: {
     switchTab: function(tab) {
@@ -98,18 +100,6 @@ h4 {
 .tabButton {
   background-color: rgb(40,170,150);
 
-}
-
-.toppingsTab {
-  position: absolute;
-  top: 5.85%;
-
-}
-
-.vegetablesTab {
-  position: absolute;
-  top: 5.85%;
-  left: 44.325%;
 }
 
 #BreadAndPattyContainer{
