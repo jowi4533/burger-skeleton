@@ -59,13 +59,12 @@
         <Sides :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
         </Sides>
       </div>
-      <div id="basket">
-        <YourOrder
-        :chosenIngredients ="chosenIngredients"
-        :ui-labels="uiLabels"
-        :lang="lang">
-        </YourOrder>
-      </div>
+      <YourOrder
+      :chosenIngredients ="chosenIngredients"
+      :ui-labels="uiLabels"
+      :lang="lang">
+      </YourOrder>
+      <h1>{{ uiLabels.ordersInQueue }}</h1>
     </div>
 
 <!-- </div> -->
