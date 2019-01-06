@@ -72,6 +72,12 @@
         :lang="lang">
         </Sides>
       </div>
+      <YourOrder
+      :chosenIngredients ="chosenIngredients"
+      :ui-labels="uiLabels"
+      :lang="lang">
+      </YourOrder>
+      <h1>{{ uiLabels.ordersInQueue }}</h1>
     </div>
 
 <!-- </div> -->
@@ -85,35 +91,33 @@
 
     <div id="ordering" v-if="this.state === 'Ordering'">
       <img class="example-panel" src="@/assets/exampleImage.jpg">
-
-
+      <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
       <div id="ingredients_">
         <h1>{{ uiLabels.ingredients }}</h1>
 
-        <Ingredient
-        ref="ingredient"
-        v-for="item in ingredients"
-        v-on:increment="addToOrder(item)"
-        :item="item"
-        :lang="lang"
-        :key="item.ingredient_id">
-      </Ingredient>
+          <Ingredient
+            ref="ingredient"
+            v-for="item in ingredients"
+            v-on:increment="addToOrder(item)"
+            :item="item"
+            :lang="lang"
+            :key="item.ingredient_id">
+          </Ingredient>
+      </div>
+      <div id="chosen_ingredients">
+        <h1>{{ uiLabels.order }} hej</h1>
+          {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
+          <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+      </div>
+      <div id="order_item">
+        <YourOrder
+          :chosenIngredients ="chosenIngredients"
+          :ui-labels="uiLabels"
+          :lang="lang">
+        </YourOrder>
+        <h1>{{ uiLabels.ordersInQueue }}</h1>
+      </div>
     </div>
-    <div id="chosen_ingredients">
-      <h1>{{ uiLabels.order }} hej</h1>
-      {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
-      <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
-    </div>
-    <div id="order_item">
-      <YourOrder
-      :chosenIngredients ="chosenIngredients"
-      :ui-labels="uiLabels"
-      :lang="lang">
-      </YourOrder>
-      <h1>{{ uiLabels.ordersInQueue }}</h1>
-  </div>
-
-</div>
 
 </div>
 
@@ -164,7 +168,7 @@ export default {
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
   // the ordering system and the kitchen
-  data: function() { //Not that data is a function!
+  data: function() { //Note that data is a function!
     return {
       chosenIngredients: [],
       price: 0,
@@ -172,7 +176,6 @@ export default {
       state: 'MenuPage', //denna var MenuPage
     }
   },
-
 
   created: function () {
     this.$store.state.socket.on('orderNumber', function (data) {
@@ -212,7 +215,7 @@ export default {
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #OrderingContainer{
   margin:auto;
-    /* width: 40em; */
+    width: auto;
     /*background-color: rgb(0,100,200);*/
     display: grid;
     grid-template-areas: "TopPanel MiddlePanel ToggleBar";
@@ -243,7 +246,7 @@ export default {
 } */
 
 #menupage {
-  width: 40em;
+  width: auto;
   height: auto;
 
 }
