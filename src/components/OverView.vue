@@ -25,6 +25,10 @@ export default{
     }
   },
 
+  props: {
+    lang: String
+  },
+
   components: {
     Ingredient
   },
