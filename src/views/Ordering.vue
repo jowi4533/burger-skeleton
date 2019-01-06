@@ -102,7 +102,6 @@
           :ui-labels="uiLabels"
           :lang="lang">
         </YourOrder>
-        <h1>{{ uiLabels.ordersInQueue }}</h1>
       </div>
     </div>
 
@@ -160,7 +159,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      state: 'Ordering', //denna var MenuPage
+      state: 'MenuPage', //denna var MenuPage
     }
   },
 

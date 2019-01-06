@@ -23,7 +23,7 @@ props:{
 
 </script>
 
-<style>
+<style scoped>
 .yourOrderContainer {
   display: grid;
   grid-template-columns: 1fr;
