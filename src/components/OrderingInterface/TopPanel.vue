@@ -85,7 +85,7 @@ export default{
 }
 
 #TopPanelContainer {
-
+display:grid;
 }
 button {
   border-style: solid;
