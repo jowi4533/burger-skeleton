@@ -18,7 +18,7 @@
     </OrderItemToPrepare>
     <div v-bind:class="['NumberOfOrders ',{'ManyOrders':(orderCount >= 15)}]">
       Total orders: {{orderCount}}
-      </div>
+    </div>
 
   </div>
 
@@ -77,114 +77,120 @@ export default {
   computed:   {
     orderCount: function () {
       var orderCount1 = 0;
-      var i = 0;
-        for (this.order in this.orders) {
-          i = i+1;
-          if (this.orders[i].status !=='done'){
-            orderCount1 = orderCount1 +1 ;
+      for (let o in this.orders) {
+        if (this.orders[o].status !=='done'){
+          for (let item in this.orders[o].ingredients){
+            if (this.orders[o].ingredients[item].category !==6 && this.orders[o].ingredients[item].category !==7){
+              orderCount1 = orderCount1 +1 ;
+              break
+            }
           }
-
-          }
-          return orderCount1
+        }    
+      }
+      return orderCount1
     },
 
     undoneOrders: function () {
       let undone = {};
       let count = 0;
-       for (let o in this.orders) {
-         if (this.orders[o].status !== 'done' && count < 8) {
-           undone[o] = this.orders[o];
-           count += 1;
-         }
-       }
-       return undone;
+      for (let o in this.orders) {
+        for (let item in this.orders[o].ingredients){
+          if (this.orders[o].ingredients[item].category !==6 && this.orders[o].ingredients[item].category !==7){
+            if (this.orders[o].status !== 'done' && count < 8) {
+              undone[o] = this.orders[o];
+              count += 1;
+            }
+          }
+        }
+      }
+
+      return undone;
     }
+  }}
+  </script>
+  <style id="style" scoped>
+  @import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+  #orders {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0px 10px 5px 0px;
+    font-size:13pt;
+    font-weight: bold;
   }
-}
-</script>
-<style id="style" scoped>
-@import url('https://fonts.googleapis.com/css?family=Quicksand');
 
-#orders {
-  font-family: 'Quicksand', sans-serif;
-  margin: 0px 10px 5px 0px;
-  font-size:13pt;
-  font-weight: bold;
-}
+  h1 {
+    text-transform: uppercase;
+    font-size: 1em;
+  }
 
-h1 {
-  text-transform: uppercase;
-  font-size: 1em;
-}
+  #gridContainer {
+    margin: 5px 0px 5px 0px;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 300px 300px;
+    grid-template-areas:
+    "grid grid grid grid"
+    "grid grid grid grid";
+    background-color: white;
+  }
 
-#gridContainer {
-  margin: 5px 0px 5px 0px;
-  display: grid;
-  grid-gap: 5px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 300px 300px;
-  grid-template-areas:
-  "grid grid grid grid"
-  "grid grid grid grid";
-  background-color: white;
-}
+  .orderBox {
+    color: #black;
+    margin-left: 5pt;
+    margin-top: 3pt;
+    background-color: #8b999b;
+    border-color: black;
+    border-style: solid;
+  }
 
-.orderBox {
-  color: #black;
-  margin-left: 5pt;
-  margin-top: 3pt;
-  background-color: #8b999b;
-  border-color: black;
-  border-style: solid;
-}
+  .active {
+    background-color: #fcf574;
+  }
 
-.active {
-  background-color: #fcf574;
-}
+  .orderCount {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-color: black;
+    border-style: solid;
+  }
 
-.orderCount {
-  width: 70px;
-  height: 70px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  border-color: black;
-  border-style: solid;
-}
+  #StorageButton{
+    width: 9em;
+    height: 3em;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  #StorageButton2{
+    width: 9em;
+    height: 3em;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  #footer {
+    position:fixed;
+    width:100%;
+    border-top:1px solid #aaa;
+    background:#fff;
+  }
+  .NumberOfOrders{
+    position: absolute;
+    top: 0.2em;
+    right: 13em;
+    border: 1px solid #aaa;
+    font-size: 1.2em;
+  }
+  .ManyOrders {
+    background-color: rgba(255, 0, 0, 0.7);
 
-#StorageButton{
-  width: 9em;
-  height: 3em;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-#StorageButton2{
-  width: 9em;
-  height: 3em;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-#footer {
-  position:fixed;
-  width:100%;
-  border-top:1px solid #aaa;
-  background:#fff;
-}
-.NumberOfOrders{
-  position: absolute;
-  top: 0.2em;
-  right: 13em;
-  border: 1px solid #aaa;
-  font-size: 1.2em;
-}
-.ManyOrders {
-  background-color: rgba(255, 0, 0, 0.7);
-
-}
+  }
 
 
 
 
-</style>
+  </style>

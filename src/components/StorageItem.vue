@@ -71,6 +71,7 @@
 import Ingredient from '@/components/Ingredient.vue'
 export default {
 	name: 'StorageItem',
+	
 	props: {
 	uiLabels: Object,
 	lang: String,
