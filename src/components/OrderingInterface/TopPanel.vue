@@ -38,7 +38,6 @@ export default{
   name: 'TopPanel',
   props: {
     parentState: String,
-    lang: String
   },
   data: function() {
     return {

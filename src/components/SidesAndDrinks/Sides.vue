@@ -49,7 +49,7 @@ export default{
 
   props: {
     parentState: String,
-    lang: String
+
   },
 
   components: {
