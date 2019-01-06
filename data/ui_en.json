@@ -34,8 +34,9 @@
   "stageOne" : "1: Build your Burger",
   "stageTwo" : "2: Drinks and Sides",
   "stageThree" : "3: Order overview",
+  "stageFour" : "4: Payment",
   "stageOneTabOne" : "Bread and Patty",
   "stageOneTabTwo" : "Toppings and Sauce",
   "stageOneTabThree" : "Vegetables",
-  "menupage" : "Menupage"
+  "menuPageHeader" : "Choose a step to begin with"
 }

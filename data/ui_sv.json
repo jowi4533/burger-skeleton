@@ -34,9 +34,9 @@
   "stageOne" : "1: Bygg din burgare",
   "stageTwo" : "2: Dryck och tillbehör",
   "stageThree" : "3: Order översikt",
+  "stageFour" : "4: Betalning",
   "stageOneTabOne" : "Bröd och bas",
   "stageOneTabTwo" : "Topping och sås",
   "stageOneTabThree" : "Grönsaker",
-
-
+  "menuPageHeader" : "Välj vart du vill börja"
 }
