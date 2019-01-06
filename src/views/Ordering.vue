@@ -50,6 +50,13 @@
         <Sides :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
         </Sides>
       </div>
+      <div id="basket">
+        <YourOrder
+        :chosenIngredients ="chosenIngredients"
+        :ui-labels="uiLabels"
+        :lang="lang">
+        </YourOrder>
+      </div>
     </div>
 
 <!-- </div> -->
@@ -148,7 +155,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      state: 'Ordering', //denna var MenuPage
+      state: 'MenuPage', //denna var MenuPage
     }
   },
 
@@ -165,6 +172,7 @@ export default {
       this.chosenIngredients.push(item);
       this.price += +item.selling_price;
     },
+
     placeOrder: function () {
       var i,
       //Wrap the order in an object
@@ -239,6 +247,9 @@ grid-template-rows: 1fr;
 
 #ToggleBar{
   grid-row: 3;
+}
+#basket {
+  grid-area: Kundkorg;
 }
 
 .example-panel {

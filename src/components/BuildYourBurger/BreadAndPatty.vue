@@ -58,7 +58,8 @@ export default {
   // },
 
   props: {
-    parentState: String
+    parentState: String,
+
   },
   components: {
     Ingredient
