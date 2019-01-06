@@ -65,6 +65,9 @@ export default{
     switchStage: function(stage) {
       this.$emit('switchStage', stage);
     },
+    addToOrder : function(item) {
+      this.$parent.addToOrder(item);
+    }
   }
 }
 

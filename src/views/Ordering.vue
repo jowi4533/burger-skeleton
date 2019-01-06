@@ -71,12 +71,13 @@
         :lang="lang">
         </Sides>
       </div>
-      <YourOrder
-      :chosenIngredients ="chosenIngredients"
-      :ui-labels="uiLabels"
-      :lang="lang">
-      </YourOrder>
-      <h1>{{ uiLabels.ordersInQueue }}</h1>
+      <div id="basket">
+        <YourOrder
+        :chosenIngredients ="chosenIngredients"
+        :ui-labels="uiLabels"
+        :lang="lang">
+        </YourOrder>
+      </div>
     </div>
 
 <!-- </div> -->
@@ -114,7 +115,6 @@
           :ui-labels="uiLabels"
           :lang="lang">
         </YourOrder>
-        <h1>{{ uiLabels.ordersInQueue }}</h1>
       </div>
     </div>
 
@@ -188,6 +188,7 @@ export default {
       this.chosenIngredients.push(item);
       this.price += +item.selling_price;
     },
+
     placeOrder: function () {
       var i,
       //Wrap the order in an object
@@ -262,6 +263,9 @@ grid-template-rows: 1fr;
 
 #ToggleBar{
   grid-row: 3;
+}
+#basket {
+  grid-area: Kundkorg;
 }
 
 .example-panel {
