@@ -6,7 +6,7 @@
       <button v-on:click= "switchStage('BreadAndPatty')" :class="{stageButton : parentState === 'BreadAndPatty' || parentState === 'ToppingsAndSauce' || parentState === 'Vegetables'}"> 1 </button>
       <button v-on:click= "switchStage('Drinks')" :class="{stageButton : parentState === 'Drinks' || parentState === 'Sides' }">2</button>
       <button v-on:click= "switchStage('OverView')" :class="{stageButton : parentState === 'OverView' }">3</button>
-      <button v-on:click= "switchStage('MenuPage')">Cancel</button>
+      <button v-on:click= "switchStage('MenuPage')">{{uiLabels.cancel}}</button>
 
       <h3 v-if="parentState == 'BreadAndPatty'
             || parentState == 'ToppingsAndSauce'
@@ -24,23 +24,6 @@
       </h3>
 
     </div>
-<!--
-    <div id = "sidesAndDrinksPage" v-if = "parentState === 'Drinks' || parentState === 'Sides'">
-      <button>1</button>
-      <button id="thisButton2"> 2 </button>
-      <button v-on:click= "switchToOverView()">3</button>
-      <button id="Cancel" v-on:click= "switchToMenuPage()">Cancel</button>
-      <h1> 2: Sides and Drinks </h1>
-    </div>
-
-    <div id = "overViewPage" v-if = "parentState === 'OverView'">
-      <button v-on:click= "switchToBreadAndPatty()">1</button>
-      <button v-on:click= "switchToDrinks()">2</button>
-      <button id="thisButton3"> 3 </button>
-      <button id="Cancel" v-on:click= "switchToMenuPage()">Cancel</button>
-      <h1> 3: Overview </h1>
-      <button v-on:click= "switchToMenuPage()">Cancel</button>
-    </div> -->
 
 
 
@@ -54,7 +37,8 @@ export default{
 
   name: 'TopPanel',
   props: {
-    parentState: String
+    parentState: String,
+    lang: String
   },
   data: function() {
     return {
