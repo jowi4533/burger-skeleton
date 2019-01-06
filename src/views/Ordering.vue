@@ -59,12 +59,16 @@
         <Sides :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
         </Sides>
       </div>
+
+      <div id="basket">
+
+
       <YourOrder
       :chosenIngredients ="chosenIngredients"
       :ui-labels="uiLabels"
       :lang="lang">
       </YourOrder>
-      <h1>{{ uiLabels.ordersInQueue }}</h1>
+  </div>
     </div>
 
 <!-- </div> -->
@@ -246,7 +250,9 @@ grid-template-areas: "AllFoodTabs Kundkorg";
 grid-template-columns: 80% 20%;
 grid-template-rows: 1fr;
 }
-
+#basket{
+  grid-area: Kundkorg;
+}
 #ToggleBar{
   grid-row: 3;
 }
