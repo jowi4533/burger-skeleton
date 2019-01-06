@@ -30,7 +30,7 @@ props:{
   grid-template-rows: 1fr;
   grid-template-areas: "order";
   border: 1px solid  	#000000;
-  background-color:  #F0FFFF;
+  
 }
 .yourOrder {
   border-bottom: 1px solid #000000;
