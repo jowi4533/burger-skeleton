@@ -38,5 +38,7 @@
   "stageOneTabOne" : "Bröd och bas",
   "stageOneTabTwo" : "Topping och sås",
   "stageOneTabThree" : "Grönsaker",
-  "menuPageHeader" : "Välj vart du vill börja"
+  "menuPageHeader" : "Välj vart du vill börja",
+
+  "cancel" : "Avbryt"
 }

@@ -19,6 +19,10 @@ export default{
     return {
     }
   },
+  
+  props: {
+    lang: String
+  },
 
   methods: {
     switchStage: function(stage) {

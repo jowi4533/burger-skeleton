@@ -11,8 +11,9 @@
     </div>
 
     <div id = "payment" v-if = "this.state === 'Payment'">
-      <Payment @switchStage="state=$event" @switchTab="state=$event"
-      :parentState="state">
+      <Payment @switchStage="state=$event"
+      :parentState="state"
+      :lang="lang">
       </Payment>
 
     </div>
@@ -21,50 +22,63 @@
       <!-- Everything that uses topPanel  -->
       <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
 
-      <TopPanel :parentState="state" @switchStage="state=$event">
+      <TopPanel @switchStage="state=$event"
+      :parentState="state"
+      :lang="lang">
       </TopPanel>
       </div>
 
-
-
       <div id="MiddlePanel" v-if = "this.state !== 'MenuPage'">
 
-            <div id = "overview" v-if = "this.state === 'OverView'">
+      <div id = "overview" v-if = "this.state === 'OverView'">
 
-        <OverView @switchStage="state=$event">
+        <OverView @switchStage="state=$event"
+        :lang="lang">
         </Overview>
       </div>
 
       <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
-        <BreadAndPatty :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
+        <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
+        :parentState="state"
+        :lang="lang">
+
         </BreadAndPatty>
       </div>
 
       <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
-        <ToppingsAndSauce :parentState="state" @switchTab="state=$event">
+        <ToppingsAndSauce @switchTab="state=$event"
+        :parentState="state"
+        :lang="lang">
         </ToppingsAndSauce>
       </div>
 
       <div id = "vegetables" v-if = "this.state === 'Vegetables'">
-        <Vegetables :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
+        <Vegetables @switchStage="state=$event" @switchTab="state=$event"
+        :parentState="state"
+        :lang="lang">
         </Vegetables>
       </div>
 
       <div id = "drinks" v-if = "this.state === 'Drinks'">
-        <Drinks :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
+        <Drinks @switchStage="state=$event" @switchTab="state=$event"
+        :parentState="state"
+        :lang="lang">
         </Drinks>
       </div>
 
       <div id = "sides" v-if = "this.state === 'Sides'">
-        <Sides :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
+        <Sides @switchStage="state=$event" @switchTab="state=$event"
+        :parentState="state"
+        :lang="lang">
         </Sides>
       </div>
-      <YourOrder
-      :chosenIngredients ="chosenIngredients"
-      :ui-labels="uiLabels"
-      :lang="lang">
-      </YourOrder>
-      <h1>{{ uiLabels.ordersInQueue }}</h1>
+      <div id="basket">
+        <YourOrder
+        :chosenIngredients ="chosenIngredients"
+        :ui-labels="uiLabels"
+        :lang="lang">
+        </YourOrder>
+      </div>
     </div>
 
 <!-- </div> -->
@@ -175,6 +189,7 @@ export default {
       this.chosenIngredients.push(item);
       this.price += +item.selling_price;
     },
+
     placeOrder: function () {
       var i,
       //Wrap the order in an object
@@ -249,6 +264,9 @@ grid-template-rows: 1fr;
 
 #ToggleBar{
   grid-row: 3;
+}
+#basket {
+  grid-area: Kundkorg;
 }
 
 .example-panel {

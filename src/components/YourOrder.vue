@@ -33,7 +33,7 @@ props:{
   background-color:  #F0FFFF;
 }
 .yourOrder {
-  border-bottom: 1px solid  	#000000;
+  border-bottom: 1px solid #000000;
   margin-left: 0.1em;
   margin-top: 0.1em;
 }

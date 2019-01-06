@@ -63,7 +63,8 @@ export default{
   },
 
   props: {
-    parentState: String
+    parentState: String,
+    lang: String
   },
 
   components: {
@@ -76,6 +77,9 @@ export default{
     switchTab: function(tab) {
       this.$emit('switchTab', tab);
     },
+    addToOrder : function(item) {
+      this.$parent.addToOrder(item);
+    }
   }
 }
 

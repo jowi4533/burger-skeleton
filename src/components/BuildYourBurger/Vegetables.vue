@@ -47,7 +47,8 @@ export default{
   },
 
   props: {
-    parentState: String
+    parentState: String,
+    lang: String
   },
 
   components: {
@@ -64,6 +65,9 @@ export default{
     switchStage: function(stage) {
       this.$emit('switchStage', stage);
     },
+    addToOrder : function(item) {
+      this.$parent.addToOrder(item);
+    }
   }
 }
 
