@@ -3,8 +3,8 @@
 <div id="ingredientButtons">
 
   <button :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
-  <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
-  <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
+  <button class="toppingsTab" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
+  <button class="vegetablesTab" v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
 
 </div>
 
@@ -88,6 +88,7 @@ mixins: [sharedVueStuff],
 
 
 <style scoped>
+
 h4 {
   margin: 1%;
 }
@@ -98,6 +99,18 @@ h4 {
 
 .tabButton {
   background-color: rgb(40,170,150);
+}
+
+.toppingsTab {
+  position: absolute;
+  top: 5.85%;
+
+}
+
+.vegetablesTab {
+  position: absolute;
+  top: 5.85%;
+  left: 44.325%;
 }
 
 #BreadAndPattyContainer{
@@ -142,15 +155,9 @@ h4 {
   float: right;
 }
 
-
 button {
   border-style: solid;
   height: 3em;
 }
 
-
-
-
-
-/*  --------------------------  */
 </style>
