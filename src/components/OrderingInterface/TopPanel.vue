@@ -37,12 +37,11 @@ export default{
 
   name: 'TopPanel',
   props: {
-    parentState: String,
-    lang: String
+    parentState: String
   },
-  data: function() {
-    return {
-    }
+  created: function() {
+    this.lang = this.$parent.lang;
+    this.uiLabels = this.$parent.uiLabels;
   },
 
   mixins: [sharedVueStuff],

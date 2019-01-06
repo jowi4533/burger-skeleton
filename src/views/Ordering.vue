@@ -39,8 +39,7 @@
 
       <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
         <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
-        :parentState="state"
-        :lang="lang">
+        :parentState="state">
 
         </BreadAndPatty>
       </div>

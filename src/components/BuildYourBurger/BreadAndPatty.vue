@@ -58,11 +58,14 @@ export default {
   // },
 
   props: {
-    parentState: String,
-    lang: String
+    parentState: String
   },
   components: {
     Ingredient
+  },
+
+  created: function() {
+    this.lang = this.$parent.lang;
   },
 
 mixins: [sharedVueStuff],
