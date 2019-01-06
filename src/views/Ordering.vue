@@ -2,12 +2,16 @@
   <div id="OrderingContainer">
 
     <div id ="menupage" v-if ="this.state === 'MenuPage'">
-      <MenuPage>
+      <MenuPage @switchStage="state=$event" @switchLanguage="switchLang()"
+      :ui-labels="uiLabels"
+      :lang="lang">
       </MenuPage>
+
     </div>
 
     <div id = "payment" v-if = "this.state === 'Payment'">
-      <Payment :parentState="state" @switchStage="state=$event" @switchTab="state=$event">
+      <Payment @switchStage="state=$event" @switchTab="state=$event"
+      :parentState="state">
       </Payment>
 
     </div>
@@ -57,7 +61,6 @@
 
     <div id="ordering" v-if="this.state === 'Ordering'">
       <img class="example-panel" src="@/assets/exampleImage.jpg">
-      <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
 
 
       <div id="ingredients_">
