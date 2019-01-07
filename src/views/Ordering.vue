@@ -230,8 +230,7 @@ export default {
 <style scoped>
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #OrderingContainer{
-  margin:auto;
-    width: auto;
+  height: 100vh;  
     /*background-color: rgb(0,100,200);*/
     display: grid;
     grid-template-areas: "TopPanel MiddlePanel ToggleBar";
@@ -290,6 +289,8 @@ grid-template-columns: 80% 20%;
 grid-template-rows: 1fr;
 }
 #basket{
+  float:left;
+  width:100%;
   grid-area: Kundkorg;
 }
 #ToggleBar{

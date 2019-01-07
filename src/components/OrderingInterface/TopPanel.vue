@@ -19,10 +19,6 @@
             {{uiLabels.stageTwo}}
       </h3>
 
-      <h3 v-if="parentState == 'OverView'" class ="heading">
-            {{uiLabels.stageThree}}
-      </h3>
-
     </div>
 
 
@@ -41,9 +37,9 @@ export default{
     lang: String,
     uiLabels: Object
   },
-  data: function() {
-    return {
-    }
+  created: function() {
+    this.lang = this.$parent.lang;
+    this.uiLabels = this.$parent.uiLabels;
   },
 
   //mixins: [sharedVueStuff],
@@ -62,11 +58,7 @@ export default{
 
 <style scoped>
 .heading {
-  margin-top: 2.4%;
-  margin-left: 37.5%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  text-align: center;
 }
 
 #TopPanelContainer {
