@@ -40,8 +40,8 @@
       <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
         <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
         :parentState="state"
-        :lang="lang">
-
+        :lang="lang"
+        :ui-labels="uiLabels">
         </BreadAndPatty>
       </div>
 
@@ -75,7 +75,6 @@
       <div id="basket">
         <YourOrder
         :chosenIngredients ="chosenIngredients"
-        :ui-labels="uiLabels"
         :lang="lang">
         </YourOrder>
       </div>

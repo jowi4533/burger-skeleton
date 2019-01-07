@@ -47,7 +47,7 @@
 
 <script>
 import Ingredient from '@/components/Ingredient.vue'
-import sharedVueStuff from '@/components/sharedVueStuff.js'
+// import sharedVueStuff from '@/components/sharedVueStuff.js'
 export default {
   name: 'BreadAndPatty',
 	// props: {
@@ -59,13 +59,14 @@ export default {
 
   props: {
     parentState: String,
-    lang: String
+    lang: String,
+    uiLabels: Object
   },
   components: {
     Ingredient
   },
 
-mixins: [sharedVueStuff],
+ // mixins: [sharedVueStuff],
 
   methods: {
     switchTab: function(tab) {

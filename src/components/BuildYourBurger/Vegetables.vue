@@ -48,7 +48,7 @@ export default{
 
   props: {
     parentState: String,
-    lang: String
+    lang: String,
   },
 
   components: {
