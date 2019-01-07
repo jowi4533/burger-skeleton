@@ -30,7 +30,8 @@ props:{
   grid-template-rows: 1fr;
   grid-template-areas: "order";
   border: 1px solid  	#000000;
-  
+  font-family: sans-serif, Trebuchet;
+
 }
 .yourOrder {
   border-bottom: 1px solid #000000;

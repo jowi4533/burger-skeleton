@@ -21,6 +21,8 @@
     :item="item"
     :lang="lang"
     :key="item.ingredient_id">
+    <!-- :img="item.ingredient_pic"> -->
+
     </Ingredient>
   </div>
 
