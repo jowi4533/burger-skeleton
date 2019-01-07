@@ -278,6 +278,8 @@ grid-template-columns: 80% 20%;
 grid-template-rows: 1fr;
 }
 #basket{
+  float:left;
+  width:100%;
   grid-area: Kundkorg;
 }
 #ToggleBar{
