@@ -1,15 +1,14 @@
 <template>
 <div id = "BreadAndPattyContainer">
-<div id="ingredientButtons">
-
-  <button :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
-  <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
-  <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
-
-</div>
+  <div id="ingredientButtons">
+    <button :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+    <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
+    <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
+  </div>
 
 <div id="BreadAndPatty">
-  <div id="Bread">
+
+  <div id="BreadContainer">
     <h4> {{uiLabels.bread}} </h4>
     <Ingredient
     class="ingredients"
@@ -26,7 +25,7 @@
     </Ingredient>
   </div>
 
-  <div id="Patty">
+  <div id="PattyContainer">
     <h4> {{uiLabels.patty}} </h4>
     <Ingredient
     class="ingredients"
@@ -49,7 +48,7 @@
 
 <script>
 import Ingredient from '@/components/Ingredient.vue'
-import sharedVueStuff from '@/components/sharedVueStuff.js'
+//import sharedVueStuff from '@/components/sharedVueStuff.js'
 export default {
   name: 'BreadAndPatty',
 	// props: {
@@ -61,13 +60,15 @@ export default {
 
   props: {
     parentState: String,
-    lang: String
+    lang: String,
+    uiLabels: Object,
+    ingredients: Array
   },
   components: {
     Ingredient
   },
 
-mixins: [sharedVueStuff],
+//mixins: [sharedVueStuff],
 
   methods: {
     switchTab: function(tab) {
@@ -88,6 +89,7 @@ mixins: [sharedVueStuff],
 
 
 <style scoped>
+
 h4 {
   margin: 1%;
 }
@@ -103,14 +105,17 @@ h4 {
 
 #BreadAndPattyContainer{
   display: grid;
-  grid-template-areas: "ingredientButtons BreadAndPatty ";
+  grid-template-areas: "ingredientButtons BreadAndPatty";
   grid-template-rows: 15% 85%;
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
-  overflow:hidden;
+  grid-gap: 1em;
+
 }
+
 #ingredientButtons{
   grid-row: 1;
+  position: relative;
 }
 
 /* #next{
@@ -140,14 +145,20 @@ h4 {
    grid-template-rows:50% 50% ;
    grid-template-columns: 2fr;
 }
-#Bread{
+#BreadContainer{
   grid-row: 1;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, calc(7em + 12px));
+  grid-gap: 1em;
 }
-#Patty{
+#PattyContainer{
   grid-row: 2;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, calc(7em + 12px));
+  grid-gap: 1em;
 }
-
-
 
 button {
   border-style: solid;
@@ -155,12 +166,6 @@ button {
   width: 15em;
   font-size: 0.6em;
   padding: 0;
-
 }
 
-
-
-
-
-/*  --------------------------  */
 </style>

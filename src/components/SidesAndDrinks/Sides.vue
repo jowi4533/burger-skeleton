@@ -1,16 +1,11 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
+  <div id="ingredientButtons">
+    <button v-on:click= "switchTab('Drinks')"> {{uiLabels.drinks}} </button>
+    <button :class="{tabButton : parentState === 'Sides'}"> {{uiLabels.sides}} </button>
+  </div>
 
-
-
-  <button v-on:click= "switchTab('Drinks')"> {{uiLabels.drinks}} </button>
-  <button :class="{tabButton : parentState === 'Sides'}"> {{uiLabels.sides}} </button>
-
-
-  <br>
-  <br>
-  <div id="Sides">
-
+    <div id="Sides">
       <h4> {{uiLabels.sides}} </h4>
       <Ingredient
       class="ingredients"
@@ -26,10 +21,10 @@
     </div>
 
 
-  <div id="ToggleBar">
+  <!-- <div id="ToggleBar">
     <button id="next" v-on:click= "switchStage('OverView')"> {{uiLabels.next}} </button>
     <button id="previous" v-on:click= "switchTab('Drinks')"> {{uiLabels.previous}} </button>
-  </div>
+  </div> -->
 
 </div>
 
@@ -37,7 +32,7 @@
 
 <script>
 import Ingredient from '@/components/Ingredient.vue'
-import sharedVueStuff from '@/components/sharedVueStuff.js'
+//import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default{
   name: 'Drinks',
@@ -49,14 +44,16 @@ export default{
 
   props: {
     parentState: String,
-    lang: String
+    lang: String,
+    uiLabels: Object,
+    ingredients: Array
   },
 
   components: {
     Ingredient
   },
 
-  mixins: [sharedVueStuff],
+  //mixins: [sharedVueStuff],
 
   methods: {
     switchTab: function(tab) {
@@ -77,11 +74,21 @@ export default{
 
 
 <style scoped>
+
+#ingredientButtons{
+  grid-row: 1;
+  position: relative;
+}
+
+.ingredients {
+  text-transform: capitalize;
+}
+
 .tabButton {
   background-color: rgb(40,170,150);
 }
 
-#next{
+/* #next{
   position: relative;
   bottom: 0;
   float: right;
@@ -92,11 +99,15 @@ export default{
   bottom: 0;
   float: right;
     background-color: rgb(30,100,200);
-}
+} */
+
 button {
       border-style: solid;
       height: 3em;
-    }
+      width: 15em;
+      font-size: 0.6em;
+      padding: 0;
+}
 
 
 </style>

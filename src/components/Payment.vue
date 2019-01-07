@@ -19,9 +19,11 @@ export default{
     return {
     }
   },
-  
+
   props: {
-    lang: String
+    lang: String,
+    uiLabels: Object,
+    ingredients: Array
   },
 
   methods: {
