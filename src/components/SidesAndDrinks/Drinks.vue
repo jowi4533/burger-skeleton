@@ -33,7 +33,7 @@
 
 <script>
 import Ingredient from '@/components/Ingredient.vue'
-import sharedVueStuff from '@/components/sharedVueStuff.js'
+//import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default{
   name: 'Drinks',
@@ -45,14 +45,16 @@ export default{
 
   props: {
     parentState: String,
-    lang: String
+    lang: String,
+    uiLabels: Object,
+    ingredients: Array
   },
 
   components: {
     Ingredient
   },
 
-  mixins: [sharedVueStuff],
+  //mixins: [sharedVueStuff],
 
   methods: {
     switchTab: function(tab) {
@@ -62,6 +64,9 @@ export default{
     switchStage: function(stage) {
       this.$emit('switchStage', stage);
     },
+    addToOrder : function(item) {
+      this.$parent.addToOrder(item);
+    }
   }
 }
 
@@ -69,12 +74,20 @@ export default{
 
 
 <style scoped>
+
+.ingredients {
+  text-transform: capitalize;
+}
+
 .tabButton {
   background-color: rgb(40,170,150);
 }
 button {
   border-style: solid;
   height: 3em;
+  width: 15em;
+  font-size: 0.6em;
+  padding: 0;
 }
 
 #next{

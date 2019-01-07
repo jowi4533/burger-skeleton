@@ -23,17 +23,17 @@ props:{
 
 </script>
 
-<style>
+<style scoped>
 .yourOrderContainer {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: "order";
   border: 1px solid  	#000000;
-  background-color:  #F0FFFF;
+  
 }
 .yourOrder {
-  border-bottom: 1px solid  	#000000;
+  border-bottom: 1px solid #000000;
   margin-left: 0.1em;
   margin-top: 0.1em;
 }
