@@ -230,7 +230,7 @@ export default {
 <style scoped>
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #OrderingContainer{
-  height: 100vh;  
+  height: 100vh;
     /*background-color: rgb(0,100,200);*/
     display: grid;
     grid-template-areas: "TopPanel MiddlePanel ToggleBar";
@@ -309,5 +309,8 @@ grid-template-rows: 1fr;
   background-color:  rgb(20,100,120);
   /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
+}
+@media (max-width: 450px) {
+    template { font-size: 70%; }
 }
 </style>

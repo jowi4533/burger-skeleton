@@ -145,14 +145,12 @@ h4 {
 }
 #BreadContainer{
   grid-row: 1;
-
   display: grid;
   grid-template-columns: repeat(auto-fit, calc(7em + 12px));
   grid-gap: 1em;
 }
 #PattyContainer{
   grid-row: 2;
-
   display: grid;
   grid-template-columns: repeat(auto-fit, calc(7em + 12px));
   grid-gap: 1em;
