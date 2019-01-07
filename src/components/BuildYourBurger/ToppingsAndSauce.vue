@@ -144,14 +144,14 @@ export default{
 
      display: grid;
      grid-template-columns: repeat(auto-fit, calc(7em + 12px));
-     grid-gap: 0.5em;
+     grid-row-gap: 0.5em;
    }
    #SauceContainer{
      grid-area: Sauce;
 
      display: grid;
      grid-template-columns: repeat(auto-fit, calc(7em + 12px));
-     grid-gap: 0.5em;
+     grid-row-gap: 0.5em;
    }
 /* #next{
   position: relative;
