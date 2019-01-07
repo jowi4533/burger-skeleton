@@ -16,7 +16,7 @@
 
 <script>
 import Ingredient from '@/components/Ingredient.vue'
-import sharedVueStuff from '@/components/sharedVueStuff.js'
+//import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default{
   name: 'overview',
@@ -26,14 +26,16 @@ export default{
   },
 
   props: {
-    lang: String
+    lang: String,
+    uiLabels: Object,
+    ingredients: Array
   },
 
   components: {
     Ingredient
   },
 
-  mixins: [sharedVueStuff],
+  //mixins: [sharedVueStuff],
 
   methods: {
     switchStage: function(stage) {

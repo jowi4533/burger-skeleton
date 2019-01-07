@@ -31,21 +31,22 @@
 </template>
 
 <script ref = "topPanel">
-import sharedVueStuff from '@/components/sharedVueStuff.js'
+//import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default{
 
   name: 'TopPanel',
   props: {
     parentState: String,
-    lang: String
+    lang: String,
+    uiLabels: Object
   },
   data: function() {
     return {
     }
   },
 
-  mixins: [sharedVueStuff],
+  //mixins: [sharedVueStuff],
 
   methods: {
 
