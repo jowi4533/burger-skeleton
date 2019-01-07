@@ -19,10 +19,6 @@
             {{uiLabels.stageTwo}}
       </h3>
 
-      <h3 v-if="parentState == 'OverView'" class ="heading">
-            {{uiLabels.stageThree}}
-      </h3>
-
     </div>
 
 

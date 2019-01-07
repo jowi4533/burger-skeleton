@@ -39,5 +39,9 @@
   "stageOneTabTwo" : "Topping och sås",
   "stageOneTabThree" : "Grönsaker",
   "menuPageHeader" : "Välj vart du vill börja",
-  "cancel" : "Avbryt"
+  "cancel" : "Avbryt",
+  "overViewHeader" : "Översikt av din beställning",
+  "addItemInOverview" : "Lägg till ny vara",
+  "removeItemInOverview" : "Ta bort vara",
+  "purchaseItemsInOverview" : "Betala"
 }
