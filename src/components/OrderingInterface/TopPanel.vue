@@ -5,19 +5,23 @@
 
       <button v-on:click= "switchStage('BreadAndPatty')" :class="{stageButton : parentState === 'BreadAndPatty' || parentState === 'ToppingsAndSauce' || parentState === 'Vegetables'}"> 1 </button>
       <button v-on:click= "switchStage('Drinks')" :class="{stageButton : parentState === 'Drinks' || parentState === 'Sides' }">2</button>
-      <button v-on:click= "switchStage('OverView')" :class="{stageButton : parentState === 'OverView' }">3</button>
-      <button v-on:click= "switchStage('MenuPage')">{{uiLabels.cancel}}</button>
+      <button id="Button3" v-on:click= "switchStage('OverView')" :class="{stageButton : parentState === 'OverView' }">3</button>
 
-      <h3 v-if="parentState == 'BreadAndPatty'
+
+
+
+      <inline id="StageText" v-if="parentState == 'BreadAndPatty'
             || parentState == 'ToppingsAndSauce'
-            || parentState == 'Vegetables'" class ="heading">
+            || parentState == 'Vegetables'" >
             {{uiLabels.stageOne}}
-      </h3>
+      </inline>
 
-      <h3 v-if="parentState == 'Sides'
-            || parentState == 'Drinks'" class ="heading">
+      <inline id="StageText" v-if="parentState == 'Sides'
+            || parentState == 'Drinks'" >
             {{uiLabels.stageTwo}}
-      </h3>
+      </inline>
+
+      <button id="Cancel" v-on:click= "switchStage('MenuPage')">{{uiLabels.cancel}}</button>
 
     </div>
 
@@ -64,8 +68,21 @@ export default{
 #TopPanelContainer {
 display:grid;
 }
+#Button3{
+
+}
+#buildYourBurgerPage{
+  text-align: center;
+}
+#ParentStageText{
+  text-align: center;
+}
+#StageText{
+  display: inline-block;
+}
 button {
   border-style: solid;
+  float:left;
 }
 
 
@@ -95,10 +112,9 @@ button {
 }
 #Cancel {
   float: right;
-  border-radius: 3px;
-  background-color: rgb(254, 69, 69);
-  width: 10em;
-  height: 3em;
+
+
+
 
 }
 
