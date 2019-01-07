@@ -345,6 +345,11 @@ grid-template-columns: 80% 20%;
   /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
 }
+<<<<<<< HEAD
+@media (max-width: 450px) {
+    template { font-size: 70%; }
+}
+=======
 
 @media (max-width: 500px) {
   button#next {height: 2em; width: 6.5em;}
@@ -352,4 +357,5 @@ grid-template-columns: 80% 20%;
 }
 
 
+>>>>>>> f6554b0aea5a4fe829b7b5f5dd3e8082e4e59137
 </style>
