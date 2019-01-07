@@ -230,14 +230,14 @@ export default {
 <style scoped>
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #OrderingContainer{
-  margin:auto;
-    width: auto;
+  height: 100vh;  
     /*background-color: rgb(0,100,200);*/
     display: grid;
     grid-template-areas: "TopPanel MiddlePanel ToggleBar";
     grid-template-columns: 1fr;
     grid-template-rows: 0.1fr 1fr 0.1fr;
     grid-gap: 1em;
+    grid-column-gap: 0;
     border-width: 0.4em;
     border-style: solid;
     border-color: rgb(0, 125, 149);
