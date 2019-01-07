@@ -28,17 +28,14 @@ props:{
 
 <style scoped>
 .yourOrderContainer {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: "order";
+
   border: 1px solid #000000;
-  height:100%
+  height:100%;
 
 }
 .yourOrderTextBox{
-
-
+  height: 1.5em;
+  border-bottom: 1px solid #000000;
 
 }
 .theIngredients{
@@ -54,7 +51,7 @@ li::first-letter {
   padding-left: 0.1em;
   font-size: 1.2em;
   font-weight: bold;
-  border-bottom: 1px solid #000000;
+
 }
 
 </style>
