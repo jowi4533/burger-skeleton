@@ -1,12 +1,10 @@
 <template>
 <div id = "BreadAndPattyContainer">
-<div id="ingredientButtons">
-
-  <button :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
-  <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
-  <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
-
-</div>
+  <div id="ingredientButtons">
+    <button :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+    <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
+    <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
+  </div>
 
 <div id="BreadAndPatty">
 
@@ -105,16 +103,17 @@ h4 {
 
 #BreadAndPattyContainer{
   display: grid;
-  grid-template-areas: "ingredientButtons BreadAndPatty ";
+  grid-template-areas: "ingredientButtons BreadAndPatty";
   grid-template-rows: 15% 85%;
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
-  
-    grid-gap: 1em;
+  grid-gap: 1em;
 
 }
+
 #ingredientButtons{
   grid-row: 1;
+  position: relative;
 }
 
 /* #next{
