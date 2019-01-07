@@ -8,7 +8,7 @@
 
 <div id="ToppingsAndSauce">
 
-  <div id="Toppings">
+  <div id="ToppingContainer">
       <h4> {{uiLabels.toppings}} </h4>
       <Ingredient
       class="ingredients"
@@ -23,7 +23,7 @@
       </Ingredient>
     </div>
 
-    <div id="Sauce">
+    <div id="SauceContainer">
 
         <h4> {{uiLabels.sauce}} </h4>
         <Ingredient
@@ -90,12 +90,6 @@ export default{
 
 <style scoped>
 
-#ingredientButtons{
-  grid-row: 1;
-  position: relative;
-}
-
-
 .tabButton {
   background-color: rgb(40,170,150);
 }
@@ -104,23 +98,42 @@ export default{
   text-transform: capitalize;
 }
 
-button {
-  border-style: solid;
-  height: 3em;
-  width: 15em;
-  font-size: 0.6em;
-  padding: 0;
-}
+
 #ToppingsAndSauceContainer{
   display: grid;
   grid-template-areas: "ingredientButtons ToppingsAndSauce";
-  grid-template-rows: 15% 85%;
+  grid-template-rows: 10% 85%;
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
 
     grid-gap: 1em;
   }
+  #ingredientButtons{
+    grid-row: 1;
+    position: relative;
+  }
+  #ToppingsAndSauce{
+    grid-row: 2;
+    display: grid;
+    grid-template-areas: "Bread Patty";
+     grid-template-rows:50% 50% ;
+     grid-template-columns: 2fr;
+   }
 
+   #ToppingContainer{
+     grid-row: 1;
+
+     display: grid;
+     grid-template-columns: repeat(auto-fit, calc(7em + 12px));
+     grid-gap: 0.5em;
+   }
+   #SauceContainer{
+     grid-row: 2;
+
+     display: grid;
+     grid-template-columns: repeat(auto-fit, calc(7em + 12px));
+     grid-gap: 0.5em;
+   }
 /* #next{
   position: relative;
   bottom: 0;
@@ -134,5 +147,11 @@ button {
   float: right;
   background-color: rgb(30,100,200);
 } */
-
+button {
+  border-style: solid;
+  height: 3em;
+  width: 15em;
+  font-size: 0.6em;
+  padding: 0;
+}
 </style>
