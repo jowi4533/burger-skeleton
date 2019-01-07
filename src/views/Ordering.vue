@@ -270,6 +270,9 @@ export default {
   bottom: 0;
   float: right;
   background-color: rgb(30,200,100);
+  height: 3em;
+  width: 10em;
+  border-radius: 1em;
 }
 
 #previous{
@@ -277,6 +280,9 @@ export default {
   bottom: 0;
   float: right;
   background-color: rgb(30,100,200);
+  height: 3em;
+  width: 10em;
+  border-radius: 1em;
 }
 
 /* #ingredients_ {
@@ -332,4 +338,11 @@ grid-template-rows: 1fr;
   /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
 }
+
+@media (max-width: 500px) {
+  button#next {height: 2em; width: 6.5em;}
+  button#previous {height: 2em; width: 6.5em;}
+}
+
+
 </style>
