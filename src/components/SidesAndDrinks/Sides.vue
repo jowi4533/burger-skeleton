@@ -1,16 +1,11 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
+  <div id="ingredientButtons">
+    <button v-on:click= "switchTab('Drinks')"> {{uiLabels.drinks}} </button>
+    <button :class="{tabButton : parentState === 'Sides'}"> {{uiLabels.sides}} </button>
+  </div>
 
-
-
-  <button v-on:click= "switchTab('Drinks')"> {{uiLabels.drinks}} </button>
-  <button :class="{tabButton : parentState === 'Sides'}"> {{uiLabels.sides}} </button>
-
-
-  <br>
-  <br>
-  <div id="Sides">
-
+    <div id="Sides">
       <h4> {{uiLabels.sides}} </h4>
       <Ingredient
       class="ingredients"
@@ -26,10 +21,10 @@
     </div>
 
 
-  <div id="ToggleBar">
+  <!-- <div id="ToggleBar">
     <button id="next" v-on:click= "switchStage('OverView')"> {{uiLabels.next}} </button>
     <button id="previous" v-on:click= "switchTab('Drinks')"> {{uiLabels.previous}} </button>
-  </div>
+  </div> -->
 
 </div>
 
@@ -80,6 +75,11 @@ export default{
 
 <style scoped>
 
+#ingredientButtons{
+  grid-row: 1;
+  position: relative;
+}
+
 .ingredients {
   text-transform: capitalize;
 }
@@ -88,7 +88,7 @@ export default{
   background-color: rgb(40,170,150);
 }
 
-#next{
+/* #next{
   position: relative;
   bottom: 0;
   float: right;
@@ -99,7 +99,8 @@ export default{
   bottom: 0;
   float: right;
     background-color: rgb(30,100,200);
-}
+} */
+
 button {
       border-style: solid;
       height: 3em;
