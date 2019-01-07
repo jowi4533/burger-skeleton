@@ -254,12 +254,7 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 #OrderingContainer{
-<<<<<<< HEAD
   height: auto;
-=======
-    font-family: 'Quicksand', sans-serif;
-    height: 100vh;
->>>>>>> 7616b5d98c9e4c0d89213c07f0166a4ec792ac43
     /*background-color: rgb(0,100,200);*/
     display: grid;
     grid-template-areas: "TopPanel"
