@@ -273,6 +273,9 @@ export default {
   bottom: 0;
   float: right;
   background-color: rgb(30,200,100);
+  height: 3em;
+  width: 10em;
+  border-radius: 1em;
 }
 
 #previous{
@@ -280,6 +283,9 @@ export default {
   bottom: 0;
   float: right;
   background-color: rgb(30,100,200);
+  height: 3em;
+  width: 10em;
+  border-radius: 1em;
 }
 
 /* #ingredients_ {
@@ -338,4 +344,17 @@ grid-template-columns: 80% 20%;
   /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
 }
+<<<<<<< HEAD
+@media (max-width: 450px) {
+    template { font-size: 70%; }
+}
+=======
+
+@media (max-width: 500px) {
+  button#next {height: 2em; width: 6.5em;}
+  button#previous {height: 2em; width: 6.5em;}
+}
+
+
+>>>>>>> f6554b0aea5a4fe829b7b5f5dd3e8082e4e59137
 </style>
