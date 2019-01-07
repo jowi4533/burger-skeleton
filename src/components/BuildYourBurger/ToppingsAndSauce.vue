@@ -1,12 +1,13 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
-
+<div id="ingredientButtons">
   <button v-on:click= "switchTab('BreadAndPatty')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
   <button :class="{tabButton : parentState === 'ToppingsAndSauce'}"> {{uiLabels.toppingsandsauce}} </button>
   <button v-on:click= "switchTab('Vegetables')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.veggies}} </button>
 
-  <br>
-  <br>
+
+
+</div>
 <div id="ToppingsAndSauce">
   <div id="Toppings">
 
@@ -106,7 +107,36 @@ button {
   font-size: 0.6em;
   padding: 0;
 }
+#ToppingsAndSauceContainer{
+  display: grid;
+  grid-template-areas: "ingredientButtons ToppingsAndSauce";
+  grid-template-rows: 15% 85%;
+  grid-template-columns: 1fr;
+    /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
 
+    grid-gap: 1em;
+  }
+
+#ToppingsAndSauce{
+  grid-row: 2;
+  display: grid;
+  grid-template-areas: "Toppings Sauce";
+   grid-template-rows:50% 50% ;
+   grid-template-columns: 2fr;
+}
+#Toppings{
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, calc(7em + 12px));
+  grid-gap: 0.5em;
+}
+
+#Sauce{
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, calc(7em + 12px));
+  grid-gap: 0.5em;
+}
 #next{
   position: relative;
   bottom: 0;

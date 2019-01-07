@@ -109,7 +109,7 @@ h4 {
   grid-template-rows: 15% 85%;
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
-  overflow:hidden;
+  
     grid-gap: 1em;
 
 }
@@ -149,14 +149,14 @@ h4 {
 
   display: grid;
   grid-template-columns: repeat(auto-fit, calc(7em + 12px));
-  grid-gap: 1em;
+  grid-gap: 0.5em;
 }
 #PattyContainer{
   grid-row: 2;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, calc(7em + 12px));
-  grid-gap: 1em;
+  grid-gap: 0.5em;
 }
 
 button {

@@ -238,6 +238,7 @@ export default {
     grid-template-columns: 1fr;
     grid-template-rows: 0.1fr 1fr 0.1fr;
     grid-gap: 1em;
+    grid-column-gap: 0;
     border-width: 0.4em;
     border-style: solid;
     border-color: rgb(0, 125, 149);
