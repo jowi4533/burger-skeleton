@@ -10,12 +10,14 @@
 
       <h3 v-if="parentState == 'BreadAndPatty'
             || parentState == 'ToppingsAndSauce'
-            || parentState == 'Vegetables'" class ="heading">
+            || parentState == 'Vegetables'"
+            class ="heading">
             {{uiLabels.stageOne}}
       </h3>
 
       <h3 v-if="parentState == 'Sides'
-            || parentState == 'Drinks'" class ="heading">
+            || parentState == 'Drinks'"
+            class ="heading">
             {{uiLabels.stageTwo}}
       </h3>
 
