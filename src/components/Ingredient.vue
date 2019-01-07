@@ -3,7 +3,7 @@
     <label>
       <button v-on:click="incrementCounter">{{ counter }}</button>
       {{item["ingredient_"+ lang]}}, {{item.selling_price}}:-
-      <img :src="/assets/item.ingredient_img">
+    
     </label>
   </span>
 </template>
