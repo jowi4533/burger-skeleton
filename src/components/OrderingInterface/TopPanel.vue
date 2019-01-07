@@ -58,11 +58,7 @@ export default{
 
 <style scoped>
 .heading {
-  margin-top: 2.4%;
-  margin-left: 37.5%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  text-align: center;
 }
 
 #TopPanelContainer {
