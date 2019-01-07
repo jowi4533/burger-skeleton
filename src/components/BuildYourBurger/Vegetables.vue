@@ -1,15 +1,13 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
-
-  <button v-on:click= "switchTab('BreadAndPatty')"> {{uiLabels.breadandpatty}} </button>
-  <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
-  <button :class="{tabButton : parentState === 'Vegetables'}"> {{uiLabels.veggies}} </button>
-
-  <br>
-  <br>
+  <div id="ingredientButtons">
+    <button v-on:click= "switchTab('BreadAndPatty')"> {{uiLabels.breadandpatty}} </button>
+    <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
+    <button :class="{tabButton : parentState === 'Vegetables'}"> {{uiLabels.veggies}} </button>
+  </div>
 
   <div id="Vegetables">
-
+    <div id="VegetablesContainer">
       <h4> {{uiLabels.veggies}} </h4>
       <Ingredient
       class="ingredients"
@@ -25,13 +23,13 @@
     </div>
 
 
-  <div id="ToggleBar">
+  <!-- <div id="ToggleBar">
     <button id="next" v-on:click= "switchStage('Drinks')"> {{uiLabels.next}} </button>
     <button id="previous" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.previous}} </button>
-  </div>
+  </div> -->
 
 </div>
-
+</div>
 </template>
 
 <script>
@@ -79,6 +77,12 @@ export default{
 
 <style scoped>
 
+#ingredientButtons{
+  grid-row: 1;
+  position: relative;
+}
+
+
 .ingredients {
   text-transform: capitalize;
 }
@@ -94,8 +98,7 @@ button {
   padding: 0;
 }
 
-
-#next{
+/* #next{
   position: relative;
   bottom: 0;
   float: right;
@@ -106,6 +109,6 @@ button {
   bottom: 0;
   float: right;
   background-color: rgb(30,100,200);
-}
+} */
 
 </style>

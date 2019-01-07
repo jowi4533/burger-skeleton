@@ -1,15 +1,14 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
+  <div id="ingredientButtons">
+    <button v-on:click= "switchTab('BreadAndPatty')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+    <button :class="{tabButton : parentState === 'ToppingsAndSauce'}"> {{uiLabels.toppingsandsauce}} </button>
+    <button v-on:click= "switchTab('Vegetables')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.veggies}} </button>
+  </div>
 
-  <button v-on:click= "switchTab('BreadAndPatty')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
-  <button :class="{tabButton : parentState === 'ToppingsAndSauce'}"> {{uiLabels.toppingsandsauce}} </button>
-  <button v-on:click= "switchTab('Vegetables')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.veggies}} </button>
-
-  <br>
-  <br>
 <div id="ToppingsAndSauce">
-  <div id="Toppings">
 
+  <div id="Toppings">
       <h4> {{uiLabels.toppings}} </h4>
       <Ingredient
       class="ingredients"
@@ -41,10 +40,10 @@
       </div>
     </div>
 
-  <div id="ToggleBar">
+  <!-- <div id="ToggleBar">
     <button id="next" v-on:click= "switchTab('Vegetables')"> {{uiLabels.next}} </button>
     <button id="previous" v-on:click= "switchTab('BreadAndPatty')"> {{uiLabels.previous}} </button>
-  </div>
+  </div> -->
 
 </div>
 
@@ -91,6 +90,12 @@ export default{
 
 <style scoped>
 
+#ingredientButtons{
+  grid-row: 1;
+  position: relative;
+}
+
+
 .tabButton {
   background-color: rgb(40,170,150);
 }
@@ -107,7 +112,7 @@ button {
   padding: 0;
 }
 
-#next{
+/* #next{
   position: relative;
   bottom: 0;
   float: right;
@@ -119,6 +124,6 @@ button {
   bottom: 0;
   float: right;
   background-color: rgb(30,100,200);
-}
+} */
 
 </style>

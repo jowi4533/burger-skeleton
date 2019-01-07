@@ -241,9 +241,20 @@ export default {
     border-width: 0.4em;
     border-style: solid;
     border-color: rgb(0, 125, 149);
+}
 
+#next{
+  position: relative;
+  bottom: 0;
+  float: right;
+  background-color: rgb(30,200,100);
+}
 
-
+#previous{
+  position: relative;
+  bottom: 0;
+  float: right;
+  background-color: rgb(30,100,200);
 }
 
 /* #ingredients_ {
@@ -278,6 +289,8 @@ grid-template-columns: 80% 20%;
 grid-template-rows: 1fr;
 }
 #basket{
+  float:left;
+  width:100%;
   grid-area: Kundkorg;
 }
 #ToggleBar{
