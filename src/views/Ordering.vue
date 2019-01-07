@@ -40,6 +40,8 @@
         :ui-labels="uiLabels">
         </Overview>
       </div>
+      <div id="AllFoodTabs">
+
 
       <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
         <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
@@ -85,16 +87,17 @@
         :ui-labels="uiLabels">
         </Sides>
       </div>
+      </div>
 
-      <div id="basket">
-
-
+      <div id="Kundkorg">
       <YourOrder
       :chosenIngredients ="chosenIngredients"
       :ui-labels="uiLabels"
       :lang="lang">
       </YourOrder>
-  </div>
+      </div>
+
+
     </div>
 
 <!-- </div> -->
@@ -251,18 +254,18 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 #OrderingContainer{
-    font-family: 'Quicksand', sans-serif;
-    height: 100vh;
+  height: auto;
     /*background-color: rgb(0,100,200);*/
     display: grid;
-    grid-template-areas: "TopPanel MiddlePanel ToggleBar";
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.1fr 1fr 0.1fr;
+    grid-template-areas: "TopPanel"
+                          "MiddlePanel"
+                          "ToggleBar";
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
     grid-gap: 1em;
     grid-column-gap: 0;
-    border-width: 0.4em;
-    border-style: solid;
-    border-color: rgb(0, 125, 149);
+
+
 }
 
 #next{
@@ -307,23 +310,26 @@ export default {
 
 }
 #TopPanel{
-grid-row: 1;
-}
-#MiddlePanel{
-grid-row: 2;
-display: grid;
-grid-template-areas: "AllFoodTabs Kundkorg";
-grid-template-columns: 80% 20%;
-grid-template-rows: 1fr;
-}
-#basket{
-  float:left;
-  width:100%;
-  grid-area: Kundkorg;
+grid-area: TopPanel;
 }
 #ToggleBar{
-  grid-row: 3;
+  grid-area: ToggleBar;
 }
+#MiddlePanel{
+grid-area: MiddlePanel;
+display:grid;
+grid-template-areas: "AllFoodTabs Kundkorg";
+grid-template-columns: 80% 20%;
+/* grid-template-rows: 1fr; */
+}
+ #AllFoodTabs{
+  grid-area: AllFoodTabs;
+}
+#Kundkorg{
+  grid-area: Kundkorg;
+  float:left;
+}
+
 
 .example-panel {
   position: fixed;
