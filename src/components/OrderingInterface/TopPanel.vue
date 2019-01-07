@@ -12,12 +12,23 @@
 
       <inline id="StageText" v-if="parentState == 'BreadAndPatty'
             || parentState == 'ToppingsAndSauce'
+<<<<<<< HEAD
             || parentState == 'Vegetables'" >
+=======
+            || parentState == 'Vegetables'"
+            class ="heading">
+>>>>>>> 7616b5d98c9e4c0d89213c07f0166a4ec792ac43
             {{uiLabels.stageOne}}
       </inline>
 
+<<<<<<< HEAD
       <inline id="StageText" v-if="parentState == 'Sides'
             || parentState == 'Drinks'" >
+=======
+      <h3 v-if="parentState == 'Sides'
+            || parentState == 'Drinks'"
+            class ="heading">
+>>>>>>> 7616b5d98c9e4c0d89213c07f0166a4ec792ac43
             {{uiLabels.stageTwo}}
       </inline>
 

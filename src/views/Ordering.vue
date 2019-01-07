@@ -102,11 +102,9 @@
 
 <!-- </div> -->
 
-<div id="ToggleBar">
-  <button id="next" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.next}} </button>
-  <button id="previous" v-on:click= "switchStage('MenuPage')"> {{uiLabels.previous}} </button>
-
-
+<div id="ToggleBar" v-if = "this.state !== 'MenuPage'">
+  <button id="next" v-on:click= "changeToNextState()"> {{uiLabels.next}} </button>
+  <button id="previous" v-on:click= "changeToPreviousState()"> {{uiLabels.previous}} </button>
 </div>
 
     <div id="ordering" v-if="this.state === 'Ordering'">
@@ -189,6 +187,7 @@ export default {
   // the ordering system and the kitchen
   data: function() { //Note that data is a function!
     return {
+      states: ['MenuPage', 'BreadAndPatty', 'ToppingsAndSauce', 'Vegetables', 'Drinks', 'Sides', 'OverView'],
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
@@ -203,6 +202,26 @@ export default {
   },
 
   methods: {
+
+    getIndexOfState: function () {
+      var indexOfState=this.states.indexOf(this.state)
+      return indexOfState;
+    },
+
+    getStateFromIndex: function (index) {
+      var currentState = this.states[index];
+      return currentState;
+    },
+
+    changeToNextState: function () {
+      let indexOfState = this.getIndexOfState();
+      this.state = this.getStateFromIndex(indexOfState+1);
+    },
+
+    changeToPreviousState: function () {
+      let indexOfState = this.getIndexOfState();
+      this.state = this.getStateFromIndex(indexOfState-1);
+    },
 
     addToOrder: function (item) {
       this.chosenIngredients.push(item);
@@ -232,8 +251,15 @@ export default {
 
 <style scoped>
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
 #OrderingContainer{
+<<<<<<< HEAD
   height: auto;
+=======
+    font-family: 'Quicksand', sans-serif;
+    height: 100vh;
+>>>>>>> 7616b5d98c9e4c0d89213c07f0166a4ec792ac43
     /*background-color: rgb(0,100,200);*/
     display: grid;
     grid-template-areas: "TopPanel"
