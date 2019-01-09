@@ -30,7 +30,7 @@ props:{
 <style scoped>
 
 .scrollableText{
-  max-height: 500px;
+  height: 100%;
   overflow-y: scroll;
 }
 .yourOrderContainer {
