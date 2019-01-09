@@ -345,7 +345,6 @@ grid-template-columns: 80% 20%;
   color: white;
 }
 
-
 @media (max-width: 500px) {
   button#next {height: 2em; width: 6.5em;}
   button#previous {height: 2em; width: 6.5em;}
