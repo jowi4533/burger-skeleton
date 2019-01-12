@@ -102,7 +102,7 @@ export default{
 }
 
 .tabButton {
-  background-color: rgb(40,170,150);
+  background-color: yellow;
 }
 #DrinksAndSidesContainer{
   height: 87vh;
@@ -195,10 +195,13 @@ display:block;
 
 }
 button {
-  border-style: solid;
+  font-family: 'Quicksand', sans-serif;
+  border-style: hidden;
   height: 3em;
   width: 15em;
   font-size: 0.6em;
+  font-weight: bold;
+  margin-right: 1em;
   padding: 0;
 }
 

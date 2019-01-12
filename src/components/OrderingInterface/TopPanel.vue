@@ -62,16 +62,21 @@ export default{
 }
 
 .tabBar {
-  height: 2.3em;
-  width: 2.3em;
+  height: 3.5em;
+  width: 3.5em;
   border-radius: 50%;
   margin-right: 1.5em;
+  margin-left: 1em;
   text-align: center;
+  border-style: hidden;
 }
 
 #TopPanelContainer {
+align-items: center;
+vertical-align: middle;
 display:grid;
-background-color: grey;
+background-color: #b9c0cc;
+height: 4em;
 }
 
 .tabAndText{
@@ -111,10 +116,13 @@ button {
     margin: 0em;
 }
 #Cancel {
+  background-color: red;
+  border-style: hidden;
   float: right;
-  height: 2.3em;
-  width: auto;
-  margin-left: 7.5%;
+  height: 3.5em;
+  width: 7em;
+  margin-left: 5%;
+  margin-right: 2%;
 
 
 
