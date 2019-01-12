@@ -69,7 +69,7 @@
         :ui-labels="uiLabels">
         </Vegetables>
 
-        <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+        <!-- <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button> -->
       </div>
 
       <div id = "drinks" v-if = "this.state === 'Drinks'">
@@ -256,9 +256,12 @@ export default {
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
+
+
 #OrderingContainer{
     font-family: 'Quicksand', sans-serif;
-    height: auto;
+    height:auto;
+    overflow: hidden;
     /*background-color: rgb(0,100,200);*/
     display: grid;
     grid-template-areas: "TopPanel"
@@ -266,7 +269,7 @@ export default {
                           "ToggleBar";
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
-    grid-gap: 0.3em;
+
     grid-column-gap: 0;
 
 
@@ -318,9 +321,13 @@ grid-area: TopPanel;
 }
 #ToggleBar{
   grid-area: ToggleBar;
+  background-color: lightgray;
+
+
 }
 #MiddlePanel{
 grid-area: MiddlePanel;
+background-color: lightgray;
 display:grid;
 grid-template-areas: "AllFoodTabs Kundkorg";
 grid-template-columns: 80% 20%;

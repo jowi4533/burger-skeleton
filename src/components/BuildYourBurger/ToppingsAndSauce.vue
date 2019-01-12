@@ -108,7 +108,7 @@ export default{
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
 
-    grid-gap: 0.3em;
+
   }
   #ingredientButtons{
     display: block;
@@ -129,13 +129,11 @@ export default{
    #ToppingsText{
      grid-area: ToppingsText;
      text-align: center;
-     background-color: darkgreen;
      margin: 0;
    }
    #SauceText{
      grid-area: SauceText;
      text-align: center;
-     background-color: darkgreen;
      margin: 0;
    }
 
@@ -147,8 +145,9 @@ export default{
 
 
      display:grid;
-     grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
-     grid-column-gap: 4em;
+     grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+     grid-column-gap: 2em;
+
    }
    #SauceContainer{
      grid-area: Sauce;
@@ -157,8 +156,9 @@ export default{
 
 
      display:grid;
-     grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
-     grid-column-gap: 4em;
+     grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+     grid-column-gap: 2em;
+
 
    }
 
