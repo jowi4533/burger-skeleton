@@ -266,7 +266,7 @@ export default {
                           "ToggleBar";
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
-    grid-gap: 1em;
+    grid-gap: 0.3em;
     grid-column-gap: 0;
 
 

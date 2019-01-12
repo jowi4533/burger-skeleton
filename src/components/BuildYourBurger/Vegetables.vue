@@ -92,7 +92,7 @@ export default{
   grid-template-rows: auto 95%;
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
-  grid-gap: 1em;
+  grid-gap: 0.3em;
 }
 
 #ingredientButtons{
@@ -110,7 +110,7 @@ display:block;
                       "Resten";
    grid-template-rows:5% 43% 5% auto;
    grid-template-columns: 2fr;
-   grid-row-gap: 0.5em;
+   grid-row-gap: 0.3em;
 }
 #VegetablesText{
   grid-area: VegetablesText;

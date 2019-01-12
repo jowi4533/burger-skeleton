@@ -89,6 +89,7 @@ border-radius: 30%;
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;
+  
 }
 .ingredient_img{
   border: 1px solid #000000;
