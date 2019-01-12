@@ -105,8 +105,10 @@ display:block;
   grid-area: Vegetables;
   display: grid;
   grid-template-areas: "VegetablesText"
-                      "VegetableOptionsContainer";
-   grid-template-rows:5% auto;
+                      "VegetableOptionsContainer"
+                      "RestenText"
+                      "Resten";
+   grid-template-rows:5% 43% 5% auto;
    grid-template-columns: 2fr;
    grid-row-gap: 0.5em;
 }
@@ -119,10 +121,13 @@ display:block;
 #VegetableOptionsContainer{
   grid-area: VegetableOptionsContainer;
 
-  display: grid;
-  grid-template-columns:  repeat(auto-fit, calc(7em + 12px));
-  grid-gap: calc(10px + 10em);
-  grid-row-gap: 1em;
+  overflow-x: scroll;
+  overflow-y:hidden;
+
+
+  display:grid;
+  grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
+  grid-column-gap: 4em;
 }
 
 button {
