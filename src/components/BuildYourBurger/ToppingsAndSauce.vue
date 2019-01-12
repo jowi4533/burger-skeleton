@@ -18,6 +18,7 @@
       v-for="item in ingredients"
       v-if="item.category == 3"
       v-on:increment="addToOrder(item)"
+      v-on:decrease="removeFromOrder(item)"
       :ui-labels="uiLabels"
       :item="item"
       :lang="lang"
@@ -32,6 +33,7 @@
         v-for="item in ingredients"
         v-if="item.category == 5"
         v-on:increment="addToOrder(item)"
+        v-on:decrease="removeFromOrder(item)"
         :ui-labels="uiLabels"
         :item="item"
         :lang="lang"
@@ -80,6 +82,9 @@ export default{
     },
     addToOrder : function(item) {
       this.$parent.addToOrder(item);
+    },
+    removeFromOrder : function(item){
+      this.$parent.removeFromOrder(item);
     }
   }
 }

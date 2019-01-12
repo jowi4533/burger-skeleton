@@ -12,11 +12,13 @@
   <div id="BreadContainer">
 
     <Ingredient
+
     class="ingredients"
     ref="ingredient"
     v-for="item in ingredients"
     v-if="item.category == 1"
     v-on:increment="addToOrder(item)"
+    v-on:decrease="removeFromOrder(item)"
     :ui-labels="uiLabels"
     :item="item"
     :lang="lang"
@@ -32,6 +34,7 @@
     v-for="item in ingredients"
     v-if="item.category == 2"
     v-on:increment="addToOrder(item)"
+    v-on:decrease="removeFromOrder(item)"
     :ui-labels="uiLabels"
     :item="item"
     :lang="lang"
@@ -61,7 +64,7 @@ export default {
     parentState: String,
     lang: String,
     uiLabels: Object,
-    ingredients: Array
+    ingredients: Array,
   },
   components: {
     Ingredient
@@ -79,7 +82,11 @@ export default {
     },
     addToOrder : function(item) {
       this.$parent.addToOrder(item);
+    },
+    removeFromOrder : function(item){
+      this.$parent.removeFromOrder(item);
     }
+
   }
 }
 

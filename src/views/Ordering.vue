@@ -45,6 +45,7 @@
 
       <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
         <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
+        :counter="counter"
         :ingredients="ingredients"
         :parentState="state"
         :lang="lang"
@@ -96,8 +97,6 @@
       :lang="lang">
       </YourOrder>
       </div>
-
-
     </div>
 
 <!-- </div> -->
@@ -112,10 +111,10 @@
       <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
       <div id="ingredients_">
         <h1>{{ uiLabels.ingredients }}</h1>
-
           <Ingredient
             ref="ingredient"
             v-for="item in ingredients"
+            v-on:decrease="removeFromOrder(item)"
             v-on:increment="addToOrder(item)"
             :item="item"
             :lang="lang"
@@ -123,7 +122,7 @@
           </Ingredient>
       </div>
       <div id="chosen_ingredients">
-        <h1>{{ uiLabels.order }} hej</h1>
+        <h1>{{ uiLabels.order }}</h1>
           {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
           <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       </div>
@@ -191,7 +190,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      state: 'MenuPage', //denna var MenuPage
+      state: 'MenuPage',///denna var MenuPage
     }
   },
 
@@ -226,6 +225,13 @@ export default {
     addToOrder: function (item) {
       this.chosenIngredients.push(item);
       this.price += +item.selling_price;
+    },
+    removeFromOrder: function (item){
+      let index = this.chosenIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
+
+
+      this.chosenIngredients.splice(index,1);
+      this.price = this.price - item.selling_price;
     },
     placeOrder: function () {
       var i,

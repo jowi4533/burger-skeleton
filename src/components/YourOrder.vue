@@ -8,7 +8,7 @@
         <li>{{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-</li>
     </div>
   </div>
-  
+
 
 
 
