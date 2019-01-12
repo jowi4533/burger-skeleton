@@ -8,6 +8,7 @@
         <li>{{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-</li>
     </div>
   </div>
+  
 
 
 
@@ -30,12 +31,13 @@ props:{
 <style scoped>
 
 .scrollableText{
-  max-height: 500px;
+  height: 95%;
   overflow-y: scroll;
 }
 .yourOrderContainer {
   border: 1px solid #000000;
-  height:100%;
+  height:87vh;
+  overflow: hidden;
 
 }
 .yourOrderTextBox{
