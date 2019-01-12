@@ -117,13 +117,16 @@ h4 {
   grid-template-rows: auto 95%;
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
-  grid-gap: 1em;
+
 
 }
 
 #ingredientButtons{
 display:block;
   grid-area: ingredientButtons;
+  border-color: black;
+  border:2px;
+
 
 }
 
@@ -157,18 +160,17 @@ display:block;
                       "Patty";
    grid-template-rows:5% auto 5% auto ;
    grid-template-columns: 2fr;
-   grid-row-gap: 0.5em;
+   grid-row-gap: 0.3em;
 }
 #BreadText{
   grid-area: BreadText;
   text-align: center;
-  background-color: darkgreen;
+
   margin: 0;
 }
 #PattyText{
   grid-area: PattyText;
     text-align: center;
-    background-color: darkgreen;
     margin: 0;
 }
 #BreadContainer{
@@ -181,8 +183,8 @@ display:block;
 
 
   display:grid;
-  grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
-  grid-column-gap: 4em;
+  grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+  grid-column-gap: 2em;
 
 }
 #PattyContainer{
@@ -193,8 +195,9 @@ display:block;
 
 
   display:grid;
-  grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
-  grid-column-gap: 4em;
+  grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+  grid-column-gap: 2em;
+
 
 /*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
 

@@ -69,11 +69,15 @@ export default {
 }
 
 .counterBox{
+
 text-align: center;
-width:1.2em;
+vertical-align: bottom;
+border-style: hidden;
+width: 2em;
+height: 1.8em;
 display: inline-block;
 border-radius: 30%;
-border: 1px solid;
+
 
 }
 .plus_button{
@@ -87,7 +91,7 @@ border: 1px solid;
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;
-  vertical-align: 25%;
+
 }
 
 .minus_button_grey{
@@ -100,7 +104,7 @@ border: 1px solid;
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;
-  vertical-align: 25%;
+
 }
 .minus_button_red{
   background-color: #ff4d4d;

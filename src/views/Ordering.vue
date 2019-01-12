@@ -69,6 +69,8 @@
         :lang="lang"
         :ui-labels="uiLabels">
         </Vegetables>
+
+        <!-- <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button> -->
       </div>
 
       <div id = "drinks" v-if = "this.state === 'Drinks'">
@@ -113,6 +115,7 @@
         <h1>{{ uiLabels.ingredients }}</h1>
           <Ingredient
             ref="ingredient"
+            v-if="item.stock > 1"
             v-for="item in ingredients"
             v-on:decrease="removeFromOrder(item)"
             v-on:increment="addToOrder(item)"
@@ -259,8 +262,12 @@ export default {
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
+
+
 #OrderingContainer{
-  height: auto;
+    font-family: 'Quicksand', sans-serif;
+    height:auto;
+    overflow: hidden;
     /*background-color: rgb(0,100,200);*/
     display: grid;
     grid-template-areas: "TopPanel"
@@ -268,7 +275,7 @@ export default {
                           "ToggleBar";
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
-    grid-gap: 1em;
+
     grid-column-gap: 0;
 
 
@@ -280,7 +287,7 @@ export default {
   float: right;
   background-color: rgb(30,200,100);
   height: 3em;
-  width: 10em;
+  width: 9.425em;
   border-radius: 1em;
 }
 
@@ -290,7 +297,7 @@ export default {
   float: right;
   background-color: rgb(30,100,200);
   height: 3em;
-  width: 10em;
+  width: 9.425em;
   border-radius: 1em;
 }
 
@@ -320,9 +327,13 @@ grid-area: TopPanel;
 }
 #ToggleBar{
   grid-area: ToggleBar;
+  background-color: lightgray;
+
+
 }
 #MiddlePanel{
 grid-area: MiddlePanel;
+background-color: lightgray;
 display:grid;
 grid-template-areas: "AllFoodTabs Kundkorg";
 grid-template-columns: 80% 20%;
@@ -355,7 +366,5 @@ grid-template-columns: 80% 20%;
   button#next {height: 2em; width: 6.5em;}
   button#previous {height: 2em; width: 6.5em;}
 }
-
-
 
 </style>
