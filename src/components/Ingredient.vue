@@ -1,13 +1,21 @@
 <template>
   <div class="ingredient">
     <div class="ingredient_name">
-      <div class="a">
+      <div>
           {{item["ingredient_"+ lang]}},{{item.selling_price}}:-
       </div>
     </div>
     <div class="ingredient_img" align= "center">
     </div>
-      <button v-on:click="incrementCounter">{{ counter }}</button>
+    <div class="all_buttons"align="center">
+        <button class ="minus_button"></button>
+        <div class = "counterBox">{{ counter }}</div>
+        <button class ="plus_button"v-on:click="incrementCounter"></button>
+
+
+
+    </div>
+      <!-- <button v-on:click="incrementCounter">{{ counter }}</button> -->
   </div>
 </template>
 <script>
@@ -32,11 +40,53 @@ export default {
     },
     resetCounter: function () {
       this.counter = 0;
+    },
+    decreaseCounter: function(){
+      this.counter -= 1 ;
     }
   }
 }
 </script>
 <style scoped>
+
+.all_button{
+
+}
+
+.counterBox{
+text-align: center;
+width:1.2em;
+display: inline-block;
+border-radius: 30%;
+border: 1px solid;
+
+}
+.plus_button{
+  display: inline-block;
+  background-color:white;
+  width: 2.7em;
+  height: 2.7em;
+  background-color: lightgreen;
+  border-radius: 50%;
+  background-image: url('~@/assets/plus_button.png');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+  vertical-align: 15%;
+}
+.minus_button{
+  display: inline-block;
+  background-color:white;
+  width: 2.7em;
+  height: 2.7em;
+  background-color: #ff4d4d;
+  border-radius: 50%;
+  background-image: url('~@/assets/minus_button.png');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+  vertical-align: 15%;
+}
 .ingredient_img{
   border: 1px solid #000000;
   height: 70%;

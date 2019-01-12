@@ -143,6 +143,7 @@ display:block;
 #BreadAndPatty{
   grid-area: BreadAndPatty;
   display: grid;
+
   grid-template-areas: "BreadText"
                       "Bread"
                       "PattyText"
@@ -165,18 +166,34 @@ display:block;
 }
 #BreadContainer{
 
+
   grid-area: Bread;
-  display: grid;
-  grid-template-columns:  repeat(auto-fit, calc(14em + 12px));
-  /* grid-template-columns:  repeat(auto-fit, calc(7em + 12px)); */
-  grid-row-gap: 0.5em;
+
+  overflow-x: scroll;
+  overflow-y:hidden;
+
+
+  display:grid;
+  grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
+  grid-column-gap: 4em;
 
 }
 #PattyContainer{
+
   grid-area: Patty;
-  display: grid;
-  grid-template-columns:  repeat(auto-fit, calc(10em + 12px));
-  grid-row-gap: 0.5em;
+  overflow-x: scroll;
+  overflow-y:hidden;
+
+
+  display:grid;
+  grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
+  grid-column-gap: 4em;
+
+/*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
+
+}
+::-webkit-scrollbar {
+ display: none;
 }
 
 button {

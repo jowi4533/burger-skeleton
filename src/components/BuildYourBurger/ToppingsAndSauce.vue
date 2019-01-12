@@ -142,17 +142,27 @@ export default{
    #ToppingContainer{
      grid-area: Toppings;
 
-     display: grid;
-     grid-template-columns: repeat(auto-fit, calc(8em + 12px));
-     grid-row-gap: 0.5em;
+     overflow-x: scroll;
+     overflow-y:hidden;
+
+
+     display:grid;
+     grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
+     grid-column-gap: 4em;
    }
    #SauceContainer{
      grid-area: Sauce;
+     overflow-x: scroll;
+     overflow-y:hidden;
 
-     display: grid;
-     grid-template-columns: repeat(auto-fit, calc(8em + 12px));
-     grid-row-gap: 0.5em;
+
+     display:grid;
+     grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
+     grid-column-gap: 4em;
+
    }
+
+
 /* #next{
   position: relative;
   bottom: 0;
