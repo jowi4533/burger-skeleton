@@ -72,7 +72,7 @@ border: 1px solid;
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;
-  vertical-align: 15%;
+
 }
 .minus_button{
   display: inline-block;
@@ -85,7 +85,7 @@ border: 1px solid;
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;
-  vertical-align: 15%;
+
 }
 .ingredient_img{
   border: 1px solid #000000;
