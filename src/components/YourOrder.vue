@@ -1,12 +1,14 @@
 <template>
 <div class = "yourOrderContainer">
   <div class="yourOrderTextBox">
-    <div class ="YourOrderText">{{uiLabels.yourOrder}}</div>
+    <div class ="yourOrderText">{{uiLabels.yourOrder}}</div>
       </div>
+      <div class="scrollableText">
     <div class="theIngredients" v-for ="ingredient in chosenIngredients">
         <li>{{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-</li>
     </div>
-
+  </div>
+  
 
 
 
@@ -27,18 +29,20 @@ props:{
 </script>
 
 <style scoped>
+
+.scrollableText{
+  height: 95%;
+  overflow-y: scroll;
+}
 .yourOrderContainer {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: "order";
   border: 1px solid #000000;
-  height:100%
+  height:87vh;
+  overflow: hidden;
 
 }
 .yourOrderTextBox{
-
-
+  height: 1.5em;
+  border-bottom: 1px solid #000000;
 
 }
 .theIngredients{
@@ -49,12 +53,19 @@ li{
 li::first-letter {
   text-transform: capitalize;
 }
-.YourOrderText{
+.yourOrderText{
   padding-top: 0.155em;
   padding-left: 0.1em;
   font-size: 1.2em;
   font-weight: bold;
-  border-bottom: 1px solid #000000;
 }
+@media (max-width: 500px) {
+    div.yourOrderText { font-size: 0.7em; }
+    div.theIngredients {font-size: 0.7em;}
+    div.yourOrderTextBox {height: 1em;}
+
+}
+
+
 
 </style>

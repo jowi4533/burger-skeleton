@@ -8,8 +8,10 @@
 
 <div id="ToppingsAndSauce">
 
-  <div id="Toppings">
-      <h4> {{uiLabels.toppings}} </h4>
+      <h4 id="ToppingsText"> {{uiLabels.toppings}} </h4>
+      <h4 id="SauceText"> {{uiLabels.sauce}} </h4>
+
+  <div id="ToppingContainer">
       <Ingredient
       class="ingredients"
       ref="ingredient"
@@ -23,9 +25,7 @@
       </Ingredient>
     </div>
 
-    <div id="Sauce">
-
-        <h4> {{uiLabels.sauce}} </h4>
+    <div id="SauceContainer">
         <Ingredient
         class="ingredients"
         ref="ingredient"
@@ -90,12 +90,6 @@ export default{
 
 <style scoped>
 
-#ingredientButtons{
-  grid-row: 1;
-  position: relative;
-}
-
-
 .tabButton {
   background-color: rgb(40,170,150);
 }
@@ -104,14 +98,61 @@ export default{
   text-transform: capitalize;
 }
 
-button {
-  border-style: solid;
-  height: 3em;
-  width: 15em;
-  font-size: 0.6em;
-  padding: 0;
-}
 
+#ToppingsAndSauceContainer{
+    height: 87vh;
+  display: grid;
+  grid-template-areas: "ingredientButtons"
+                        "ToppingsAndSauce";
+  grid-template-rows: auto 95%;
+  grid-template-columns: 1fr;
+    /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
+
+    grid-gap: 1em;
+  }
+  #ingredientButtons{
+    display: block;
+    grid-area: ingredientButtons;
+
+  }
+  #ToppingsAndSauce{
+    grid-row: ToppingsAndSauce;
+    display: grid;
+    grid-template-areas: "ToppingsText"
+                        "Toppings"
+                        "SauceText"
+                        "Sauce";
+     grid-template-rows:5% auto 5% auto ;
+     grid-template-columns: 2fr;
+     grid-row-gap: 0.5em;
+   }
+   #ToppingsText{
+     grid-area: ToppingsText;
+     text-align: center;
+     background-color: darkgreen;
+     margin: 0;
+   }
+   #SauceText{
+     grid-area: SauceText;
+     text-align: center;
+     background-color: darkgreen;
+     margin: 0;
+   }
+
+   #ToppingContainer{
+     grid-area: Toppings;
+
+     display: grid;
+     grid-template-columns: repeat(auto-fit, calc(8em + 12px));
+     grid-row-gap: 0.5em;
+   }
+   #SauceContainer{
+     grid-area: Sauce;
+
+     display: grid;
+     grid-template-columns: repeat(auto-fit, calc(8em + 12px));
+     grid-row-gap: 0.5em;
+   }
 /* #next{
   position: relative;
   bottom: 0;
@@ -125,5 +166,11 @@ button {
   float: right;
   background-color: rgb(30,100,200);
 } */
-
+button {
+  border-style: solid;
+  height: 3em;
+  width: 15em;
+  font-size: 0.6em;
+  padding: 0;
+}
 </style>

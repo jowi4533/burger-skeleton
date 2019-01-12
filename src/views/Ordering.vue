@@ -5,105 +5,106 @@
       <MenuPage @switchStage="state=$event" @switchLanguage="switchLang()"
       :ui-labels="uiLabels"
       :lang="lang">
-    </MenuPage>
+      </MenuPage>
 
-  </div>
+    </div>
 
-  <div id = "payment" v-if = "this.state === 'Payment'">
-    <Payment @switchStage="state=$event"
-    :parentState="state"
-    :lang="lang"
-    :ui-labels="uiLabels">
-  </Payment>
+    <div id = "payment" v-if = "this.state === 'Payment'">
+      <Payment @switchStage="state=$event"
+      :parentState="state"
+      :lang="lang"
+      :ui-labels="uiLabels">
+      </Payment>
 
-</div>
+    </div>
 
-<!-- <div id = "orderingComponents" v-if = "this.state !== 'MenuPage'"> -->
-<!-- Everything that uses topPanel  -->
-<div id="TopPanel" v-if = "this.state !== 'MenuPage'">
+    <!-- <div id = "orderingComponents" v-if = "this.state !== 'MenuPage'"> -->
+      <!-- Everything that uses topPanel  -->
+      <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
 
-  <TopPanel @switchStage="state=$event"
-  :parentState="state"
-  :lang="lang"
-  :ui-labels="uiLabels">
-</TopPanel>
-</div>
-
-
-
-<div id="MiddlePanel" v-if = "this.state !== 'MenuPage'">
-
-  <div id = "overview" v-if = "this.state === 'OverView'">
-
-    <OverView @switchStage="state=$event"
-    :lang="lang"
-    :ui-labels="uiLabels">
-  </Overview>
-</div>
-
-<div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
-  <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
-  :ingredients="ingredients"
-  :parentState="state"
-  :lang="lang"
-  :ui-labels="uiLabels">
-</BreadAndPatty>
-</div>
-
-<div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
-  <ToppingsAndSauce @switchTab="state=$event"
-  :ingredients="ingredients"
-  :parentState="state"
-  :lang="lang"
-  :ui-labels="uiLabels">
-</ToppingsAndSauce>
-</div>
-
-<div id = "vegetables" v-if = "this.state === 'Vegetables'">
-  <Vegetables @switchStage="state=$event" @switchTab="state=$event"
-  :ingredients="ingredients"
-  :parentState="state"
-  :lang="lang"
-  :ui-labels="uiLabels">
-</Vegetables>
-</div>
-
-<div id = "drinks" v-if = "this.state === 'Drinks'">
-  <Drinks @switchStage="state=$event" @switchTab="state=$event"
-  :ingredients="ingredients"
-  :parentState="state"
-  :lang="lang"
-  :ui-labels="uiLabels">
-</Drinks>
-</div>
-
-<div id = "sides" v-if = "this.state === 'Sides'">
-  <Sides @switchStage="state=$event" @switchTab="state=$event"
-  :ingredients="ingredients"
-  :parentState="state"
-  :lang="lang"
-  :ui-labels="uiLabels">
-</Sides>
-</div>
-
-<div id="basket">
+      <TopPanel @switchStage="state=$event"
+      :parentState="state"
+      :lang="lang"
+      :ui-labels="uiLabels">
+      </TopPanel>
+      </div>
 
 
-  <YourOrder
-  :chosenIngredients ="chosenIngredients"
-  :ui-labels="uiLabels"
-  :lang="lang">
-</YourOrder>
-</div>
-</div>
+
+      <div id="MiddlePanel" v-if = "this.state !== 'MenuPage'">
+
+            <div id = "overview" v-if = "this.state === 'OverView'">
+
+        <OverView @switchStage="state=$event"
+        :lang="lang"
+        :ui-labels="uiLabels">
+        </Overview>
+      </div>
+      <div id="AllFoodTabs">
+
+
+      <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
+        <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
+        :ingredients="ingredients"
+        :parentState="state"
+        :lang="lang"
+        :ui-labels="uiLabels">
+        </BreadAndPatty>
+      </div>
+
+      <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
+        <ToppingsAndSauce @switchTab="state=$event"
+        :ingredients="ingredients"
+        :parentState="state"
+        :lang="lang"
+        :ui-labels="uiLabels">
+        </ToppingsAndSauce>
+      </div>
+
+      <div id = "vegetables" v-if = "this.state === 'Vegetables'">
+        <Vegetables @switchStage="state=$event" @switchTab="state=$event"
+        :ingredients="ingredients"
+        :parentState="state"
+        :lang="lang"
+        :ui-labels="uiLabels">
+        </Vegetables>
+      </div>
+
+      <div id = "drinks" v-if = "this.state === 'Drinks'">
+        <Drinks @switchStage="state=$event" @switchTab="state=$event"
+        :ingredients="ingredients"
+        :parentState="state"
+        :lang="lang"
+        :ui-labels="uiLabels">
+        </Drinks>
+      </div>
+
+      <div id = "sides" v-if = "this.state === 'Sides'">
+        <Sides @switchStage="state=$event" @switchTab="state=$event"
+        :ingredients="ingredients"
+        :parentState="state"
+        :lang="lang"
+        :ui-labels="uiLabels">
+        </Sides>
+      </div>
+      </div>
+
+      <div id="Kundkorg">
+      <YourOrder
+      :chosenIngredients ="chosenIngredients"
+      :ui-labels="uiLabels"
+      :lang="lang">
+      </YourOrder>
+      </div>
+
+
+    </div>
 
 <!-- </div> -->
 
-<div id="ToggleBar">
-  <button id="next" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.next}} </button>
-  <button id="previous" v-on:click= "switchStage('MenuPage')"> {{uiLabels.previous}} </button>
-
-
+<div id="ToggleBar" v-if = "this.state !== 'MenuPage'">
+  <button id="next" v-on:click= "changeToNextState()"> {{uiLabels.next}} </button>
+  <button id="previous" v-on:click= "changeToPreviousState()"> {{uiLabels.previous}} </button>
 </div>
 
 <div id="ordering" v-if="this.state === 'Ordering'">
@@ -186,6 +187,7 @@ export default {
   // the ordering system and the kitchen
   data: function() { //Note that data is a function!
     return {
+      states: ['MenuPage', 'BreadAndPatty', 'ToppingsAndSauce', 'Vegetables', 'Drinks', 'Sides', 'OverView'],
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
@@ -200,6 +202,26 @@ export default {
   },
 
   methods: {
+
+    getIndexOfState: function () {
+      var indexOfState=this.states.indexOf(this.state)
+      return indexOfState;
+    },
+
+    getStateFromIndex: function (index) {
+      var currentState = this.states[index];
+      return currentState;
+    },
+
+    changeToNextState: function () {
+      let indexOfState = this.getIndexOfState();
+      this.state = this.getStateFromIndex(indexOfState+1);
+    },
+
+    changeToPreviousState: function () {
+      let indexOfState = this.getIndexOfState();
+      this.state = this.getStateFromIndex(indexOfState-1);
+    },
 
     addToOrder: function (item) {
       this.chosenIngredients.push(item);
@@ -229,18 +251,21 @@ export default {
 
 <style scoped>
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
 #OrderingContainer{
-  margin:auto;
-  width: auto;
-  /*background-color: rgb(0,100,200);*/
-  display: grid;
-  grid-template-areas: "TopPanel MiddlePanel ToggleBar";
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.1fr 1fr 0.1fr;
-  grid-gap: 1em;
-  border-width: 0.4em;
-  border-style: solid;
-  border-color: rgb(0, 125, 149);
+  height: auto;
+    /*background-color: rgb(0,100,200);*/
+    display: grid;
+    grid-template-areas: "TopPanel"
+                          "MiddlePanel"
+                          "ToggleBar";
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    grid-gap: 1em;
+    grid-column-gap: 0;
+
+
 }
 
 #next{
@@ -248,6 +273,9 @@ export default {
   bottom: 0;
   float: right;
   background-color: rgb(30,200,100);
+  height: 3em;
+  width: 10em;
+  border-radius: 1em;
 }
 
 #previous{
@@ -255,6 +283,9 @@ export default {
   bottom: 0;
   float: right;
   background-color: rgb(30,100,200);
+  height: 3em;
+  width: 10em;
+  border-radius: 1em;
 }
 
 /* #ingredients_ {
@@ -279,23 +310,26 @@ grid-row: 2 / span 3;
 
 }
 #TopPanel{
-  grid-row: 1;
-}
-#MiddlePanel{
-  grid-row: 2;
-  display: grid;
-  grid-template-areas: "AllFoodTabs Kundkorg";
-  grid-template-columns: 80% 20%;
-  grid-template-rows: 1fr;
-}
-#basket{
-  float:left;
-  width:100%;
-  grid-area: Kundkorg;
+grid-area: TopPanel;
 }
 #ToggleBar{
-  grid-row: 3;
+  grid-area: ToggleBar;
 }
+#MiddlePanel{
+grid-area: MiddlePanel;
+display:grid;
+grid-template-areas: "AllFoodTabs Kundkorg";
+grid-template-columns: 80% 20%;
+/* grid-template-rows: 1fr; */
+}
+ #AllFoodTabs{
+  grid-area: AllFoodTabs;
+}
+#Kundkorg{
+  grid-area: Kundkorg;
+  float:left;
+}
+
 
 .example-panel {
   position: fixed;
@@ -310,4 +344,12 @@ grid-row: 2 / span 3;
   /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
 }
+
+@media (max-width: 500px) {
+  button#next {height: 2em; width: 6.5em;}
+  button#previous {height: 2em; width: 6.5em;}
+}
+
+
+
 </style>

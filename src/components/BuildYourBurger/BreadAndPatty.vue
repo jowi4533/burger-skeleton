@@ -7,9 +7,10 @@
   </div>
 
 <div id="BreadAndPatty">
-
+  <h4 id="BreadText"> {{uiLabels.bread}} </h4>
+  <h4 id="PattyText"> {{uiLabels.patty}} </h4>
   <div id="BreadContainer">
-    <h4> {{uiLabels.bread}} </h4>
+
     <Ingredient
     class="ingredients"
     ref="ingredient"
@@ -24,7 +25,7 @@
   </div>
 
   <div id="PattyContainer">
-    <h4> {{uiLabels.patty}} </h4>
+
     <Ingredient
     class="ingredients"
     ref="ingredient"
@@ -102,9 +103,11 @@ h4 {
 }
 
 #BreadAndPattyContainer{
+  height: 87vh;
   display: grid;
-  grid-template-areas: "ingredientButtons BreadAndPatty";
-  grid-template-rows: 15% 85%;
+  grid-template-areas: "ingredientButtons"
+                        "BreadAndPatty";
+  grid-template-rows: auto 95%;
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
   grid-gap: 1em;
@@ -112,8 +115,9 @@ h4 {
 }
 
 #ingredientButtons{
-  grid-row: 1;
-  position: relative;
+display:block;
+  grid-area: ingredientButtons;
+
 }
 
 /* #next{
@@ -137,25 +141,42 @@ h4 {
 } */
 
 #BreadAndPatty{
-  grid-row: 2;
+  grid-area: BreadAndPatty;
   display: grid;
-  grid-template-areas: "Bread Patty";
-   grid-template-rows:50% 50% ;
+  grid-template-areas: "BreadText"
+                      "Bread"
+                      "PattyText"
+                      "Patty";
+   grid-template-rows:5% auto 5% auto ;
    grid-template-columns: 2fr;
+   grid-row-gap: 0.5em;
+}
+#BreadText{
+  grid-area: BreadText;
+  text-align: center;
+  background-color: darkgreen;
+  margin: 0;
+}
+#PattyText{
+  grid-area: PattyText;
+    text-align: center;
+    background-color: darkgreen;
+    margin: 0;
 }
 #BreadContainer{
-  grid-row: 1;
 
+  grid-area: Bread;
   display: grid;
-  grid-template-columns: repeat(auto-fit, calc(7em + 12px));
-  grid-gap: 1em;
+  grid-template-columns:  repeat(auto-fit, calc(14em + 12px));
+  /* grid-template-columns:  repeat(auto-fit, calc(7em + 12px)); */
+  grid-row-gap: 0.5em;
+
 }
 #PattyContainer{
-  grid-row: 2;
-
+  grid-area: Patty;
   display: grid;
-  grid-template-columns: repeat(auto-fit, calc(7em + 12px));
-  grid-gap: 1em;
+  grid-template-columns:  repeat(auto-fit, calc(10em + 12px));
+  grid-row-gap: 0.5em;
 }
 
 button {
