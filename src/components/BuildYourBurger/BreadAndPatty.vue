@@ -12,11 +12,13 @@
   <div id="BreadContainer">
 
     <Ingredient
+
     class="ingredients"
     ref="ingredient"
     v-for="item in ingredients"
     v-if="item.category == 1"
     v-on:increment="addToOrder(item)"
+    v-on:decrease="removeFromOrder(item)"
     :ui-labels="uiLabels"
     :item="item"
     :lang="lang"
@@ -32,6 +34,7 @@
     v-for="item in ingredients"
     v-if="item.category == 2"
     v-on:increment="addToOrder(item)"
+    v-on:decrease="removeFromOrder(item)"
     :ui-labels="uiLabels"
     :item="item"
     :lang="lang"
@@ -61,7 +64,7 @@ export default {
     parentState: String,
     lang: String,
     uiLabels: Object,
-    ingredients: Array
+    ingredients: Array,
   },
   components: {
     Ingredient
@@ -79,7 +82,11 @@ export default {
     },
     addToOrder : function(item) {
       this.$parent.addToOrder(item);
+    },
+    removeFromOrder : function(item){
+      this.$parent.removeFromOrder(item);
     }
+
   }
 }
 
@@ -110,13 +117,16 @@ h4 {
   grid-template-rows: auto 95%;
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
-  grid-gap: 0.3em;
+
 
 }
 
 #ingredientButtons{
 display:block;
   grid-area: ingredientButtons;
+  border-color: black;
+  border:2px;
+
 
 }
 
@@ -155,13 +165,12 @@ display:block;
 #BreadText{
   grid-area: BreadText;
   text-align: center;
-  background-color: darkgreen;
+
   margin: 0;
 }
 #PattyText{
   grid-area: PattyText;
     text-align: center;
-    background-color: darkgreen;
     margin: 0;
 }
 #BreadContainer{
@@ -174,8 +183,8 @@ display:block;
 
 
   display:grid;
-  grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
-  grid-column-gap: 4em;
+  grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+  grid-column-gap: 2em;
 
 }
 #PattyContainer{
@@ -186,8 +195,9 @@ display:block;
 
 
   display:grid;
-  grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
-  grid-column-gap: 4em;
+  grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+  grid-column-gap: 2em;
+
 
 /*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
 

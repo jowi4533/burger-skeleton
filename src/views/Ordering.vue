@@ -45,6 +45,7 @@
 
       <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
         <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
+        :counter="counter"
         :ingredients="ingredients"
         :parentState="state"
         :lang="lang"
@@ -69,7 +70,7 @@
         :ui-labels="uiLabels">
         </Vegetables>
 
-        <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+        <!-- <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button> -->
       </div>
 
       <div id = "drinks" v-if = "this.state === 'Drinks'">
@@ -98,8 +99,6 @@
       :lang="lang">
       </YourOrder>
       </div>
-
-
     </div>
 
 <!-- </div> -->
@@ -114,11 +113,11 @@
       <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
       <div id="ingredients_">
         <h1>{{ uiLabels.ingredients }}</h1>
-
           <Ingredient
             ref="ingredient"
             v-if="item.stock > 1"
             v-for="item in ingredients"
+            v-on:decrease="removeFromOrder(item)"
             v-on:increment="addToOrder(item)"
             :item="item"
             :lang="lang"
@@ -126,7 +125,7 @@
           </Ingredient>
       </div>
       <div id="chosen_ingredients">
-        <h1>{{ uiLabels.order }} hej</h1>
+        <h1>{{ uiLabels.order }}</h1>
           {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
           <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       </div>
@@ -194,7 +193,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      state: 'MenuPage', //denna var MenuPage
+      state: 'MenuPage',///denna var MenuPage
     }
   },
 
@@ -230,6 +229,13 @@ export default {
       this.chosenIngredients.push(item);
       this.price += +item.selling_price;
     },
+    removeFromOrder: function (item){
+      let index = this.chosenIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
+
+
+      this.chosenIngredients.splice(index,1);
+      this.price = this.price - item.selling_price;
+    },
     placeOrder: function () {
       var i,
       //Wrap the order in an object
@@ -256,9 +262,12 @@ export default {
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
+
+
 #OrderingContainer{
     font-family: 'Quicksand', sans-serif;
-    height: auto;
+    height:auto;
+    overflow: hidden;
     /*background-color: rgb(0,100,200);*/
     display: grid;
     grid-template-areas: "TopPanel"
@@ -266,7 +275,7 @@ export default {
                           "ToggleBar";
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
-    grid-gap: 0.3em;
+
     grid-column-gap: 0;
 
 
@@ -318,9 +327,13 @@ grid-area: TopPanel;
 }
 #ToggleBar{
   grid-area: ToggleBar;
+  background-color: lightgray;
+
+
 }
 #MiddlePanel{
 grid-area: MiddlePanel;
+background-color: lightgray;
 display:grid;
 grid-template-areas: "AllFoodTabs Kundkorg";
 grid-template-columns: 80% 20%;

@@ -15,6 +15,7 @@
       v-for="item in ingredients"
       v-if="item.category == 4"
       v-on:increment="addToOrder(item)"
+      v-on:decrease="removeFromOrder(item)"
       :ui-labels="uiLabels"
       :item="item"
       :lang="lang"
@@ -67,6 +68,9 @@ export default{
     },
     addToOrder : function(item) {
       this.$parent.addToOrder(item);
+    },
+    removeFromOrder : function(item){
+      this.$parent.removeFromOrder(item);
     }
   }
 }
@@ -92,12 +96,13 @@ export default{
   grid-template-rows: auto 95%;
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
-  grid-gap: 0.3em;
+
 }
 
 #ingredientButtons{
 display:block;
   grid-area: ingredientButtons;
+
 
 }
 
@@ -108,14 +113,13 @@ display:block;
                       "VegetableOptionsContainer"
                       "RestenText"
                       "Resten";
-   grid-template-rows:5% 43% 5% auto;
+   grid-template-rows:5% auto 5% 43.7%;
    grid-template-columns: 2fr;
    grid-row-gap: 0.3em;
 }
 #VegetablesText{
   grid-area: VegetablesText;
   text-align: center;
-  background-color: darkgreen;
   margin: 0;
 }
 #VegetableOptionsContainer{
@@ -126,8 +130,8 @@ display:block;
 
 
   display:grid;
-  grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
-  grid-column-gap: 4em;
+  grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+  grid-column-gap: 2em;
 }
 
 button {

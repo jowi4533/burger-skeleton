@@ -18,6 +18,7 @@
       v-for="item in ingredients"
       v-if="item.category == 3"
       v-on:increment="addToOrder(item)"
+      v-on:decrease="removeFromOrder(item)"
       :ui-labels="uiLabels"
       :item="item"
       :lang="lang"
@@ -32,6 +33,7 @@
         v-for="item in ingredients"
         v-if="item.category == 5"
         v-on:increment="addToOrder(item)"
+        v-on:decrease="removeFromOrder(item)"
         :ui-labels="uiLabels"
         :item="item"
         :lang="lang"
@@ -80,6 +82,9 @@ export default{
     },
     addToOrder : function(item) {
       this.$parent.addToOrder(item);
+    },
+    removeFromOrder : function(item){
+      this.$parent.removeFromOrder(item);
     }
   }
 }
@@ -108,7 +113,7 @@ export default{
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
 
-    grid-gap: 0.3em;
+
   }
   #ingredientButtons{
     display: block;
@@ -129,13 +134,11 @@ export default{
    #ToppingsText{
      grid-area: ToppingsText;
      text-align: center;
-     background-color: darkgreen;
      margin: 0;
    }
    #SauceText{
      grid-area: SauceText;
      text-align: center;
-     background-color: darkgreen;
      margin: 0;
    }
 
@@ -147,8 +150,9 @@ export default{
 
 
      display:grid;
-     grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
-     grid-column-gap: 4em;
+     grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+     grid-column-gap: 2em;
+
    }
    #SauceContainer{
      grid-area: Sauce;
@@ -157,8 +161,9 @@ export default{
 
 
      display:grid;
-     grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
-     grid-column-gap: 4em;
+     grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+     grid-column-gap: 2em;
+
 
    }
 
