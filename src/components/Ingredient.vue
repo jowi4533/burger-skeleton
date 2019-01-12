@@ -1,10 +1,14 @@
 <template>
-  <span class="ingredient">
-    <label>
+  <div class="ingredient">
+    <div class="ingredient_name">
+      <div class="a">
+          {{item["ingredient_"+ lang]}},{{item.selling_price}}:-
+      </div>
+    </div>
+    <div class="ingredient_img" align= "center">
+    </div>
       <button v-on:click="incrementCounter">{{ counter }}</button>
-      {{item["ingredient_"+ lang]}}, {{item.selling_price}}:-
-    </label>
-  </span>
+  </div>
 </template>
 <script>
 export default {
@@ -33,5 +37,14 @@ export default {
 }
 </script>
 <style scoped>
+.ingredient_img{
+  border: 1px solid #000000;
+  height: 70%;
+  width: 100%;
+  background-image: url('~@/assets/patty/beef.jpg');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
 
 </style>
