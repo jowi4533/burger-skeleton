@@ -148,7 +148,6 @@ export default{
    }
    #SauceContainer{
      grid-area: Sauce;
-
      display: grid;
      grid-template-columns: repeat(auto-fit, calc(8em + 12px));
      grid-row-gap: 0.5em;
