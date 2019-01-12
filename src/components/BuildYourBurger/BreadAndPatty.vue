@@ -164,15 +164,10 @@ display:block;
     margin: 0;
 }
 #BreadContainer{
-<<<<<<< HEAD
-  grid-row: 1;
-=======
   grid-area: Bread;
 
->>>>>>> f6554b0aea5a4fe829b7b5f5dd3e8082e4e59137
   display: grid;
   grid-template-columns:  repeat(auto-fit, calc(7em + 12px));
-  grid-row-gap: 0.5em;
 
 }
 #PattyContainer{
@@ -180,7 +175,7 @@ display:block;
 
   display: grid;
   grid-template-columns:  repeat(auto-fit, calc(7em + 12px));
-  grid-row-gap: 0.5em;
+
 }
 
 button {
