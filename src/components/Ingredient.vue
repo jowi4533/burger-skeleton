@@ -8,9 +8,11 @@
     <div class="ingredient_img" align= "center">
     </div>
     <div class="all_buttons"align="center">
-    <button class ="plus_button"v-on:click="incrementCounter"></button>
-    <div class = "counterBox">{{ counter }}</div>
-    <button class ="minus_button"></button>
+        <button class ="minus_button"></button>
+        <div class = "counterBox">{{ counter }}</div>
+        <button class ="plus_button"v-on:click="incrementCounter"></button>
+
+
 
     </div>
       <!-- <button v-on:click="incrementCounter">{{ counter }}</button> -->
@@ -40,7 +42,7 @@ export default {
       this.counter = 0;
     },
     decreaseCounter: function(){
-      this.counter -=1;
+      this.counter -= 1 ;
     }
   }
 }
@@ -70,7 +72,7 @@ border: 1px solid;
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;
-  vertical-align: 25%;
+  vertical-align: 15%;
 }
 .minus_button{
   display: inline-block;
@@ -83,7 +85,7 @@ border: 1px solid;
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;
-  vertical-align: 25%;
+  vertical-align: 15%;
 }
 .ingredient_img{
   border: 1px solid #000000;
