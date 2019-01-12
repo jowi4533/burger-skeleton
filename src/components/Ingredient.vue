@@ -81,6 +81,7 @@ border-radius: 30%;
 
 }
 .plus_button{
+  border-style: hidden;
   display: inline-block;
   background-color:white;
   width: 2.7em;
@@ -95,6 +96,7 @@ border-radius: 30%;
 }
 
 .minus_button_grey{
+  border-style: hidden;
   display: inline-block;
   width: 2.7em;
   height: 2.7em;
@@ -107,9 +109,11 @@ border-radius: 30%;
 
 }
 .minus_button_red{
+  border-style: hidden;
   background-color: #ff4d4d;
 }
 .plus_button_white{
+  border-style: hidden;
   background-color: white;
 }
 .ingredient_choosen{
