@@ -68,6 +68,8 @@
         :lang="lang"
         :ui-labels="uiLabels">
         </Vegetables>
+
+        <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       </div>
 
       <div id = "drinks" v-if = "this.state === 'Drinks'">
@@ -275,7 +277,7 @@ export default {
   float: right;
   background-color: rgb(30,200,100);
   height: 3em;
-  width: 10em;
+  width: 9.425em;
   border-radius: 1em;
 }
 
@@ -285,7 +287,7 @@ export default {
   float: right;
   background-color: rgb(30,100,200);
   height: 3em;
-  width: 10em;
+  width: 9.425em;
   border-radius: 1em;
 }
 
@@ -345,17 +347,11 @@ grid-template-columns: 80% 20%;
   /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
 }
-<<<<<<< HEAD
-@media (max-width: 450px) {
-    template { font-size: 70%; }
-}
-=======
+
 
 @media (max-width: 500px) {
   button#next {height: 2em; width: 6.5em;}
   button#previous {height: 2em; width: 6.5em;}
 }
 
-
->>>>>>> f6554b0aea5a4fe829b7b5f5dd3e8082e4e59137
 </style>
