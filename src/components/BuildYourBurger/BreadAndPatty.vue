@@ -110,7 +110,7 @@ h4 {
   grid-template-rows: auto 95%;
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
-  grid-gap: 0.3em;
+  grid-gap: 1em;
 
 }
 
@@ -143,14 +143,13 @@ display:block;
 #BreadAndPatty{
   grid-area: BreadAndPatty;
   display: grid;
-
   grid-template-areas: "BreadText"
                       "Bread"
                       "PattyText"
                       "Patty";
    grid-template-rows:5% auto 5% auto ;
    grid-template-columns: 2fr;
-   grid-row-gap: 0.3em;
+   grid-row-gap: 0.5em;
 }
 #BreadText{
   grid-area: BreadText;
@@ -166,34 +165,18 @@ display:block;
 }
 #BreadContainer{
 
-
   grid-area: Bread;
-
-  overflow-x: scroll;
-  overflow-y:hidden;
-
-
-  display:grid;
-  grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
-  grid-column-gap: 4em;
+  display: grid;
+  grid-template-columns:  repeat(auto-fit, calc(14em + 12px));
+  /* grid-template-columns:  repeat(auto-fit, calc(7em + 12px)); */
+  grid-row-gap: 0.5em;
 
 }
 #PattyContainer{
-
   grid-area: Patty;
-  overflow-x: scroll;
-  overflow-y:hidden;
-
-
-  display:grid;
-  grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
-  grid-column-gap: 4em;
-
-/*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
-
-}
-::-webkit-scrollbar {
- display: none;
+  display: grid;
+  grid-template-columns:  repeat(auto-fit, calc(10em + 12px));
+  grid-row-gap: 0.5em;
 }
 
 button {
