@@ -164,18 +164,19 @@ display:block;
     margin: 0;
 }
 #BreadContainer{
-  grid-area: Bread;
 
+  grid-area: Bread;
   display: grid;
-  grid-template-columns:  repeat(auto-fit, calc(7em + 12px));
+  grid-template-columns:  repeat(auto-fit, calc(14em + 12px));
+  /* grid-template-columns:  repeat(auto-fit, calc(7em + 12px)); */
+  grid-row-gap: 0.5em;
 
 }
 #PattyContainer{
   grid-area: Patty;
-
   display: grid;
-  grid-template-columns:  repeat(auto-fit, calc(7em + 12px));
-
+  grid-template-columns:  repeat(auto-fit, calc(10em + 12px));
+  grid-row-gap: 0.5em;
 }
 
 button {
