@@ -38,14 +38,15 @@ export default {
     },
     resetCounter: function () {
       this.counter = 0;
+    },
+    decreaseCounter: function(){
+      this.counter -=1;
     }
   }
 }
 </script>
 <style scoped>
 
-.ingredient{
-}
 .all_button{
 
 }
