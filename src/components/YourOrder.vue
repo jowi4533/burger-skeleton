@@ -1,28 +1,40 @@
 <template>
-<div class = "yourOrderContainer">
-  <div class="yourOrderTextBox">
-    <div class ="yourOrderText">{{uiLabels.yourOrder}}</div>
-      </div>
-      <div class="scrollableText">
-    <div class="theIngredients" v-for ="ingredient in chosenIngredients">
-        <li>{{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-</li>
+  <div class = "yourOrderContainer">
+    <div class="yourOrderTextBox">
+      <div class ="yourOrderText">{{uiLabels.yourOrder}}</div>
+
     </div>
+
+
+    <div class="scrollableText">
+
+      <div class="theBurgers"  v-for = "burger in burgers">
+        <li> Burger: {{burger.state + 1}} </li>
+      </div>
+
+      <div class="theIngredients" v-for ="ingredient in chosenIngredients">
+        <li>{{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-</li>
+      </div>
+
+
+    </div>
+
+
+
+
   </div>
-  
-
-
-
-</div>
 </template>
 
 <script>
 export default {
   name: 'YourOrder',
-props:{
-  uiLabels: Object,
-  lang: String,
-  chosenIngredients: Array
-},
+  props:{
+    uiLabels: Object,
+    lang: String,
+    chosenIngredients: Array,
+    burgers: Array,
+    burgerOrder: Number
+  },
 }
 
 
@@ -60,9 +72,9 @@ li::first-letter {
   font-weight: bold;
 }
 @media (max-width: 500px) {
-    div.yourOrderText { font-size: 0.7em; }
-    div.theIngredients {font-size: 0.7em;}
-    div.yourOrderTextBox {height: 1em;}
+  div.yourOrderText { font-size: 0.7em; }
+  div.theIngredients {font-size: 0.7em;}
+  div.yourOrderTextBox {height: 1em;}
 
 }
 

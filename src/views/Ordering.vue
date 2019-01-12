@@ -2,7 +2,7 @@
   <div id="OrderingContainer">
 
     <div id ="menupage" v-if ="this.state === 'MenuPage'">
-      <MenuPage @switchStage="state=$event" @switchLanguage="switchLang()"
+      <MenuPage @switchStage="state=$event" @switchLanguage="switchLang()" @createNewBurger="newBurger()"
       :ui-labels="uiLabels"
       :lang="lang">
       </MenuPage>
@@ -93,7 +93,9 @@
       <YourOrder
       :chosenIngredients ="chosenIngredients"
       :ui-labels="uiLabels"
-      :lang="lang">
+      :lang="lang"
+      :burgers = "burgers"
+      :burgerOrder = "burgerOrder">
       </YourOrder>
       </div>
 
@@ -103,37 +105,9 @@
 <!-- </div> -->
 
 <div id="ToggleBar" v-if = "this.state !== 'MenuPage'">
-  <button id="next" v-on:click= "changeToNextState()"> {{uiLabels.next}} </button>
+  <button id="next" v-if = "this.state !== 'Vegetables'" v-on:click= "changeToNextState()"> {{uiLabels.next}} </button>
+  <button id="next" v-if = "this.state === 'Vegetables'" v-on:click= "finishBurgerSwitchState()"> {{uiLabels.finishburger}} </button>
   <button id="previous" v-on:click= "changeToPreviousState()"> {{uiLabels.previous}} </button>
-</div>
-
-<div id="ordering" v-if="this.state === 'Ordering'">
-  <img class="example-panel" src="@/assets/exampleImage.jpg">
-  <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
-  <div id="ingredients_">
-    <h1>{{ uiLabels.ingredients }}</h1>
-
-    <Ingredient
-    ref="ingredient"
-    v-for="item in ingredients"
-    v-on:increment="addToOrder(item)"
-    :item="item"
-    :lang="lang"
-    :key="item.ingredient_id">
-  </Ingredient>
-</div>
-<div id="chosen_ingredients">
-  <h1>{{ uiLabels.order }} hej</h1>
-  {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
-  <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
-</div>
-<div id="order_item">
-  <YourOrder
-  :chosenIngredients ="chosenIngredients"
-  :ui-labels="uiLabels"
-  :lang="lang">
-</YourOrder>
-</div>
 </div>
 
 </div>
@@ -189,9 +163,13 @@ export default {
     return {
       states: ['MenuPage', 'BreadAndPatty', 'ToppingsAndSauce', 'Vegetables', 'Drinks', 'Sides', 'OverView'],
       chosenIngredients: [],
+      chosenItems: [],
+      burgerIngredients: [],
       price: 0,
       orderNumber: "",
       state: 'MenuPage', //denna var MenuPage
+      burgers: [],
+      burgerOrder : 0,
     }
   },
 
@@ -208,9 +186,27 @@ export default {
       return indexOfState;
     },
 
+    newBurger: function () {
+      let burger = {
+        state : this.burgerOrder,
+        ingredients : []
+      };
+      //this.burgers[this.burgerOrder] = burger;
+      this.burgers.push(burger);
+    },
+
     getStateFromIndex: function (index) {
       var currentState = this.states[index];
       return currentState;
+    },
+
+    finishBurgerSwitchState: function () {
+      this.burgers[this.burgerOrder].ingredients = this.chosenIngredients;
+      this.chosenIngredients = [];
+
+      this.burgerOrder += 1;
+
+      this.changeToNextState();
     },
 
     changeToNextState: function () {
@@ -329,7 +325,6 @@ grid-template-columns: 80% 20%;
   grid-area: Kundkorg;
   float:left;
 }
-
 
 .example-panel {
   position: fixed;
