@@ -1,33 +1,31 @@
 <template>
   <div id = "TopPanelContainer">
 
-    <div id = "buildYourBurgerPage" v-if = "parentState !== 'Payment'">
+    <div class = "tabBar" v-if = "parentState !== 'Payment'">
 
       <button v-on:click= "switchStage('BreadAndPatty')" :class="{stageButton : parentState === 'BreadAndPatty' || parentState === 'ToppingsAndSauce' || parentState === 'Vegetables'}"> 1 </button>
       <button v-on:click= "switchStage('Drinks')" :class="{stageButton : parentState === 'Drinks' || parentState === 'Sides' }">2</button>
-      <button id="Button3" v-on:click= "switchStage('OverView')" :class="{stageButton : parentState === 'OverView' }">3</button>
-
-
-
-
-      <inline id="StageText" v-if="parentState == 'BreadAndPatty'
-            || parentState == 'ToppingsAndSauce'
-            || parentState == 'Vegetables'"
-            class ="heading">
-            {{uiLabels.stageOne}}
-      </inline>
-
-      <inline v-if="parentState == 'Sides'
-            || parentState == 'Drinks'"
-            class ="heading">
-            {{uiLabels.stageTwo}}
-      </inline>
-
-      <button id="Cancel" v-on:click= "switchStage('MenuPage')">{{uiLabels.cancel}}</button>
+      <button v-on:click= "switchStage('OverView')" :class="{stageButton : parentState === 'OverView' }">3</button>
 
     </div>
 
+      <div class="stageText">
+        <span v-if="parentState == 'BreadAndPatty'
+              || parentState == 'ToppingsAndSauce'
+              || parentState == 'Vegetables'"
+              class ="heading">
+              {{uiLabels.stageOne}}
+        </span>
 
+        <span v-if="parentState == 'Sides'
+              || parentState == 'Drinks'"
+              class ="heading">
+              {{uiLabels.stageTwo}}
+        </span>
+
+        <button id="Cancel" v-on:click= "switchStage('MenuPage')">{{uiLabels.cancel}}</button>
+
+      </div>
 
 </div>
 </template>
@@ -65,23 +63,26 @@ export default{
 <style scoped>
 .heading {
   text-align: center;
+  display: inline-block;
 }
 
 #TopPanelContainer {
 display:grid;
+background-color: grey;
 }
-#Button3{
 
-}
-#buildYourBurgerPage{
+.tabBar{
   text-align: center;
 }
-#ParentStageText{
+
+#Parent{
   text-align: center;
 }
-#StageText{
+
+.stageText{
   display: inline-block;
 }
+
 button {
   border-style: solid;
   float:left;
@@ -93,9 +94,9 @@ button {
 }
 
 
-/* #buildYourBurgerPage {
-  grid-column: 1;
-  grid-row: 1;
+#tabBar {
+  height: 2em;
+  width: 5em;
 }
 
 #sidesAndDrinksPage {

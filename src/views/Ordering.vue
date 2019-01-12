@@ -117,6 +117,7 @@
 
           <Ingredient
             ref="ingredient"
+            v-if="item.stock > 1"
             v-for="item in ingredients"
             v-on:increment="addToOrder(item)"
             :item="item"
