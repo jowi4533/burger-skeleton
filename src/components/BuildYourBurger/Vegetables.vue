@@ -1,5 +1,5 @@
 <template>
-<div id = "ToppingsAndSauceContainer">
+<div id = "VegetablesContainer">
   <div id="ingredientButtons">
     <button v-on:click= "switchTab('BreadAndPatty')"> {{uiLabels.breadandpatty}} </button>
     <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
@@ -7,8 +7,8 @@
   </div>
 
   <div id="Vegetables">
-    <div id="VegetablesContainer">
-      <h4> {{uiLabels.veggies}} </h4>
+    <h4 id="VegetablesText"> {{uiLabels.veggies}} </h4>
+    <div id="VegetableOptionsContainer">
       <Ingredient
       class="ingredients"
       ref="ingredient"
@@ -76,13 +76,6 @@ export default{
 
 
 <style scoped>
-
-#ingredientButtons{
-  grid-row: 1;
-  position: relative;
-}
-
-
 .ingredients {
   text-transform: capitalize;
 }
@@ -90,6 +83,53 @@ export default{
 .tabButton {
   background-color: rgb(40,170,150);
 }
+
+#VegetablesContainer{
+  height: 87vh;
+  display: grid;
+  grid-template-areas: "ingredientButtons"
+                        "Vegetables";
+  grid-template-rows: auto 95%;
+  grid-template-columns: 1fr;
+    /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
+  grid-gap: 0.3em;
+}
+
+#ingredientButtons{
+display:block;
+  grid-area: ingredientButtons;
+
+}
+
+#Vegetables{
+  grid-area: Vegetables;
+  display: grid;
+  grid-template-areas: "VegetablesText"
+                      "VegetableOptionsContainer"
+                      "RestenText"
+                      "Resten";
+   grid-template-rows:5% 43% 5% auto;
+   grid-template-columns: 2fr;
+   grid-row-gap: 0.3em;
+}
+#VegetablesText{
+  grid-area: VegetablesText;
+  text-align: center;
+  background-color: darkgreen;
+  margin: 0;
+}
+#VegetableOptionsContainer{
+  grid-area: VegetableOptionsContainer;
+
+  overflow-x: scroll;
+  overflow-y:hidden;
+
+
+  display:grid;
+  grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
+  grid-column-gap: 4em;
+}
+
 button {
   border-style: solid;
   height: 3em;
@@ -97,6 +137,7 @@ button {
   font-size: 0.6em;
   padding: 0;
 }
+
 
 /* #next{
   position: relative;

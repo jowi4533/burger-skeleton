@@ -108,7 +108,7 @@ export default{
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
 
-    grid-gap: 1em;
+    grid-gap: 0.3em;
   }
   #ingredientButtons{
     display: block;
@@ -124,7 +124,7 @@ export default{
                         "Sauce";
      grid-template-rows:5% auto 5% auto ;
      grid-template-columns: 2fr;
-     grid-row-gap: 0.5em;
+     grid-row-gap: 0.3em;
    }
    #ToppingsText{
      grid-area: ToppingsText;
@@ -142,17 +142,27 @@ export default{
    #ToppingContainer{
      grid-area: Toppings;
 
-     display: grid;
-     grid-template-columns: repeat(auto-fit, calc(8em + 12px));
-     grid-row-gap: 0.5em;
+     overflow-x: scroll;
+     overflow-y:hidden;
+
+
+     display:grid;
+     grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
+     grid-column-gap: 4em;
    }
    #SauceContainer{
      grid-area: Sauce;
+     overflow-x: scroll;
+     overflow-y:hidden;
 
-     display: grid;
-     grid-template-columns: repeat(auto-fit, calc(8em + 12px));
-     grid-row-gap: 0.5em;
+
+     display:grid;
+     grid-template-columns:13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em 13em;
+     grid-column-gap: 4em;
+
    }
+
+
 /* #next{
   position: relative;
   bottom: 0;

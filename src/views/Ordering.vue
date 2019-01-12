@@ -68,6 +68,8 @@
         :lang="lang"
         :ui-labels="uiLabels">
         </Vegetables>
+
+        <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       </div>
 
       <div id = "drinks" v-if = "this.state === 'Drinks'">
@@ -250,7 +252,8 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 #OrderingContainer{
-  height: auto;
+    font-family: 'Quicksand', sans-serif;
+    height: auto;
     /*background-color: rgb(0,100,200);*/
     display: grid;
     grid-template-areas: "TopPanel"
@@ -258,7 +261,7 @@ export default {
                           "ToggleBar";
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
-    grid-gap: 1em;
+    grid-gap: 0.3em;
     grid-column-gap: 0;
 
 
@@ -270,7 +273,7 @@ export default {
   float: right;
   background-color: rgb(30,200,100);
   height: 3em;
-  width: 10em;
+  width: 9.425em;
   border-radius: 1em;
 }
 
@@ -280,7 +283,7 @@ export default {
   float: right;
   background-color: rgb(30,100,200);
   height: 3em;
-  width: 10em;
+  width: 9.425em;
   border-radius: 1em;
 }
 
@@ -344,7 +347,5 @@ grid-template-columns: 80% 20%;
   button#next {height: 2em; width: 6.5em;}
   button#previous {height: 2em; width: 6.5em;}
 }
-
-
 
 </style>
