@@ -104,6 +104,7 @@ button {
 }
 
 
+
 .stageButton {
   background-color: yellow;
 }
@@ -130,9 +131,6 @@ button {
   width: 7em;
   margin-left: 5%;
   margin-right: 2%;
-
-
-
 
 }
 

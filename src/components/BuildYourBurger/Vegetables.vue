@@ -124,11 +124,8 @@ display:block;
 }
 #VegetableOptionsContainer{
   grid-area: VegetableOptionsContainer;
-
   overflow-x: scroll;
   overflow-y:hidden;
-
-
   display:grid;
   grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
   grid-column-gap: 2em;

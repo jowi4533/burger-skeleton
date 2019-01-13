@@ -80,6 +80,7 @@ export default {
       this.$emit('switchStage', stage);
     },
     addToOrder : function(item) {
+      
       this.$parent.addToOrder(item);
     },
     removeFromOrder : function(item){
