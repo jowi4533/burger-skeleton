@@ -186,6 +186,17 @@ export default {
       this.sideAndDrinkItems.push(item);
     },
 
+    removeFromBurgerIngredients: function(item) {
+      let index = this.burgerIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
+      this.burgerIngredients.splice(index, 1);
+    },
+
+    removeFromSideAndDrinkItems: function(item) {
+      let index = this.sideAndDrinkItems.findIndex(x => x.ingredient_id==item.ingredient_id);
+      this.sideAndDrinkItems.splice(index, 1);
+    },
+
+    //These 2 are currently not used
     addToOrder: function (item) {
       this.chosenIngredients.push(item);
       this.burgerIngredients.push(item);

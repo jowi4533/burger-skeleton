@@ -87,7 +87,7 @@ export default{
       this.$parent.addToSideAndDrinkItems(item);
     },
     removeFromOrder : function(item){
-      this.$parent.removeFromOrder(item);
+      this.$parent.removeFromSideAndDrinkItems(item);
     }
   }
 }

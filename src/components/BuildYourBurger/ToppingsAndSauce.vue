@@ -84,7 +84,7 @@ export default{
       this.$parent.addToBurgerIngredients(item);
     },
     removeFromOrder : function(item){
-      this.$parent.removeFromOrder(item);
+      this.$parent.removeFromBurgerIngredients(item);
     }
   }
 }

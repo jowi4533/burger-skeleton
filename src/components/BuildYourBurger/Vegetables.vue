@@ -70,14 +70,13 @@ export default{
       this.$parent.addToBurgerIngredients(item);
     },
     removeFromOrder : function(item){
-      this.$parent.removeFromOrder(item);
+      this.$parent.removeFromBurgerIngredients(item);
     }
   }
 }
 
 
 </script>
-
 
 <style scoped>
 .ingredients {
@@ -122,7 +121,11 @@ display:block;
   text-align: center;
   margin: 0;
 }
+#VegetableOptionsContainer{
+  grid-area: VegetableOptionsContainer;
 
+  overflow-x: scroll;
+  overflow-y:hidden;
 
 
   display:grid;
@@ -130,9 +133,6 @@ display:block;
   grid-column-gap: 2em;
 }
 
-.tabButton {
-  background-color: rgb(40,170,150);
-}
 button {
   font-family: 'Quicksand', sans-serif;
   border-style: hidden;
@@ -143,6 +143,7 @@ button {
   margin-right: 1em;
   padding: 0;
 }
+
 
 /* #next{
   position: relative;
