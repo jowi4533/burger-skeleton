@@ -27,11 +27,13 @@
   <div id = "overview" v-if = "this.state === 'OverView'">
     <OverView @switchStage="state=$event"
     :lang="lang"
-    :ui-labels="uiLabels">
+    :ui-labels="uiLabels"
+    :burgers="burgers"
+    :sideAndDrinkItems="sideAndDrinkItems">
   </Overview>
 </div>
 
-<div id="AllFoodTabs">
+<div id="AllFoodTabs" v-if = "this.state !== 'OverView'">
   <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
     <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
     :burgerIngredients="burgerIngredients"
@@ -164,6 +166,7 @@ export default {
     newBurger: function () {
       let burger = {
         state : this.burgerOrder,
+        burgerFinished : "No",
         ingredients : []
       };
 
@@ -171,8 +174,7 @@ export default {
     },
 
     finishBurgerSwitchState: function () {
-      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
-
+      this.burgerFinished = "Yes"
       this.burgerIngredients = [];
       this.burgerOrder += 1;
 
@@ -181,6 +183,7 @@ export default {
 
     addToBurgerIngredients: function(item){
       this.burgerIngredients.push(item);
+      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
     },
 
     addToSideAndDrinkItems: function(item) {
@@ -190,6 +193,7 @@ export default {
     removeFromBurgerIngredients: function(item) {
       let index = this.burgerIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
       this.burgerIngredients.splice(index, 1);
+      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
     },
 
     removeFromSideAndDrinkItems: function(item) {
@@ -234,23 +238,6 @@ export default {
     },
     // ------------
 
-    placeOrder: function () {
-      var i,
-      //Wrap the order in an object
-      order = {
-        ingredients: this.chosenIngredients,
-        price: this.price
-      };
-      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      this.$store.state.socket.emit('order', {order: order});
-      //this.$emit('order');
-      //set all counters to 0. Notice the use of $refs
-      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-        this.$refs.ingredient[i].resetCounter();
-      }
-      this.price = 0;
-      this.chosenIngredients = [];
-    }
   }
 }
 </script>

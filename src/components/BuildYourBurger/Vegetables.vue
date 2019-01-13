@@ -122,6 +122,8 @@ display:block;
    grid-template-rows:5% auto 5% 43.7%;
    grid-template-columns: 2fr;
    grid-row-gap: 0.3em;
+   margin-left: 1%;
+   
 }
 #VegetablesText{
   grid-area: VegetablesText;
