@@ -47,27 +47,19 @@
 
 <script>
 import Ingredient from '@/components/Ingredient.vue'
-//import sharedVueStuff from '@/components/sharedVueStuff.js'
 export default {
   name: 'BreadAndPatty',
-	// props: {
-	// uiLabels: Object,
-	// lang: String,
-	// ingredients: Array,
-	// item: Object
-  // },
 
   props: {
     parentState: String,
     lang: String,
     uiLabels: Object,
-    ingredients: Array
+    ingredients: Array,
+    burgerIngredients: Array
   },
   components: {
     Ingredient
   },
-
-//mixins: [sharedVueStuff],
 
   methods: {
     switchTab: function(tab) {
@@ -78,7 +70,7 @@ export default {
       this.$emit('switchStage', stage);
     },
     addToOrder : function(item) {
-      this.$parent.addToOrder(item);
+      this.$parent.addToBurgerIngredients(item);
     }
   }
 }

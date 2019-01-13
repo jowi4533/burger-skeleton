@@ -64,7 +64,7 @@ export default{
       this.$emit('switchStage', stage);
     },
     addToOrder : function(item) {
-      this.$parent.addToOrder(item);
+      this.$parent.addToSideAndDrinkItems(item);
     }
   }
 }

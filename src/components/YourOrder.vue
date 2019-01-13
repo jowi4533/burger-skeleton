@@ -5,23 +5,17 @@
 
     </div>
 
-
     <div class="scrollableText">
 
       <div class="theBurgers"  v-for = "burger in burgers">
-        <li> Burger: {{burger.state + 1}} </li>
+        <li> Burger: {{burger.state}} </li>
       </div>
 
-      <div class="theIngredients" v-for ="ingredient in chosenIngredients">
+      <div class="theIngredients" v-for ="ingredient in burgerIngredients">
         <li>{{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-</li>
       </div>
 
-
     </div>
-
-
-
-
   </div>
 </template>
 
@@ -31,9 +25,9 @@ export default {
   props:{
     uiLabels: Object,
     lang: String,
-    chosenIngredients: Array,
+    burgerIngredients: Array,
     burgers: Array,
-    burgerOrder: Number
+    sideAndDrinkItems: Array,
   },
 }
 
