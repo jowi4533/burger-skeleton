@@ -1,154 +1,106 @@
 <template>
   <div id="OrderingContainer">
-
     <div id ="menupage" v-if ="this.state === 'MenuPage'">
-      <MenuPage @switchStage="state=$event" @switchLanguage="switchLang()"
+      <MenuPage @switchStage="state=$event" @switchLanguage="switchLang()" @createNewBurger="newBurger()"
       :ui-labels="uiLabels"
       :lang="lang">
-      </MenuPage>
+    </MenuPage>
+  </div>
 
-    </div>
+  <div id = "payment" v-if = "this.state === 'Payment'">
+    <Payment @switchStage="state=$event"
+    :parentState="state"
+    :lang="lang"
+    :ui-labels="uiLabels">
+  </Payment>
+</div>
 
-    <div id = "payment" v-if = "this.state === 'Payment'">
-      <Payment @switchStage="state=$event"
-      :parentState="state"
-      :lang="lang"
-      :ui-labels="uiLabels">
-      </Payment>
+<div id="TopPanel" v-if = "this.state !== 'MenuPage'">
+  <TopPanel @switchStage="state=$event"
+  :parentState="state"
+  :lang="lang"
+  :ui-labels="uiLabels">
+</TopPanel>
+</div>
 
-    </div>
+<div id="MiddlePanel" v-if = "this.state !== 'MenuPage'">
+  <div id = "overview" v-if = "this.state === 'OverView'">
+    <OverView @switchStage="state=$event"
+    :lang="lang"
+    :ui-labels="uiLabels">
+  </Overview>
+</div>
 
-    <!-- <div id = "orderingComponents" v-if = "this.state !== 'MenuPage'"> -->
-      <!-- Everything that uses topPanel  -->
-      <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
+<div id="AllFoodTabs">
+  <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
+    <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
+    :burgerIngredients="burgerIngredients"
+    :ingredients="ingredients"
+    :parentState="state"
+    :lang="lang"
+    :ui-labels="uiLabels">
+  </BreadAndPatty>
+</div>
 
-      <TopPanel @switchStage="state=$event"
-      :parentState="state"
-      :lang="lang"
-      :ui-labels="uiLabels">
-      </TopPanel>
-      </div>
+<div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
+  <ToppingsAndSauce @switchTab="state=$event"
+  :ingredients="ingredients"
+  :parentState="state"
+  :lang="lang"
+  :ui-labels="uiLabels">
+</ToppingsAndSauce>
+</div>
 
+<div id = "vegetables" v-if = "this.state === 'Vegetables'">
+  <Vegetables @switchStage="state=$event" @switchTab="state=$event"
+  :ingredients="ingredients"
+  :parentState="state"
+  :lang="lang"
+  :ui-labels="uiLabels">
+</Vegetables>
+</div>
 
+<div id = "drinks" v-if = "this.state === 'Drinks'">
+  <Drinks @switchStage="state=$event" @switchTab="state=$event"
+  :ingredients="ingredients"
+  :parentState="state"
+  :lang="lang"
+  :ui-labels="uiLabels">
+</Drinks>
+</div>
 
-      <div id="MiddlePanel" v-if = "this.state !== 'MenuPage'">
+<div id = "sides" v-if = "this.state === 'Sides'">
+  <Sides @switchStage="state=$event" @switchTab="state=$event"
+  :ingredients="ingredients"
+  :parentState="state"
+  :lang="lang"
+  :ui-labels="uiLabels">
+</Sides>
+</div>
+</div>
 
-            <div id = "overview" v-if = "this.state === 'OverView'">
+<div id="Kundkorg">
+  <YourOrder
+  :burgerIngredients ="burgerIngredients"
+  :sideAndDrinkItems ="sideAndDrinkItems"
+  :burgers = "burgers"
+  :ui-labels="uiLabels"
+  :lang="lang">
+</YourOrder>
+</div>
 
-        <OverView @switchStage="state=$event"
-        :lang="lang"
-        :ui-labels="uiLabels">
-        </Overview>
-      </div>
-      <div id="AllFoodTabs">
+</div>
 
-
-      <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
-        <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
-        :ingredients="ingredients"
-        :parentState="state"
-        :lang="lang"
-        :ui-labels="uiLabels">
-        </BreadAndPatty>
-      </div>
-
-      <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
-        <ToppingsAndSauce @switchTab="state=$event"
-        :ingredients="ingredients"
-        :parentState="state"
-        :lang="lang"
-        :ui-labels="uiLabels">
-        </ToppingsAndSauce>
-      </div>
-
-      <div id = "vegetables" v-if = "this.state === 'Vegetables'">
-        <Vegetables @switchStage="state=$event" @switchTab="state=$event"
-        :ingredients="ingredients"
-        :parentState="state"
-        :lang="lang"
-        :ui-labels="uiLabels">
-        </Vegetables>
-
-        <!-- <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button> -->
-      </div>
-
-      <div id = "drinks" v-if = "this.state === 'Drinks'">
-        <Drinks @switchStage="state=$event" @switchTab="state=$event"
-        :ingredients="ingredients"
-        :parentState="state"
-        :lang="lang"
-        :ui-labels="uiLabels">
-        </Drinks>
-      </div>
-
-      <!-- <div id = "sides" v-if = "this.state === 'Sides'">
-        <Sides @switchStage="state=$event" @switchTab="state=$event"
-        :ingredients="ingredients"
-        :parentState="state"
-        :lang="lang"
-        :ui-labels="uiLabels">
-        </Sides>
-      </div> -->
-      </div>
-
-      <div id="Kundkorg">
-      <YourOrder
-      :chosenIngredients ="chosenIngredients"
-      :ui-labels="uiLabels"
-      :lang="lang">
-      </YourOrder>
-      </div>
-    </div>
-
-<!-- </div> -->
-
-<div class="ToggleBar" v-if = "this.state !== 'MenuPage'">
-  <button id="next" v-on:click= "changeToNextState()"> {{uiLabels.next}} </button>
+<div id="ToggleBar" v-if = "this.state !== 'MenuPage'">
+  <button id="next" v-if = "this.state !== 'Vegetables'" v-on:click= "changeToNextState()"> {{uiLabels.next}} </button>
+  <button id="next" v-if = "this.state === 'Vegetables'" v-on:click= "finishBurgerSwitchState()"> {{uiLabels.finishburger}} </button>
   <button id="previous" v-on:click= "changeToPreviousState()"> {{uiLabels.previous}} </button>
 </div>
 
-
-    <div id="ordering" v-if="this.state === 'Ordering'">
-      <img class="example-panel" src="@/assets/exampleImage.jpg">
-      <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
-      <div id="ingredients_">
-        <h1>{{ uiLabels.ingredients }}</h1>
-          <Ingredient
-            ref="ingredient"
-            v-if="item.stock > 1"
-            v-for="item in ingredients"
-            v-on:decrease="removeFromOrder(item)"
-            v-on:increment="addToOrder(item)"
-            :item="item"
-            :lang="lang"
-            :key="item.ingredient_id">
-          </Ingredient>
-      </div>
-      <div id="chosen_ingredients">
-        <h1>{{ uiLabels.order }}</h1>
-          {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
-          <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
-      </div>
-      <div id="order_item">
-        <YourOrder
-          :chosenIngredients ="chosenIngredients"
-          :ui-labels="uiLabels"
-          :lang="lang">
-        </YourOrder>
-      </div>
-    </div>
-
 </div>
-
-
-
 </template>
 
 <script>
-
-//import the components that are used in the template, the name that you
-//use for importing will be used in the template above and also below in
-//components
 import MenuPage from '@/components/MenuPage.vue'
 import OverView from '@/components/OverView.vue'
 import TopPanel from '@/components/OrderingInterface/TopPanel.vue'
@@ -165,35 +117,37 @@ import OrderItem from '@/components/OrderItem.vue'
 import YourOrder from '@/components/YourOrder.vue'
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 
-
-/* instead of defining a Vue instance, export default allows the only
-necessary Vue instance (found in main.js) to import your data and methods */
 export default {
   name: 'Ordering',
   components: {
     Ingredient,
     OrderItem,
 
-    //The different components used for orientation through pages
     MenuPage,
     OverView,
     TopPanel,
+
     BreadAndPatty,
     ToppingsAndSauce,
     Vegetables,
     Drinks,
+
     Sides,
     YourOrder
   },
-  mixins: [sharedVueStuff], // include stuff that is used in both
-  // the ordering system and the kitchen
-  data: function() { //Note that data is a function!
+  mixins: [sharedVueStuff],
+
+  data: function() {
     return {
       states: ['MenuPage', 'BreadAndPatty', 'ToppingsAndSauce', 'Vegetables', 'Drinks', 'OverView'],
       chosenIngredients: [],
+      burgerIngredients: [],
+      sideAndDrinkItems: [],
       price: 0,
       orderNumber: "",
-      state: 'MenuPage',///denna var MenuPage
+      state: 'MenuPage',
+      burgers: [],
+      burgerOrder : 1,
     }
   },
 
@@ -204,7 +158,60 @@ export default {
   },
 
   methods: {
+    //All functions handling burgerIngredients and the items included in the order -----
+    newBurger: function () {
+      let burger = {
+        state : this.burgerOrder,
+        ingredients : []
+      };
 
+        this.burgers.push(burger);
+    },
+
+    finishBurgerSwitchState: function () {
+      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
+      this.orderIngredients.push(this.burgerIngredients)
+
+      this.burgerIngredients = [];
+      this.burgerOrder += 1;
+
+      this.changeToNextState();
+    },
+
+    addToBurgerIngredients: function(item){
+      this.burgerIngredients.push(item);
+    },
+
+    addToSideAndDrinkItems: function(item) {
+      this.sideAndDrinkItems.push(item);
+    },
+
+    removeFromBurgerIngredients: function(item) {
+      let index = this.burgerIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
+      this.burgerIngredients.splice(index, 1);
+    },
+
+    removeFromSideAndDrinkItems: function(item) {
+      let index = this.sideAndDrinkItems.findIndex(x => x.ingredient_id==item.ingredient_id);
+      this.sideAndDrinkItems.splice(index, 1);
+    },
+
+    //These 2 are currently not used
+    addToOrder: function (item) {
+      this.chosenIngredients.push(item);
+      this.burgerIngredients.push(item);
+      this.price += +item.selling_price;
+    },
+
+    removeFromOrder: function (item){
+      let index = this.chosenIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
+
+      this.chosenIngredients.splice(index,1);
+      this.price = this.price - item.selling_price;
+    },
+    //--------------
+
+    //All functions handling state ---
     getIndexOfState: function () {
       var indexOfState=this.states.indexOf(this.state)
       return indexOfState;
@@ -224,18 +231,8 @@ export default {
       let indexOfState = this.getIndexOfState();
       this.state = this.getStateFromIndex(indexOfState-1);
     },
+    // ------------
 
-    addToOrder: function (item) {
-      this.chosenIngredients.push(item);
-      this.price += +item.selling_price;
-    },
-    removeFromOrder: function (item){
-      let index = this.chosenIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
-
-
-      this.chosenIngredients.splice(index,1);
-      this.price = this.price - item.selling_price;
-    },
     placeOrder: function () {
       var i,
       //Wrap the order in an object
@@ -259,7 +256,6 @@ export default {
 
 
 <style scoped>
-/* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 
@@ -309,19 +305,19 @@ export default {
 }
 
 /* #ingredients_ {
-  background-color: rgb(240,240,240);
-  grid-column: 1;
-  grid-row: 2 / span 3;
+background-color: rgb(240,240,240);
+grid-column: 1;
+grid-row: 2 / span 3;
 }
 #chosen_ingredients {
-  background-color: rgb(220,150,200);
-  grid-column: 2;
-  grid-row: 2 / span 3;
+background-color: rgb(220,150,200);
+grid-column: 2;
+grid-row: 2 / span 3;
 }
 #order_item {
-  background-color: rgb(200,200,200);
-  grid-column: 3;
-  grid-row: 2 / span 3;
+background-color: rgb(200,200,200);
+grid-column: 3;
+grid-row: 2 / span 3;
 } */
 
 #menupage {
@@ -330,7 +326,7 @@ export default {
 
 }
 #TopPanel{
-grid-area: TopPanel;
+  grid-area: TopPanel;
 }
 
 .ToggleBar{
@@ -353,14 +349,13 @@ border-left-color: black;
 border-left-width: thin;
 /* grid-template-rows: 1fr; */
 }
- #AllFoodTabs{
+#AllFoodTabs{
   grid-area: AllFoodTabs;
 }
 #Kundkorg{
   grid-area: Kundkorg;
   float:left;
 }
-
 
 .example-panel {
   position: fixed;
@@ -380,5 +375,7 @@ border-left-width: thin;
   button#next {height: 2em; width: 6.5em;}
   button#previous {height: 2em; width: 6.5em;}
 }
+
+
 
 </style>

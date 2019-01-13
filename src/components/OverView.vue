@@ -16,7 +16,6 @@
 
 <script>
 import Ingredient from '@/components/Ingredient.vue'
-//import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default{
   name: 'overview',
@@ -34,8 +33,6 @@ export default{
   components: {
     Ingredient
   },
-
-  //mixins: [sharedVueStuff],
 
   methods: {
     switchStage: function(stage) {
