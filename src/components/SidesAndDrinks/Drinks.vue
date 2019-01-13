@@ -19,6 +19,7 @@
       v-if="item.category == 7"
       v-on:increment="addToOrder(item)"
       v-on:decrease="removeFromOrder(item)"
+      :burgerIngredients="burgerIngredients"
       :ui-labels="uiLabels"
       :item="item"
       :lang="lang"
@@ -32,6 +33,8 @@
   v-for="item in ingredients"
   v-if="item.category == 6"
   v-on:increment="addToOrder(item)"
+  v-on:decrease="removeFromOrder(item)"
+  :burgerIngredients="burgerIngredients"
   :ui-labels="uiLabels"
   :item="item"
   :lang="lang"
@@ -66,7 +69,8 @@ export default{
     parentState: String,
     lang: String,
     uiLabels: Object,
-    ingredients: Array
+    ingredients: Array,
+    burgerIngredients: Array
   },
 
   components: {
