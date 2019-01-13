@@ -147,8 +147,7 @@ h4 {
 #ingredientButtons{
 display:block;
   grid-area: ingredientButtons;
-  border-color: black;
-  border:2px;
+
 
 
 }
@@ -237,7 +236,8 @@ vertical-align: bottom;
 }
 .progress-bar {
   display:inline-block;
-vertical-align: bottom;
+  align-items: bottom;
+
   height: 8px;
   background: #4caf50;
 
