@@ -271,6 +271,7 @@ button {
   height: 3em;
   width: 15em;
   font-size: 0.6em;
+  font-weight: bold;
   padding: 0;
 }
 
