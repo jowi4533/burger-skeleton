@@ -33,7 +33,7 @@
   </Overview>
 </div>
 
-<div id="AllFoodTabs">
+<div id="AllFoodTabs" v-if = "this.state !== 'OverView'">
   <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
     <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
     :burgerIngredients="burgerIngredients"
@@ -46,6 +46,7 @@
 
 <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
   <ToppingsAndSauce @switchTab="state=$event"
+  :burgerIngredients="burgerIngredients"
   :ingredients="ingredients"
   :parentState="state"
   :lang="lang"
@@ -55,6 +56,7 @@
 
 <div id = "vegetables" v-if = "this.state === 'Vegetables'">
   <Vegetables @switchStage="state=$event" @switchTab="state=$event"
+  :burgerIngredients="burgerIngredients"
   :ingredients="ingredients"
   :parentState="state"
   :lang="lang"

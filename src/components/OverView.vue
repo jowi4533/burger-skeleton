@@ -1,15 +1,18 @@
 <template>
   <div id = "OverViewContainer">
     <h1> {{uiLabels.overViewHeader}} </h1>
-    <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">{{uiLabels.previous}}</button>
-    <button class="overviewButtons" id="purchaseButton" v-on:click= "placeOrder()"> {{uiLabels.purchaseItemsInOverview}} </button>
+    <!-- <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">{{uiLabels.previous}}</button>
+    <button class="overviewButtons" id="purchaseButton" v-on:click= "switchStage('Payment')"> {{uiLabels.purchaseItemsInOverview}} </button>
     <div id="wrapper">
       <section id="orderlist">
         <p> tja </p>
       </section>
       <button class="overviewButtons" id="addButton" v-on:click= "switchStage('MenuPage')"> {{uiLabels.addItemInOverview}} </button>
       <button class="overviewButtons" id="removeButton"> {{uiLabels.removeItemInOverview}} </button>
-    </div>
+    </div> -->
+
+
+
 
   </div>
 </template>
