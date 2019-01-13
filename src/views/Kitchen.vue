@@ -16,7 +16,7 @@
       :order-id="key"
       :order="order">
     </OrderItemToPrepare>
-    <div v-bind:class="['NumberOfOrders ',{'ManyOrders':(orderCount >= 15)}]">
+    <div class="numberOfOrders" v-bind:class="['NumberOfOrders ',{'ManyOrders':(orderCount >= 15)}]">
       Total orders: {{orderCount}}
     </div>
 
@@ -31,8 +31,8 @@
     :ingredients="ingredients"
     :lang="lang"
     :ui-labels="uiLabels">
-  </StorageItem>
-</div>
+    </StorageItem>
+  </div>
 </div>
 </template>
 
@@ -178,7 +178,7 @@ export default {
     border-top:1px solid #aaa;
     background:#fff;
   }
-  .NumberOfOrders{
+  .numberOfOrders{
     position: absolute;
     top: 0.2em;
     right: 13em;

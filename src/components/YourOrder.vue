@@ -35,14 +35,16 @@ props:{
   overflow-y: scroll;
 }
 .yourOrderContainer {
-  border: 1px solid #000000;
+  border: thin solid #000000;
+  border-top-style: hidden;
+  border-bottom-style: hidden;
   height:87vh;
   overflow: hidden;
 
 }
 .yourOrderTextBox{
   height: 1.5em;
-  border-bottom: 1px solid #000000;
+  border-bottom: thin solid #000000;
 
 }
 .theIngredients{
