@@ -26,8 +26,6 @@
             {{uiLabels.chooseDrinkAndSides}}
         </span>
 
-
-
         <button id="Cancel" v-on:click= "switchStage('MenuPage')">{{uiLabels.cancel}}</button>
     </div>
 </div>
