@@ -12,7 +12,7 @@
 
       <h4 id="PattyText"> {{uiLabels.patty}} </h4>
 
-  <div id="BreadContainer"  v-on:scroll="windowScroll('BreadContainer')">
+      <div id="BreadContainer" v-on:scroll="windowScroll('BreadContainer')">
 
         <Ingredient
         class="ingredients"
@@ -30,12 +30,12 @@
 
     </div>
 
-  <div id="progress-Breadcontainer">
-    <div class="progress-Breadbar" id="myBreadBar">
+    <div id="progress-Breadcontainer">
+      <div class="progress-Breadbar" id="myBreadBar">
+      </div>
     </div>
 
-
-  <div id="PattyContainer" v-on:scroll="windowScroll('PattyContainer')">
+    <div id="PattyContainer" v-on:scroll="windowScroll('PattyContainer')">
 
       <Ingredient
       class="ingredients"
@@ -55,11 +55,9 @@
     <div class="progress-Pattybar" id="myPattyBar">
     </div>
   </div>
-
 </div>
 
 
-</div>
 </div>
 
 </template>
@@ -96,16 +94,15 @@ export default {
     },
 
     windowScroll: function(id) {
-  var winScroll = document.body.scrollLeft || document.getElementById(id).scrollLeft;
-  var width = document.getElementById(id).scrollWidth - document.getElementById(id).clientWidth;
-  var scrolled = (winScroll / width) * 100;
-  if (id == "BreadContainer" ) {
-      document.getElementById("myBreadBar").style.width = scrolled + "%";
+    var winScroll = document.body.scrollLeft || document.getElementById(id).scrollLeft;
+    var width = document.getElementById(id).scrollWidth - document.getElementById(id).clientWidth;
+    var scrolled = (winScroll / width) * 100;
+    if (id == "ToppingContainer" ) {
+      document.getElementById("myToppingsBar").style.width = scrolled + "%";
     }
-  if (id == "PattyContainer") {
-      document.getElementById("myPattyBar").style.width = scrolled + "%";
-  }
-
+    if (id == "SauceContainer") {
+      document.getElementById("mySauceBar").style.width = scrolled + "%";
+    }
     }
   },
   // computed: {
@@ -143,9 +140,8 @@ h4 {
 #BreadAndPattyContainer{
   height: 87vh;
   display: grid;
-
   grid-template-areas: "ingredientButtons"
-                          "BreadAndPatty";
+  "BreadAndPatty";
   grid-template-rows: auto 95%;
   grid-template-columns: 1fr;
   /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
@@ -183,19 +179,16 @@ float: right;
 #BreadAndPatty{
   grid-area: BreadAndPatty;
   display: grid;
-
-
   grid-template-areas: "BreadText"
                       "Bread"
                       "BreadBar"
                       "PattyText"
                       "Patty"
                       "PattyBar";
-
    grid-template-rows:5% auto 1% 5% auto 1% ;
    grid-template-columns: 2fr;
    grid-row-gap: 0.3em;
-
+   margin-left: 1%;
 }
 
 #BreadText{
@@ -274,6 +267,7 @@ button {
   border-color: black;
   border-width: thin;
   border-top-style: hidden;
+  margin-right: 1em;
   height: 3em;
   width: 15em;
   font-size: 0.6em;
