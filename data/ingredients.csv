@@ -1,5 +1,5 @@
-ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,selling_price
-1,brioche,brioche,1,0,0,0,10
+ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,selling_price,img
+1,brioche,brioche,1,0,0,0,10,~@/assets/patty/bean.jpg
 2,glutenfritt bröd,gluten free bread,1,1,1,1,10
 3,veganskt bröd,vegan bun,1,0,0,1,10
 4,fullkornsbrioche,whole wheat brioche,1,0,0,0,10
