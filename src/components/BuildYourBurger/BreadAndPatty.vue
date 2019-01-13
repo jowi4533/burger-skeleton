@@ -97,11 +97,11 @@ export default {
     var winScroll = document.body.scrollLeft || document.getElementById(id).scrollLeft;
     var width = document.getElementById(id).scrollWidth - document.getElementById(id).clientWidth;
     var scrolled = (winScroll / width) * 100;
-    if (id == "ToppingContainer" ) {
-      document.getElementById("myToppingsBar").style.width = scrolled + "%";
+    if (id == "BreadContainer" ) {
+      document.getElementById("myBreadBar").style.width = scrolled + "%";
     }
-    if (id == "SauceContainer") {
-      document.getElementById("mySauceBar").style.width = scrolled + "%";
+    if (id == "PattyContainer") {
+      document.getElementById("myPattyBar").style.width = scrolled + "%";
     }
     }
   },
