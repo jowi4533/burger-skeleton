@@ -37,11 +37,17 @@
 export default{
 
   name: 'TopPanel',
+  data: function() {
+    return {
+      popupText: "Are you sure you want to go to Sides and Drinks? Your current burger will be discarded."
+    }
+  },
   props: {
     parentState: String,
     lang: String,
     uiLabels: Object
   },
+
   created: function() {
     this.lang = this.$parent.lang;
     this.uiLabels = this.$parent.uiLabels;
@@ -56,10 +62,16 @@ export default{
     },
 
     switchStageWipeOrder: function(stage) {
-      this.$emit('switchStageWipeOrder');
-      this.switchStage(stage);
+      if (this.parentState=='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
+        
+        if (confirm(this.popupText)) {
+          this.$emit('switchStageWipeOrder');
+          this.switchStage(stage);
+        }
+      }
+
     }
-  },
+  }
 }
 
 
@@ -132,7 +144,7 @@ button {
 #overViewPage {
   grid-column: 3;
   grid-row: 1;
-} */
+}
 #DescriptionText{
     font-size: 1em;
     float: right;
