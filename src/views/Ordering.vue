@@ -33,7 +33,7 @@
   </Overview>
 </div>
 
-<div id="AllFoodTabs">
+<div id="AllFoodTabs" v-if = "this.state !== 'OverView'">
   <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
     <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
     :burgerIngredients="burgerIngredients"
@@ -46,6 +46,7 @@
 
 <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
   <ToppingsAndSauce @switchTab="state=$event"
+  :burgerIngredients="burgerIngredients"
   :ingredients="ingredients"
   :parentState="state"
   :lang="lang"
@@ -55,6 +56,7 @@
 
 <div id = "vegetables" v-if = "this.state === 'Vegetables'">
   <Vegetables @switchStage="state=$event" @switchTab="state=$event"
+  :burgerIngredients="burgerIngredients"
   :ingredients="ingredients"
   :parentState="state"
   :lang="lang"
@@ -164,6 +166,7 @@ export default {
     newBurger: function () {
       let burger = {
         state : this.burgerOrder,
+        burgerFinished : "No",
         ingredients : []
       };
 
@@ -171,8 +174,7 @@ export default {
     },
 
     finishBurgerSwitchState: function () {
-      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
-
+      this.burgerFinished = "Yes"
       this.burgerIngredients = [];
       this.burgerOrder += 1;
 
@@ -181,6 +183,7 @@ export default {
 
     addToBurgerIngredients: function(item){
       this.burgerIngredients.push(item);
+      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
     },
 
     addToSideAndDrinkItems: function(item) {
@@ -190,6 +193,7 @@ export default {
     removeFromBurgerIngredients: function(item) {
       let index = this.burgerIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
       this.burgerIngredients.splice(index, 1);
+      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
     },
 
     removeFromSideAndDrinkItems: function(item) {

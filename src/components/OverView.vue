@@ -1,15 +1,18 @@
 <template>
   <div id = "OverViewContainer">
     <h1> {{uiLabels.overViewHeader}} </h1>
-    <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">{{uiLabels.previous}}</button>
-    <button class="overviewButtons" id="purchaseButton" v-on:click= "placeOrder()"> {{uiLabels.purchaseItemsInOverview}} </button>
+    <!-- <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">{{uiLabels.previous}}</button>
+    <button class="overviewButtons" id="purchaseButton" v-on:click= "switchStage('Payment')"> {{uiLabels.purchaseItemsInOverview}} </button>
     <div id="wrapper">
       <section id="orderlist">
         <p> tja </p>
       </section>
       <button class="overviewButtons" id="addButton" v-on:click= "switchStage('MenuPage')"> {{uiLabels.addItemInOverview}} </button>
       <button class="overviewButtons" id="removeButton"> {{uiLabels.removeItemInOverview}} </button>
-    </div>
+    </div> -->
+
+
+
 
   </div>
 </template>
@@ -46,8 +49,9 @@ export default{
       for(let j = 0; j < this.burgers.length; j +=1){
         order = {
           ingredients: this.burgers[j].ingredients,
-          //price: this.price
+          price: 10
         };
+        console.log(order.ingredients)
         // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
         this.$store.state.socket.emit('order', {order: order});
         //this.$emit('order');

@@ -1,10 +1,10 @@
 <template>
 <div id = "DrinksAndSidesContainer">
-  <div id="ingredientButtons">
-    <button :class="{tabButton : parentState === 'Drinks'}"> {{uiLabels.drinks}} </button>
-    <!-- ändra denna -->
-    <!-- <button v-on:click= "switchTab('Sides')"> {{uiLabels.sides}} </button> -->
-  </div>
+  <!--<div id="ingredientButtons">
+     <button :class="{tabButton : parentState === 'Drinks'}"> {{uiLabels.drinks}} </button>
+     ändra denna
+     <button v-on:click= "switchTab('Sides')"> {{uiLabels.sides}} </button>
+  </div> -->
 
 <div id="DrinksAndSides">
 
@@ -158,7 +158,9 @@ display:block;
    grid-template-rows:5% auto 5% auto ;
    grid-template-columns: 2fr;
    grid-row-gap: 0.3em;
+   margin-left: 1%;
 }
+
 #DrinksText{
   grid-area: DrinksText;
   text-align: center;

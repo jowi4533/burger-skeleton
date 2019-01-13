@@ -16,6 +16,7 @@
       v-if="item.category == 4"
       v-on:increment="addToOrder(item)"
       v-on:decrease="removeFromOrder(item)"
+      :burgerIngredients="burgerIngredients"
       :ui-labels="uiLabels"
       :item="item"
       :lang="lang"
@@ -49,7 +50,8 @@ export default{
     parentState: String,
     lang: String,
     uiLabels: Object,
-    ingredients: Array
+    ingredients: Array,
+    burgerIngredients: Array
   },
 
   components: {
@@ -120,6 +122,8 @@ display:block;
    grid-template-rows:5% auto 5% 43.7%;
    grid-template-columns: 2fr;
    grid-row-gap: 0.3em;
+   margin-left: 1%;
+   
 }
 #VegetablesText{
   grid-area: VegetablesText;
@@ -128,11 +132,8 @@ display:block;
 }
 #VegetableOptionsContainer{
   grid-area: VegetableOptionsContainer;
-
   overflow-x: scroll;
   overflow-y:hidden;
-
-
   display:grid;
   grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
   grid-column-gap: 2em;
