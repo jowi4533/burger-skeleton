@@ -324,7 +324,7 @@ grid-row: 2 / span 3;
   grid-area: TopPanel;
 }
 
-.ToggleBar{
+#ToggleBar{
   grid-area: ToggleBar;
   background-color: lightgray;
   border-style: solid;
