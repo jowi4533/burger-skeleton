@@ -266,13 +266,12 @@ export default {
 
 
 #OrderingContainer{
-<<<<<<< HEAD
+
   height: 100vh;
-=======
+
     font-family: 'Quicksand', sans-serif;
     height:auto;
     overflow: hidden;
->>>>>>> 1647f0eb0508e6258821ce45437a406355f59ca1
     /*background-color: rgb(0,100,200);*/
     display: grid;
     grid-template-areas: "TopPanel"
@@ -296,7 +295,7 @@ export default {
   border-radius: 1em;
   border-style: solid;
   border-color: black;
-  border-width: medium;
+  border-width: thin;
   margin-left: 0.8em;
 }
 
@@ -310,7 +309,7 @@ export default {
   border-radius: 1em;
   border-style: solid;
   border-color: black;
-  border-width: medium;
+  border-width: thin;
 }
 
 /* #ingredients_ {
@@ -342,7 +341,7 @@ grid-area: TopPanel;
   grid-area: ToggleBar;
   background-color: lightgray;
   border-style: solid;
-  border-width: medium;
+  border-width: thin;
   border-color: black;
 
 
@@ -355,7 +354,7 @@ grid-template-areas: "AllFoodTabs Kundkorg";
 grid-template-columns: 80% 20%;
 border-left-style: solid;
 border-left-color: black;
-border-left-width: medium;
+border-left-width: thin;
 /* grid-template-rows: 1fr; */
 }
  #AllFoodTabs{
