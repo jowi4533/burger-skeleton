@@ -27,7 +27,7 @@ export default {
   methods: {
     OrderOption: function (){
       window.location = 'http://localhost:8080/#/Ordering';
-      this.state = "MenuPage";
+      this.state = "HomePage";
     },
   }
 }
