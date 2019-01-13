@@ -81,7 +81,7 @@ span {
   text-align: center;
   border-style: solid;
   border-color: black;
-  border-width: medium;
+  border-width: thin;
   font-weight: bold;
 }
 
@@ -93,7 +93,7 @@ background-color: #b9c0cc;
 height: 4em;
 border-style: solid;
 border-color: black;
-border-width: medium;
+border-width: thin;
 }
 
 .tabAndText{
@@ -144,7 +144,7 @@ button {
   margin-right: 2%;
   font-weight: bold;
   border-color: black;
-  border-width: medium;
+  border-width: thin;
 
 
 

@@ -141,7 +141,7 @@ display:block;
 button {
   font-family: 'Quicksand', sans-serif;
   border-style: solid;
-  border-width: medium;
+  border-width: thin;
   border-color: black;
   border-top-style: hidden;
   height: 3em;
