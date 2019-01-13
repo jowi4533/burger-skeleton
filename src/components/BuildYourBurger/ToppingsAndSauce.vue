@@ -193,7 +193,7 @@ button {
   margin-right: 1em;
   padding: 0;
   border-style: solid;
-  border-width: medium;
+  border-width: thin;
   border-color: black;
   border-top-style: hidden;
 }

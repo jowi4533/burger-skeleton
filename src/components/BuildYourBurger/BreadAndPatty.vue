@@ -126,8 +126,6 @@ h4 {
 #ingredientButtons{
 display:block;
   grid-area: ingredientButtons;
-  border-color: black;
-  border:2px;
 
 
 }
@@ -212,7 +210,7 @@ button {
   font-family: 'Quicksand', sans-serif;
   border-style: solid;
   border-color: black;
-  border-width: medium;
+  border-width: thin;
   border-top-style: hidden;
   height: 3em;
   width: 15em;
