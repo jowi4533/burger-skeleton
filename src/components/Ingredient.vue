@@ -10,7 +10,7 @@
     <div class="all_buttons" align="center">
       <button v-bind:class = "['minus_button_grey', {'minus_button_red':(this.counter > 0)}]" v-on:click="decreaseCounter" ></button>
       <div class = "counterBox">{{ counter }}</div>
-      <button v-bind:class = "['plus_button', {'plus_button_white':(this.counter > 0)}]" v-on:click="incrementCounter"></button>
+      <button v-bind:class = "['plus_button', {'plus_button_white':(this.counter > 0 && item.category < 6)}]" v-on:click="incrementCounter"></button>
 
 
 
@@ -53,6 +53,7 @@ export default {
     incrementCounter: function () {
       var breadtruth = this.breadInArray();
       var pattytruth = this.pattyInArray();
+      if (this.item.category < 6){
 
       if (this.counter < 1){
         if(this.item.category == 1){
@@ -70,6 +71,12 @@ export default {
           this.$emit('increment');
 
       }
+    }
+    else {
+      this.counter +=1;
+      this.$emit('increment');
+    }
+
     },
   resetCounter: function () {
     this.counter = 0;
