@@ -27,7 +27,9 @@
   <div id = "overview" v-if = "this.state === 'OverView'">
     <OverView @switchStage="state=$event"
     :lang="lang"
-    :ui-labels="uiLabels">
+    :ui-labels="uiLabels"
+    :burgers="burgers"
+    :sideAndDrinkItems="sideAndDrinkItems">
   </Overview>
 </div>
 
@@ -232,7 +234,6 @@ export default {
     },
     // ------------
 
-    
   }
 }
 </script>

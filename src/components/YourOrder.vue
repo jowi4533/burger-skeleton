@@ -7,7 +7,7 @@
 
 
     <div class="scrollableText">
-
+      <ul id="burgare">
       <div class="theBurgers"  v-for = "burger in burgers">
         <li> Burger: {{burger.state}} </li>
       </div>
@@ -15,6 +15,11 @@
       <div class="theIngredients" v-for ="ingredient in burgerIngredients">
         <li>{{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-</li>
       </div>
+
+      <div class="sidesAndDrinks" v-for ="item in sideAndDrinkItems">
+        <li>{{item["ingredient_"+ lang]}}, {{item.selling_price}}:-</li>
+      </div>
+    </ul>
 
     </div>
   </div>

@@ -27,7 +27,9 @@ export default{
   props: {
     lang: String,
     uiLabels: Object,
-    ingredients: Array
+    ingredients: Array,
+    burgers: Array,
+    sideAndDrinkItems: Array
   },
 
   components: {
@@ -38,23 +40,25 @@ export default{
     switchStage: function(stage) {
       this.$emit('switchStage', stage);
     },
-
     placeOrder: function () {
-      var i,
       //Wrap the order in an object
-      order = {
-        ingredients: this.chosenIngredients,
-        price: this.price
-      };
-      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      this.$store.state.socket.emit('order', {order: order});
-      //this.$emit('order');
-      //set all counters to 0. Notice the use of $refs
-      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-        this.$refs.ingredient[i].resetCounter();
+
+      for(let j = 0; j < this.burgers.length; j +=1){
+        order = {
+          ingredients: this.burgers[j].ingredients,
+          //price: this.price
+        };
+        // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+        this.$store.state.socket.emit('order', {order: order});
+        //this.$emit('order');
+        //set all counters to 0. Notice the use of $refs
+        for (let i = 0; i < this.$refs.ingredient.length; i += 1) {
+          this.$refs.ingredient[i].resetCounter();
+        }
+        //this.price = 0;
       }
-      this.price = 0;
-      this.chosenIngredients = [];
+      this.burgerIngredients = [];
+      this.sideAndDrinkItems = [];
     }
   }
 }
