@@ -16,6 +16,7 @@
       v-if="item.category == 4"
       v-on:increment="addToOrder(item)"
       v-on:decrease="removeFromOrder(item)"
+      :burgerIngredients="burgerIngredients"
       :ui-labels="uiLabels"
       :item="item"
       :lang="lang"
@@ -49,7 +50,8 @@ export default{
     parentState: String,
     lang: String,
     uiLabels: Object,
-    ingredients: Array
+    ingredients: Array,
+    burgerIngredients: Array
   },
 
   components: {
