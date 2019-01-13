@@ -12,7 +12,7 @@
 
   <h4 id="PattyText"> {{uiLabels.patty}} </h4>
 
-  <div id="BreadContainer" v-on:scroll="windowScroll()">
+  <div id="BreadContainer"  v-on:scroll="windowScroll('BreadContainer')">
 
     <Ingredient
     class="ingredients"
@@ -28,13 +28,13 @@
 
   </div>
 
-  <div id="progress-container">
-    <div class="progress-bar" id="myBar">
+  <div id="progress-Breadcontainer">
+    <div class="progress-Breadbar" id="myBreadBar">
     </div>
   </div>
 
 
-  <div id="PattyContainer">
+  <div id="PattyContainer" v-on:scroll="windowScroll('PattyContainer')">
 
     <Ingredient
     class="ingredients"
@@ -48,6 +48,11 @@
     :key="item.ingredient_id">
     </Ingredient>
   </div>
+  <div id="progress-Pattycontainer">
+    <div class="progress-Pattybar" id="myPattyBar">
+    </div>
+  </div>
+
 </div>
 
 
@@ -91,12 +96,16 @@ export default {
       this.$parent.addToOrder(item);
     },
 
-    windowScroll: function() {
-  var winScroll = document.body.scrollLeft || document.getElementById("BreadContainer").scrollLeft;
-  var width = document.getElementById("BreadContainer").scrollWidth - document.getElementById("BreadContainer").clientWidth;
+    windowScroll: function(id) {
+  var winScroll = document.body.scrollLeft || document.getElementById(id).scrollLeft;
+  var width = document.getElementById(id).scrollWidth - document.getElementById(id).clientWidth;
   var scrolled = (winScroll / width) * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
-  document.getElementById("myBar").style.color = "Green";
+  if (id == "BreadContainer" ) {
+      document.getElementById("myBreadBar").style.width = scrolled + "%";
+    }
+  if (id == "PattyContainer") {
+      document.getElementById("myPattyBar").style.width = scrolled + "%";
+  }
 
 }
 },
@@ -135,6 +144,7 @@ h4 {
 #BreadAndPattyContainer{
   height: 87vh;
   display: grid;
+
   grid-template-areas: "ingredientButtons"
                         "BreadAndPatty";
   grid-template-rows: auto 95%;
@@ -175,13 +185,18 @@ display:block;
   grid-area: BreadAndPatty;
   display: grid;
 
+
   grid-template-areas: "BreadText"
                       "Bread"
+                      "BreadBar"
                       "PattyText"
-                      "Patty";
-   grid-template-rows:5% auto 5% auto ;
+                      "Patty"
+                      "PattyBar";
+
+   grid-template-rows:5% auto 1% 5% auto 1% ;
    grid-template-columns: 2fr;
    grid-row-gap: 0.3em;
+
 }
 
 #BreadText{
@@ -225,22 +240,31 @@ display:block;
 /*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
 
 }
-#progress-container {
-grid-area: Bread;
+#progress-Breadcontainer {
+  grid-area: BreadBar;
   display:inline-block;
-vertical-align: bottom;
+  vertical-align: bottom;
   width: auto;
-  height: 8px;
-  background: red;
+  height: 5px;
+  background: white;
 }
-.progress-bar {
+#progress-Pattycontainer {
+  grid-area: PattyBar;
   display:inline-block;
-  align-items: bottom;
-
-  height: 8px;
-  background: #4caf50;
-
-  width: 50%;
+  vertical-align: bottom;
+  width: auto;
+  height: 5px;
+  background: white;
+}
+.progress-Breadbar {
+  height: 5px;
+  background: gray;
+  width: 0%;
+}
+.progress-Pattybar {
+  height: 5px;
+  background: gray;
+  width: 0%;
 }
 ::-webkit-scrollbar {
  display: none;
