@@ -66,6 +66,7 @@ export default {
             return;
           }
         }
+          console.log("balle")
           this.counter +=1;
           this.$emit('increment');
 
