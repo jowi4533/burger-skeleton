@@ -81,10 +81,10 @@ export default{
       this.$emit('switchTab', tab);
     },
     addToOrder : function(item) {
-      this.$parent.addToOrder(item);
+      this.$parent.addToBurgerIngredients(item);
     },
     removeFromOrder : function(item){
-      this.$parent.removeFromOrder(item);
+      this.$parent.removeFromBurgerIngredients(item);
     }
   }
 }

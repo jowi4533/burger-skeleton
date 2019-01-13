@@ -6,12 +6,12 @@
     <div id="buttons">
 
 
-      <button v-on:click= "switchStage('BreadAndPatty')" class="pictureButtton" id="buttonPicOne"><img src="https://classroomclipart.com/images/gallery/Animations/Food/TN_animated-clipart-gif-building-cheese-burger-animation-05c.jpg"></button>
+      <button v-on:click= "initiateBurgerOrder('BreadAndPatty')" class="pictureButtton" id="buttonPicOne"><img src="https://classroomclipart.com/images/gallery/Animations/Food/TN_animated-clipart-gif-building-cheese-burger-animation-05c.jpg"></button>
       <button v-on:click= "switchStage('Drinks')" class="pictureButtton" id="buttonPicTwo"><img src="https://st3.depositphotos.com/5934840/12771/v/950/depositphotos_127717872-stock-illustration-french-fries-and-soda-design.jpg"></button>
       <button v-on:click= "switchStage('OverView')" class="pictureButtton" id="buttonPicThree"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPrk3fOyuSsjA4DKyItpI_9Wh2Cfff8iIEZZnIZCMA3yM7XYfn"></button>
       <button class="pictureButtton" id="buttonPicFour"><img src="http://www.smalandselfstorage.se/wp-content/uploads/2017/05/cash-payment-icon-5.jpg"></button>
 
-      <button v-on:click= "switchStage('BreadAndPatty')" class="textButton" id="buttonTextOne"> {{uiLabels.stageOne}} </button>
+      <button v-on:click= "initiateBurgerOrder('BreadAndPatty')" class="textButton" id="buttonTextOne"> {{uiLabels.stageOne}} </button>
       <button v-on:click= "switchStage('Drinks')" class="textButton" id="buttonTextTwo"> {{uiLabels.stageTwo}} </button>
       <button v-on:click= "switchStage('OverView')" class="textButton" id="buttonTextThree"> {{uiLabels.stageThree}} </button>
       <button class="textButton" id="buttonTextFour"> {{uiLabels.stageFour}} </button>
@@ -44,6 +44,12 @@ export default {
     },
     switchLanguage: function(){
       this.$emit('switchLanguage');
+    },
+
+    initiateBurgerOrder: function(stage){
+      this.$emit('createNewBurger')
+      this.switchStage(stage);
+
     }
   }
 }
