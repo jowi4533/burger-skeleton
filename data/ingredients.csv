@@ -1,54 +1,54 @@
-ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,selling_price,img
-1,brioche,brioche,1,0,0,0,10,~@/assets/patty/bean.jpg
-2,glutenfritt bröd,gluten free bread,1,1,1,1,10
-3,veganskt bröd,vegan bun,1,0,0,1,10
-4,fullkornsbrioche,whole wheat brioche,1,0,0,0,10
-5,bönburgare,bean patty,2,1,1,1,40
-6,nötfärsburgare 100g,beef patty 100g,2,1,1,0,40
-7,nötfärsburgare 200g,beef patty 200g,2,1,1,0,60
-8,kycklingburgare,chicken patty,2,1,0,0,40
-9,friterad halloumi,deep-fried halloumi,2,0,0,0,40
-10,fiskfilé,fish filet,2,1,0,0,40
-11,avocado,avocado,3,1,1,1,10
-12,bacon,bacon,3,1,1,0,10
-13,salami,salami,3,1,1,0,10
-14,karamelliserad lök,candied onions,3,1,1,1,5
-15,stekt ägg,fried egg,3,1,1,0,10
-16,friterade lökringar,deep-fried onion rings,3,1,0,1,15
-17,cheddar,cheddar cheese,3,0,1,0,10
-18,gouda,gouda cheese,3,0,1,0,10
-19,brie,brie cheese,3,0,1,0,10
-20,pepper jack-ost,pepper jack cheese,3,0,1,0,10
-21,chèvre,goat cheese,3,0,1,0,10
-22,blåmögel ost,blue cheese,3,0,1,0,10
-23,vegansk ost,vegan cheese,3,1,1,1,10
-24,krispsallad,lettuce,4,1,1,1,5
-25,tomat,tomato,4,1,1,1,5
-26,gurka,cucumber,4,1,1,1,5
-27,inlagd gurka,pickled cucumber,4,1,1,1,5
-28,inlagd rödlök,pickled red onion,4,1,1,1,5
-29,rå rödlök,raw red onion,4,1,1,1,5
-30,rå gul lök,raw yellow onion,4,1,1,1,5
-31,majonnäs,mayonnaise,5,1,1,0,5
-32,klassisk hamburgarsås,classic hamburger dressing,5,1,1,0,5
-33,ketchup,ketchup,5,1,1,1,5
-34,senap,mustard,5,1,1,1,5
-35,aioli,aioli,5,1,1,0,5
-36,barbecuesås,barbecue sauce,5,1,1,1,5
-37,guacamole,guacamole,5,1,1,1,10
-38,hot salsa,hot salsa,5,1,1,1,5
-39,sriracha,sriracha,5,1,1,1,5
-40,teriyakisås,teriyaki sauce,5,1,1,1,5
-41,tryffelmajonnäs,truffle mayonnaise,5,1,1,0,5
-42,tzatziki,tzatziki,5,0,1,0,5
-43,liten potatisstrips,small potato fries,6,1,1,1,10
-44,mellan potatisstrips,medium potato fries,6,1,1,1,15
-45,stor potatisstrips,large potato fries,6,1,1,1,20
-46,liten sötpotatisstrips,small sweet potato fries,6,1,1,1,12
-47,mellan sötpotatisstrips,medium sweet potato fries,6,1,1,1,17
-48,stor sötpotatisstrips,large sweet potato fries,6,1,1,1,22
-49,nachochips,nachos,6,1,0,1,20
-50,läsk,soda,7,1,1,1,20
-51,jordgubbsmilkshake,strawberry milk shake,7,0,1,0,40
-52,chokladmilkshake,chocolate milk shake,7,0,1,0,40
-53,pucko,pucko,7,0,1,0,25
+ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,selling_price,ingredient_img
+1,brioche,brioche,1,0,0,0,10, "/bread/brioche.jpg"
+2,glutenfritt bröd,gluten free bread,1,1,1,1,10, "/bread/gluten.jpg"
+3,veganskt bröd,vegan bun,1,0,0,1,10, "/bread/vegan.jpg"
+4,fullkornsbrioche,whole wheat brioche,1,0,0,0,10, "/bread/wholeweat.jpg"
+5,bönburgare,bean patty,2,1,1,1,40, "/patty/bean.jpg"
+6,nötfärsburgare 100g,beef patty 100g,2,1,1,0,40,"/patty/beef.jpg"
+7,nötfärsburgare 200g,beef patty 200g,2,1,1,0,60,"/patty/beef.jpg"
+8,kycklingburgare,chicken patty,2,1,0,0,40,"/patty/chicken"
+9,friterad halloumi,deep-fried halloumi,2,0,0,0,40, "/patty/halloumi.jpg"
+10,fiskfilé,fish filet,2,1,0,0,40, "/patty/fish.jpg"
+11,avocado,avocado,3,1,1,1,10,"/toppings/avocado.jpg"
+12,bacon,bacon,3,1,1,0,10,"/toppings/bacon.jpg"
+13,salami,salami,3,1,1,0,10, "/toppings/salami.jpg"
+14,karamelliserad lök,candied onions,3,1,1,1,5, "/toppings/candiedonions.jpg"
+15,stekt ägg,fried egg,3,1,1,0,10, "/toppings/friedegg.jpg"
+16,friterade lökringar,deep-fried onion rings,3,1,0,1,15, "/toppings/onionrings.jpg"
+17,cheddar,cheddar cheese,3,0,1,0,10, "/toppings/cheddar.jpg"
+18,gouda,gouda cheese,3,0,1,0,10, "/toppings/goudacheese.jpg"
+19,brie,brie cheese,3,0,1,0,10, "/toppings/briecheese.jpg"
+20,pepper jack-ost,pepper jack cheese,3,0,1,0,10, "/toppings/pepperjackcheese.jpg"
+21,chèvre,goat cheese,3,0,1,0,10, "/toppings/goatcheese.jpg"
+22,blåmögel ost,blue cheese,3,0,1,0,10, "/toppings/bluecheese.jpg"
+23,vegansk ost,vegan cheese,3,1,1,1,10, "/toppings/vegancheese.jpg"
+24,krispsallad,lettuce,4,1,1,1,5, "/vegetables/lettuce.jpg"
+25,tomat,tomato,4,1,1,1,5, "/vegetables/tomato.jpg"
+26,gurka,cucumber,4,1,1,1,5, "/vegetables/cucumber.jpg"
+27,inlagd gurka,pickled cucumber,4,1,1,1,5, "/vegetables/pickledcucumber.jpg"
+28,inlagd rödlök,pickled red onion,4,1,1,1,5, "/vegetables/pickledonion.jpg"
+29,rå rödlök,raw red onion,4,1,1,1,5, "/vegetables/redonion.jpg"
+30,rå gul lök,raw yellow onion,4,1,1,1,5, "/vegetables/yellowonion.jpg"
+31,majonnäs,mayonnaise,5,1,1,0,5, "/sauce/mayonnaise.jpg"
+32,klassisk hamburgarsås,classic hamburger dressing,5,1,1,0,5,  "/sauce/classicdressing.jpg"
+33,ketchup,ketchup,5,1,1,1,5,  "/sauce/ketchup.jpg"
+34,senap,mustard,5,1,1,1,5,  "/sauce/mustard.jpg"
+35,aioli,aioli,5,1,1,0,5,  "/sauce/aioli.jpg"
+36,barbecuesås,barbecue sauce,5,1,1,1,5,  "/sauce/bbqsauce.jpg"
+37,guacamole,guacamole,5,1,1,1,10,  "/sauce/guacamole.jpg"
+38,hot salsa,hot salsa,5,1,1,1,5,  "/sauce/hotsalsa.jpg"
+39,sriracha,sriracha,5,1,1,1,5,  "/sauce/sriracha.jpg"
+40,teriyakisås,teriyaki sauce,5,1,1,1,5,  "/sauce/teriyakisauce.jpg"
+41,tryffelmajonnäs,truffle mayonnaise,5,1,1,0,5,  "/sauce/trufflemayonnaise.jpg"
+42,tzatziki,tzatziki,5,0,1,0,5,  "/sauce/tzatziki.jpg"
+43,liten potatisstrips,small potato fries,6,1,1,1,10, "/sides/smallpotatofries.jpg"
+44,mellan potatisstrips,medium potato fries,6,1,1,1,15, "/sides/mediumpotatofries.jpg"
+45,stor potatisstrips,large potato fries,6,1,1,1,20, "/sides/largepotatofries.jpg"
+46,liten sötpotatisstrips,small sweet potato fries,6,1,1,1,12, "/sides/smallsweetpotatofries.jpg"
+47,mellan sötpotatisstrips,medium sweet potato fries,6,1,1,1,17, "/sides/mediumpotatofries.jpg"
+48,stor sötpotatisstrips,large sweet potato fries,6,1,1,1,22, "/sides/largesweetpotatofries.jpg"
+49,nachochips,nachos,6,1,0,1,20, "/sides/nachochips.jpg"
+50,läsk,soda,7,1,1,1,20, "/drinks/soda.jpg"
+51,jordgubbsmilkshake,strawberry milk shake,7,0,1,0,40, "/drinks/strawberrymilkshake.jpg"
+52,chokladmilkshake,chocolate milk shake,7,0,1,0,40, "/drinks/chocolatemilkshake.jpg"
+53,pucko,pucko,7,0,1,0,25, "/drinks/pucko.jpg"
