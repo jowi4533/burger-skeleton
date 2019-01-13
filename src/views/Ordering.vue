@@ -287,7 +287,7 @@ export default {
   border-radius: 1em;
   border-style: solid;
   border-color: black;
-  border-width: medium;
+  border-width: thin;
   margin-left: 0.8em;
 }
 
@@ -301,7 +301,7 @@ export default {
   border-radius: 1em;
   border-style: solid;
   border-color: black;
-  border-width: medium;
+  border-width: thin;
 }
 
 /* #ingredients_ {
@@ -333,7 +333,7 @@ grid-row: 2 / span 3;
   grid-area: ToggleBar;
   background-color: lightgray;
   border-style: solid;
-  border-width: medium;
+  border-width: thin;
   border-color: black;
 
 
@@ -346,7 +346,7 @@ grid-template-areas: "AllFoodTabs Kundkorg";
 grid-template-columns: 80% 20%;
 border-left-style: solid;
 border-left-color: black;
-border-left-width: medium;
+border-left-width: thin;
 /* grid-template-rows: 1fr; */
 }
 #AllFoodTabs{

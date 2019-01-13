@@ -7,9 +7,12 @@
   </div>
 
 <div id="BreadAndPatty">
+
   <h4 id="BreadText"> {{uiLabels.bread}} </h4>
+
   <h4 id="PattyText"> {{uiLabels.patty}} </h4>
-  <div id="BreadContainer">
+
+  <div id="BreadContainer" v-on:scroll="windowScroll()">
 
     <Ingredient
     class="ingredients"
@@ -17,13 +20,19 @@
     v-for="item in ingredients"
     v-if="item.category == 1"
     v-on:increment="addToOrder(item)"
-    v-on:decrease="removeFromOrder(item)"
     :ui-labels="uiLabels"
     :item="item"
     :lang="lang"
     :key="item.ingredient_id">
     </Ingredient>
+
   </div>
+
+  <div id="progress-container">
+    <div class="progress-bar" id="myBar">
+    </div>
+  </div>
+
 
   <div id="PattyContainer">
 
@@ -33,7 +42,6 @@
     v-for="item in ingredients"
     v-if="item.category == 2"
     v-on:increment="addToOrder(item)"
-    v-on:decrease="removeFromOrder(item)"
     :ui-labels="uiLabels"
     :item="item"
     :lang="lang"
@@ -76,9 +84,25 @@ export default {
     },
     removeFromOrder : function(item){
       this.$parent.removeFromBurgerIngredients(item);
-    }
+    },
 
-  }
+    windowScroll: function() {
+  var winScroll = document.body.scrollLeft || document.getElementById("BreadContainer").scrollLeft;
+  var width = document.getElementById("BreadContainer").scrollWidth - document.getElementById("BreadContainer").clientWidth;
+  var scrolled = (winScroll / width) * 100;
+  document.getElementById("myBar").style.width = scrolled + "%";
+  document.getElementById("myBar").style.color = "Green";
+
+}
+},
+// computed: {
+//   windowScroll: function() {
+//     window.onscroll = function() {myFunction()};
+//     console.log("hej");
+//
+//
+//   }
+// }
 }
 
 
@@ -118,8 +142,6 @@ h4 {
 #ingredientButtons{
 display:block;
   grid-area: ingredientButtons;
-  border-color: black;
-  border:2px;
 
 
 }
@@ -155,6 +177,7 @@ display:block;
    grid-template-columns: 2fr;
    grid-row-gap: 0.3em;
 }
+
 #BreadText{
   grid-area: BreadText;
   text-align: center;
@@ -166,6 +189,7 @@ display:block;
     text-align: center;
     margin: 0;
 }
+
 #BreadContainer{
 
   grid-area: Bread;
@@ -193,21 +217,37 @@ display:block;
 /*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
 
 }
+#progress-container {
+grid-area: Bread;
+  display:inline-block;
+vertical-align: bottom;
+  width: auto;
+  height: 8px;
+  background: red;
+}
+.progress-bar {
+  display:inline-block;
+  align-items: bottom;
+
+  height: 8px;
+  background: #4caf50;
+
+  width: 50%;
+}
 ::-webkit-scrollbar {
  display: none;
 }
+
 
 button {
   font-family: 'Quicksand', sans-serif;
   border-style: solid;
   border-color: black;
-  border-width: medium;
+  border-width: thin;
   border-top-style: hidden;
   height: 3em;
   width: 15em;
   font-size: 0.6em;
-  font-weight: bold;
-  margin-right: 1em;
   padding: 0;
 }
 
