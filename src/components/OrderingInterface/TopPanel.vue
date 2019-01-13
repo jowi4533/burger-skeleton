@@ -26,7 +26,7 @@
             {{uiLabels.chooseDrinkAndSides}}
         </span>
 
-        <button id="Cancel" v-on:click= "switchStage('MenuPage')">{{uiLabels.cancel}}</button>
+        <button id="Cancel" v-on:click= "switchStageWipeOrder('MenuPage')">{{uiLabels.cancel}}</button>
     </div>
 </div>
 </template>
@@ -54,6 +54,11 @@ export default{
     switchStage: function(stage) {
       this.$emit('switchStage', stage);
     },
+
+    switchStageWipeOrder: function(stage) {
+      this.$emit('switchStageWipeOrder');
+      this.switchStage(stage);
+    }
   },
 }
 
