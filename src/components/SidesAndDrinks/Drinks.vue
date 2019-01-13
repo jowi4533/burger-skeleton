@@ -94,10 +94,10 @@ export default{
       this.$emit('switchStage', stage);
     },
     addToOrder : function(item) {
-      this.$parent.addToOrder(item);
+      this.$parent.addToSideAndDrinkItems(item);
     },
     removeFromOrder : function(item){
-      this.$parent.removeFromOrder(item);
+      this.$parent.removeFromBurgerIngredients(item);
     },
     windowScroll: function(id) {
   var winScroll = document.body.scrollLeft || document.getElementById(id).scrollLeft;

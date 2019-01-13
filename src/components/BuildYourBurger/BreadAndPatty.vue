@@ -1,51 +1,52 @@
 <template>
-<div id = "BreadAndPattyContainer">
-  <div id="ingredientButtons">
-    <button id="breadPattyButton" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
-    <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
-    <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
-  </div>
+  <div id = "BreadAndPattyContainer">
+    <div id="ingredientButtons">
+      <button id="breadPattyButton" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+      <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
+      <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
+    </div>
 
-<div id="BreadAndPatty">
+    <div id="BreadAndPatty">
 
-  <h4 id="BreadText"> {{uiLabels.bread}} </h4>
+      <h4 id="BreadText"> {{uiLabels.bread}} </h4>
 
-  <h4 id="PattyText"> {{uiLabels.patty}} </h4>
+      <h4 id="PattyText"> {{uiLabels.patty}} </h4>
 
   <div id="BreadContainer"  v-on:scroll="windowScroll('BreadContainer')">
 
-    <Ingredient
-    class="ingredients"
-    ref="ingredient"
-    v-for="item in ingredients"
-    v-if="item.category == 1"
-    v-on:increment="addToOrder(item)"
-    :ui-labels="uiLabels"
-    :item="item"
-    :lang="lang"
-    :key="item.ingredient_id">
-    </Ingredient>
+        <Ingredient
+        class="ingredients"
+        ref="ingredient"
+        v-for="item in ingredients"
+        v-if="item.category == 1"
+        v-on:increment="addToOrder(item)"
+        v-on:decrease="removeFromOrder(item)"
+        :ui-labels="uiLabels"
+        :item="item"
+        :lang="lang"
+        :key="item.ingredient_id">
+      </Ingredient>
 
-  </div>
+    </div>
 
   <div id="progress-Breadcontainer">
     <div class="progress-Breadbar" id="myBreadBar">
     </div>
-  </div>
 
 
   <div id="PattyContainer" v-on:scroll="windowScroll('PattyContainer')">
 
-    <Ingredient
-    class="ingredients"
-    ref="ingredient"
-    v-for="item in ingredients"
-    v-if="item.category == 2"
-    v-on:increment="addToOrder(item)"
-    :ui-labels="uiLabels"
-    :item="item"
-    :lang="lang"
-    :key="item.ingredient_id">
+      <Ingredient
+      class="ingredients"
+      ref="ingredient"
+      v-for="item in ingredients"
+      v-if="item.category == 2"
+      v-on:increment="addToOrder(item)"
+      v-on:decrease="removeFromOrder(item)"
+      :ui-labels="uiLabels"
+      :item="item"
+      :lang="lang"
+      :key="item.ingredient_id">
     </Ingredient>
   </div>
   <div id="progress-Pattycontainer">
@@ -57,32 +58,25 @@
 
 
 </div>
+</div>
 
 </template>
 
 <script>
 import Ingredient from '@/components/Ingredient.vue'
-//import sharedVueStuff from '@/components/sharedVueStuff.js'
 export default {
   name: 'BreadAndPatty',
-	// props: {
-	// uiLabels: Object,
-	// lang: String,
-	// ingredients: Array,
-	// item: Object
-  // },
 
   props: {
     parentState: String,
     lang: String,
     uiLabels: Object,
-    ingredients: Array
+    ingredients: Array,
+    burgerIngredients: Array
   },
   components: {
     Ingredient
   },
-
-//mixins: [sharedVueStuff],
 
   methods: {
     switchTab: function(tab) {
@@ -93,7 +87,10 @@ export default {
       this.$emit('switchStage', stage);
     },
     addToOrder : function(item) {
-      this.$parent.addToOrder(item);
+      this.$parent.addToBurgerIngredients(item);
+    },
+    removeFromOrder : function(item){
+      this.$parent.removeFromBurgerIngredients(item);
     },
 
     windowScroll: function(id) {
@@ -107,16 +104,16 @@ export default {
       document.getElementById("myPattyBar").style.width = scrolled + "%";
   }
 
-}
-},
-// computed: {
-//   windowScroll: function() {
-//     window.onscroll = function() {myFunction()};
-//     console.log("hej");
-//
-//
-//   }
-// }
+    }
+  },
+  // computed: {
+  //   windowScroll: function() {
+  //     window.onscroll = function() {myFunction()};
+  //     console.log("hej");
+  //
+  //
+  //   }
+  // }
 }
 
 
@@ -146,39 +143,39 @@ h4 {
   display: grid;
 
   grid-template-areas: "ingredientButtons"
-                        "BreadAndPatty";
+                          "BreadAndPatty";
   grid-template-rows: auto 95%;
   grid-template-columns: 1fr;
-    /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
+  /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
 
 
 }
 
 #ingredientButtons{
-display:block;
+  display:block;
   grid-area: ingredientButtons;
 
 
 }
 
 /* #next{
-  position: relative;
-  bottom: 0;
+position: relative;
+bottom: 0;
 
-  grid-column: 6;
-  grid-row: 4;
-  float: right;
-  background-color: rgb(30,200,100);
+grid-column: 6;
+grid-row: 4;
+float: right;
+background-color: rgb(30,200,100);
 }
 
 #previous{
-  grid-column: 5;
-  grid-row: 4;
+grid-column: 5;
+grid-row: 4;
 
-  background-color: rgb(30,100,200);
-  position: relative;
-  bottom: 0;
-  float: right;
+background-color: rgb(30,100,200);
+position: relative;
+bottom: 0;
+float: right;
 } */
 
 #BreadAndPatty{
@@ -207,12 +204,11 @@ display:block;
 }
 #PattyText{
   grid-area: PattyText;
-    text-align: center;
-    margin: 0;
+  text-align: center;
+  margin: 0;
 }
 
 #BreadContainer{
-
 
   grid-area: Bread;
 
@@ -226,7 +222,6 @@ display:block;
 
 }
 #PattyContainer{
-
   grid-area: Patty;
   overflow-x: scroll;
   overflow-y:hidden;
@@ -237,7 +232,7 @@ display:block;
   grid-column-gap: 2em;
 
 
-/*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
+  /*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
 
 }
 #progress-Breadcontainer {
@@ -267,7 +262,7 @@ display:block;
   width: 0%;
 }
 ::-webkit-scrollbar {
- display: none;
+  display: none;
 }
 
 
