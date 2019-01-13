@@ -2,7 +2,7 @@
   <div id = "OverViewContainer">
     <h1> {{uiLabels.overViewHeader}} </h1>
     <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">{{uiLabels.previous}}</button>
-    <button class="overviewButtons" id="purchaseButton" v-on:click= "switchStage('Payment')"> {{uiLabels.purchaseItemsInOverview}} </button>
+    <button class="overviewButtons" id="purchaseButton" v-on:click= "placeOrder()"> {{uiLabels.purchaseItemsInOverview}} </button>
     <div id="wrapper">
       <section id="orderlist">
         <p> tja </p>
@@ -27,7 +27,9 @@ export default{
   props: {
     lang: String,
     uiLabels: Object,
-    ingredients: Array
+    ingredients: Array,
+    burgers: Array,
+    sideAndDrinkItems: Array
   },
 
   components: {
@@ -38,6 +40,26 @@ export default{
     switchStage: function(stage) {
       this.$emit('switchStage', stage);
     },
+    placeOrder: function () {
+      //Wrap the order in an object
+
+      for(let j = 0; j < this.burgers.length; j +=1){
+        order = {
+          ingredients: this.burgers[j].ingredients,
+          //price: this.price
+        };
+        // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+        this.$store.state.socket.emit('order', {order: order});
+        //this.$emit('order');
+        //set all counters to 0. Notice the use of $refs
+        for (let i = 0; i < this.$refs.ingredient.length; i += 1) {
+          this.$refs.ingredient[i].resetCounter();
+        }
+        //this.price = 0;
+      }
+      this.burgerIngredients = [];
+      this.sideAndDrinkItems = [];
+    }
   }
 }
 
