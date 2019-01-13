@@ -96,7 +96,7 @@ export default {
   border: 3px solid #000000;
   height: 70%;
   width: 100%;
-  background-image: url('~@/assets/patty/beef.jpg');
+/*  background-image: url('~@/assets/patty/beef.jpg');*/
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;

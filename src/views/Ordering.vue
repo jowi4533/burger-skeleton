@@ -16,7 +16,7 @@
 </div>
 
 <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
-  <TopPanel @switchStage="state=$event"
+  <TopPanel @switchStage="state=$event" @switchStageWipeOrder="wipeOrder()"
   :parentState="state"
   :lang="lang"
   :ui-labels="uiLabels">
@@ -165,6 +165,11 @@ export default {
 
   methods: {
     //All functions handling burgerIngredients and the items included in the order -----
+    wipeOrder: function () {
+      this.burgers = [],
+      this.sideAndDrinkItems = []
+    },
+
     newBurger: function () {
       let burger = {
         state : this.burgerOrder,
@@ -319,7 +324,7 @@ grid-row: 2 / span 3;
   grid-area: TopPanel;
 }
 
-.ToggleBar{
+#ToggleBar{
   grid-area: ToggleBar;
   background-color: lightgray;
   border-style: solid;
