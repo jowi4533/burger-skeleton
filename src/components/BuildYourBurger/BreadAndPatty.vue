@@ -12,7 +12,7 @@
 
       <h4 id="PattyText"> {{uiLabels.patty}} </h4>
 
-      <div id="BreadContainer" v-on:scroll="windowScroll()">
+      <div id="BreadContainer" v-on:scroll="windowScroll('BreadContainer')">
 
         <Ingredient
         class="ingredients"
@@ -30,13 +30,12 @@
 
     </div>
 
-    <div id="progress-container">
-      <div class="progress-bar" id="myBar">
+    <div id="progress-Breadcontainer">
+      <div class="progress-Breadbar" id="myBreadBar">
       </div>
     </div>
 
-
-    <div id="PattyContainer">
+    <div id="PattyContainer" v-on:scroll="windowScroll('PattyContainer')">
 
       <Ingredient
       class="ingredients"
@@ -51,6 +50,10 @@
       :lang="lang"
       :key="item.ingredient_id">
     </Ingredient>
+  </div>
+  <div id="progress-Pattycontainer">
+    <div class="progress-Pattybar" id="myPattyBar">
+    </div>
   </div>
 </div>
 
@@ -90,13 +93,16 @@ export default {
       this.$parent.removeFromBurgerIngredients(item);
     },
 
-    windowScroll: function() {
-      var winScroll = document.body.scrollLeft || document.getElementById("BreadContainer").scrollLeft;
-      var width = document.getElementById("BreadContainer").scrollWidth - document.getElementById("BreadContainer").clientWidth;
-      var scrolled = (winScroll / width) * 100;
-      document.getElementById("myBar").style.width = scrolled + "%";
-      document.getElementById("myBar").style.color = "Green";
-
+    windowScroll: function(id) {
+    var winScroll = document.body.scrollLeft || document.getElementById(id).scrollLeft;
+    var width = document.getElementById(id).scrollWidth - document.getElementById(id).clientWidth;
+    var scrolled = (winScroll / width) * 100;
+    if (id == "ToppingContainer" ) {
+      document.getElementById("myToppingsBar").style.width = scrolled + "%";
+    }
+    if (id == "SauceContainer") {
+      document.getElementById("mySauceBar").style.width = scrolled + "%";
+    }
     }
   },
   // computed: {
@@ -175,9 +181,11 @@ float: right;
   display: grid;
   grid-template-areas: "BreadText"
                       "Bread"
+                      "BreadBar"
                       "PattyText"
-                      "Patty";
-   grid-template-rows:5% auto 5% auto ;
+                      "Patty"
+                      "PattyBar";
+   grid-template-rows:5% auto 1% 5% auto 1% ;
    grid-template-columns: 2fr;
    grid-row-gap: 0.3em;
    margin-left: 1%;
@@ -222,22 +230,31 @@ float: right;
   /*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
 
 }
-#progress-container {
-  grid-area: Bread;
+#progress-Breadcontainer {
+  grid-area: BreadBar;
   display:inline-block;
   vertical-align: bottom;
   width: auto;
-  height: 8px;
-  background: red;
+  height: 5px;
+  background: white;
 }
-.progress-bar {
+#progress-Pattycontainer {
+  grid-area: PattyBar;
   display:inline-block;
-  align-items: bottom;
-
-  height: 8px;
-  background: #4caf50;
-
-  width: 50%;
+  vertical-align: bottom;
+  width: auto;
+  height: 5px;
+  background: white;
+}
+.progress-Breadbar {
+  height: 5px;
+  background: gray;
+  width: 0%;
+}
+.progress-Pattybar {
+  height: 5px;
+  background: gray;
+  width: 0%;
 }
 ::-webkit-scrollbar {
   display: none;
@@ -250,6 +267,7 @@ button {
   border-color: black;
   border-width: thin;
   border-top-style: hidden;
+  margin-right: 1em;
   height: 3em;
   width: 15em;
   font-size: 0.6em;
