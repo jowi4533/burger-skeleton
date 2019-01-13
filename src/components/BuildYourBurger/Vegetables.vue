@@ -6,9 +6,9 @@
     <button :class="{tabButton : parentState === 'Vegetables'}"> {{uiLabels.veggies}} </button>
   </div>
 
-  <div id="Vegetables">
+  <div id="Vegetables" >
     <h4 id="VegetablesText"> {{uiLabels.veggies}} </h4>
-    <div id="VegetableOptionsContainer">
+    <div id="VegetableOptionsContainer" v-on:scroll="windowScroll('VegetableOptionsContainer')">
       <Ingredient
       class="ingredients"
       ref="ingredient"
@@ -24,7 +24,10 @@
       </Ingredient>
     </div>
 
-
+    <div id="progress-Vegetablescontainer">
+      <div class="progress-Vegetablesbar" id="myVegetablesBar">
+      </div>
+    </div>
   <!-- <div id="ToggleBar">
     <button id="next" v-on:click= "switchStage('Drinks')"> {{uiLabels.next}} </button>
     <button id="previous" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.previous}} </button>
@@ -73,7 +76,15 @@ export default{
     },
     removeFromOrder : function(item){
       this.$parent.removeFromBurgerIngredients(item);
+    },
+    windowScroll: function(id) {
+  var winScroll = document.body.scrollLeft || document.getElementById(id).scrollLeft;
+  var width = document.getElementById(id).scrollWidth - document.getElementById(id).clientWidth;
+  var scrolled = (winScroll / width) * 100;
+  if (id == "VegetableOptionsContainer" ) {
+      document.getElementById("myVegetablesBar").style.width = scrolled + "%";
     }
+}
   }
 }
 
@@ -117,9 +128,10 @@ display:block;
   display: grid;
   grid-template-areas: "VegetablesText"
                       "VegetableOptionsContainer"
+                      "VegetablesBar"
                       "RestenText"
                       "Resten";
-   grid-template-rows:5% auto 5% 43.7%;
+   grid-template-rows:5% auto 1% 5% 43.7%;
    grid-template-columns: 2fr;
    grid-row-gap: 0.3em;
    margin-left: 1%;
@@ -138,6 +150,21 @@ display:block;
   grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
   grid-column-gap: 2em;
 }
+#progress-Vegetablescontainer {
+  grid-area: VegetablesBar;
+  display:inline-block;
+  vertical-align: bottom;
+  width: auto;
+  height: 5px;
+  background: white;
+}
+
+.progress-Vegetablesbar {
+  height: 5px;
+  background: gray;
+  width: 0%;
+}
+
 
 button {
   font-family: 'Quicksand', sans-serif;

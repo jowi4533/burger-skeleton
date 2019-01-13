@@ -11,7 +11,7 @@
   <h4 id="DrinksText"> {{uiLabels.drinks}} </h4>
   <h4 id="SidesText"> {{uiLabels.sides}} </h4>
 
-<div id="DrinksContainer">
+<div id="DrinksContainer" v-on:scroll="windowScroll('DrinksContainer')">
       <Ingredient
       class="ingredients"
       ref="ingredient"
@@ -19,24 +19,37 @@
       v-if="item.category == 7"
       v-on:increment="addToOrder(item)"
       v-on:decrease="removeFromOrder(item)"
+      :burgerIngredients="burgerIngredients"
       :ui-labels="uiLabels"
       :item="item"
       :lang="lang"
       :key="item.ingredient_id">
       </Ingredient>
 </div>
-<div id="SidesContainer">
+<div id="progress-Drinkscontainer">
+  <div class="progress-Drinksbar" id="myDrinksBar">
+  </div>
+</div>
+
+<div id="SidesContainer" v-on:scroll="windowScroll('SidesContainer')">
   <Ingredient
   class="ingredients"
   ref="ingredient"
   v-for="item in ingredients"
   v-if="item.category == 6"
   v-on:increment="addToOrder(item)"
+  v-on:decrease="removeFromOrder(item)"
+  :burgerIngredients="burgerIngredients"
   :ui-labels="uiLabels"
   :item="item"
   :lang="lang"
   :key="item.ingredient_id">
   </Ingredient>
+</div>
+
+<div id="progress-Sidescontainer">
+  <div class="progress-Sidesbar" id="mySidesBar">
+  </div>
 </div>
 
 </div>
@@ -66,7 +79,8 @@ export default{
     parentState: String,
     lang: String,
     uiLabels: Object,
-    ingredients: Array
+    ingredients: Array,
+    burgerIngredients: Array
   },
 
   components: {
@@ -87,8 +101,20 @@ export default{
       this.$parent.addToSideAndDrinkItems(item);
     },
     removeFromOrder : function(item){
-      this.$parent.removeFromSideAndDrinkItems(item);
+      this.$parent.removeFromBurgerIngredients(item);
+    },
+    windowScroll: function(id) {
+  var winScroll = document.body.scrollLeft || document.getElementById(id).scrollLeft;
+  var width = document.getElementById(id).scrollWidth - document.getElementById(id).clientWidth;
+  var scrolled = (winScroll / width) * 100;
+  if (id == "DrinksContainer" ) {
+      document.getElementById("myDrinksBar").style.width = scrolled + "%";
     }
+  if (id == "SidesContainer") {
+      document.getElementById("mySidesBar").style.width = scrolled + "%";
+  }
+
+}
   }
 }
 
@@ -153,9 +179,11 @@ display:block;
 
   grid-template-areas: "DrinksText"
                       "Drinks"
+                      "DrinksBar"
                       "SidesText"
-                      "Sides";
-   grid-template-rows:5% auto 5% auto ;
+                      "Sides"
+                      "SidesBar";
+   grid-template-rows:5% auto 1% 5% auto 1%;
    grid-template-columns: 2fr;
    grid-row-gap: 0.3em;
    margin-left: 1%;
@@ -200,6 +228,32 @@ display:block;
 
 /*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
 
+}
+#progress-Drinkscontainer {
+  grid-area: DrinksBar;
+  display:inline-block;
+  vertical-align: bottom;
+  width: auto;
+  height: 5px;
+  background: white;
+}
+#progress-Sidescontainer {
+  grid-area: SidesBar;
+  display:inline-block;
+  vertical-align: bottom;
+  width: auto;
+  height: 5px;
+  background: white;
+}
+.progress-Drinksbar {
+  height: 5px;
+  background: gray;
+  width: 0%;
+}
+.progress-Sidesbar {
+  height: 5px;
+  background: gray;
+  width: 0%;
 }
 button {
   font-family: 'Quicksand', sans-serif;
