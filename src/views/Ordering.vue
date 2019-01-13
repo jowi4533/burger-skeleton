@@ -164,6 +164,7 @@ export default {
     newBurger: function () {
       let burger = {
         state : this.burgerOrder,
+        burgerFinished : "No",
         ingredients : []
       };
 
@@ -171,8 +172,7 @@ export default {
     },
 
     finishBurgerSwitchState: function () {
-      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
-
+      this.burgerFinished = "Yes"
       this.burgerIngredients = [];
       this.burgerOrder += 1;
 
@@ -181,6 +181,7 @@ export default {
 
     addToBurgerIngredients: function(item){
       this.burgerIngredients.push(item);
+      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
     },
 
     addToSideAndDrinkItems: function(item) {
@@ -190,6 +191,7 @@ export default {
     removeFromBurgerIngredients: function(item) {
       let index = this.burgerIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
       this.burgerIngredients.splice(index, 1);
+      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
     },
 
     removeFromSideAndDrinkItems: function(item) {
