@@ -13,6 +13,7 @@
       v-for="item in ingredients"
       v-if="item.category == 6"
       v-on:increment="addToOrder(item)"
+      v-on:decrease="removeFromOrder(item)"
       :ui-labels="uiLabels"
       :item="item"
       :lang="lang"
@@ -65,6 +66,9 @@ export default{
     },
     addToOrder : function(item) {
       this.$parent.addToSideAndDrinkItems(item);
+    },
+    removeFromOrder : function(item){
+      this.$parent.removeFromOrder(item);
     }
   }
 }
@@ -85,7 +89,7 @@ export default{
 }
 
 .tabButton {
-  background-color: rgb(40,170,150);
+  background-color: yellow;
 }
 
 /* #next{
@@ -102,10 +106,13 @@ export default{
 } */
 
 button {
-      border-style: solid;
+      font-family: 'Quicksand', sans-serif;
+      border-style: hidden;
       height: 3em;
       width: 15em;
       font-size: 0.6em;
+      font-weight: bold;
+      margin-right: 1em;
       padding: 0;
 }
 

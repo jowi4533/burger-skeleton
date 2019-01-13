@@ -139,7 +139,7 @@ export default {
 
   data: function() {
     return {
-      states: ['MenuPage', 'BreadAndPatty', 'ToppingsAndSauce', 'Vegetables', 'Drinks', 'Sides', 'OverView'],
+      states: ['MenuPage', 'BreadAndPatty', 'ToppingsAndSauce', 'Vegetables', 'Drinks', 'OverView'],
       chosenIngredients: [],
       burgerIngredients: [],
       sideAndDrinkItems: [],
@@ -191,6 +191,13 @@ export default {
       this.burgerIngredients.push(item);
       this.price += +item.selling_price;
     },
+
+    removeFromOrder: function (item){
+      let index = this.chosenIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
+
+      this.chosenIngredients.splice(index,1);
+      this.price = this.price - item.selling_price;
+    },
     //--------------
 
     //All functions handling state ---
@@ -240,17 +247,21 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
+
+
 #OrderingContainer{
-  height: auto;
-  /*background-color: rgb(0,100,200);*/
-  display: grid;
-  grid-template-areas: "TopPanel"
-  "MiddlePanel"
-  "ToggleBar";
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto;
-  grid-gap: 1em;
-  grid-column-gap: 0;
+    font-family: 'Quicksand', sans-serif;
+    height:auto;
+    overflow: hidden;
+    /*background-color: rgb(0,100,200);*/
+    display: grid;
+    grid-template-areas: "TopPanel"
+                          "MiddlePanel"
+                          "ToggleBar";
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+
+    grid-column-gap: 0;
 
 
 }
@@ -301,13 +312,17 @@ grid-row: 2 / span 3;
 }
 #ToggleBar{
   grid-area: ToggleBar;
+  background-color: lightgray;
+
+
 }
 #MiddlePanel{
-  grid-area: MiddlePanel;
-  display:grid;
-  grid-template-areas: "AllFoodTabs Kundkorg";
-  grid-template-columns: 80% 20%;
-  /* grid-template-rows: 1fr; */
+grid-area: MiddlePanel;
+background-color: lightgray;
+display:grid;
+grid-template-areas: "AllFoodTabs Kundkorg";
+grid-template-columns: 80% 20%;
+/* grid-template-rows: 1fr; */
 }
 #AllFoodTabs{
   grid-area: AllFoodTabs;

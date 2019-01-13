@@ -17,6 +17,7 @@
     v-for="item in ingredients"
     v-if="item.category == 1"
     v-on:increment="addToOrder(item)"
+    v-on:decrease="removeFromOrder(item)"
     :ui-labels="uiLabels"
     :item="item"
     :lang="lang"
@@ -32,6 +33,7 @@
     v-for="item in ingredients"
     v-if="item.category == 2"
     v-on:increment="addToOrder(item)"
+    v-on:decrease="removeFromOrder(item)"
     :ui-labels="uiLabels"
     :item="item"
     :lang="lang"
@@ -71,7 +73,11 @@ export default {
     },
     addToOrder : function(item) {
       this.$parent.addToBurgerIngredients(item);
+    },
+    removeFromOrder : function(item){
+      this.$parent.removeFromOrder(item);
     }
+
   }
 }
 
@@ -90,7 +96,7 @@ h4 {
 }
 
 .tabButton {
-  background-color: rgb(40,170,150);
+  background-color: yellow;
 
 }
 
@@ -102,13 +108,16 @@ h4 {
   grid-template-rows: auto 95%;
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
-  grid-gap: 1em;
+
 
 }
 
 #ingredientButtons{
 display:block;
   grid-area: ingredientButtons;
+  border-color: black;
+  border:2px;
+
 
 }
 
@@ -146,36 +155,53 @@ display:block;
 #BreadText{
   grid-area: BreadText;
   text-align: center;
-  background-color: darkgreen;
+
   margin: 0;
 }
 #PattyText{
   grid-area: PattyText;
     text-align: center;
-    background-color: darkgreen;
     margin: 0;
 }
 #BreadContainer{
 
   grid-area: Bread;
-  display: grid;
-  grid-template-columns:  repeat(auto-fit, calc(14em + 12px));
-  /* grid-template-columns:  repeat(auto-fit, calc(7em + 12px)); */
-  grid-row-gap: 0.5em;
+
+  overflow-x: scroll;
+  overflow-y:hidden;
+
+
+  display:grid;
+  grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+  grid-column-gap: 2em;
 
 }
 #PattyContainer{
   grid-area: Patty;
-  display: grid;
-  grid-template-columns:  repeat(auto-fit, calc(10em + 12px));
-  grid-row-gap: 0.5em;
+  overflow-x: scroll;
+  overflow-y:hidden;
+
+
+  display:grid;
+  grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+  grid-column-gap: 2em;
+
+
+/*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
+
+}
+::-webkit-scrollbar {
+ display: none;
 }
 
 button {
-  border-style: solid;
+  font-family: 'Quicksand', sans-serif;
+  border-style: hidden;
   height: 3em;
   width: 15em;
   font-size: 0.6em;
+  font-weight: bold;
+  margin-right: 1em;
   padding: 0;
 }
 

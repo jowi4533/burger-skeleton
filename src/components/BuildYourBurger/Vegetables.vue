@@ -15,6 +15,7 @@
       v-for="item in ingredients"
       v-if="item.category == 4"
       v-on:increment="addToOrder(item)"
+      v-on:decrease="removeFromOrder(item)"
       :ui-labels="uiLabels"
       :item="item"
       :lang="lang"
@@ -67,6 +68,9 @@ export default{
     },
     addToOrder : function(item) {
       this.$parent.addToBurgerIngredients(item);
+    },
+    removeFromOrder : function(item){
+      this.$parent.removeFromOrder(item);
     }
   }
 }
@@ -76,25 +80,67 @@ export default{
 
 
 <style scoped>
+.ingredients {
+  text-transform: capitalize;
+}
+
+.tabButton {
+  background-color: yellow;
+}
+
+#VegetablesContainer{
+  height: 87vh;
+  display: grid;
+  grid-template-areas: "ingredientButtons"
+                        "Vegetables";
+  grid-template-rows: auto 95%;
+  grid-template-columns: 1fr;
+    /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
+
+}
 
 #ingredientButtons{
-  grid-row: 1;
-  position: relative;
+display:block;
+  grid-area: ingredientButtons;
+
+
+}
+
+#Vegetables{
+  grid-area: Vegetables;
+  display: grid;
+  grid-template-areas: "VegetablesText"
+                      "VegetableOptionsContainer"
+                      "RestenText"
+                      "Resten";
+   grid-template-rows:5% auto 5% 43.7%;
+   grid-template-columns: 2fr;
+   grid-row-gap: 0.3em;
+}
+#VegetablesText{
+  grid-area: VegetablesText;
+  text-align: center;
+  margin: 0;
 }
 
 
-.ingredients {
-  text-transform: capitalize;
+
+  display:grid;
+  grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+  grid-column-gap: 2em;
 }
 
 .tabButton {
   background-color: rgb(40,170,150);
 }
 button {
-  border-style: solid;
+  font-family: 'Quicksand', sans-serif;
+  border-style: hidden;
   height: 3em;
   width: 15em;
   font-size: 0.6em;
+  font-weight: bold;
+  margin-right: 1em;
   padding: 0;
 }
 

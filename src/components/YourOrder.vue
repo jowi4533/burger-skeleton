@@ -4,6 +4,8 @@
       <div class ="yourOrderText">{{uiLabels.yourOrder}}</div>
 
     </div>
+  </div>
+
 
     <div class="scrollableText">
 

@@ -1,25 +1,32 @@
 <template>
   <div id = "TopPanelContainer">
-
     <div class = "tabAndText" v-if = "parentState !== 'Payment'">
-
       <button class="tabBar" v-on:click= "switchStage('BreadAndPatty')" :class="{stageButton : parentState === 'BreadAndPatty' || parentState === 'ToppingsAndSauce' || parentState === 'Vegetables'}"> 1 </button>
-      <button class="tabBar" v-on:click= "switchStage('Drinks')" :class="{stageButton : parentState === 'Drinks' || parentState === 'Sides' }">2</button>
+      <button class="tabBar" v-on:click= "switchStage('Drinks')" :class="{stageButton : parentState === 'Drinks' }">2</button>
       <button class="tabBar" v-on:click= "switchStage('OverView')" :class="{stageButton : parentState === 'OverView' }">3</button>
 
 
-        <span v-if="parentState == 'BreadAndPatty'
+        <!-- <span v-if="parentState == 'BreadAndPatty'
               || parentState == 'ToppingsAndSauce'
               || parentState == 'Vegetables'"
               >
               {{uiLabels.stageOne}}
+        </span > -->
+
+        <span v-if ="parentState == 'BreadAndPatty'">
+          {{uiLabels.chooseBreadAndPatty}}
+        </span>
+        <span v-if ="parentState == 'ToppingsAndSauce'">
+          {{uiLabels.chooseToppingsAndSauce}}
+        </span>
+        <span v-if ="parentState == 'Vegetables'">
+            {{uiLabels.chooseVegetables}}
+        </span>
+        <span v-if ="parentState == 'Drinks'">
+            {{uiLabels.chooseDrinkAndSides}}
         </span>
 
-        <span v-if="parentState == 'Sides'
-              || parentState == 'Drinks'"
-              >
-              {{uiLabels.stageTwo}}
-        </span>
+
 
         <button id="Cancel" v-on:click= "switchStage('MenuPage')">{{uiLabels.cancel}}</button>
     </div>
@@ -62,16 +69,21 @@ export default{
 }
 
 .tabBar {
-  height: 2.3em;
-  width: 2.3em;
+  height: 3.5em;
+  width: 3.5em;
   border-radius: 50%;
   margin-right: 1.5em;
+  margin-left: 1em;
   text-align: center;
+  border-style: hidden;
 }
 
 #TopPanelContainer {
+align-items: center;
+vertical-align: middle;
 display:grid;
-background-color: grey;
+background-color: #b9c0cc;
+height: 4em;
 }
 
 .tabAndText{
@@ -111,10 +123,13 @@ button {
     margin: 0em;
 }
 #Cancel {
+  background-color: red;
+  border-style: hidden;
   float: right;
-  height: 2.3em;
-  width: auto;
-  margin-left: 7.5%;
+  height: 3.5em;
+  width: 7em;
+  margin-left: 5%;
+  margin-right: 2%;
 
 
 
