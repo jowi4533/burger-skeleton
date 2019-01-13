@@ -33,12 +33,25 @@ export default {
   },
   methods: {
     incrementCounter: function () {
-      if(this.counter < 1){
-        this.counter += 1;
-      // sending 'increment' message to parent component or view so that it
-      // can catch it with v-on:increment in the component declaration
-        this.$emit('increment');
+      var breadtruth = this.breadInArray();
+      var pattytruth = this.pattyInArray();
+
+      if (this.counter < 1){
+        if(this.item.category == 1){
+          if(breadtruth==true) {
+            return;
+          }
         }
+        else if(this.item.category == 2){
+          if(pattytruth==true) {
+            return;
+          }
+        }
+          console.log("balle")
+          this.counter +=1;
+          this.$emit('increment');
+
+      }
     },
     resetCounter: function () {
       this.counter = 0;
