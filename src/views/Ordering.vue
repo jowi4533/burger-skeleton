@@ -170,7 +170,6 @@ export default {
 
     finishBurgerSwitchState: function () {
       this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
-      this.orderIngredients.push(this.burgerIngredients)
 
       this.burgerIngredients = [];
       this.burgerOrder += 1;
