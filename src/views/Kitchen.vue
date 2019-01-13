@@ -31,8 +31,8 @@
     :ingredients="ingredients"
     :lang="lang"
     :ui-labels="uiLabels">
-  </StorageItem>
-</div>
+    </StorageItem>
+  </div>
 </div>
 </template>
 
