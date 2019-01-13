@@ -97,7 +97,7 @@
 
 </div>
 
-<div id="ToggleBar" v-if = "this.state !== 'MenuPage'">
+<div id="ToggleBar" v-if = "this.state !== 'MenuPage' && this.state !== 'OverView'">
   <button id="next" v-if = "this.state !== 'Vegetables'" v-on:click= "changeToNextState()"> {{uiLabels.next}} </button>
   <button id="next" v-if = "this.state === 'Vegetables'" v-on:click= "finishBurgerSwitchState()"> {{uiLabels.finishburger}} </button>
   <button id="previous" v-on:click= "changeToPreviousState()"> {{uiLabels.previous}} </button>

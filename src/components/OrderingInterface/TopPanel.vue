@@ -39,7 +39,8 @@ export default{
   name: 'TopPanel',
   data: function() {
     return {
-      popupText: "Are you sure you want to go to Sides and Drinks? Your current burger will be discarded."
+      popupText: "Are you sure you want to Cancel? Your order will be discarded.",
+      popupTextSidesAndDrinks: "Are you sure you want to go to Sides and Drinks? Your current burger will be discarded."
     }
   },
   props: {
@@ -58,16 +59,34 @@ export default{
   methods: {
 
     switchStage: function(stage) {
-      this.$emit('switchStage', stage);
+        if (this.parentState=='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
+
+          if (confirm(this.popupTextSidesAndDrinks)) {
+            this.$emit('switchStage', stage);
+            this.$emit('wipeOrder');
+            console.log("confirm");
+          }
+        }
+        else {
+          this.$emit('switchStage', stage);
+          this.$emit('wipeOrder');
+          console.log("else");
+        }
     },
 
     switchStageWipeOrder: function(stage) {
       if (this.parentState=='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
-        
+
         if (confirm(this.popupText)) {
           this.$emit('switchStageWipeOrder');
           this.switchStage(stage);
+          console.log("confirm");
         }
+      }
+      else {
+        this.$emit('switchStageWipeOrder');
+        this.switchStage(stage);
+        console.log("else");
       }
 
     }

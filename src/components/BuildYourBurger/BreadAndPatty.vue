@@ -204,12 +204,9 @@ float: right;
 }
 
 #BreadContainer{
-
   grid-area: Bread;
-
   overflow-x: scroll;
   overflow-y:hidden;
-
 
   display:grid;
   grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
@@ -221,13 +218,9 @@ float: right;
   overflow-x: scroll;
   overflow-y:hidden;
 
-
   display:grid;
   grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
   grid-column-gap: 2em;
-
-
-  /*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
 
 }
 #progress-Breadcontainer {

@@ -75,6 +75,7 @@ export default {
   width: 70px;
   height: 25px;
   border-radius: 8px;
+  border-style: hidden;
 }
 .OrderStartedButton {
   font-family: 'Quicksand', sans-serif;
@@ -86,6 +87,7 @@ export default {
   width: 70px;
   height: 25px;
   border-radius: 8px;
+  border-style: hidden;
 
 }
 </style>
