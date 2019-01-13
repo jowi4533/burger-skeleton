@@ -1,5 +1,5 @@
 <template>
-<div id = "ToppingsAndSauceContainer">
+<div id = "VegetablesContainer">
   <div id="ingredientButtons">
     <button id="breadPattyButton" v-on:click= "switchTab('BreadAndPatty')"> {{uiLabels.breadandpatty}} </button>
     <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
@@ -7,8 +7,8 @@
   </div>
 
   <div id="Vegetables">
-    <div id="VegetablesContainer">
-      <h4> {{uiLabels.veggies}} </h4>
+    <h4 id="VegetablesText"> {{uiLabels.veggies}} </h4>
+    <div id="VegetableOptionsContainer">
       <Ingredient
       class="ingredients"
       ref="ingredient"
@@ -67,16 +67,17 @@ export default{
       this.$emit('switchStage', stage);
     },
     addToOrder : function(item) {
-      this.$parent.addToBurgerIngredients(item);
+      this.$parent.addToOrder(item);
     },
     removeFromOrder : function(item){
-      this.$parent.removeFromBurgerIngredients(item);
+      this.$parent.removeFromOrder(item);
     }
   }
 }
 
 
 </script>
+
 
 <style scoped>
 #breadPattyButton {

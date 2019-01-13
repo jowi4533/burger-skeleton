@@ -153,7 +153,7 @@ display:block;
                       "Patty";
    grid-template-rows:5% auto 5% auto ;
    grid-template-columns: 2fr;
-   grid-row-gap: 0.5em;
+   grid-row-gap: 0.3em;
 }
 #BreadText{
   grid-area: BreadText;
