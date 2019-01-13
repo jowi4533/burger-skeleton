@@ -133,6 +133,8 @@ export default{
      grid-template-rows:5% auto 5% auto ;
      grid-template-columns: 2fr;
      grid-row-gap: 0.3em;
+     margin-left: 1%;
+     
    }
    #ToppingsText{
      grid-area: ToppingsText;

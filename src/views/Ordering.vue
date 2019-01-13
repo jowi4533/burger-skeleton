@@ -40,8 +40,8 @@
         :ui-labels="uiLabels">
         </Overview>
       </div>
-      <div id="AllFoodTabs">
 
+      <div id="AllFoodTabs" v-if = "this.state !== 'OverView'">
 
       <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
         <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
@@ -89,6 +89,7 @@
         :ui-labels="uiLabels">
         </Sides>
       </div> -->
+
       </div>
 
       <div id="Kundkorg">
