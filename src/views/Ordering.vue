@@ -183,7 +183,7 @@ export default {
     ToppingsAndSauce,
     Vegetables,
     Drinks,
-    Sides,
+    //Sides,
     YourOrder
   },
   mixins: [sharedVueStuff], // include stuff that is used in both
@@ -194,7 +194,7 @@ export default {
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      state: 'MenuPage',///denna var MenuPage
+      state: 'Ordering',///denna var MenuPage
     }
   },
 
