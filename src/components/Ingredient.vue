@@ -6,6 +6,7 @@
       </div>
     </div>
     <div v-bind:class = "['ingredient_img', {'ingredient_choosen':(this.counter > 0)}]" align= "center">
+      <!-- <img :src="@/assets/item.picture_img"> -->
     </div>
     <div class="all_buttons" align="center">
       <button v-bind:class = "['minus_button_grey', {'minus_button_red':(this.counter > 0)}]" v-on:click="decreaseCounter" ></button>
@@ -66,7 +67,6 @@ export default {
             return;
           }
         }
-          console.log("balle")
           this.counter +=1;
           this.$emit('increment');
 
