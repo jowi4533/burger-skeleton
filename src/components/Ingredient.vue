@@ -53,7 +53,7 @@ export default {
     incrementCounter: function () {
       var breadtruth = this.breadInArray();
       var pattytruth = this.pattyInArray();
-      
+
       if (this.counter < 1){
         if(this.item.category == 1){
           if(breadtruth==true) {
