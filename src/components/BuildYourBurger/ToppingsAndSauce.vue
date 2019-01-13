@@ -11,7 +11,7 @@
       <h4 id="ToppingsText"> {{uiLabels.toppings}} </h4>
       <h4 id="SauceText"> {{uiLabels.sauce}} </h4>
 
-  <div id="ToppingContainer">
+  <div id="ToppingContainer" v-on:scroll="windowScroll('ToppingContainer')">
       <Ingredient
       class="ingredients"
       ref="ingredient"
@@ -27,7 +27,12 @@
       </Ingredient>
     </div>
 
-    <div id="SauceContainer">
+    <div id="progress-Toppingscontainer">
+      <div class="progress-Toppingsbar" id="myToppingsBar">
+      </div>
+    </div>
+
+    <div id="SauceContainer" v-on:scroll="windowScroll('SauceContainer')">
         <Ingredient
         class="ingredients"
         ref="ingredient"
@@ -41,6 +46,10 @@
         :lang="lang"
         :key="item.ingredient_id">
         </Ingredient>
+      </div>
+      <div id="progress-Saucecontainer">
+        <div class="progress-Saucebar" id="mySauceBar">
+        </div>
       </div>
     </div>
 
@@ -88,8 +97,19 @@ export default{
     },
     removeFromOrder : function(item){
       this.$parent.removeFromBurgerIngredients(item);
+    },
+    windowScroll: function(id) {
+  var winScroll = document.body.scrollLeft || document.getElementById(id).scrollLeft;
+  var width = document.getElementById(id).scrollWidth - document.getElementById(id).clientWidth;
+  var scrolled = (winScroll / width) * 100;
+  if (id == "ToppingContainer" ) {
+      document.getElementById("myToppingsBar").style.width = scrolled + "%";
     }
+  if (id == "SauceContainer") {
+      document.getElementById("mySauceBar").style.width = scrolled + "%";
   }
+  }
+}
 }
 
 
@@ -131,9 +151,11 @@ export default{
     display: grid;
     grid-template-areas: "ToppingsText"
                         "Toppings"
+                        "ToppingsBar"
                         "SauceText"
-                        "Sauce";
-     grid-template-rows:5% auto 5% auto ;
+                        "Sauce"
+                        "SauceBar";
+     grid-template-rows:5% auto 1% 5% auto 1% ;
      grid-template-columns: 2fr;
      grid-row-gap: 0.3em;
      margin-left: 1%;
@@ -173,6 +195,32 @@ export default{
      grid-column-gap: 2em;
 
 
+   }
+   #progress-Toppingscontainer {
+     grid-area: ToppingsBar;
+     display:inline-block;
+     vertical-align: bottom;
+     width: auto;
+     height: 5px;
+     background: white;
+   }
+   #progress-Saucecontainer {
+     grid-area: SauceBar;
+     display:inline-block;
+     vertical-align: bottom;
+     width: auto;
+     height: 5px;
+     background: white;
+   }
+   .progress-Toppingsbar {
+     height: 5px;
+     background: gray;
+     width: 0%;
+   }
+   .progress-Saucebar {
+     height: 5px;
+     background: gray;
+     width: 0%;
    }
 
 
