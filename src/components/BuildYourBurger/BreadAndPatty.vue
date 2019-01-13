@@ -1,15 +1,18 @@
 <template>
 <div id = "BreadAndPattyContainer">
   <div id="ingredientButtons">
-    <button :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+    <button id="knapp" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
     <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
     <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
   </div>
 
 <div id="BreadAndPatty">
+
   <h4 id="BreadText"> {{uiLabels.bread}} </h4>
+
   <h4 id="PattyText"> {{uiLabels.patty}} </h4>
-  <div id="BreadContainer">
+
+  <div id="BreadContainer" v-on:scroll="windowScroll()">
 
     <Ingredient
     class="ingredients"
@@ -22,7 +25,14 @@
     :lang="lang"
     :key="item.ingredient_id">
     </Ingredient>
+
   </div>
+
+  <div id="progress-container">
+    <div class="progress-bar" id="myBar">
+    </div>
+  </div>
+
 
   <div id="PattyContainer">
 
@@ -79,8 +89,25 @@ export default {
     },
     addToOrder : function(item) {
       this.$parent.addToOrder(item);
-    }
-  }
+    },
+
+    windowScroll: function() {
+  var winScroll = document.body.scrollLeft || document.getElementById("BreadContainer").scrollLeft;
+  var width = document.getElementById("BreadContainer").scrollWidth - document.getElementById("BreadContainer").clientWidth;
+  var scrolled = (winScroll / width) * 100;
+  document.getElementById("myBar").style.width = scrolled + "%";
+  document.getElementById("myBar").style.color = "Green";
+
+}
+},
+// computed: {
+//   windowScroll: function() {
+//     window.onscroll = function() {myFunction()};
+//     console.log("hej");
+//
+//
+//   }
+// }
 }
 
 
@@ -98,7 +125,7 @@ h4 {
 }
 
 .tabButton {
-  background-color: rgb(40,170,150);
+  background-color: yellow;
 
 }
 
@@ -155,6 +182,7 @@ display:block;
    grid-template-columns: 2fr;
    grid-row-gap: 0.3em;
 }
+
 #BreadText{
   grid-area: BreadText;
   text-align: center;
@@ -166,6 +194,7 @@ display:block;
     text-align: center;
     margin: 0;
 }
+
 #BreadContainer{
 
 
@@ -195,9 +224,26 @@ display:block;
 /*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
 
 }
+#progress-container {
+grid-area: Bread;
+  display:inline-block;
+vertical-align: bottom;
+  width: auto;
+  height: 8px;
+  background: red;
+}
+.progress-bar {
+  display:inline-block;
+vertical-align: bottom;
+  height: 8px;
+  background: #4caf50;
+
+  width: 50%;
+}
 ::-webkit-scrollbar {
  display: none;
 }
+
 
 button {
   border-style: solid;
