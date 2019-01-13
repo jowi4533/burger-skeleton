@@ -66,6 +66,7 @@
 
 <div id = "drinks" v-if = "this.state === 'Drinks'">
   <Drinks @switchStage="state=$event" @switchTab="state=$event"
+  :burgerIngredients="burgerIngredients"
   :ingredients="ingredients"
   :parentState="state"
   :lang="lang"
@@ -75,6 +76,7 @@
 
 <div id = "sides" v-if = "this.state === 'Sides'">
   <Sides @switchStage="state=$event" @switchTab="state=$event"
+  :burgerIngredients="burgerIngredients"
   :ingredients="ingredients"
   :parentState="state"
   :lang="lang"
