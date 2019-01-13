@@ -1,28 +1,35 @@
 <template>
   <div id = "TopPanelContainer">
+    <div class = "tabAndText" v-if = "parentState !== 'Payment'">
+      <button class="tabBar" v-on:click= "switchStage('BreadAndPatty')" :class="{stageButton : parentState === 'BreadAndPatty' || parentState === 'ToppingsAndSauce' || parentState === 'Vegetables'}"> 1 </button>
+      <button class="tabBar" v-on:click= "switchStage('Drinks')" :class="{stageButton : parentState === 'Drinks' }">2</button>
+      <button class="tabBar" v-on:click= "switchStage('OverView')" :class="{stageButton : parentState === 'OverView' }">3</button>
 
-    <div id = "buildYourBurgerPage" v-if = "parentState !== 'Payment'">
 
-      <button v-on:click= "switchStage('BreadAndPatty')" :class="{stageButton : parentState === 'BreadAndPatty' || parentState === 'ToppingsAndSauce' || parentState === 'Vegetables'}"> 1 </button>
-      <button v-on:click= "switchStage('Drinks')" :class="{stageButton : parentState === 'Drinks' || parentState === 'Sides' }">2</button>
-      <button v-on:click= "switchStage('OverView')" :class="{stageButton : parentState === 'OverView' }">3</button>
-      <button v-on:click= "switchStage('MenuPage')">{{uiLabels.cancel}}</button>
+        <!-- <span v-if="parentState == 'BreadAndPatty'
+              || parentState == 'ToppingsAndSauce'
+              || parentState == 'Vegetables'"
+              >
+              {{uiLabels.stageOne}}
+        </span > -->
 
-      <h3 v-if="parentState == 'BreadAndPatty'
-            || parentState == 'ToppingsAndSauce'
-            || parentState == 'Vegetables'" class ="heading">
-            {{uiLabels.stageOne}}
-      </h3>
+        <span v-if ="parentState == 'BreadAndPatty'">
+          {{uiLabels.chooseBreadAndPatty}}
+        </span>
+        <span v-if ="parentState == 'ToppingsAndSauce'">
+          {{uiLabels.chooseToppingsAndSauce}}
+        </span>
+        <span v-if ="parentState == 'Vegetables'">
+            {{uiLabels.chooseVegetables}}
+        </span>
+        <span v-if ="parentState == 'Drinks'">
+            {{uiLabels.chooseDrinkAndSides}}
+        </span>
 
-      <h3 v-if="parentState == 'Sides'
-            || parentState == 'Drinks'" class ="heading">
-            {{uiLabels.stageTwo}}
-      </h3>
 
+
+        <button id="Cancel" v-on:click= "switchStage('MenuPage')">{{uiLabels.cancel}}</button>
     </div>
-
-
-
 </div>
 </template>
 
@@ -57,26 +64,60 @@ export default{
 
 
 <style scoped>
+span {
+
+}
+
 .heading {
   text-align: center;
 }
 
-#TopPanelContainer {
-display:grid;
+.tabBar {
+  height: 3.5em;
+  width: 3.5em;
+  border-radius: 50%;
+  margin-right: 1.5em;
+  margin-left: 1em;
+  text-align: center;
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
+  font-weight: bold;
 }
+
+#TopPanelContainer {
+align-items: center;
+vertical-align: middle;
+display:grid;
+background-color: #b9c0cc;
+height: 4em;
+border-style: solid;
+border-color: black;
+border-width: medium;
+}
+
+.tabAndText{
+  text-align: center;
+  font-size: 150%;
+  font-weight: bold;
+}
+
+#Parent{
+  text-align: center;
+}
+
+.stageText{
+  display: inline-block;
+}
+
 button {
   border-style: solid;
+  float:left;
 }
 
 
 .stageButton {
   background-color: yellow;
-}
-
-
-/* #buildYourBurgerPage {
-  grid-column: 1;
-  grid-row: 1;
 }
 
 #sidesAndDrinksPage {
@@ -94,11 +135,18 @@ button {
     margin: 0em;
 }
 #Cancel {
+  background-color: red;
+  border-style: solid;
   float: right;
-  border-radius: 3px;
-  background-color: rgb(254, 69, 69);
-  width: 10em;
-  height: 3em;
+  height: 3.5em;
+  width: 7em;
+  margin-left: 5%;
+  margin-right: 2%;
+  font-weight: bold;
+  border-color: black;
+  border-width: medium;
+
+
 
 }
 

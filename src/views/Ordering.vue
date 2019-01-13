@@ -40,6 +40,8 @@
         :ui-labels="uiLabels">
         </Overview>
       </div>
+      <div id="AllFoodTabs">
+
 
       <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
         <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
@@ -66,6 +68,8 @@
         :lang="lang"
         :ui-labels="uiLabels">
         </Vegetables>
+
+        <!-- <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button> -->
       </div>
 
       <div id = "drinks" v-if = "this.state === 'Drinks'">
@@ -77,34 +81,32 @@
         </Drinks>
       </div>
 
-      <div id = "sides" v-if = "this.state === 'Sides'">
+      <!-- <div id = "sides" v-if = "this.state === 'Sides'">
         <Sides @switchStage="state=$event" @switchTab="state=$event"
         :ingredients="ingredients"
         :parentState="state"
         :lang="lang"
         :ui-labels="uiLabels">
         </Sides>
+      </div> -->
       </div>
 
-      <div id="basket">
-
-
+      <div id="Kundkorg">
       <YourOrder
       :chosenIngredients ="chosenIngredients"
       :ui-labels="uiLabels"
       :lang="lang">
       </YourOrder>
-  </div>
+      </div>
     </div>
 
 <!-- </div> -->
 
-<div id="ToggleBar">
-  <button id="next" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.next}} </button>
-  <button id="previous" v-on:click= "switchStage('MenuPage')"> {{uiLabels.previous}} </button>
-
-
+<div class="ToggleBar" v-if = "this.state !== 'MenuPage'">
+  <button id="next" v-on:click= "changeToNextState()"> {{uiLabels.next}} </button>
+  <button id="previous" v-on:click= "changeToPreviousState()"> {{uiLabels.previous}} </button>
 </div>
+
 
     <div id="ordering" v-if="this.state === 'Ordering'">
       <!-- <img class="example-panel" src="@/assets/{{item.ingredient_img}}"> -->
@@ -112,10 +114,11 @@
       <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
       <div id="ingredients_">
         <h1>{{ uiLabels.ingredients }}</h1>
-
           <Ingredient
             ref="ingredient"
+            v-if="item.stock > 1"
             v-for="item in ingredients"
+            v-on:decrease="removeFromOrder(item)"
             v-on:increment="addToOrder(item)"
             :item="item"
             :lang="lang"
@@ -123,7 +126,7 @@
           </Ingredient>
       </div>
       <div id="chosen_ingredients">
-        <h1>{{ uiLabels.order }} hej</h1>
+        <h1>{{ uiLabels.order }}</h1>
           {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
           <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
       </div>
@@ -187,10 +190,11 @@ export default {
   // the ordering system and the kitchen
   data: function() { //Note that data is a function!
     return {
+      states: ['MenuPage', 'BreadAndPatty', 'ToppingsAndSauce', 'Vegetables', 'Drinks', 'OverView'],
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
-      state: 'MenuPage', //denna var MenuPage
+      state: 'MenuPage',///denna var MenuPage
     }
   },
 
@@ -202,9 +206,36 @@ export default {
 
   methods: {
 
+    getIndexOfState: function () {
+      var indexOfState=this.states.indexOf(this.state)
+      return indexOfState;
+    },
+
+    getStateFromIndex: function (index) {
+      var currentState = this.states[index];
+      return currentState;
+    },
+
+    changeToNextState: function () {
+      let indexOfState = this.getIndexOfState();
+      this.state = this.getStateFromIndex(indexOfState+1);
+    },
+
+    changeToPreviousState: function () {
+      let indexOfState = this.getIndexOfState();
+      this.state = this.getStateFromIndex(indexOfState-1);
+    },
+
     addToOrder: function (item) {
       this.chosenIngredients.push(item);
       this.price += +item.selling_price;
+    },
+    removeFromOrder: function (item){
+      let index = this.chosenIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
+
+
+      this.chosenIngredients.splice(index,1);
+      this.price = this.price - item.selling_price;
     },
     placeOrder: function () {
       var i,
@@ -230,18 +261,29 @@ export default {
 
 <style scoped>
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+
+
 #OrderingContainer{
+<<<<<<< HEAD
   height: 100vh;
+=======
+    font-family: 'Quicksand', sans-serif;
+    height:auto;
+    overflow: hidden;
+>>>>>>> 1647f0eb0508e6258821ce45437a406355f59ca1
     /*background-color: rgb(0,100,200);*/
     display: grid;
-    grid-template-areas: "TopPanel MiddlePanel ToggleBar";
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.1fr 1fr 0.1fr;
-    grid-gap: 1em;
+    grid-template-areas: "TopPanel"
+                          "MiddlePanel"
+                          "ToggleBar";
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+
     grid-column-gap: 0;
-    border-width: 0.4em;
-    border-style: solid;
-    border-color: rgb(0, 125, 149);
+
+
 }
 
 #next{
@@ -249,6 +291,13 @@ export default {
   bottom: 0;
   float: right;
   background-color: rgb(30,200,100);
+  height: 3em;
+  width: 9em;
+  border-radius: 1em;
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
+  margin-left: 0.8em;
 }
 
 #previous{
@@ -256,6 +305,12 @@ export default {
   bottom: 0;
   float: right;
   background-color: rgb(30,100,200);
+  height: 3em;
+  width: 9em;
+  border-radius: 1em;
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
 }
 
 /* #ingredients_ {
@@ -280,23 +335,37 @@ export default {
 
 }
 #TopPanel{
-grid-row: 1;
+grid-area: TopPanel;
+}
+
+.ToggleBar{
+  grid-area: ToggleBar;
+  background-color: lightgray;
+  border-style: solid;
+  border-width: medium;
+  border-color: black;
+
+
 }
 #MiddlePanel{
-grid-row: 2;
-display: grid;
+grid-area: MiddlePanel;
+background-color: lightgray;
+display:grid;
 grid-template-areas: "AllFoodTabs Kundkorg";
 grid-template-columns: 80% 20%;
-grid-template-rows: 1fr;
+border-left-style: solid;
+border-left-color: black;
+border-left-width: medium;
+/* grid-template-rows: 1fr; */
 }
-#basket{
-  float:left;
-  width:100%;
+ #AllFoodTabs{
+  grid-area: AllFoodTabs;
+}
+#Kundkorg{
   grid-area: Kundkorg;
+  float:left;
 }
-#ToggleBar{
-  grid-row: 3;
-}
+
 
 .example-panel {
   position: fixed;
@@ -311,4 +380,10 @@ grid-template-rows: 1fr;
   /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
 }
+
+@media (max-width: 500px) {
+  button#next {height: 2em; width: 6.5em;}
+  button#previous {height: 2em; width: 6.5em;}
+}
+
 </style>

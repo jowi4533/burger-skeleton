@@ -1,20 +1,21 @@
 <template>
-<div id = "ToppingsAndSauceContainer">
+<div id = "VegetablesContainer">
   <div id="ingredientButtons">
-    <button v-on:click= "switchTab('BreadAndPatty')"> {{uiLabels.breadandpatty}} </button>
+    <button id="breadPattyButton" v-on:click= "switchTab('BreadAndPatty')"> {{uiLabels.breadandpatty}} </button>
     <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
     <button :class="{tabButton : parentState === 'Vegetables'}"> {{uiLabels.veggies}} </button>
   </div>
 
   <div id="Vegetables">
-    <div id="VegetablesContainer">
-      <h4> {{uiLabels.veggies}} </h4>
+    <h4 id="VegetablesText"> {{uiLabels.veggies}} </h4>
+    <div id="VegetableOptionsContainer">
       <Ingredient
       class="ingredients"
       ref="ingredient"
       v-for="item in ingredients"
       v-if="item.category == 4"
       v-on:increment="addToOrder(item)"
+      v-on:decrease="removeFromOrder(item)"
       :ui-labels="uiLabels"
       :item="item"
       :lang="lang"
@@ -67,6 +68,9 @@ export default{
     },
     addToOrder : function(item) {
       this.$parent.addToOrder(item);
+    },
+    removeFromOrder : function(item){
+      this.$parent.removeFromOrder(item);
     }
   }
 }
@@ -76,27 +80,78 @@ export default{
 
 
 <style scoped>
-
-#ingredientButtons{
-  grid-row: 1;
-  position: relative;
+#breadPattyButton {
+  border-left:hidden;
 }
-
 
 .ingredients {
   text-transform: capitalize;
 }
 
 .tabButton {
-  background-color: rgb(40,170,150);
+  background-color: yellow;
 }
+
+#VegetablesContainer{
+  height: 87vh;
+  display: grid;
+  grid-template-areas: "ingredientButtons"
+                        "Vegetables";
+  grid-template-rows: auto 95%;
+  grid-template-columns: 1fr;
+    /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
+
+}
+
+#ingredientButtons{
+display:block;
+  grid-area: ingredientButtons;
+
+
+}
+
+#Vegetables{
+  grid-area: Vegetables;
+  display: grid;
+  grid-template-areas: "VegetablesText"
+                      "VegetableOptionsContainer"
+                      "RestenText"
+                      "Resten";
+   grid-template-rows:5% auto 5% 43.7%;
+   grid-template-columns: 2fr;
+   grid-row-gap: 0.3em;
+}
+#VegetablesText{
+  grid-area: VegetablesText;
+  text-align: center;
+  margin: 0;
+}
+#VegetableOptionsContainer{
+  grid-area: VegetableOptionsContainer;
+
+  overflow-x: scroll;
+  overflow-y:hidden;
+
+
+  display:grid;
+  grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+  grid-column-gap: 2em;
+}
+
 button {
+  font-family: 'Quicksand', sans-serif;
   border-style: solid;
+  border-width: medium;
+  border-color: black;
+  border-top-style: hidden;
   height: 3em;
   width: 15em;
   font-size: 0.6em;
+  font-weight: bold;
+  margin-right: 1em;
   padding: 0;
 }
+
 
 /* #next{
   position: relative;

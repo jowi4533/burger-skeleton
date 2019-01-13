@@ -1,21 +1,23 @@
 <template>
 <div id = "BreadAndPattyContainer">
   <div id="ingredientButtons">
-    <button :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+    <button id="breadPattyButton" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
     <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
     <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
   </div>
 
 <div id="BreadAndPatty">
-
+  <h4 id="BreadText"> {{uiLabels.bread}} </h4>
+  <h4 id="PattyText"> {{uiLabels.patty}} </h4>
   <div id="BreadContainer">
-    <h4> {{uiLabels.bread}} </h4>
+
     <Ingredient
     class="ingredients"
     ref="ingredient"
     v-for="item in ingredients"
     v-if="item.category == 1"
     v-on:increment="addToOrder(item)"
+    v-on:decrease="removeFromOrder(item)"
     :ui-labels="uiLabels"
     :item="item"
     :lang="lang"
@@ -26,13 +28,14 @@
   </div>
 
   <div id="PattyContainer">
-    <h4> {{uiLabels.patty}} </h4>
+
     <Ingredient
     class="ingredients"
     ref="ingredient"
     v-for="item in ingredients"
     v-if="item.category == 2"
     v-on:increment="addToOrder(item)"
+    v-on:decrease="removeFromOrder(item)"
     :ui-labels="uiLabels"
     :item="item"
     :lang="lang"
@@ -62,7 +65,7 @@ export default {
     parentState: String,
     lang: String,
     uiLabels: Object,
-    ingredients: Array
+    ingredients: Array,
   },
   components: {
     Ingredient
@@ -80,7 +83,11 @@ export default {
     },
     addToOrder : function(item) {
       this.$parent.addToOrder(item);
+    },
+    removeFromOrder : function(item){
+      this.$parent.removeFromOrder(item);
     }
+
   }
 }
 
@@ -99,23 +106,32 @@ h4 {
 }
 
 .tabButton {
-  background-color: rgb(40,170,150);
+  background-color: yellow;
 
+}
+#breadPattyButton {
+  border-left-style: hidden;
 }
 
 #BreadAndPattyContainer{
+  height: 87vh;
   display: grid;
-  grid-template-areas: "ingredientButtons BreadAndPatty";
-  grid-template-rows: 15% 85%;
+  grid-template-areas: "ingredientButtons"
+                        "BreadAndPatty";
+  grid-template-rows: auto 95%;
   grid-template-columns: 1fr;
     /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
-  grid-gap: 1em;
+
 
 }
 
 #ingredientButtons{
-  grid-row: 1;
-  position: relative;
+display:block;
+  grid-area: ingredientButtons;
+  border-color: black;
+  border:2px;
+
+
 }
 
 /* #next{
@@ -139,32 +155,72 @@ h4 {
 } */
 
 #BreadAndPatty{
-  grid-row: 2;
+  grid-area: BreadAndPatty;
   display: grid;
-  grid-template-areas: "Bread Patty";
-   grid-template-rows:50% 50% ;
+
+  grid-template-areas: "BreadText"
+                      "Bread"
+                      "PattyText"
+                      "Patty";
+   grid-template-rows:5% auto 5% auto ;
    grid-template-columns: 2fr;
+   grid-row-gap: 0.3em;
+}
+#BreadText{
+  grid-area: BreadText;
+  text-align: center;
+
+  margin: 0;
+}
+#PattyText{
+  grid-area: PattyText;
+    text-align: center;
+    margin: 0;
 }
 #BreadContainer{
-  grid-row: 1;
 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, calc(7em + 12px));
-  grid-gap: 1em;
+
+  grid-area: Bread;
+
+  overflow-x: scroll;
+  overflow-y:hidden;
+
+
+  display:grid;
+  grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+  grid-column-gap: 2em;
+
 }
 #PattyContainer{
-  grid-row: 2;
 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, calc(7em + 12px));
-  grid-gap: 1em;
+  grid-area: Patty;
+  overflow-x: scroll;
+  overflow-y:hidden;
+
+
+  display:grid;
+  grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+  grid-column-gap: 2em;
+
+
+/*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
+
+}
+::-webkit-scrollbar {
+ display: none;
 }
 
 button {
+  font-family: 'Quicksand', sans-serif;
   border-style: solid;
+  border-color: black;
+  border-width: medium;
+  border-top-style: hidden;
   height: 3em;
   width: 15em;
   font-size: 0.6em;
+  font-weight: bold;
+  margin-right: 1em;
   padding: 0;
 }
 

@@ -1,21 +1,24 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
   <div id="ingredientButtons">
-    <button v-on:click= "switchTab('BreadAndPatty')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+    <button id="breadPattyButton" v-on:click= "switchTab('BreadAndPatty')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
     <button :class="{tabButton : parentState === 'ToppingsAndSauce'}"> {{uiLabels.toppingsandsauce}} </button>
     <button v-on:click= "switchTab('Vegetables')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.veggies}} </button>
   </div>
 
 <div id="ToppingsAndSauce">
 
-  <div id="Toppings">
-      <h4> {{uiLabels.toppings}} </h4>
+      <h4 id="ToppingsText"> {{uiLabels.toppings}} </h4>
+      <h4 id="SauceText"> {{uiLabels.sauce}} </h4>
+
+  <div id="ToppingContainer">
       <Ingredient
       class="ingredients"
       ref="ingredient"
       v-for="item in ingredients"
       v-if="item.category == 3"
       v-on:increment="addToOrder(item)"
+      v-on:decrease="removeFromOrder(item)"
       :ui-labels="uiLabels"
       :item="item"
       :lang="lang"
@@ -23,15 +26,14 @@
       </Ingredient>
     </div>
 
-    <div id="Sauce">
-
-        <h4> {{uiLabels.sauce}} </h4>
+    <div id="SauceContainer">
         <Ingredient
         class="ingredients"
         ref="ingredient"
         v-for="item in ingredients"
         v-if="item.category == 5"
         v-on:increment="addToOrder(item)"
+        v-on:decrease="removeFromOrder(item)"
         :ui-labels="uiLabels"
         :item="item"
         :lang="lang"
@@ -80,6 +82,9 @@ export default{
     },
     addToOrder : function(item) {
       this.$parent.addToOrder(item);
+    },
+    removeFromOrder : function(item){
+      this.$parent.removeFromOrder(item);
     }
   }
 }
@@ -89,28 +94,82 @@ export default{
 
 
 <style scoped>
-
-#ingredientButtons{
-  grid-row: 1;
-  position: relative;
+#breadPattyButton {
+  border-left:hidden;
 }
 
-
 .tabButton {
-  background-color: rgb(40,170,150);
+  background-color: yellow;
 }
 
 .ingredients {
   text-transform: capitalize;
 }
 
-button {
-  border-style: solid;
-  height: 3em;
-  width: 15em;
-  font-size: 0.6em;
-  padding: 0;
-}
+
+#ToppingsAndSauceContainer{
+    height: 87vh;
+  display: grid;
+  grid-template-areas: "ingredientButtons"
+                        "ToppingsAndSauce";
+  grid-template-rows: auto 95%;
+  grid-template-columns: 1fr;
+    /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
+
+
+  }
+  #ingredientButtons{
+    display: block;
+    grid-area: ingredientButtons;
+
+  }
+  #ToppingsAndSauce{
+    grid-row: ToppingsAndSauce;
+    display: grid;
+    grid-template-areas: "ToppingsText"
+                        "Toppings"
+                        "SauceText"
+                        "Sauce";
+     grid-template-rows:5% auto 5% auto ;
+     grid-template-columns: 2fr;
+     grid-row-gap: 0.3em;
+   }
+   #ToppingsText{
+     grid-area: ToppingsText;
+     text-align: center;
+     margin: 0;
+   }
+   #SauceText{
+     grid-area: SauceText;
+     text-align: center;
+     margin: 0;
+   }
+
+   #ToppingContainer{
+     grid-area: Toppings;
+
+     overflow-x: scroll;
+     overflow-y:hidden;
+
+
+     display:grid;
+     grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+     grid-column-gap: 2em;
+
+   }
+   #SauceContainer{
+     grid-area: Sauce;
+     overflow-x: scroll;
+     overflow-y:hidden;
+
+
+     display:grid;
+     grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
+     grid-column-gap: 2em;
+
+
+   }
+
 
 /* #next{
   position: relative;
@@ -125,5 +184,17 @@ button {
   float: right;
   background-color: rgb(30,100,200);
 } */
-
+button {
+  font-family: 'Quicksand', sans-serif;
+  height: 3em;
+  width: 15em;
+  font-size: 0.6em;
+  font-weight: bold;
+  margin-right: 1em;
+  padding: 0;
+  border-style: solid;
+  border-width: medium;
+  border-color: black;
+  border-top-style: hidden;
+}
 </style>
