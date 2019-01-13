@@ -41,7 +41,7 @@ export default {
 }
 
 #TopHeader{
-  font-size: 2em;
+  font-size: 2em; 
   text-align: center;
   background-color: black;
 }

@@ -2,7 +2,7 @@
   <div id = "OverViewContainer">
     <h1> {{uiLabels.overViewHeader}} </h1>
     <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">{{uiLabels.previous}}</button>
-    <button class="overviewButtons" id="purchaseButton" v-on:click= "switchStage('Payment')"> {{uiLabels.purchaseItemsInOverview}} </button>
+    <button class="overviewButtons" id="purchaseButton" v-on:click= "placeOrder()"> {{uiLabels.purchaseItemsInOverview}} </button>
     <div id="wrapper">
       <section id="orderlist">
         <p> tja </p>
@@ -38,6 +38,24 @@ export default{
     switchStage: function(stage) {
       this.$emit('switchStage', stage);
     },
+
+    placeOrder: function () {
+      var i,
+      //Wrap the order in an object
+      order = {
+        ingredients: this.chosenIngredients,
+        price: this.price
+      };
+      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+      this.$store.state.socket.emit('order', {order: order});
+      //this.$emit('order');
+      //set all counters to 0. Notice the use of $refs
+      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
+        this.$refs.ingredient[i].resetCounter();
+      }
+      this.price = 0;
+      this.chosenIngredients = [];
+    }
   }
 }
 

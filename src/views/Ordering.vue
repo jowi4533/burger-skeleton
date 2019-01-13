@@ -170,7 +170,6 @@ export default {
 
     finishBurgerSwitchState: function () {
       this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
-      this.orderIngredients.push(this.burgerIngredients)
 
       this.burgerIngredients = [];
       this.burgerOrder += 1;
@@ -233,23 +232,7 @@ export default {
     },
     // ------------
 
-    placeOrder: function () {
-      var i,
-      //Wrap the order in an object
-      order = {
-        ingredients: this.chosenIngredients,
-        price: this.price
-      };
-      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      this.$store.state.socket.emit('order', {order: order});
-      //this.$emit('order');
-      //set all counters to 0. Notice the use of $refs
-      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-        this.$refs.ingredient[i].resetCounter();
-      }
-      this.price = 0;
-      this.chosenIngredients = [];
-    }
+    
   }
 }
 </script>
@@ -261,9 +244,6 @@ export default {
 
 
 #OrderingContainer{
-
-  height: 100vh;
-
     font-family: 'Quicksand', sans-serif;
     height:auto;
     overflow: hidden;
