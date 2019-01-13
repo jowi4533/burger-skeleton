@@ -166,8 +166,9 @@ export default {
   methods: {
     //All functions handling burgerIngredients and the items included in the order -----
     wipeOrder: function () {
-      this.burgers = [],
-      this.sideAndDrinkItems = []
+      this.burgers = [];
+      this.sideAndDrinkItems = [];
+      this.burgerIngredients = [];
     },
 
     newBurger: function () {
