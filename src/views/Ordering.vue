@@ -45,7 +45,6 @@
 
       <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
         <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
-        :counter="counter"
         :ingredients="ingredients"
         :parentState="state"
         :lang="lang"
@@ -82,14 +81,14 @@
         </Drinks>
       </div>
 
-      <div id = "sides" v-if = "this.state === 'Sides'">
+      <!-- <div id = "sides" v-if = "this.state === 'Sides'">
         <Sides @switchStage="state=$event" @switchTab="state=$event"
         :ingredients="ingredients"
         :parentState="state"
         :lang="lang"
         :ui-labels="uiLabels">
         </Sides>
-      </div>
+      </div> -->
       </div>
 
       <div id="Kundkorg">
@@ -103,10 +102,11 @@
 
 <!-- </div> -->
 
-<div id="ToggleBar" v-if = "this.state !== 'MenuPage'">
+<div class="ToggleBar" v-if = "this.state !== 'MenuPage'">
   <button id="next" v-on:click= "changeToNextState()"> {{uiLabels.next}} </button>
   <button id="previous" v-on:click= "changeToPreviousState()"> {{uiLabels.previous}} </button>
 </div>
+
 
     <div id="ordering" v-if="this.state === 'Ordering'">
       <img class="example-panel" src="@/assets/exampleImage.jpg">
@@ -189,7 +189,7 @@ export default {
   // the ordering system and the kitchen
   data: function() { //Note that data is a function!
     return {
-      states: ['MenuPage', 'BreadAndPatty', 'ToppingsAndSauce', 'Vegetables', 'Drinks', 'Sides', 'OverView'],
+      states: ['MenuPage', 'BreadAndPatty', 'ToppingsAndSauce', 'Vegetables', 'Drinks', 'OverView'],
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
@@ -287,8 +287,12 @@ export default {
   float: right;
   background-color: rgb(30,200,100);
   height: 3em;
-  width: 9.425em;
+  width: 9em;
   border-radius: 1em;
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
+  margin-left: 0.8em;
 }
 
 #previous{
@@ -297,8 +301,11 @@ export default {
   float: right;
   background-color: rgb(30,100,200);
   height: 3em;
-  width: 9.425em;
+  width: 9em;
   border-radius: 1em;
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
 }
 
 /* #ingredients_ {
@@ -325,9 +332,13 @@ export default {
 #TopPanel{
 grid-area: TopPanel;
 }
-#ToggleBar{
+
+.ToggleBar{
   grid-area: ToggleBar;
   background-color: lightgray;
+  border-style: solid;
+  border-width: medium;
+  border-color: black;
 
 
 }
@@ -337,6 +348,9 @@ background-color: lightgray;
 display:grid;
 grid-template-areas: "AllFoodTabs Kundkorg";
 grid-template-columns: 80% 20%;
+border-left-style: solid;
+border-left-color: black;
+border-left-width: medium;
 /* grid-template-rows: 1fr; */
 }
  #AllFoodTabs{

@@ -1,7 +1,7 @@
 <template>
 <div id = "BreadAndPattyContainer">
   <div id="ingredientButtons">
-    <button id="knapp" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+    <button id="breadPattyButton" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
     <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
     <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
   </div>
@@ -128,6 +128,9 @@ h4 {
   background-color: yellow;
 
 }
+#breadPattyButton {
+  border-left-style: hidden;
+}
 
 #BreadAndPattyContainer{
   height: 87vh;
@@ -246,7 +249,11 @@ vertical-align: bottom;
 
 
 button {
+  font-family: 'Quicksand', sans-serif;
   border-style: solid;
+  border-color: black;
+  border-width: medium;
+  border-top-style: hidden;
   height: 3em;
   width: 15em;
   font-size: 0.6em;

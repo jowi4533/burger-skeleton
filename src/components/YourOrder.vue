@@ -36,6 +36,8 @@ props:{
 }
 .yourOrderContainer {
   border: 1px solid #000000;
+  border-top-style: hidden;
+  border-bottom-style: hidden;
   height:87vh;
   overflow: hidden;
 

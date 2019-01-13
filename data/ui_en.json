@@ -43,5 +43,10 @@
   "overViewHeader" : "Overview of your order",
   "addItemInOverview" : "Add item to order",
   "removeItemInOverview" : "Remove item from order",
-  "purchaseItemsInOverview" : "Purchase Items"
+  "purchaseItemsInOverview" : "Purchase Items",
+  "chooseBreadAndPatty" : "Choose Bread and Patty",
+  "chooseToppingsAndSauce" : "Choose Toppings and Sauce",
+  "chooseDrinkAndSides" : "Choose Drinks and Sides",
+  "chooseVegetables": "Choose Vegetables"
+  
 }
