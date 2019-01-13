@@ -1,25 +1,32 @@
 <template>
   <div id = "TopPanelContainer">
-
     <div class = "tabAndText" v-if = "parentState !== 'Payment'">
-
       <button class="tabBar" v-on:click= "switchStage('BreadAndPatty')" :class="{stageButton : parentState === 'BreadAndPatty' || parentState === 'ToppingsAndSauce' || parentState === 'Vegetables'}"> 1 </button>
-      <button class="tabBar" v-on:click= "switchStage('Drinks')" :class="{stageButton : parentState === 'Drinks' || parentState === 'Sides' }">2</button>
+      <button class="tabBar" v-on:click= "switchStage('Drinks')" :class="{stageButton : parentState === 'Drinks' }">2</button>
       <button class="tabBar" v-on:click= "switchStage('OverView')" :class="{stageButton : parentState === 'OverView' }">3</button>
 
 
-        <span v-if="parentState == 'BreadAndPatty'
+        <!-- <span v-if="parentState == 'BreadAndPatty'
               || parentState == 'ToppingsAndSauce'
               || parentState == 'Vegetables'"
               >
               {{uiLabels.stageOne}}
+        </span > -->
+
+        <span v-if ="parentState == 'BreadAndPatty'">
+          {{uiLabels.chooseBreadAndPatty}}
+        </span>
+        <span v-if ="parentState == 'ToppingsAndSauce'">
+          {{uiLabels.chooseToppingsAndSauce}}
+        </span>
+        <span v-if ="parentState == 'Vegetables'">
+            {{uiLabels.chooseVegetables}}
+        </span>
+        <span v-if ="parentState == 'Drinks'">
+            {{uiLabels.chooseDrinkAndSides}}
         </span>
 
-        <span v-if="parentState == 'Sides'
-              || parentState == 'Drinks'"
-              >
-              {{uiLabels.stageTwo}}
-        </span>
+
 
         <button id="Cancel" v-on:click= "switchStage('MenuPage')">{{uiLabels.cancel}}</button>
     </div>

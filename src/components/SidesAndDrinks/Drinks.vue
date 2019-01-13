@@ -2,7 +2,8 @@
 <div id = "DrinksAndSidesContainer">
   <div id="ingredientButtons">
     <button :class="{tabButton : parentState === 'Drinks'}"> {{uiLabels.drinks}} </button>
-    <button v-on:click= "switchTab('Sides')"> {{uiLabels.sides}} </button>
+    <!-- ändra denna -->
+    <!-- <button v-on:click= "switchTab('Sides')"> {{uiLabels.sides}} </button> -->
   </div>
 
 <div id="DrinksAndSides">

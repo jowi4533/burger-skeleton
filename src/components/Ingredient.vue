@@ -2,7 +2,7 @@
   <div class="ingredient">
     <div class="ingredient_name">
       <div>
-          {{item["ingredient_"+ lang]}},{{item.selling_price}}:-
+          {{item["ingredient_"+ lang]}}, {{item.selling_price}}:-
       </div>
     </div>
     <div v-bind:class = "['ingredient_img', {'ingredient_choosen':(this.counter > 0)}]" align= "center">

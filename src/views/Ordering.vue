@@ -45,7 +45,6 @@
 
       <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
         <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
-        :counter="counter"
         :ingredients="ingredients"
         :parentState="state"
         :lang="lang"
@@ -82,14 +81,14 @@
         </Drinks>
       </div>
 
-      <div id = "sides" v-if = "this.state === 'Sides'">
+      <!-- <div id = "sides" v-if = "this.state === 'Sides'">
         <Sides @switchStage="state=$event" @switchTab="state=$event"
         :ingredients="ingredients"
         :parentState="state"
         :lang="lang"
         :ui-labels="uiLabels">
         </Sides>
-      </div>
+      </div> -->
       </div>
 
       <div id="Kundkorg">
@@ -189,7 +188,7 @@ export default {
   // the ordering system and the kitchen
   data: function() { //Note that data is a function!
     return {
-      states: ['MenuPage', 'BreadAndPatty', 'ToppingsAndSauce', 'Vegetables', 'Drinks', 'Sides', 'OverView'],
+      states: ['MenuPage', 'BreadAndPatty', 'ToppingsAndSauce', 'Vegetables', 'Drinks', 'OverView'],
       chosenIngredients: [],
       price: 0,
       orderNumber: "",

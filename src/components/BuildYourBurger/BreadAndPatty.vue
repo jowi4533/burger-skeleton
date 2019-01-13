@@ -12,7 +12,6 @@
   <div id="BreadContainer">
 
     <Ingredient
-
     class="ingredients"
     ref="ingredient"
     v-for="item in ingredients"
