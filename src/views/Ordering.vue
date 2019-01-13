@@ -283,8 +283,12 @@ export default {
   float: right;
   background-color: rgb(30,200,100);
   height: 3em;
-  width: 10em;
+  width: 9em;
   border-radius: 1em;
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
+  margin-left: 0.8em;
 }
 
 #previous{
@@ -293,8 +297,11 @@ export default {
   float: right;
   background-color: rgb(30,100,200);
   height: 3em;
-  width: 10em;
+  width: 9em;
   border-radius: 1em;
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
 }
 
 /* #ingredients_ {
@@ -321,9 +328,13 @@ grid-row: 2 / span 3;
 #TopPanel{
   grid-area: TopPanel;
 }
-#ToggleBar{
+
+.ToggleBar{
   grid-area: ToggleBar;
   background-color: lightgray;
+  border-style: solid;
+  border-width: medium;
+  border-color: black;
 
 
 }
@@ -333,6 +344,9 @@ background-color: lightgray;
 display:grid;
 grid-template-areas: "AllFoodTabs Kundkorg";
 grid-template-columns: 80% 20%;
+border-left-style: solid;
+border-left-color: black;
+border-left-width: medium;
 /* grid-template-rows: 1fr; */
 }
 #AllFoodTabs{

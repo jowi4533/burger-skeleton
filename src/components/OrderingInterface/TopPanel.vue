@@ -64,6 +64,10 @@ export default{
 
 
 <style scoped>
+span {
+
+}
+
 .heading {
   text-align: center;
 }
@@ -75,7 +79,10 @@ export default{
   margin-right: 1.5em;
   margin-left: 1em;
   text-align: center;
-  border-style: hidden;
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
+  font-weight: bold;
 }
 
 #TopPanelContainer {
@@ -84,10 +91,15 @@ vertical-align: middle;
 display:grid;
 background-color: #b9c0cc;
 height: 4em;
+border-style: solid;
+border-color: black;
+border-width: medium;
 }
 
 .tabAndText{
   text-align: center;
+  font-size: 150%;
+  font-weight: bold;
 }
 
 #Parent{
@@ -124,13 +136,15 @@ button {
 }
 #Cancel {
   background-color: red;
-  border-style: hidden;
+  border-style: solid;
   float: right;
   height: 3.5em;
   width: 7em;
   margin-left: 5%;
   margin-right: 2%;
-
+  font-weight: bold;
+  border-color: black;
+  border-width: medium;
 
 
 

@@ -1,7 +1,7 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
   <div id="ingredientButtons">
-    <button v-on:click= "switchTab('BreadAndPatty')"> {{uiLabels.breadandpatty}} </button>
+    <button id="breadPattyButton" v-on:click= "switchTab('BreadAndPatty')"> {{uiLabels.breadandpatty}} </button>
     <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
     <button :class="{tabButton : parentState === 'Vegetables'}"> {{uiLabels.veggies}} </button>
   </div>
@@ -79,6 +79,10 @@ export default{
 </script>
 
 <style scoped>
+#breadPattyButton {
+  border-left:hidden;
+}
+
 .ingredients {
   text-transform: capitalize;
 }
@@ -135,7 +139,10 @@ display:block;
 
 button {
   font-family: 'Quicksand', sans-serif;
-  border-style: hidden;
+  border-style: solid;
+  border-width: medium;
+  border-color: black;
+  border-top-style: hidden;
   height: 3em;
   width: 15em;
   font-size: 0.6em;

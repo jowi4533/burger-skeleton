@@ -1,7 +1,7 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
   <div id="ingredientButtons">
-    <button v-on:click= "switchTab('BreadAndPatty')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+    <button id="breadPattyButton" v-on:click= "switchTab('BreadAndPatty')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
     <button :class="{tabButton : parentState === 'ToppingsAndSauce'}"> {{uiLabels.toppingsandsauce}} </button>
     <button v-on:click= "switchTab('Vegetables')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.veggies}} </button>
   </div>
@@ -94,6 +94,9 @@ export default{
 
 
 <style scoped>
+#breadPattyButton {
+  border-left:hidden;
+}
 
 .tabButton {
   background-color: yellow;
@@ -183,12 +186,15 @@ export default{
 } */
 button {
   font-family: 'Quicksand', sans-serif;
-  border-style: hidden;
   height: 3em;
   width: 15em;
   font-size: 0.6em;
   font-weight: bold;
   margin-right: 1em;
   padding: 0;
+  border-style: solid;
+  border-width: medium;
+  border-color: black;
+  border-top-style: hidden;
 }
 </style>
