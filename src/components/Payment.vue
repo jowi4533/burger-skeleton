@@ -5,6 +5,9 @@
     <button v-on:click= "switchStage('OverView')">Previous</button>
     <button>Pay</button>
 
+    <!-- {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
+    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button> -->
+
 
   </div>
 

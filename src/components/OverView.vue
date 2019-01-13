@@ -19,7 +19,6 @@
 
 <script>
 import Ingredient from '@/components/Ingredient.vue'
-//import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default{
   name: 'overview',
@@ -31,19 +30,40 @@ export default{
   props: {
     lang: String,
     uiLabels: Object,
-    ingredients: Array
+    ingredients: Array,
+    burgers: Array,
+    sideAndDrinkItems: Array
   },
 
   components: {
     Ingredient
   },
 
-  //mixins: [sharedVueStuff],
-
   methods: {
     switchStage: function(stage) {
       this.$emit('switchStage', stage);
     },
+    placeOrder: function () {
+      //Wrap the order in an object
+
+      for(let j = 0; j < this.burgers.length; j +=1){
+        order = {
+          ingredients: this.burgers[j].ingredients,
+          price: 10
+        };
+        console.log(order.ingredients)
+        // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+        this.$store.state.socket.emit('order', {order: order});
+        //this.$emit('order');
+        //set all counters to 0. Notice the use of $refs
+        for (let i = 0; i < this.$refs.ingredient.length; i += 1) {
+          this.$refs.ingredient[i].resetCounter();
+        }
+        //this.price = 0;
+      }
+      this.burgerIngredients = [];
+      this.sideAndDrinkItems = [];
+    }
   }
 }
 
