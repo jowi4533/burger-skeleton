@@ -12,13 +12,12 @@
               >
               {{uiLabels.stageOne}}
         </span > -->
-<<<<<<< HEAD
+
       <div id="span">
-        <span v-if ="parentState == 'BreadAndPatty'">
-=======
+
+
 
         <span class="OverlayText" v-if ="parentState == 'BreadAndPatty'">
->>>>>>> 5e6b7b6b1e074632c08df0505072f6cb9c8501c3
           {{uiLabels.chooseBreadAndPatty}}
         </span>
         <span class="OverlayText" v-if ="parentState == 'ToppingsAndSauce'">

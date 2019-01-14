@@ -298,7 +298,7 @@ export default {
   font-family: 'Quicksand', sans-serif;
   bottom: 0;
   float: right;
-  background-color: rgb(30,200,100);
+  background-color: rgb(27, 183, 84);
   height: 4em;
   width: 9em;
   border-style: solid;
@@ -358,7 +358,7 @@ export default {
   border-left-style: solid;
   border-left-color: black;
   border-left-width: thin;
-/* grid-template-rows: 1fr; */
+
 }
 #AllFoodTabs{
   grid-area: AllFoodTabs;
@@ -378,7 +378,7 @@ export default {
   border: 1px solid #ccd;
   padding: 1em;
   background-color:  rgb(20,100,120);
-  /*background-image: url('~@/assets/exampleImage.jpg');*/
+
   color: white;
 }
 button:hover{

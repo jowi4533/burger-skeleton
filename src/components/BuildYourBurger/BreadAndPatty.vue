@@ -109,7 +109,6 @@ export default {
   // computed: {
   //   windowScroll: function() {
   //     window.onscroll = function() {myFunction()};
-  //     console.log("hej");
   //
   //
   //   }
