@@ -255,8 +255,9 @@ button {
 @media (max-width: 600px) {
 
   #breadPattyButton{border-left-style: solid; border-left-width: thin}
-  #DrinksAndSidesContainer{grid-template-rows: 12.3% 95%;}
+  #DrinksAndSidesContainer{grid-template-rows: 12.3% 95%;height:82vh;}
   #DrinksAndSides  {grid-row-gap: 0em;grid-template-rows:3% auto 1% 3% auto 9% ;font-size: 0.9em;}
+
 
 
 }
