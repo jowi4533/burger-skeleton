@@ -6,28 +6,28 @@
       <button class="tabBar" v-on:click= "switchStage('OverView')" :class="{stageButton : parentState === 'OverView' }">3</button>
 
 
-        <!-- <span v-if="parentState == 'BreadAndPatty'
-              || parentState == 'ToppingsAndSauce'
-              || parentState == 'Vegetables'"
-              >
-              {{uiLabels.stageOne}}
-        </span > -->
+      <!-- <span v-if="parentState == 'BreadAndPatty'
+      || parentState == 'ToppingsAndSauce'
+      || parentState == 'Vegetables'"
+      >
+      {{uiLabels.stageOne}}
+    </span > -->
 
-        <span v-if ="parentState == 'BreadAndPatty'">
-          {{uiLabels.chooseBreadAndPatty}}
-        </span>
-        <span v-if ="parentState == 'ToppingsAndSauce'">
-          {{uiLabels.chooseToppingsAndSauce}}
-        </span>
-        <span v-if ="parentState == 'Vegetables'">
-            {{uiLabels.chooseVegetables}}
-        </span>
-        <span v-if ="parentState == 'Drinks'">
-            {{uiLabels.chooseDrinkAndSides}}
-        </span>
+    <span v-if ="parentState == 'BreadAndPatty'">
+      {{uiLabels.chooseBreadAndPatty}}
+    </span>
+    <span v-if ="parentState == 'ToppingsAndSauce'">
+      {{uiLabels.chooseToppingsAndSauce}}
+    </span>
+    <span v-if ="parentState == 'Vegetables'">
+      {{uiLabels.chooseVegetables}}
+    </span>
+    <span v-if ="parentState == 'Drinks'">
+      {{uiLabels.chooseDrinkAndSides}}
+    </span>
 
-        <button id="Cancel" v-on:click= "switchStageWipeOrder('MenuPage')">{{uiLabels.cancel}}</button>
-    </div>
+    <button id="Cancel" v-on:click= "switchStageWipeOrder('MenuPage')">{{uiLabels.cancel}}</button>
+  </div>
 </div>
 </template>
 
@@ -39,7 +39,7 @@ export default{
   name: 'TopPanel',
   data: function() {
     return {
-      popupText: "Are you sure you want to Cancel? Your order will be discarded.",
+      cancelPopupText: "Are you sure you want to Cancel? Your order will be discarded.",
       popupTextSidesAndDrinks: "Are you sure you want to go to Sides and Drinks? Your current burger will be discarded."
     }
   },
@@ -56,58 +56,40 @@ export default{
     this.uiLabels = this.$parent.uiLabels;
   },
 
-  //mixins: [sharedVueStuff],
-
   methods: {
 
     cancelSwitchStage: function(stage) {
-            this.$emit('switchStage', stage);
-            this.$emit('wipeOrder');
+      this.$emit('switchStage', stage);
+      this.$emit('wipeOrder');
     },
 
     switchStage: function(stage) {
-        if (this.parentState=='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
+      if (this.parentState ==='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
+        if(stage !== 'BreadAndPatty'){
           if (this.burgers[this.burgers.length-1].ingredients.length > 0) {
             if (confirm(this.popupTextSidesAndDrinks)) {
               this.$emit('switchStage', stage);
-              this.$emit('wipeOrder');
+              this.$emit('wipeBurgerFromOrder', this.burgers.length-1);
             }
           }
-          else {
-            this.$emit('wipeOrder');
-            this.cancelSwitchStage(stage);
-          }
         }
-        else {
-          this.$emit('switchStage', stage);
-        }
+      }
+
+      else {
+        this.$emit('switchStage', stage);
+      }
     },
 
     switchStageWipeOrder: function(stage) {
-      if (this.parentState=='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
-        if (this.burgers[this.burgers.length-1].ingredients.length > 0) {
-          if (confirm(this.popupText)) {
-            this.$emit('wipeOrder');
-            this.cancelSwitchStage(stage);
-          }
-        }
-        else {
-          this.$emit('wipeOrder');
-          this.cancelSwitchStage(stage);
-        }
-      }
-      else {
+      if (confirm(this.cancelPopupText)) {
         this.$emit('wipeOrder');
-        this.cancelSwitchStage(stage);
+        this.$emit('switchStage', stage)
       }
     }
-
   }
 }
 
-
 </script>
-
 
 <style scoped>
 span {
@@ -132,14 +114,14 @@ span {
 }
 
 #TopPanelContainer {
-align-items: center;
-vertical-align: middle;
-display:grid;
-background-color: #b9c0cc;
-height: 4em;
-border-style: solid;
-border-color: black;
-border-width: thin;
+  align-items: center;
+  vertical-align: middle;
+  display:grid;
+  background-color: #b9c0cc;
+  height: 4em;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
 }
 
 .tabAndText{
@@ -161,8 +143,6 @@ button {
   float:left;
 }
 
-
-
 .stageButton {
   background-color: yellow;
 }
@@ -177,9 +157,9 @@ button {
   grid-row: 1;
 }
 #DescriptionText{
-    font-size: 1em;
-    float: right;
-    margin: 0em;
+  font-size: 1em;
+  float: right;
+  margin: 0em;
 }
 #Cancel {
   background-color: red;
@@ -192,9 +172,6 @@ button {
   font-weight: bold;
   border-color: black;
   border-width: thin;
-
-
-
 }
 
 </style>

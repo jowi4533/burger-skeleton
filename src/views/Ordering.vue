@@ -16,7 +16,7 @@
 </div>
 
 <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
-  <TopPanel @switchStage="state=$event" @wipeOrder="wipeOrder()"
+  <TopPanel @switchStage="state=$event" @wipeOrder="wipeOrder()" @wipeBurgerFromOrder="wipeBurgerFromOrder($event)"
   :parentState="state"
   :lang="lang"
   :ui-labels="uiLabels"
@@ -175,6 +175,12 @@ export default {
     wipeOrder: function () {
       this.burgers = [];
       this.sideAndDrinkItems = [];
+      this.burgerIngredients = [];
+      this.burgerOrder = 1;
+    },
+
+    wipeBurgerFromOrder: function (index) {
+      this.burgers.splice(index, 1);
       this.burgerIngredients = [];
     },
 
