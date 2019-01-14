@@ -37,11 +37,20 @@
 export default{
 
   name: 'TopPanel',
+  data: function() {
+    return {
+      popupText: "Are you sure you want to Cancel? Your order will be discarded.",
+      popupTextSidesAndDrinks: "Are you sure you want to go to Sides and Drinks? Your current burger will be discarded."
+    }
+  },
   props: {
     parentState: String,
     lang: String,
-    uiLabels: Object
+    uiLabels: Object,
+    burgers: Array,
+    ingredients: Array,
   },
+
   created: function() {
     this.lang = this.$parent.lang;
     this.uiLabels = this.$parent.uiLabels;
@@ -51,15 +60,50 @@ export default{
 
   methods: {
 
+    cancelSwitchStage: function(stage) {
+            this.$emit('switchStage', stage);
+            this.$emit('wipeOrder');
+    },
+
     switchStage: function(stage) {
-      this.$emit('switchStage', stage);
+        if (this.parentState=='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
+          if (this.burgers[this.burgers.length-1].ingredients.length > 0) {
+            if (confirm(this.popupTextSidesAndDrinks)) {
+              this.$emit('switchStage', stage);
+              this.$emit('wipeOrder');
+            }
+          }
+          else {
+            this.$emit('wipeOrder');
+            this.cancelSwitchStage(stage);
+          }
+        }
+        else {
+          this.$emit('switchStage', stage);
+          this.$emit('wipeOrder');
+        }
     },
 
     switchStageWipeOrder: function(stage) {
-      this.$emit('switchStageWipeOrder');
-      this.switchStage(stage);
+      if (this.parentState=='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
+        if (this.burgers[this.burgers.length-1].ingredients.length > 0) {
+          if (confirm(this.popupText)) {
+            this.$emit('wipeOrder');
+            this.cancelSwitchStage(stage);
+          }
+        }
+        else {
+          this.$emit('wipeOrder');
+          this.cancelSwitchStage(stage);
+        }
+      }
+      else {
+        this.$emit('wipeOrder');
+        this.cancelSwitchStage(stage);
+      }
     }
-  },
+
+  }
 }
 
 
@@ -132,7 +176,7 @@ button {
 #overViewPage {
   grid-column: 3;
   grid-row: 1;
-} */
+}
 #DescriptionText{
     font-size: 1em;
     float: right;

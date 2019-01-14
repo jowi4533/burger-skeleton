@@ -16,10 +16,12 @@
 </div>
 
 <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
-  <TopPanel @switchStage="state=$event" @switchStageWipeOrder="wipeOrder()"
+  <TopPanel @switchStage="state=$event" @wipeOrder="wipeOrder()"
   :parentState="state"
   :lang="lang"
-  :ui-labels="uiLabels">
+  :ui-labels="uiLabels"
+  :burgers="burgers"
+  :ingredients="ingredients">
 </TopPanel>
 </div>
 
@@ -102,7 +104,7 @@
 
 </div>
 
-<div id="ToggleBar" v-if = "this.state !== 'MenuPage'">
+<div id="ToggleBar" v-if = "this.state !== 'MenuPage' && this.state !== 'OverView'">
   <button id="next" v-if = "this.state !== 'Vegetables'" v-on:click= "changeToNextState()"> {{uiLabels.next}} </button>
   <button id="next" v-if = "this.state === 'Vegetables'" v-on:click= "finishBurgerSwitchState()"> {{uiLabels.finishburger}} </button>
   <button id="previous" v-on:click= "changeToPreviousState()"> {{uiLabels.previous}} </button>
