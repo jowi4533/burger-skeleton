@@ -10,7 +10,7 @@
       <button class="overviewButtons" id="addButton" v-on:click= "switchStage('MenuPage')"> {{uiLabels.addItemInOverview}} </button>
       <button class="overviewButtons" id="removeButton"> {{uiLabels.removeItemInOverview}} </button>
     </div> -->
-
+    <button class="overviewButtons" id="addButton" v-on:click= "switchStage('MenuPage')"> {{uiLabels.addItemInOverview}} </button>
     <button class="overviewButtons" id="purchaseButton" v-on:click= "placeOrder()"> {{uiLabels.purchaseItemsInOverview}} </button>
 
 
