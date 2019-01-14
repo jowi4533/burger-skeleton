@@ -16,16 +16,18 @@
 </div>
 
 <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
-  <TopPanel @switchStage="state=$event" @switchStageWipeOrder="wipeOrder()"
+  <TopPanel @switchStage="state=$event" @wipeOrder="wipeOrder()"
   :parentState="state"
   :lang="lang"
-  :ui-labels="uiLabels">
+  :ui-labels="uiLabels"
+  :burgers="burgers"
+  :ingredients="ingredients">
 </TopPanel>
 </div>
 
 <div id="MiddlePanel" v-if = "this.state !== 'MenuPage'">
   <div id = "overview" v-if = "this.state === 'OverView'">
-    <OverView @switchStage="state=$event"
+    <OverView @switchStage="state=$event" @wipeOrder="wipeOrder()"
     :lang="lang"
     :ui-labels="uiLabels"
     :burgers="burgers"
@@ -36,6 +38,7 @@
 <div id="AllFoodTabs" v-if = "this.state !== 'OverView'">
   <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
     <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
+    :sideAndDrinkItems="sideAndDrinkItems"
     :burgerIngredients="burgerIngredients"
     :ingredients="ingredients"
     :parentState="state"
@@ -46,6 +49,7 @@
 
 <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
   <ToppingsAndSauce @switchTab="state=$event"
+  :sideAndDrinkItems="sideAndDrinkItems"
   :burgerIngredients="burgerIngredients"
   :ingredients="ingredients"
   :parentState="state"
@@ -56,6 +60,7 @@
 
 <div id = "vegetables" v-if = "this.state === 'Vegetables'">
   <Vegetables @switchStage="state=$event" @switchTab="state=$event"
+  :sideAndDrinkItems="sideAndDrinkItems"
   :burgerIngredients="burgerIngredients"
   :ingredients="ingredients"
   :parentState="state"
@@ -67,6 +72,7 @@
 <div id = "drinks" v-if = "this.state === 'Drinks'">
   <Drinks @switchStage="state=$event" @switchTab="state=$event"
   :burgerIngredients="burgerIngredients"
+  :sideAndDrinkItems="sideAndDrinkItems"
   :ingredients="ingredients"
   :parentState="state"
   :lang="lang"
@@ -77,6 +83,7 @@
 <div id = "sides" v-if = "this.state === 'Sides'">
   <Sides @switchStage="state=$event" @switchTab="state=$event"
   :burgerIngredients="burgerIngredients"
+  :sideAndDrinkItems="sideAndDrinkItems"
   :ingredients="ingredients"
   :parentState="state"
   :lang="lang"
@@ -97,7 +104,7 @@
 
 </div>
 
-<div id="ToggleBar" v-if = "this.state !== 'MenuPage'">
+<div id="ToggleBar" v-if = "this.state !== 'MenuPage' && this.state !== 'OverView'">
   <button id="next" v-if = "this.state !== 'Vegetables'" v-on:click= "changeToNextState()"> {{uiLabels.next}} </button>
   <button id="next" v-if = "this.state === 'Vegetables'" v-on:click= "finishBurgerSwitchState()"> {{uiLabels.finishburger}} </button>
   <button id="previous" v-on:click= "changeToPreviousState()"> {{uiLabels.previous}} </button>
@@ -166,8 +173,9 @@ export default {
   methods: {
     //All functions handling burgerIngredients and the items included in the order -----
     wipeOrder: function () {
-      this.burgers = [],
-      this.sideAndDrinkItems = []
+      this.burgers = [];
+      this.sideAndDrinkItems = [];
+      this.burgerIngredients = [];
     },
 
     newBurger: function () {
@@ -277,7 +285,7 @@ export default {
   bottom: 0;
   float: right;
   background-color: rgb(30,200,100);
-  height: 3em;
+  height: 4em;
   width: 9em;
   border-radius: 1em;
   border-style: solid;
@@ -291,7 +299,7 @@ export default {
   bottom: 0;
   float: right;
   background-color: rgb(30,100,200);
-  height: 3em;
+  height: 4em;
   width: 9em;
   border-radius: 1em;
   border-style: solid;

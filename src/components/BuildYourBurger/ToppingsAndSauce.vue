@@ -19,6 +19,7 @@
       v-if="item.category == 3"
       v-on:increment="addToOrder(item)"
       v-on:decrease="removeFromOrder(item)"
+      :sideAndDrinkItems="sideAndDrinkItems"
       :burgerIngredients="burgerIngredients"
       :ui-labels="uiLabels"
       :item="item"
@@ -40,6 +41,7 @@
         v-if="item.category == 5"
         v-on:increment="addToOrder(item)"
         v-on:decrease="removeFromOrder(item)"
+        :sideAndDrinkItems="sideAndDrinkItems"
         :burgerIngredients="burgerIngredients"
         :ui-labels="uiLabels"
         :item="item"
@@ -79,7 +81,8 @@ export default{
     lang: String,
     uiLabels: Object,
     ingredients: Array,
-    burgerIngredients: Array
+    burgerIngredients: Array,
+    sideAndDrinkItems: Array
   },
 
   components: {
@@ -159,7 +162,7 @@ export default{
      grid-template-columns: 2fr;
      grid-row-gap: 0.3em;
      margin-left: 1%;
-     
+
    }
    #ToppingsText{
      grid-area: ToppingsText;

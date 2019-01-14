@@ -47,7 +47,8 @@ export default{
     parentState: String,
     lang: String,
     uiLabels: Object,
-    ingredients: Array
+    ingredients: Array,
+    sideAndDrinkItems: Array
   },
 
   components: {

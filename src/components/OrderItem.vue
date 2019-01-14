@@ -29,19 +29,21 @@ export default {
 <style scoped>
 .order {
 	text-transform: capitalize;
-	padding-left: 0.2em;
-	padding-top: 0.2em;
+
 }
 .orderId{
 	text-align: center;
 	font-size: 1.3em;
 	font-weight: bold;
-	background-color: #5e6b6d;
+	background-color: gray;
 	border-bottom-style: solid;
 	border-bottom-width: 1.5pt;
 	border-bottom-color: black;
 }
 
 .orderItems{
+	padding-left: 0.2em;
+	border-bottom-style: solid;
+	border-bottom-width: thin;
 }
 </style>

@@ -21,6 +21,7 @@
         v-if="item.category == 1"
         v-on:increment="addToOrder(item)"
         v-on:decrease="removeFromOrder(item)"
+        :sideAndDrinkItems="sideAndDrinkItems"
         :burgerIngredients="burgerIngredients"
         :ui-labels="uiLabels"
         :item="item"
@@ -44,6 +45,7 @@
       v-if="item.category == 2"
       v-on:increment="addToOrder(item)"
       v-on:decrease="removeFromOrder(item)"
+      :sideAndDrinkItems="sideAndDrinkItems"
       :burgerIngredients="burgerIngredients"
       :ui-labels="uiLabels"
       :item="item"
@@ -72,7 +74,8 @@ export default {
     lang: String,
     uiLabels: Object,
     ingredients: Array,
-    burgerIngredients: Array
+    burgerIngredients: Array,
+    sideAndDrinkItems: Array
   },
   components: {
     Ingredient
@@ -204,12 +207,9 @@ float: right;
 }
 
 #BreadContainer{
-
   grid-area: Bread;
-
   overflow-x: scroll;
   overflow-y:hidden;
-
 
   display:grid;
   grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
@@ -220,14 +220,10 @@ float: right;
   grid-area: Patty;
   overflow-x: scroll;
   overflow-y:hidden;
-
-
+  
   display:grid;
   grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
   grid-column-gap: 2em;
-
-
-  /*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
 
 }
 #progress-Breadcontainer {
@@ -261,6 +257,7 @@ float: right;
 }
 
 
+
 button {
   font-family: 'Quicksand', sans-serif;
   border-style: solid;
@@ -275,4 +272,12 @@ button {
   padding: 0;
 }
 
+@media (max-width: 600px) {
+  #ingredientButtons {
+    display:grid;
+
+  }
+
+
+}
 </style>
