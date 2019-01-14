@@ -1,14 +1,18 @@
 <template>
   <div id="OrderingContainer">
     <div id ="menupage" v-if ="this.state === 'MenuPage'">
-      <MenuPage @switchStage="state=$event" @switchLanguage="switchLang()" @createNewBurger="newBurger()"
+      <MenuPage
+      @switchStage="state=$event"
+      @switchLanguage="switchLang()"
+      @createNewBurger="newBurger()"
       :ui-labels="uiLabels"
       :lang="lang">
     </MenuPage>
   </div>
 
   <div id = "payment" v-if = "this.state === 'Payment'">
-    <Payment @switchStage="state=$event"
+    <Payment
+    @switchStage="state=$event"
     :parentState="state"
     :lang="lang"
     :ui-labels="uiLabels">
@@ -16,8 +20,11 @@
 </div>
 
 <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
-  <TopPanel @switchStage="state=$event" @wipeOrder="wipeOrder()" @wipeBurgerFromOrder="wipeBurgerFromOrder($event)"
- @createNewBurger="newBurger()"
+  <TopPanel
+  @switchStage="state=$event"
+  @wipeOrder="wipeOrder()"
+  @wipeBurgerFromOrder="wipeBurgerFromOrder($event)"
+  @createNewBurger="newBurger()"
   :parentState="state"
   :lang="lang"
   :ui-labels="uiLabels"
