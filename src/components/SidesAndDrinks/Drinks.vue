@@ -268,6 +268,10 @@ button {
   margin-right: 1em;
   padding: 0;
 }
+@media (max-width: 600px) {
+
+  #DrinksAndSides{grid-row-gap: 0em;grid-template-rows:5% auto 1% 5% auto 10% ;}
+}
 
 /* #next{
   position: relative;

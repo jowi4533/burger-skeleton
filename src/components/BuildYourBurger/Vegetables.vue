@@ -181,6 +181,11 @@ button {
   margin-right: 1em;
   padding: 0;
 }
+@media (max-width: 600px) {
+  #ingredientButtons {display:grid; text-align:center; margin-left: 25%;}
+  #breadPattyButton{border-left-style: solid; border-left-width: thin;}
+  #Vegetables {grid-row-gap: 0em;grid-template-rows:5% auto 1% 5% auto 47.3% ;}
+}
 
 
 /* #next{
