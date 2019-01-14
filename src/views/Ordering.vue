@@ -94,8 +94,8 @@
 </div>
 
 <div id="Kundkorg">
-  <YourOrder @displayBurger="displayBurger($event)"
-  :burgerIngredients ="burgerIngredients"
+  <YourOrder @displayBurger="displayBurger($event)" @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
+  @removeFromSideAndDrinkItems = "removeFromSideAndDrinkItems($event)"
   :sideAndDrinkItems ="sideAndDrinkItems"
   :burgers = "burgers"
   :ui-labels="uiLabels"
@@ -198,15 +198,18 @@ export default {
     },
 
     finishBurgerSwitchState: function () {
-      this.burgers[this.burgers.length-1].isActive = false;
+      this.hideBurgerIngredients();
       this.burgerIngredients = [];
-
       this.changeToNextState();
     },
 
     addToBurgerIngredients: function(item){
       this.burgerIngredients.push(item);
-      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
+      for(let i = 0; i < this.burgers.length; i++){
+        if(this.burgers[i].isActive){
+          this.burgers[i].ingredients = this.burgerIngredients;
+        }
+      }
     },
 
     addToSideAndDrinkItems: function(item) {
@@ -215,8 +218,13 @@ export default {
 
     removeFromBurgerIngredients: function(item) {
       let index = this.burgerIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
-      this.burgerIngredients.splice(index, 1);
-      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
+
+      for(let i = 0; i < this.burgers.length; i++){
+        if(this.burgers[i].isActive){
+          this.burgerIngredients.splice(index, 1);
+          this.burgers[i].ingredients = this.burgerIngredients;
+        }
+      }
     },
 
     removeFromSideAndDrinkItems: function(item) {
@@ -224,24 +232,24 @@ export default {
       this.sideAndDrinkItems.splice(index, 1);
     },
 
+    hideBurgerIngredients: function(){
+      for(let i = 0; i < this.burgers.length; i++){
+        if(this.burgers[i].isActive){
+          this.burgers[i].isActive = false;
+        }
+      }
+    },
+
+    loadBurgerItems: function(burgerIngredients) {
+      this.burgerIngredients = burgerIngredients;
+    },
+
     displayBurger: function(burger) {
+      this.hideBurgerIngredients();
+      this.loadBurgerItems(burger.ingredients)
+      this.state = 'BreadAndPatty'
       burger.isActive = true;
     },
-
-    //These 2 are currently not used
-    addToOrder: function (item) {
-      this.chosenIngredients.push(item);
-      this.burgerIngredients.push(item);
-      this.price += +item.selling_price;
-    },
-
-    removeFromOrder: function (item){
-      let index = this.chosenIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
-
-      this.chosenIngredients.splice(index,1);
-      this.price = this.price - item.selling_price;
-    },
-    //--------------
 
     //All functions handling state ---
     getIndexOfState: function () {
