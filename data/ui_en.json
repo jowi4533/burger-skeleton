@@ -39,7 +39,7 @@
   "stageOneTabOne" : "Bread and Patty",
   "stageOneTabTwo" : "Toppings and Sauce",
   "stageOneTabThree" : "Vegetables",
-  "menuPageHeader" : "Choose a step to begin with",
+  "menuPageHeader" : "Choose a step to begin with: ",
   "cancel" : "Cancel",
   "overViewHeader" : "Overview of your order",
   "addItemInOverview" : "Add item to order",
@@ -49,5 +49,5 @@
   "chooseToppingsAndSauce" : "Choose Toppings and Sauce",
   "chooseDrinkAndSides" : "Choose Drinks and Sides",
   "chooseVegetables": "Choose Vegetables"
-  
+
 }

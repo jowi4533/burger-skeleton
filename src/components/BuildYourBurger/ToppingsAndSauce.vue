@@ -125,7 +125,8 @@ export default{
 }
 
 .tabButton {
-  background-color: yellow;
+  background-color: rgb(0,200,250);
+  margin: 0;
 }
 
 .ingredients {
@@ -246,11 +247,15 @@ button {
   width: 15em;
   font-size: 0.6em;
   font-weight: bold;
-  margin-right: 1em;
+  margin: 0;
   padding: 0;
   border-style: solid;
   border-width: thin;
   border-color: black;
   border-top-style: hidden;
+}
+
+button:hover {
+  cursor: pointer;
 }
 </style>

@@ -97,6 +97,7 @@ export default{
 <style scoped>
 #breadPattyButton {
   border-left:hidden;
+  margin: 0;
 }
 
 .ingredients {
@@ -104,7 +105,8 @@ export default{
 }
 
 .tabButton {
-  background-color: yellow;
+  background-color: rgb(0,200,250);
+  margin: 0;
 }
 
 #VegetablesContainer{
@@ -178,10 +180,12 @@ button {
   width: 15em;
   font-size: 0.6em;
   font-weight: bold;
-  margin-right: 1em;
+  margin: 0;
   padding: 0;
 }
-
+button:hover {
+  cursor: pointer;
+}
 
 /* #next{
   position: relative;

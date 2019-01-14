@@ -2,8 +2,6 @@
 
 <body id="body">
 
-
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <header id="TopHeader">
@@ -33,7 +31,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped>
 
 #body{
   background-color: rgb(192, 239, 232);
@@ -67,7 +65,7 @@ export default {
 button {
   display: inline-block;
   border-radius: 10px;
-  background-color: #rgb(255,255,255);
+  background-color: rgb(255,255,255);
   border: none;
   color: rgb(42,70,145);
   text-align: center;
@@ -76,7 +74,7 @@ button {
   width: 80%;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 5% 0 5% 0;
+  margin: 5% 0 5% 0%;
 }
 button:hover {
   background-color: rgb(0,200,250);

@@ -12,7 +12,7 @@
               >
               {{uiLabels.stageOne}}
         </span > -->
-
+      <div id="span">
         <span v-if ="parentState == 'BreadAndPatty'">
           {{uiLabels.chooseBreadAndPatty}}
         </span>
@@ -25,6 +25,7 @@
         <span v-if ="parentState == 'Drinks'">
             {{uiLabels.chooseDrinkAndSides}}
         </span>
+      </div>
 
         <button id="Cancel" v-on:click= "switchStageWipeOrder('MenuPage')">{{uiLabels.cancel}}</button>
     </div>
@@ -110,8 +111,10 @@ export default{
 
 
 <style scoped>
-span {
-
+#span {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: inline-block;
 }
 
 .heading {
@@ -122,6 +125,8 @@ span {
   height: 3.5em;
   width: 3.5em;
   border-radius: 50%;
+  margin-top: 1em;
+  margin-bottom: 1em;
   margin-right: 1.5em;
   margin-left: 1em;
   text-align: center;
@@ -132,19 +137,20 @@ span {
 }
 
 #TopPanelContainer {
-align-items: center;
-vertical-align: middle;
-display:grid;
-background-color: #b9c0cc;
-height: 4em;
-border-style: solid;
-border-color: black;
-border-width: thin;
+  align-items: center;
+  vertical-align: middle;
+  display:grid;
+  background-color: rgb(28, 247, 189);
+  height: 4em;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
 }
 
 .tabAndText{
+  height: 100%;
   text-align: center;
-  font-size: 150%;
+  font-size: 100%;
   font-weight: bold;
 }
 
@@ -159,42 +165,54 @@ border-width: thin;
 button {
   border-style: solid;
   float:left;
+  margin: 0;
 }
 
-
+button:hover {
+  cursor: pointer;
+}
 
 .stageButton {
-  background-color: yellow;
+  background-color: rgb(0,200,250);
+}
+
+.stageButton:hover {
+
 }
 
 #sidesAndDrinksPage {
-
   grid-column: 2;
   grid-row: 1;
 }
+
 #overViewPage {
   grid-column: 3;
   grid-row: 1;
 }
+
 #DescriptionText{
-    font-size: 1em;
-    float: right;
-    margin: 0em;
+  font-size: 1em;
+  float: right;
+  margin: 0em;
 }
+
 #Cancel {
-  background-color: red;
+  background-color: rgb(254, 56, 56);
+  font-family: 'Quicksand', sans-serif;
   border-style: solid;
   float: right;
-  height: 3.5em;
-  width: 7em;
-  margin-left: 5%;
-  margin-right: 2%;
+  height: 100%;
+  width: 9em;
+  margin-left: 0;
+  margin-right: 0;
   font-weight: bold;
   border-color: black;
   border-width: thin;
+  opacity: 1;
+}
 
-
-
+#Cancel:hover {
+  background-color: rgb(250, 117, 117);
 }
 
 </style>
