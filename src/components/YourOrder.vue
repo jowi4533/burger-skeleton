@@ -9,7 +9,8 @@
     <div class="scrollableText">
       <ul id="burgare">
       <div class="theBurgers" v-for = "burger in burgers">
-        <li v-if= "burger.ingredients.length > 0"> Burger: {{burger.state}} </li>
+        <li v-if= "burger.ingredients.length > 0"> Burger: {{burger.state}}
+          <button v-i v-on:click> Display Ingredients </button> </li>
       </div>
 
       <div class="theIngredients" v-for ="ingredient in burgerIngredients">

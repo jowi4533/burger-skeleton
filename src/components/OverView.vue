@@ -53,7 +53,6 @@ export default{
           ingredients: this.burgers[j].ingredients,
           price: 10
         };
-        console.log(order.ingredients)
         // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
         this.$store.state.socket.emit('order', {order: order});
         //this.$emit('order');
@@ -65,7 +64,7 @@ export default{
       }
     },
 
-    wipeOrder: function(stage) {
+    wipeOrder: function() {
       this.$emit('wipeOrder')
     }
   }
