@@ -177,7 +177,7 @@ export default {
       this.burgers = [];
       this.sideAndDrinkItems = [];
       this.burgerIngredients = [];
-      this.burgerOrder = 1;
+      this.burgerOrder = 0;
     },
 
     wipeBurgerFromOrder: function (index) {
@@ -381,11 +381,16 @@ border-left-width: thin;
   /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
 }
-
-@media (max-width: 500px) {
-  button#next {height: 2em; width: 6.5em;}
-  button#previous {height: 2em; width: 6.5em;}
+@media (max-width: 600px) {
+  #MiddlePanel{grid-template-columns: 70% 30%;}
+  #ToggleBar{border-top-style: hidden;}
+  #next {height: 2em; width: 7em;}
+  #previous{float:left; height: 2em; width: 7em;}
 }
+/* @media (max-width: 500px) {
+  button
+  button#previous {}
+} */
 
 
 

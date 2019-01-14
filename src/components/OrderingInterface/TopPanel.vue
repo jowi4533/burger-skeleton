@@ -6,28 +6,28 @@
       <button class="tabBar" v-on:click= "switchStage('OverView')" :class="{stageButton : parentState === 'OverView' }">3</button>
 
 
-      <!-- <span v-if="parentState == 'BreadAndPatty'
-      || parentState == 'ToppingsAndSauce'
-      || parentState == 'Vegetables'"
-      >
-      {{uiLabels.stageOne}}
-    </span > -->
+        <!-- <span v-if="parentState == 'BreadAndPatty'
+              || parentState == 'ToppingsAndSauce'
+              || parentState == 'Vegetables'"
+              >
+              {{uiLabels.stageOne}}
+        </span > -->
 
-    <span v-if ="parentState == 'BreadAndPatty'">
-      {{uiLabels.chooseBreadAndPatty}}
-    </span>
-    <span v-if ="parentState == 'ToppingsAndSauce'">
-      {{uiLabels.chooseToppingsAndSauce}}
-    </span>
-    <span v-if ="parentState == 'Vegetables'">
-      {{uiLabels.chooseVegetables}}
-    </span>
-    <span v-if ="parentState == 'Drinks'">
-      {{uiLabels.chooseDrinkAndSides}}
-    </span>
+        <span class="OverlayText" v-if ="parentState == 'BreadAndPatty'">
+          {{uiLabels.chooseBreadAndPatty}}
+        </span>
+        <span class="OverlayText" v-if ="parentState == 'ToppingsAndSauce'">
+          {{uiLabels.chooseToppingsAndSauce}}
+        </span>
+        <span class="OverlayText" v-if ="parentState == 'Vegetables'">
+            {{uiLabels.chooseVegetables}}
+        </span>
+        <span class="OverlayText" v-if ="parentState == 'Drinks'">
+            {{uiLabels.chooseDrinkAndSides}}
+        </span>
 
-    <button id="Cancel" v-on:click= "switchStageWipeOrder('MenuPage')">{{uiLabels.cancel}}</button>
-  </div>
+        <button id="Cancel" v-on:click= "switchStageWipeOrder('MenuPage')">{{uiLabels.cancel}}</button>
+    </div>
 </div>
 </template>
 
@@ -68,10 +68,14 @@ export default{
             this.$emit('wipeBurgerFromOrder', this.burgers.length-1);
           }
 
-          if(stage === 'OverView' && confirm(this.popupTextOverview)) {
+          else if(stage === 'OverView' && confirm(this.popupTextOverview)) {
             this.$emit('switchStage', stage);
             this.$emit('wipeBurgerFromOrder', this.burgers.length-1);
           }
+        }
+        else if (stage !== 'BreadAndPatty' && this.burgers[this.burgers.length-1].ingredients.length === 0){
+          this.$emit('switchStage', stage);
+          this.$emit('wipeBurgerFromOrder', this.burgers.length-1)
         }
       }
 
@@ -175,6 +179,22 @@ button {
   font-weight: bold;
   border-color: black;
   border-width: thin;
+}
+@media (max-width: 670px){
+  .tabBar{
+    margin:0;
+  }
+  .OverlayText{
+    font-size: 0.5em;
+  }
+  #Cancel {
+
+    height: 2.5em;
+    width: 5em;
+    margin-left: 5%;
+    margin-right: 2%;
+
+}
 }
 
 </style>

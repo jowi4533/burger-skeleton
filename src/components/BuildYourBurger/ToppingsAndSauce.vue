@@ -253,4 +253,9 @@ button {
   border-color: black;
   border-top-style: hidden;
 }
+@media (max-width: 600px) {
+  #ingredientButtons {display:grid; text-align:center; margin-left: 25%;}
+  #breadPattyButton{border-left-style: solid; border-left-width: thin;}
+  #ToppingsAndSauce  {grid-row-gap: 0em;grid-template-rows:5% auto 1% 5% auto 10% ;}
+}
 </style>
