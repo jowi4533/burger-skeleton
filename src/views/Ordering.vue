@@ -184,6 +184,13 @@ export default {
 
     newBurger: function () {
       this.burgerOrder += 1;
+
+      for(let i = 0; i < this.burgers.length; i++){
+        if(this.burgers[i].burgerID === this.burgerOrder){
+          this.burgerOrder += 1;
+        }
+      }
+
       let burger = {
         burgerID : this.burgerOrder,
         isActive : true,
@@ -303,16 +310,20 @@ export default {
             this.displayBurger(this.burgers[i]);
           }
         }
+        this.state = this.getStateFromIndex(indexOfState-1);
       }
 
-      if(this.state === 'BreadAndPatty' && confirm(this.cancelPopupText)){
+      else if(this.state === 'BreadAndPatty' && confirm(this.cancelPopupText)){
         for(let i = 0; i < this.burgers.length; i++){
           if(this.burgers[i].isActive){
+            this.state = this.getStateFromIndex(indexOfState-1);
             this.wipeBurgerFromOrder(i);
           }
         }
       }
-      this.state = this.getStateFromIndex(indexOfState-1);
+      else if (this.state !== 'Drinks' && this.state !== 'BreadAndPatty'){
+        this.state = this.getStateFromIndex(indexOfState-1);
+      }
 
     },
     // ------------
