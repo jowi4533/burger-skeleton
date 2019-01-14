@@ -8,21 +8,23 @@
     <div class="scrollableText">
       <div class="theBurgers" v-for = "burger in burgers">
         <li v-if= "burger.ingredients.length > 0"> Burger: {{burger.burgerID}}
-          <button v-if= "burger.isActive === false" v-on:click = "displayBurger(burger)"> Show Burger Ingredients </button>
-        </li>
+          <button v-if= "burger.isActive === false" v-on:click = "displayBurger(burger)"> Show Burger Ingredients </button> </li>
           <div id="burgerIngredients">
-            <li v-if= "burger.isActive === true" v-for = "ingredient in burger.ingredients">
-              <div class="burgerImage" v-if = "ingredient.category < 6 ">
-              </div>
-              {{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-</li>
+            <div class="burgerImage" v-if = "ingredient.category < 6 ">
+            </div>
+            <li v-if= "burger.isActive === true" v-for = "ingredient in burger.ingredients">{{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-
+              <button v-on:click = "removeFromBurgerIngredients(ingredient)"> X </button>
+            </li>
           </div>
+
         </div>
         <div class="sidesAndDrinks" v-for ="item in sideAndDrinkItems">
           <div class="drinkImage" v-if = "item.category == 7">
           </div>
           <div class="sidesImage" v-if = "item.category ==6">
           </div>
-            <li class ="sides_drinks">{{item["ingredient_"+ lang]}}, {{item.selling_price}}:-</li>
+          <li>{{item["ingredient_"+ lang]}}, {{item.selling_price}}:-
+          <button v-on:click = "removeFromSideAndDrinkItems(item)"> X </button></li>
         </div>
       </div>
       <div class="totalPrice">
@@ -37,7 +39,6 @@
     props:{
       uiLabels: Object,
       lang: String,
-      burgerIngredients: Array,
       burgers: Array,
       sideAndDrinkItems: Array,
     },
@@ -45,6 +46,14 @@
     methods: {
       displayBurger(burger){
         this.$emit('displayBurger', burger)
+      },
+
+      removeFromBurgerIngredients(ingredient) {
+        this.$emit('removeFromBurgerIngredients', ingredient)
+      },
+
+      removeFromSideAndDrinkItems(item) {
+        this.$emit('removeFromSideAndDrinkItems', item)
       }
     },
     computed: {
@@ -142,7 +151,9 @@
   @media (max-width: 500px) {
     div.yourOrderText { font-size: 0.7em; }
     div.theIngredients {font-size: 0.7em;}
-    div.yourOrderTextBox {height: 1em;}
+    div.yourOrderTextBox {height: 1em; }
+    .yourOrderContainer{border-bottom-style:solid;}
+
 
   }
   </style>

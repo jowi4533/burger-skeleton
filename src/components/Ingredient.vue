@@ -112,23 +112,27 @@ computed: {
 }
 </script>
 <style scoped>
+
+button:hover {
+  cursor: pointer;
+}
+
 .ingredient_image{
 object-fit: cover;
 height: 100%;
 width: 100%;
 }
+
 .ingredient_image_container{
-  border: 3px solid #000000;
+  border: 3px solid rgb(0,0,0);
   height: 10em;
   width: 100%;
 }
 
 .all_button{
-
 }
 
 .counterBox{
-
   text-align: center;
   vertical-align: bottom;
   border-style: hidden;
@@ -136,16 +140,14 @@ width: 100%;
   height: 1.8em;
   display: inline-block;
   border-radius: 30%;
-
-
 }
+
 .plus_button{
   border-style: hidden;
   display: inline-block;
-  background-color:white;
   width: 2.7em;
   height: 2.7em;
-  background-color: lightgreen;
+  background-color: rgb(30,200,100);
   border-radius: 50%;
   background-image: url('~@/assets/plus_button.png');
   background-size:     cover;
@@ -169,7 +171,7 @@ width: 100%;
 }
 .minus_button_red{
   border-style: hidden;
-  background-color: #ff4d4d;
+  background-color: rgb(254, 56, 56);
 }
 .plus_button_white{
   border-style: hidden;
@@ -177,6 +179,9 @@ width: 100%;
 }
 .ingredient_choosen{
   border: 3px solid #40ff00;
+}
+button:hover{
+  cursor:pointer;
 }
 /* @media (max-width: 600px) {
   .ingredient_image_container{

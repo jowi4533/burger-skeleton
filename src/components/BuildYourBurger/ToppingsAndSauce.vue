@@ -1,15 +1,15 @@
 <template>
 <div id = "ToppingsAndSauceContainer">
   <div id="ingredientButtons">
-    <button id="breadPattyButton" v-on:click= "switchTab('BreadAndPatty')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
-    <button :class="{tabButton : parentState === 'ToppingsAndSauce'}"> {{uiLabels.toppingsandsauce}} </button>
-    <button v-on:click= "switchTab('Vegetables')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.veggies}} </button>
+    <button class="ingredientButtons" id="breadPattyButton" v-on:click= "switchTab('BreadAndPatty')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+    <button class="ingredientButtons" :class="{tabButton : parentState === 'ToppingsAndSauce'}"> {{uiLabels.toppingsandsauce}} </button>
+    <button class="ingredientButtons"  v-on:click= "switchTab('Vegetables')" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.veggies}} </button>
   </div>
 
 <div id="ToppingsAndSauce">
 
-      <h4 id="ToppingsText"> {{uiLabels.toppings}} </h4>
-      <h4 id="SauceText"> {{uiLabels.sauce}} </h4>
+      <h4 class="ContainerText" id="ToppingsText"> {{uiLabels.toppings}} </h4>
+      <h4 class="ContainerText" id="SauceText"> {{uiLabels.sauce}} </h4>
 
   <div id="ToppingContainer" v-on:scroll="windowScroll('ToppingContainer')">
       <Ingredient
@@ -125,7 +125,8 @@ export default{
 }
 
 .tabButton {
-  background-color: yellow;
+  background-color: rgb(0,200,250);
+  margin: 0;
 }
 
 .ingredients {
@@ -246,16 +247,22 @@ button {
   width: 15em;
   font-size: 0.6em;
   font-weight: bold;
-  margin-right: 1em;
+  margin: 0;
   padding: 0;
   border-style: solid;
   border-width: thin;
   border-color: black;
   border-top-style: hidden;
 }
+
+button:hover {
+  cursor: pointer;
+  
 @media (max-width: 600px) {
-  #ingredientButtons {display:grid; text-align:center; margin-left: 25%;}
-  #breadPattyButton{border-left-style: solid; border-left-width: thin;}
-  #ToppingsAndSauce  {grid-row-gap: 0em;grid-template-rows:5% auto 1% 5% auto 10% ;}
+  #ingredientButtons {display:grid; margin-left: 18%;font-size: 0.8em;}
+  #breadPattyButton{border-left-style: solid; border-left-width: thin}
+  #ToppingsAndSauce  {grid-row-gap: 0em;grid-template-rows:3% auto 1% 3% auto 9% ;font-size: 0.9em;}
+  .ContainerText{font-size: 0.8em;}
+  .ingredientButtons{width: 80%;}
 }
 </style>

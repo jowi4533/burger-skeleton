@@ -1,16 +1,16 @@
 <template>
   <div id = "BreadAndPattyContainer">
     <div id="ingredientButtons">
-      <button id="breadPattyButton" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
-      <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
-      <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
+      <button class="ingredientButtons" id="breadPattyButton" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+      <button class="ingredientButtons" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
+      <button class="ingredientButtons" v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
     </div>
 
     <div id="BreadAndPatty">
 
-      <h4 id="BreadText"> {{uiLabels.bread}} </h4>
+      <h4 class="ContainerText" id="BreadText"> {{uiLabels.bread}} </h4>
 
-      <h4 id="PattyText"> {{uiLabels.patty}} </h4>
+      <h4 class="ContainerText" id="PattyText"> {{uiLabels.patty}} </h4>
 
       <div id="BreadContainer" v-on:scroll="windowScroll('BreadContainer')">
 
@@ -58,8 +58,6 @@
     </div>
   </div>
 </div>
-
-
 </div>
 
 </template>
@@ -123,7 +121,9 @@ export default {
 
 
 <style scoped>
-
+button:hover {
+  cursor: pointer;
+}
 h4 {
   margin: 1%;
 }
@@ -133,7 +133,8 @@ h4 {
 }
 
 .tabButton {
-  background-color: yellow;
+  background-color: rgb(0,200,250);
+  margin: 0;
 
 }
 #breadPattyButton {
@@ -192,6 +193,7 @@ float: right;
    grid-template-columns: 2fr;
    grid-row-gap: 0.3em;
    margin-left: 1%;
+   background-color: rgb(192, 239, 232);
 }
 
 #BreadText{
@@ -264,7 +266,7 @@ button {
   border-color: black;
   border-width: thin;
   border-top-style: hidden;
-  margin-right: 1em;
+  margin: 0;
   height: 3em;
   width: 15em;
   font-size: 0.6em;
@@ -273,8 +275,10 @@ button {
 }
 
 @media (max-width: 600px) {
-  #ingredientButtons {display:grid; text-align:center; margin-left: 25%;}
+  #ingredientButtons {display:grid; margin-left: 18%;font-size: 0.8em;}
   #breadPattyButton{border-left-style: solid;}
-  #BreadAndPatty  {grid-row-gap: 0em;grid-template-rows:5% auto 1% 5% auto 10% ;}
+  #BreadAndPatty  {grid-row-gap: 0em;grid-template-rows:3% auto 1% 3% auto 9% ;font-size: 0.9em;}
+  .ContainerText{font-size: 0.8em;}
+  .ingredientButtons{width: 80%;}
 }
 </style>

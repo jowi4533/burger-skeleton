@@ -94,8 +94,8 @@
 </div>
 
 <div id="Kundkorg">
-  <YourOrder @displayBurger="displayBurger($event)"
-  :burgerIngredients ="burgerIngredients"
+  <YourOrder @displayBurger="displayBurger($event)" @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
+  @removeFromSideAndDrinkItems = "removeFromSideAndDrinkItems($event)"
   :sideAndDrinkItems ="sideAndDrinkItems"
   :burgers = "burgers"
   :ui-labels="uiLabels"
@@ -193,20 +193,22 @@ export default {
         isActive : true,
         ingredients : []
       };
-
         this.burgers.push(burger);
     },
 
     finishBurgerSwitchState: function () {
-      this.burgers[this.burgers.length-1].isActive = false;
+      this.hideBurgerIngredients();
       this.burgerIngredients = [];
-
       this.changeToNextState();
     },
 
     addToBurgerIngredients: function(item){
       this.burgerIngredients.push(item);
-      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
+      for(let i = 0; i < this.burgers.length; i++){
+        if(this.burgers[i].isActive){
+          this.burgers[i].ingredients = this.burgerIngredients;
+        }
+      }
     },
 
     addToSideAndDrinkItems: function(item) {
@@ -215,8 +217,13 @@ export default {
 
     removeFromBurgerIngredients: function(item) {
       let index = this.burgerIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
-      this.burgerIngredients.splice(index, 1);
-      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
+
+      for(let i = 0; i < this.burgers.length; i++){
+        if(this.burgers[i].isActive){
+          this.burgerIngredients.splice(index, 1);
+          this.burgers[i].ingredients = this.burgerIngredients;
+        }
+      }
     },
 
     removeFromSideAndDrinkItems: function(item) {
@@ -224,25 +231,25 @@ export default {
       this.sideAndDrinkItems.splice(index, 1);
     },
 
+    hideBurgerIngredients: function(){
+      for(let i = 0; i < this.burgers.length; i++){
+        if(this.burgers[i].isActive){
+          this.burgers[i].isActive = false;
+        }
+      }
+    },
+
+    loadBurgerItems: function(burgerIngredients) {
+      this.burgerIngredients = burgerIngredients;
+    },
+
     displayBurger: function(burger) {
+      this.hideBurgerIngredients();
+      this.loadBurgerItems(burger.ingredients)
+      this.state = 'BreadAndPatty'
       burger.isActive = true;
     },
-
-    //These 2 are currently not used
-    addToOrder: function (item) {
-      this.chosenIngredients.push(item);
-      this.burgerIngredients.push(item);
-      this.price += +item.selling_price;
-    },
-
-    removeFromOrder: function (item){
-      let index = this.chosenIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
-
-      this.chosenIngredients.splice(index,1);
-      this.price = this.price - item.selling_price;
-    },
     //--------------
-
     //All functions handling state ---
     getIndexOfState: function () {
       var indexOfState=this.states.indexOf(this.state)
@@ -264,7 +271,6 @@ export default {
       this.state = this.getStateFromIndex(indexOfState-1);
     },
     // ------------
-
   }
 }
 </script>
@@ -272,8 +278,6 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
-
-
 
 #OrderingContainer{
     font-family: 'Quicksand', sans-serif;
@@ -286,54 +290,45 @@ export default {
                           "ToggleBar";
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
-
     grid-column-gap: 0;
-
-
 }
 
 #next{
   position: relative;
+  font-family: 'Quicksand', sans-serif;
   bottom: 0;
   float: right;
   background-color: rgb(30,200,100);
   height: 4em;
   width: 9em;
-  border-radius: 1em;
   border-style: solid;
   border-color: black;
   border-width: thin;
-  margin-left: 0.8em;
+  margin-left: 0;
+}
+
+#next:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 #previous{
   position: relative;
+  font-family: 'Quicksand', sans-serif;
   bottom: 0;
   float: right;
-  background-color: rgb(30,100,200);
+  background-color: rgb(0,200,250);
   height: 4em;
   width: 9em;
-  border-radius: 1em;
   border-style: solid;
   border-color: black;
   border-width: thin;
 }
 
-/* #ingredients_ {
-background-color: rgb(240,240,240);
-grid-column: 1;
-grid-row: 2 / span 3;
+#previous:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
-#chosen_ingredients {
-background-color: rgb(220,150,200);
-grid-column: 2;
-grid-row: 2 / span 3;
-}
-#order_item {
-background-color: rgb(200,200,200);
-grid-column: 3;
-grid-row: 2 / span 3;
-} */
 
 #menupage {
   width: auto;
@@ -342,11 +337,12 @@ grid-row: 2 / span 3;
 }
 #TopPanel{
   grid-area: TopPanel;
+
 }
 
 #ToggleBar{
   grid-area: ToggleBar;
-  background-color: lightgray;
+  background-color: rgb(28, 247, 189);
   border-style: solid;
   border-width: thin;
   border-color: black;
@@ -354,14 +350,14 @@ grid-row: 2 / span 3;
 
 }
 #MiddlePanel{
-grid-area: MiddlePanel;
-background-color: lightgray;
-display:grid;
-grid-template-areas: "AllFoodTabs Kundkorg";
-grid-template-columns: 80% 20%;
-border-left-style: solid;
-border-left-color: black;
-border-left-width: thin;
+  grid-area: MiddlePanel;
+  background-color: rgb(192, 239, 232);
+  display:grid;
+  grid-template-areas: "AllFoodTabs Kundkorg";
+  grid-template-columns: 80% 20%;
+  border-left-style: solid;
+  border-left-color: black;
+  border-left-width: thin;
 /* grid-template-rows: 1fr; */
 }
 #AllFoodTabs{
@@ -385,10 +381,14 @@ border-left-width: thin;
   /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
 }
-
-@media (max-width: 500px) {
-  button#next {height: 2em; width: 6.5em;}
-  button#previous {height: 2em; width: 6.5em;}
+button:hover{
+  cursor:pointer;
+}
+@media (max-width: 600px) {
+  #MiddlePanel{grid-template-columns: 70% 30%;}
+  #ToggleBar{border-top-style: hidden;}
+  #next {height: 2em; width: 7em;}
+  #previous{float:left; height: 2em; width: 7em;}
 }
 
 

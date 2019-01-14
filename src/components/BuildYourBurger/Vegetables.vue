@@ -1,13 +1,13 @@
 <template>
 <div id = "VegetablesContainer">
   <div id="ingredientButtons">
-    <button id="breadPattyButton" v-on:click= "switchTab('BreadAndPatty')"> {{uiLabels.breadandpatty}} </button>
-    <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
-    <button :class="{tabButton : parentState === 'Vegetables'}"> {{uiLabels.veggies}} </button>
+    <button class="ingredientButtons" id="breadPattyButton" v-on:click= "switchTab('BreadAndPatty')"> {{uiLabels.breadandpatty}} </button>
+    <button class="ingredientButtons" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
+    <button class="ingredientButtons" :class="{tabButton : parentState === 'Vegetables'}"> {{uiLabels.veggies}} </button>
   </div>
 
   <div id="Vegetables" >
-    <h4 id="VegetablesText"> {{uiLabels.veggies}} </h4>
+    <h4 class="ContainerText" id="VegetablesText"> {{uiLabels.veggies}} </h4>
     <div id="VegetableOptionsContainer" v-on:scroll="windowScroll('VegetableOptionsContainer')">
       <Ingredient
       class="ingredients"
@@ -97,6 +97,7 @@ export default{
 <style scoped>
 #breadPattyButton {
   border-left:hidden;
+  margin: 0;
 }
 
 .ingredients {
@@ -104,7 +105,8 @@ export default{
 }
 
 .tabButton {
-  background-color: yellow;
+  background-color: rgb(0,200,250);
+  margin: 0;
 }
 
 #VegetablesContainer{
@@ -178,13 +180,20 @@ button {
   width: 15em;
   font-size: 0.6em;
   font-weight: bold;
-  margin-right: 1em;
+  margin: 0;
   padding: 0;
 }
+
+button:hover {
+  cursor: pointer;
+}
+
 @media (max-width: 600px) {
-  #ingredientButtons {display:grid; text-align:center; margin-left: 25%;}
-  #breadPattyButton{border-left-style: solid; border-left-width: thin;}
-  #Vegetables {grid-row-gap: 0em;grid-template-rows:5% auto 1% 5% auto 47.3% ;}
+  #ingredientButtons {display:grid; margin-left: 18%;font-size: 0.8em;}
+  #breadPattyButton{border-left-style: solid; border-left-width: thin}
+  #Vegetables {grid-row-gap: 0em;grid-template-rows:3% auto 1% 3% auto 48% ; font-size: 0.9em;}
+  .ContainerText{font-size: 0.8em;}
+  .ingredientButtons{width: 80%;}
 }
 
 
