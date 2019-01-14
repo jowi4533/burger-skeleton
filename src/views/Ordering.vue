@@ -27,6 +27,7 @@
 <div id="MiddlePanel" v-if = "this.state !== 'MenuPage'">
   <div id = "overview" v-if = "this.state === 'OverView'">
     <OverView
+    
     @switchStage="state=$event"
     @wipeOrder="wipeOrder()"
     :lang="lang"
@@ -244,7 +245,7 @@ export default {
         }
 
       }
-    
+
   },
 
   addToBurgerIngredients: function(item){
