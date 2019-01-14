@@ -80,7 +80,6 @@ export default{
         }
         else {
           this.$emit('switchStage', stage);
-          this.$emit('wipeOrder');
         }
     },
 
