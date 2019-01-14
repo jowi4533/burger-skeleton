@@ -329,7 +329,7 @@ export default {
   float: right;
   background-color: rgb(27, 183, 84);
   height: 4em;
-  width: 9em;
+  width: 12.1em;
   border-style: solid;
   border-color: black;
   border-width: thin;
@@ -348,7 +348,7 @@ export default {
   float: right;
   background-color: rgb(0,200,250);
   height: 4em;
-  width: 9em;
+  width: 12.1em;
   border-style: solid;
   border-color: black;
   border-width: thin;
