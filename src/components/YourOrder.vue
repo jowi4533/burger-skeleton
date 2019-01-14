@@ -83,10 +83,12 @@
     font-size: 1.2em;
     font-weight: bold;
   }
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     div.yourOrderText { font-size: 0.7em; }
     div.theIngredients {font-size: 0.7em;}
-    div.yourOrderTextBox {height: 1em;}
+    div.yourOrderTextBox {height: 1em; }
+    .yourOrderContainer{border-bottom-style:solid;}
+
 
   }
 

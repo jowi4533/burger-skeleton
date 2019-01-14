@@ -149,6 +149,9 @@ button {
   border-style: solid;
   float:left;
 }
+button:hover{
+  cursor:pointer;
+}
 
 .stageButton {
   background-color: yellow;
@@ -181,20 +184,9 @@ button {
   border-width: thin;
 }
 @media (max-width: 670px){
-  .tabBar{
-    margin:0;
-  }
-  .OverlayText{
-    font-size: 0.5em;
-  }
-  #Cancel {
-
-    height: 2.5em;
-    width: 5em;
-    margin-left: 5%;
-    margin-right: 2%;
-
-}
+  .tabBar{margin:0; height: 2.5em; width: 2.5em;}
+  .OverlayText{font-size: 0.5em;}
+  #Cancel {height: 2.5em; width: 4em; margin-left: 4%; margin-right: 2%; padding:0;}
 }
 
 </style>
