@@ -196,10 +196,39 @@ export default {
         this.burgers.push(burger);
     },
 
+    breadInArray: function (){
+      for(let i in this.burgerIngredients) {
+        if (this.burgerIngredients[i].category == 1) {
+          return true;
+
+        }
+      }
+      return false;
+    },
+    pattyInArray: function(){
+      for(var i = 0; i < this.burgerIngredients.length; i++) {
+        if (this.burgerIngredients[i].category == 2) {
+          return true;
+        }
+      }
+    return false;
+  },
+
     finishBurgerSwitchState: function () {
-      this.hideBurgerIngredients();
-      this.burgerIngredients = [];
-      this.changeToNextState();
+        for (let burger in this.burgers) {
+          if (this.burgers[burger].isActive) {
+            if (this.breadInArray() && this.pattyInArray()) {
+              this.hideBurgerIngredients();
+              this.burgerIngredients = [];
+              this.changeToNextState();
+            }
+            else {
+              alert(this.uiLabels.popupBurgerNotFinished);
+            }
+
+          }
+        }
+
     },
 
     addToBurgerIngredients: function(item){
@@ -354,7 +383,7 @@ export default {
   background-color: rgb(192, 239, 232);
   display:grid;
   grid-template-areas: "AllFoodTabs Kundkorg";
-  grid-template-columns: 80% 20%;
+  grid-template-columns: 77% 23%;
   border-left-style: solid;
   border-left-color: black;
   border-left-width: thin;
@@ -387,8 +416,8 @@ button:hover{
 @media (max-width: 600px) {
   #MiddlePanel{grid-template-columns: 70% 30%;}
   #ToggleBar{border-top-style: hidden;}
-  #next {height: 2em; width: 7em;}
-  #previous{float:left; height: 2em; width: 7em;}
+  #next { font-size: 1.2em; height: 2em; width: 50%;}
+  #previous{font-size: 1.2em; float:left; height: 2em; width: 50%;}
 }
 
 

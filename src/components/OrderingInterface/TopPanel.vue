@@ -14,9 +14,6 @@
         </span > -->
 
       <div id="span">
-
-
-
         <span class="OverlayText" v-if ="parentState == 'BreadAndPatty'">
           {{uiLabels.chooseBreadAndPatty}}
         </span>
@@ -104,10 +101,13 @@ export default{
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
 #span {
   margin-top: 1em;
   margin-bottom: 1em;
   display: inline-block;
+  margin-right: 10%
 }
 
 .heading {
@@ -156,6 +156,7 @@ export default{
 }
 
 button {
+  font-family: 'Quicksand', sans-serif;
   border-style: solid;
   float:left;
   margin: 0;
