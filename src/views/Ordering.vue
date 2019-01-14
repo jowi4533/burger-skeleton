@@ -157,6 +157,7 @@ export default {
       state: 'MenuPage',
       burgers: [],
       burgerOrder : 0,
+      cancelPopupText: "Are you sure you want to Cancel? Your order will be discarded.",
     }
   },
 
@@ -271,6 +272,14 @@ export default {
         for(let i = 0; i < this.burgers.length; i++){
           if(this.burgers[i].lastActive){
             this.displayBurger(this.burgers[i]);
+          }
+        }
+      }
+
+      if(this.state === 'BreadAndPatty' && confirm(this.cancelPopupText)){
+        for(let i = 0; i < this.burgers.length; i++){
+          if(this.burgers[i].isActive){
+            this.wipeBurgerFromOrder(i);
           }
         }
       }
