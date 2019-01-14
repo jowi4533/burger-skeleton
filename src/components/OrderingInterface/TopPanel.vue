@@ -12,8 +12,13 @@
               >
               {{uiLabels.stageOne}}
         </span > -->
+<<<<<<< HEAD
+      <div id="span">
+        <span v-if ="parentState == 'BreadAndPatty'">
+=======
 
         <span class="OverlayText" v-if ="parentState == 'BreadAndPatty'">
+>>>>>>> 5e6b7b6b1e074632c08df0505072f6cb9c8501c3
           {{uiLabels.chooseBreadAndPatty}}
         </span>
         <span class="OverlayText" v-if ="parentState == 'ToppingsAndSauce'">
@@ -25,6 +30,7 @@
         <span class="OverlayText" v-if ="parentState == 'Drinks'">
             {{uiLabels.chooseDrinkAndSides}}
         </span>
+      </div>
 
         <button id="Cancel" v-on:click= "switchStageWipeOrder('MenuPage')">{{uiLabels.cancel}}</button>
     </div>
@@ -99,8 +105,10 @@ export default{
 </script>
 
 <style scoped>
-span {
-
+#span {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: inline-block;
 }
 
 .heading {
@@ -111,6 +119,8 @@ span {
   height: 3.5em;
   width: 3.5em;
   border-radius: 50%;
+  margin-top: 1em;
+  margin-bottom: 1em;
   margin-right: 1.5em;
   margin-left: 1em;
   text-align: center;
@@ -124,7 +134,7 @@ span {
   align-items: center;
   vertical-align: middle;
   display:grid;
-  background-color: #b9c0cc;
+  background-color: rgb(28, 247, 189);
   height: 4em;
   border-style: solid;
   border-color: black;
@@ -132,8 +142,9 @@ span {
 }
 
 .tabAndText{
+  height: 100%;
   text-align: center;
-  font-size: 150%;
+  font-size: 100%;
   font-weight: bold;
 }
 
@@ -148,40 +159,56 @@ span {
 button {
   border-style: solid;
   float:left;
+  margin: 0;
 }
-button:hover{
-  cursor:pointer;
+
+button:hover {
+  cursor: pointer;
 }
 
 .stageButton {
-  background-color: yellow;
+  background-color: rgb(0,200,250);
+}
+
+.stageButton:hover {
+
 }
 
 #sidesAndDrinksPage {
-
   grid-column: 2;
   grid-row: 1;
 }
+
 #overViewPage {
   grid-column: 3;
   grid-row: 1;
 }
+
 #DescriptionText{
   font-size: 1em;
   float: right;
   margin: 0em;
 }
+
 #Cancel {
-  background-color: red;
+  background-color: rgb(254, 56, 56);
+  font-family: 'Quicksand', sans-serif;
   border-style: solid;
   float: right;
-  height: 3.5em;
-  width: 7em;
-  margin-left: 5%;
-  margin-right: 2%;
+  height: 100%;
+  width: 9em;
+  margin-left: 0;
+  margin-right: 0;
   font-weight: bold;
   border-color: black;
   border-width: thin;
+  opacity: 1;
+  }
+
+
+#Cancel:hover {
+background-color: rgb(250, 117, 117);
+
 }
 @media (max-width: 670px){
   .tabBar{margin:0; height: 2.5em; width: 2.5em;}

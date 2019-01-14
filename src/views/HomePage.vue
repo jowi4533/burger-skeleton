@@ -61,7 +61,7 @@ body{
 button {
   display: inline-block;
   border-radius: 10px;
-  background-color: #rgb(255,255,255);
+  background-color: rgb(255,255,255);
   border: none;
   color: rgb(42,70,145);
   text-align: center;
@@ -70,7 +70,7 @@ button {
   width: 80%;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 5% 0 5% 10%;
+  margin: 5% 0 5% 0%;
 }
 button:hover {
   background-color: rgb(0,200,250);
