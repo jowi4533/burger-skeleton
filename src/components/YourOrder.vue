@@ -10,14 +10,16 @@
         <li v-if= "burger.ingredients.length > 0"> Burger: {{burger.burgerID}}
           <button v-if= "burger.isActive === false" v-on:click = "displayBurger(burger)"> Show Burger Ingredients </button> </li>
           <div id="burgerIngredients">
-
-            <li v-if= "burger.isActive === true" v-for = "ingredient in burger.ingredients">
+            <div v-if= "burger.isActive === true" v-for = "ingredient in burger.ingredients">
               <div class="burgerImage" v-if = "ingredient.category < 6 ">
               </div>
               {{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-
-              <button v-on:click = "removeFromBurgerIngredients(ingredient)"> X </button>
-            </li>
+              <button class ="removeIngredientButton" v-on:click = "removeFromBurgerIngredients(ingredient)"> X </button>
+            </div>
           </div>
+
+        </div>
+        <div class="categoryDivider">
 
         </div>
         <div class="sidesAndDrinks" v-for ="item in sideAndDrinkItems">
@@ -26,7 +28,7 @@
           <div class="sidesImage" v-if = "item.category ==6">
           </div>
           <li class ="sides_drinks">{{item["ingredient_"+ lang]}}, {{item.selling_price}}:-
-          <button v-on:click = "removeFromSideAndDrinkItems(item)"> X </button></li>
+          <button class ="removeIngredientButton" v-on:click = "removeFromSideAndDrinkItems(item)"> X </button></li>
         </div>
       </div>
       <div class="totalPrice">
@@ -78,6 +80,9 @@
   </script>
 
   <style scoped>
+  .categoryDivider{
+    border-top: thin solid #000000;
+  }
   .sides_drinks{
     display: inline-block;
   }
@@ -109,7 +114,7 @@
     background-position: center center;
   }
   .sidesAndDrinks{
-    display: inline-block;
+
   }
   #burgerIngredients{
     margin: 0;
@@ -153,11 +158,19 @@
     height:3vh;
     margin-left: 5%;
   }
+  .removeIngredientButton{
+    float:right;
+  }
   @media (max-width: 500px) {
-    div.yourOrderText { font-size: 0.7em; }
+    div.yourOrderText { font-size: 0.9em; }
     div.theIngredients {font-size: 0.7em;}
-    div.yourOrderTextBox {height: 1em; }
+    div.yourOrderTextBox {
+    border-bottom: thin solid #000000;}
     .yourOrderContainer{border-bottom-style:solid;}
+    .totalPrice{
+      font-size: 0.85em;
+      margin-left: 0;
+    }
 
 
   }

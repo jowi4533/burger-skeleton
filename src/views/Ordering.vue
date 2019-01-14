@@ -354,7 +354,7 @@ export default {
   background-color: rgb(192, 239, 232);
   display:grid;
   grid-template-areas: "AllFoodTabs Kundkorg";
-  grid-template-columns: 80% 20%;
+  grid-template-columns: 77% 23%;
   border-left-style: solid;
   border-left-color: black;
   border-left-width: thin;
@@ -385,7 +385,7 @@ button:hover{
 @media (max-width: 600px) {
   #MiddlePanel{grid-template-columns: 70% 30%;}
   #ToggleBar{border-top-style: hidden;}
-  #next {height: 2em; width: 7em;}
-  #previous{float:left; height: 2em; width: 7em;}
+  #next { font-size: 1.2em; height: 2em; width: 50%;}
+  #previous{font-size: 1.2em; float:left; height: 2em; width: 50%;}
 }
 </style>
