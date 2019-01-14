@@ -71,19 +71,16 @@ export default{
             if (confirm(this.popupTextSidesAndDrinks)) {
               this.$emit('switchStage', stage);
               this.$emit('wipeOrder');
-              console.log("confirm");
             }
           }
           else {
             this.$emit('wipeOrder');
             this.cancelSwitchStage(stage);
-            console.log("else");
           }
         }
         else {
           this.$emit('switchStage', stage);
           this.$emit('wipeOrder');
-          console.log("else");
         }
     },
 
@@ -93,19 +90,16 @@ export default{
           if (confirm(this.popupText)) {
             this.$emit('wipeOrder');
             this.cancelSwitchStage(stage);
-            console.log("confirm");
           }
         }
         else {
           this.$emit('wipeOrder');
           this.cancelSwitchStage(stage);
-          console.log("else");
         }
       }
       else {
         this.$emit('wipeOrder');
         this.cancelSwitchStage(stage);
-        console.log("else");
       }
     }
 
