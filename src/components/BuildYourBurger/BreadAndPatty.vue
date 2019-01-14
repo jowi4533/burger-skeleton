@@ -21,6 +21,7 @@
         v-if="item.category == 1"
         v-on:increment="addToOrder(item)"
         v-on:decrease="removeFromOrder(item)"
+        :sideAndDrinkItems="sideAndDrinkItems"
         :burgerIngredients="burgerIngredients"
         :ui-labels="uiLabels"
         :item="item"
@@ -44,6 +45,7 @@
       v-if="item.category == 2"
       v-on:increment="addToOrder(item)"
       v-on:decrease="removeFromOrder(item)"
+      :sideAndDrinkItems="sideAndDrinkItems"
       :burgerIngredients="burgerIngredients"
       :ui-labels="uiLabels"
       :item="item"
@@ -72,7 +74,8 @@ export default {
     lang: String,
     uiLabels: Object,
     ingredients: Array,
-    burgerIngredients: Array
+    burgerIngredients: Array,
+    sideAndDrinkItems: Array
   },
   components: {
     Ingredient

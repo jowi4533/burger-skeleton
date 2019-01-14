@@ -5,7 +5,7 @@
         {{item["ingredient_"+ lang]}}, {{item.selling_price}}:-
       </div>
     </div>
-    <div v-bind:class = "['ingredient_img', {'ingredient_choosen':(this.counter > 0)}]" align= "center">
+    <div v-bind:class = "['ingredient_image_container', {'ingredient_choosen':(this.counter > 0)}]" align= "center">
       <img class ="ingredient_image" :src="getImage(item.ingredient_img)" alt="">
     </div>
     <div class="all_buttons" align="center">
@@ -26,7 +26,8 @@ export default {
     item: Object,
     lang: String,
     uiLabels: Object,
-    burgerIngredients: Array
+    burgerIngredients: Array,
+    sideAndDrinkItems: Array,
   },
   data: function () {
     return {
@@ -97,6 +98,13 @@ computed: {
          count += 1;
        }
      }
+     if (this.item.category == 6 || 7) {
+       for (let i = 0; i < this.sideAndDrinkItems.length; i += 1) {
+         if (this.sideAndDrinkItems[i].ingredient_id === this.item.ingredient_id) {
+           count += 1;
+         }
+       }
+     }
      return count;
    }
  }
@@ -109,8 +117,7 @@ object-fit: cover;
 height: 100%;
 width: 100%;
 }
-
-.ingredient_img{
+.ingredient_image_container{
   border: 3px solid #000000;
   height: 10em;
   width: 100%;

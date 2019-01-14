@@ -36,6 +36,7 @@
 <div id="AllFoodTabs" v-if = "this.state !== 'OverView'">
   <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
     <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
+    :sideAndDrinkItems="sideAndDrinkItems"
     :burgerIngredients="burgerIngredients"
     :ingredients="ingredients"
     :parentState="state"
@@ -46,6 +47,7 @@
 
 <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
   <ToppingsAndSauce @switchTab="state=$event"
+  :sideAndDrinkItems="sideAndDrinkItems"
   :burgerIngredients="burgerIngredients"
   :ingredients="ingredients"
   :parentState="state"
@@ -56,6 +58,7 @@
 
 <div id = "vegetables" v-if = "this.state === 'Vegetables'">
   <Vegetables @switchStage="state=$event" @switchTab="state=$event"
+  :sideAndDrinkItems="sideAndDrinkItems"
   :burgerIngredients="burgerIngredients"
   :ingredients="ingredients"
   :parentState="state"
@@ -67,6 +70,7 @@
 <div id = "drinks" v-if = "this.state === 'Drinks'">
   <Drinks @switchStage="state=$event" @switchTab="state=$event"
   :burgerIngredients="burgerIngredients"
+  :sideAndDrinkItems="sideAndDrinkItems"
   :ingredients="ingredients"
   :parentState="state"
   :lang="lang"
@@ -77,6 +81,7 @@
 <div id = "sides" v-if = "this.state === 'Sides'">
   <Sides @switchStage="state=$event" @switchTab="state=$event"
   :burgerIngredients="burgerIngredients"
+  :sideAndDrinkItems="sideAndDrinkItems"
   :ingredients="ingredients"
   :parentState="state"
   :lang="lang"
