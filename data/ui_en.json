@@ -48,6 +48,7 @@
   "chooseBreadAndPatty" : "Choose Bread and Patty",
   "chooseToppingsAndSauce" : "Choose Toppings and Sauce",
   "chooseDrinkAndSides" : "Choose Drinks and Sides",
-  "chooseVegetables": "Choose Vegetables"
-  
+  "chooseVegetables": "Choose Vegetables",
+  "totalPrice" : "Total Price:"
+
 }

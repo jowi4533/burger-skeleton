@@ -5,7 +5,6 @@
 
     </div>
 
-
     <div class="scrollableText">
       <ul id="burgare">
       <div class="theBurgers" v-for = "burger in burgers">
@@ -20,7 +19,9 @@
         <li>{{item["ingredient_"+ lang]}}, {{item.selling_price}}:-</li>
       </div>
     </ul>
-
+    </div>
+    <div class="totalPrice">
+      {{uiLabels.totalPrice}} {{price}}:-
     </div>
   </div>
 </template>
@@ -35,16 +36,37 @@ export default {
     burgers: Array,
     sideAndDrinkItems: Array,
   },
-}
 
+computed: {
+  price: function () {
+    let price = 0;
+    for(let j = 0; j < this.burgers.length; j += 1){
+      for (let i = 0; i < this.burgers[j].ingredients.length; i += 1){
+        price = price + this.burgers[j].ingredients[i].selling_price;
+    }
+    }
+    for(let o = 0; o < this.sideAndDrinkItems.length; o +=1 ){
+      price = price + this.sideAndDrinkItems[o].selling_price;
+    }
+    return price;
+  }
+}
+}
 
 </script>
 
 <style scoped>
-
+.totalPrice{
+  height:3vh;
+  margin-left: 5%;
+}
+#burgare{
+  padding-left: 20%;
+}
 .scrollableText{
-  height: 95%;
+  height: 80vh;
   overflow-y: scroll;
+  border-bottom: thin solid #000000;
 }
 .yourOrderContainer {
   border: thin solid #000000;
@@ -73,11 +95,15 @@ li::first-letter {
   font-size: 1.2em;
   font-weight: bold;
 }
+.theBurgers{
+  font-weight: bold;
+}
 @media (max-width: 600px) {
   div.yourOrderText { font-size: 0.7em; }
   div.theIngredients {font-size: 0.7em;}
   div.yourOrderTextBox {height: 1em; }
   .yourOrderContainer{border-bottom-style:solid;}
+  div.theIngredients{ padding-left: 0.5em;}
 
 
 }
