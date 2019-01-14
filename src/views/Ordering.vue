@@ -285,7 +285,7 @@ export default {
   bottom: 0;
   float: right;
   background-color: rgb(30,200,100);
-  height: 3em;
+  height: 4em;
   width: 9em;
   border-radius: 1em;
   border-style: solid;
@@ -299,7 +299,7 @@ export default {
   bottom: 0;
   float: right;
   background-color: rgb(30,100,200);
-  height: 3em;
+  height: 4em;
   width: 9em;
   border-radius: 1em;
   border-style: solid;
