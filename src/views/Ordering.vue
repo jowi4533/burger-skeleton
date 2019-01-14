@@ -177,7 +177,7 @@ export default {
       this.burgers = [];
       this.sideAndDrinkItems = [];
       this.burgerIngredients = [];
-      this.burgerOrder = 1;
+      this.burgerOrder = 0;
     },
 
     wipeBurgerFromOrder: function (index) {
