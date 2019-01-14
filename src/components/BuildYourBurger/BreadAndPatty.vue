@@ -7,13 +7,10 @@
     </div>
 
     <div id="BreadAndPatty">
-
       <h4 class="ContainerText" id="BreadText"> {{uiLabels.bread}} </h4>
-
       <h4 class="ContainerText" id="PattyText"> {{uiLabels.patty}} </h4>
 
       <div id="BreadContainer" v-on:scroll="windowScroll('BreadContainer')">
-
         <Ingredient
         class="ingredients"
         ref="ingredient"
@@ -28,7 +25,6 @@
         :lang="lang"
         :key="item.ingredient_id">
       </Ingredient>
-
     </div>
 
     <div id="progress-Breadcontainer">
@@ -37,7 +33,6 @@
     </div>
 
     <div id="PattyContainer" v-on:scroll="windowScroll('PattyContainer')">
-
       <Ingredient
       class="ingredients"
       ref="ingredient"
@@ -53,10 +48,12 @@
       :key="item.ingredient_id">
     </Ingredient>
   </div>
+
   <div id="progress-Pattycontainer">
     <div class="progress-Pattybar" id="myPattyBar">
     </div>
   </div>
+
 </div>
 </div>
 
@@ -66,7 +63,6 @@
 import Ingredient from '@/components/Ingredient.vue'
 export default {
   name: 'BreadAndPatty',
-
   props: {
     parentState: String,
     lang: String,
@@ -83,7 +79,6 @@ export default {
     switchTab: function(tab) {
       this.$emit('switchTab', tab);
     },
-
     switchStage: function(stage) {
       this.$emit('switchStage', stage);
     },
@@ -95,30 +90,20 @@ export default {
     },
 
     windowScroll: function(id) {
-    var winScroll = document.body.scrollLeft || document.getElementById(id).scrollLeft;
-    var width = document.getElementById(id).scrollWidth - document.getElementById(id).clientWidth;
-    var scrolled = (winScroll / width) * 100;
-    if (id == "BreadContainer" ) {
-      document.getElementById("myBreadBar").style.width = scrolled + "%";
-    }
-    if (id == "PattyContainer") {
-      document.getElementById("myPattyBar").style.width = scrolled + "%";
-    }
+      var winScroll = document.body.scrollLeft || document.getElementById(id).scrollLeft;
+      var width = document.getElementById(id).scrollWidth - document.getElementById(id).clientWidth;
+      var scrolled = (winScroll / width) * 100;
+      if (id == "BreadContainer" ) {
+        document.getElementById("myBreadBar").style.width = scrolled + "%";
+      }
+      if (id == "PattyContainer") {
+        document.getElementById("myPattyBar").style.width = scrolled + "%";
+      }
     }
   },
-  // computed: {
-  //   windowScroll: function() {
-  //     window.onscroll = function() {myFunction()};
-  //     console.log("hej");
-  //
-  //
-  //   }
-  // }
+
 }
-
-
 </script>
-
 
 <style scoped>
 button:hover {
@@ -135,8 +120,8 @@ h4 {
 .tabButton {
   background-color: rgb(0,200,250);
   margin: 0;
-
 }
+
 #breadPattyButton {
   border-left-style: hidden;
 }
@@ -148,52 +133,27 @@ h4 {
   "BreadAndPatty";
   grid-template-rows: auto 95%;
   grid-template-columns: 1fr;
-  /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
-
-
 }
 
 #ingredientButtons{
   display:block;
   grid-area: ingredientButtons;
-
-
 }
-
-/* #next{
-position: relative;
-bottom: 0;
-
-grid-column: 6;
-grid-row: 4;
-float: right;
-background-color: rgb(30,200,100);
-}
-
-#previous{
-grid-column: 5;
-grid-row: 4;
-
-background-color: rgb(30,100,200);
-position: relative;
-bottom: 0;
-float: right;
-} */
 
 #BreadAndPatty{
   grid-area: BreadAndPatty;
   display: grid;
   grid-template-areas: "BreadText"
-                      "Bread"
-                      "BreadBar"
-                      "PattyText"
-                      "Patty"
-                      "PattyBar";
-   grid-template-rows:5% auto 1% 5% auto 1% ;
-   grid-template-columns: 2fr;
-   grid-row-gap: 0.3em;
-   margin-left: 1%;
-   background-color: rgb(192, 239, 232);
+  "Bread"
+  "BreadBar"
+  "PattyText"
+  "Patty"
+  "PattyBar";
+  grid-template-rows:5% auto 1% 5% auto 1% ;
+  grid-template-columns: 2fr;
+  grid-row-gap: 0.3em;
+  margin-left: 1%;
+  background-color: rgb(192, 239, 232);
 }
 
 #BreadText{
@@ -258,8 +218,6 @@ float: right;
   display: none;
 }
 
-
-
 button {
   font-family: 'Quicksand', sans-serif;
   border-style: solid;
@@ -278,6 +236,7 @@ button {
   #ingredientButtons {display:grid; margin-left: 18%;font-size: 0.8em;}
   #breadPattyButton{border-left-style: solid;}
   #BreadAndPatty  {grid-row-gap: 0em;grid-template-rows:3% auto 1% 3% auto 9% ;font-size: 0.9em;}
+  #BreadAndPattyContainer{height:82vh;}
   .ContainerText{font-size: 0.8em;}
   .ingredientButtons{width: 80%;}
 }

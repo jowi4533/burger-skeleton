@@ -49,6 +49,10 @@
   "chooseToppingsAndSauce" : "Välj Topping och Sås",
   "chooseDrinkAndSides" : "Välj Dryck and Tillbehör",
   "chooseVegetables": "Välj Grönsaker",
+  "popupTextCancel": "Vill du verkligen avbryta? Hela din order kommer kasseras!",
+  "popupTextOverview": "Vill du verkligen gå till Översikt? Den smaskiga burgaren du håller på bygga kommer försvinna!",
+  "popupTextSidesAndDrinks": "Vill du verkligen gå till Tillbehör och Dryck? Den smaskiga burgaren du håller på bygga kommer försvinna!",
+  "popupBurgerNotFinished": "Hmmm... Hur tänkte du äta den här burgaren utan bröd? Var vänlig välj ett bröd och en bas innan du färdigställer burgaren!",
+  "popupPlaceOrder": "Är du säker på att du vill betala? Genom att trycka på Ok godkänner du att din livsbesparingar skickas till RAW Sauce Burger Inc.",
   "totalPrice": "Totalt Pris:"
-
 }

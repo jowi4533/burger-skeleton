@@ -131,28 +131,32 @@
     overflow-y: scroll;
     border-bottom: thin solid #000000;
   }
+
   .yourOrderContainer {
     border: thin solid #000000;
     border-top-style: hidden;
     border-bottom-style: hidden;
     height:87vh;
     overflow: hidden;
-
   }
+
   .yourOrderTextBox{
     height: 1.5em;
     border-bottom: thin solid #000000;
-
   }
+
   .theIngredients{
     padding-left: 1.5em;
   }
+
   li{
     margin-left: 2px;
   }
+
   li::first-letter {
     text-transform: capitalize;
   }
+
   .yourOrderText{
     padding-top: 0.155em;
     padding-left: 0.1em;
@@ -176,7 +180,7 @@
     div.theIngredients {font-size: 0.7em;}
     div.yourOrderTextBox {
     border-bottom: thin solid #000000;}
-    .yourOrderContainer{border-bottom-style:solid;}
+    .yourOrderContainer{border-bottom-style:solid;height:82vh;}
     .totalPrice{
       font-size: 0.85em;
       margin-left: 0;

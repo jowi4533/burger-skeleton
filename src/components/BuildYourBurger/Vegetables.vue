@@ -192,6 +192,7 @@ button:hover {
   #ingredientButtons {display:grid; margin-left: 18%;font-size: 0.8em;}
   #breadPattyButton{border-left-style: solid; border-left-width: thin}
   #Vegetables {grid-row-gap: 0em;grid-template-rows:3% auto 1% 3% auto 48% ; font-size: 0.9em;}
+  #VegetablesContainer{height:82vh;}
   .ContainerText{font-size: 0.8em;}
   .ingredientButtons{width: 80%;}
 }

@@ -1,22 +1,37 @@
 <template>
-<div id = "DrinksAndSidesContainer">
-  <!--<div id="ingredientButtons">
-     <button :class="{tabButton : parentState === 'Drinks'}"> {{uiLabels.drinks}} </button>
-     ändra denna
-     <button v-on:click= "switchTab('Sides')"> {{uiLabels.sides}} </button>
-  </div> -->
+  <div id = "DrinksAndSidesContainer">
+    <div id="DrinksAndSides">
 
-<div id="DrinksAndSides">
+      <h4 class="ContainerText" id="DrinksText"> {{uiLabels.drinks}} </h4>
+      <h4 class="ContainerText" id="SidesText"> {{uiLabels.sides}} </h4>
 
-  <h4 class="ContainerText" id="DrinksText"> {{uiLabels.drinks}} </h4>
-  <h4 class="ContainerText" id="SidesText"> {{uiLabels.sides}} </h4>
+      <div id="DrinksContainer" v-on:scroll="windowScroll('DrinksContainer')">
+        <Ingredient
+        class="ingredients"
+        ref="ingredient"
+        v-for="item in ingredients"
+        v-if="item.category == 7"
+        v-on:increment="addToOrder(item)"
+        v-on:decrease="removeFromOrder(item)"
+        :sideAndDrinkItems="sideAndDrinkItems"
+        :burgerIngredients="burgerIngredients"
+        :ui-labels="uiLabels"
+        :item="item"
+        :lang="lang"
+        :key="item.ingredient_id">
+      </Ingredient>
+    </div>
+    <div id="progress-Drinkscontainer">
+      <div class="progress-Drinksbar" id="myDrinksBar">
+      </div>
+    </div>
 
-<div id="DrinksContainer" v-on:scroll="windowScroll('DrinksContainer')">
+    <div id="SidesContainer" v-on:scroll="windowScroll('SidesContainer')">
       <Ingredient
       class="ingredients"
       ref="ingredient"
       v-for="item in ingredients"
-      v-if="item.category == 7"
+      v-if="item.category == 6"
       v-on:increment="addToOrder(item)"
       v-on:decrease="removeFromOrder(item)"
       :sideAndDrinkItems="sideAndDrinkItems"
@@ -25,53 +40,24 @@
       :item="item"
       :lang="lang"
       :key="item.ingredient_id">
-      </Ingredient>
-</div>
-<div id="progress-Drinkscontainer">
-  <div class="progress-Drinksbar" id="myDrinksBar">
+    </Ingredient>
   </div>
-</div>
 
-<div id="SidesContainer" v-on:scroll="windowScroll('SidesContainer')">
-  <Ingredient
-  class="ingredients"
-  ref="ingredient"
-  v-for="item in ingredients"
-  v-if="item.category == 6"
-  v-on:increment="addToOrder(item)"
-  v-on:decrease="removeFromOrder(item)"
-  :sideAndDrinkItems="sideAndDrinkItems"
-  :burgerIngredients="burgerIngredients"
-  :ui-labels="uiLabels"
-  :item="item"
-  :lang="lang"
-  :key="item.ingredient_id">
-  </Ingredient>
-</div>
-
-<div id="progress-Sidescontainer">
-  <div class="progress-Sidesbar" id="mySidesBar">
+  <div id="progress-Sidescontainer">
+    <div class="progress-Sidesbar" id="mySidesBar">
+    </div>
   </div>
-</div>
 
 </div>
-
-  <!-- <div id="ToggleBar">
-    <button id="next" v-on:click= "switchTab('Sides')"> {{uiLabels.next}} </button>
-    <button id="previous" v-on:click= "switchStage('Vegetables')"> {{uiLabels.previous}} </button>
-  </div> -->
-
 </div>
 
 </template>
 
 <script>
 import Ingredient from '@/components/Ingredient.vue'
-//import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default{
   name: 'Drinks',
-
   data: function() {
     return {
     }
@@ -90,8 +76,6 @@ export default{
     Ingredient
   },
 
-  //mixins: [sharedVueStuff],
-
   methods: {
     switchTab: function(tab) {
       this.$emit('switchTab', tab);
@@ -107,17 +91,17 @@ export default{
       this.$parent.removeFromSideAndDrinkItems(item);
     },
     windowScroll: function(id) {
-  var winScroll = document.body.scrollLeft || document.getElementById(id).scrollLeft;
-  var width = document.getElementById(id).scrollWidth - document.getElementById(id).clientWidth;
-  var scrolled = (winScroll / width) * 100;
-  if (id == "DrinksContainer" ) {
-      document.getElementById("myDrinksBar").style.width = scrolled + "%";
-    }
-  if (id == "SidesContainer") {
-      document.getElementById("mySidesBar").style.width = scrolled + "%";
-  }
+      var winScroll = document.body.scrollLeft || document.getElementById(id).scrollLeft;
+      var width = document.getElementById(id).scrollWidth - document.getElementById(id).clientWidth;
+      var scrolled = (winScroll / width) * 100;
+      if (id == "DrinksContainer" ) {
+        document.getElementById("myDrinksBar").style.width = scrolled + "%";
+      }
+      if (id == "SidesContainer") {
+        document.getElementById("mySidesBar").style.width = scrolled + "%";
+      }
 
-}
+    }
   }
 }
 
@@ -142,38 +126,38 @@ export default{
   height: 87vh;
   display: grid;
   grid-template-areas: "ingredientButtons"
-                        "DrinksAndSides";
+  "DrinksAndSides";
   grid-template-rows: auto 95%;
   grid-template-columns: 1fr;
-    /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
+  /* grid-template-columns: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%; */
 
 
 }
 
 #ingredientButtons{
-display:block;
+  display:block;
   grid-area: ingredientButtons;
 
 }
 
 /* #next{
-  position: relative;
-  bottom: 0;
+position: relative;
+bottom: 0;
 
-  grid-column: 6;
-  grid-row: 4;
-  float: right;
-  background-color: rgb(30,200,100);
+grid-column: 6;
+grid-row: 4;
+float: right;
+background-color: rgb(30,200,100);
 }
 
 #previous{
-  grid-column: 5;
-  grid-row: 4;
+grid-column: 5;
+grid-row: 4;
 
-  background-color: rgb(30,100,200);
-  position: relative;
-  bottom: 0;
-  float: right;
+background-color: rgb(30,100,200);
+position: relative;
+bottom: 0;
+float: right;
 } */
 
 #DrinksAndSides{
@@ -181,15 +165,15 @@ display:block;
   display: grid;
 
   grid-template-areas: "DrinksText"
-                      "Drinks"
-                      "DrinksBar"
-                      "SidesText"
-                      "Sides"
-                      "SidesBar";
-   grid-template-rows:5% auto 1% 5% auto 1%;
-   grid-template-columns: 2fr;
-   grid-row-gap: 0.3em;
-   margin-left: 1%;
+  "Drinks"
+  "DrinksBar"
+  "SidesText"
+  "Sides"
+  "SidesBar";
+  grid-template-rows:5% auto 1% 5% auto 1%;
+  grid-template-columns: 2fr;
+  grid-row-gap: 0.3em;
+  margin-left: 1%;
 }
 
 #DrinksText{
@@ -199,8 +183,8 @@ display:block;
 }
 #SidesText{
   grid-area: SidesText;
-    text-align: center;
-    margin: 0;
+  text-align: center;
+  margin: 0;
 }
 #DrinksContainer{
 
@@ -229,7 +213,7 @@ display:block;
   grid-column-gap: 2em;
 
 
-/*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
+  /*  grid-template-columns:  repeat(auto-fit, calc(14em)); */
 
 }
 #progress-Drinkscontainer {
@@ -271,23 +255,24 @@ button {
 @media (max-width: 600px) {
 
   #breadPattyButton{border-left-style: solid; border-left-width: thin}
-  #DrinksAndSidesContainer{grid-template-rows: 12.3% 95%;}
+  #DrinksAndSidesContainer{grid-template-rows: 12.3% 95%;height:82vh;}
   #DrinksAndSides  {grid-row-gap: 0em;grid-template-rows:3% auto 1% 3% auto 9% ;font-size: 0.9em;}
+
 
 
 }
 
 /* #next{
-  position: relative;
-  bottom: 0;
-  float: right;
-    background-color: rgb(30,200,100);
+position: relative;
+bottom: 0;
+float: right;
+background-color: rgb(30,200,100);
 }
 #previous{
-  position: relative;
-  bottom: 0;
-  float: right;
-  background-color: rgb(30,100,200);
+position: relative;
+bottom: 0;
+float: right;
+background-color: rgb(30,100,200);
 } */
 
 </style>
