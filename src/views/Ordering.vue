@@ -10,32 +10,25 @@
     </MenuPage>
   </div>
 
-  <div id = "payment" v-if = "this.state === 'Payment'">
-    <Payment
+  <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
+    <TopPanel
     @switchStage="state=$event"
+    @wipeOrder="wipeOrder()"
+    @wipeBurgerFromOrder="wipeBurgerFromOrder($event)"
+    @createNewBurger="newBurger()"
     :parentState="state"
     :lang="lang"
-    :ui-labels="uiLabels">
-  </Payment>
-</div>
-
-<div id="TopPanel" v-if = "this.state !== 'MenuPage'">
-  <TopPanel
-  @switchStage="state=$event"
-  @wipeOrder="wipeOrder()"
-  @wipeBurgerFromOrder="wipeBurgerFromOrder($event)"
-  @createNewBurger="newBurger()"
-  :parentState="state"
-  :lang="lang"
-  :ui-labels="uiLabels"
-  :burgers="burgers"
-  :ingredients="ingredients">
-</TopPanel>
+    :ui-labels="uiLabels"
+    :burgers="burgers"
+    :ingredients="ingredients">
+  </TopPanel>
 </div>
 
 <div id="MiddlePanel" v-if = "this.state !== 'MenuPage'">
   <div id = "overview" v-if = "this.state === 'OverView'">
-    <OverView @switchStage="state=$event" @wipeOrder="wipeOrder()"
+    <OverView
+    @switchStage="state=$event"
+    @wipeOrder="wipeOrder()"
     :lang="lang"
     :ui-labels="uiLabels"
     :burgers="burgers"
@@ -45,7 +38,9 @@
 
 <div id="AllFoodTabs" v-if = "this.state !== 'OverView'">
   <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
-    <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
+    <BreadAndPatty
+    @switchStage="state=$event"
+    @switchTab="state=$event"
     :sideAndDrinkItems="sideAndDrinkItems"
     :burgerIngredients="burgerIngredients"
     :ingredients="ingredients"
@@ -56,7 +51,8 @@
 </div>
 
 <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
-  <ToppingsAndSauce @switchTab="state=$event"
+  <ToppingsAndSauce
+  @switchTab="state=$event"
   :sideAndDrinkItems="sideAndDrinkItems"
   :burgerIngredients="burgerIngredients"
   :ingredients="ingredients"
@@ -67,7 +63,9 @@
 </div>
 
 <div id = "vegetables" v-if = "this.state === 'Vegetables'">
-  <Vegetables @switchStage="state=$event" @switchTab="state=$event"
+  <Vegetables
+  @switchStage="state=$event"
+  @switchTab="state=$event"
   :sideAndDrinkItems="sideAndDrinkItems"
   :burgerIngredients="burgerIngredients"
   :ingredients="ingredients"
@@ -78,7 +76,9 @@
 </div>
 
 <div id = "drinks" v-if = "this.state === 'Drinks'">
-  <Drinks @switchStage="state=$event" @switchTab="state=$event"
+  <Drinks
+  @switchStage="state=$event"
+  @switchTab="state=$event"
   :burgerIngredients="burgerIngredients"
   :sideAndDrinkItems="sideAndDrinkItems"
   :ingredients="ingredients"
@@ -88,20 +88,12 @@
 </Drinks>
 </div>
 
-<div id = "sides" v-if = "this.state === 'Sides'">
-  <Sides @switchStage="state=$event" @switchTab="state=$event"
-  :burgerIngredients="burgerIngredients"
-  :sideAndDrinkItems="sideAndDrinkItems"
-  :ingredients="ingredients"
-  :parentState="state"
-  :lang="lang"
-  :ui-labels="uiLabels">
-</Sides>
-</div>
 </div>
 
 <div id="Kundkorg">
-  <YourOrder @displayBurger="displayBurger($event)" @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
+  <YourOrder
+  @displayBurger="displayBurger($event)"
+  @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
   @removeFromSideAndDrinkItems = "removeFromSideAndDrinkItems($event)"
   :sideAndDrinkItems ="sideAndDrinkItems"
   :burgers = "burgers"
@@ -131,7 +123,6 @@ import ToppingsAndSauce from '@/components/BuildYourBurger/ToppingsAndSauce.vue'
 import Vegetables from '@/components/BuildYourBurger/Vegetables.vue'
 
 import Drinks from '@/components/SidesAndDrinks/Drinks.vue'
-import Sides from '@/components/SidesAndDrinks/Sides.vue'
 
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
@@ -153,7 +144,6 @@ export default {
     Vegetables,
     Drinks,
 
-    Sides,
     YourOrder
   },
   mixins: [sharedVueStuff],
@@ -161,10 +151,8 @@ export default {
   data: function() {
     return {
       states: ['MenuPage', 'BreadAndPatty', 'ToppingsAndSauce', 'Vegetables', 'Drinks', 'OverView'],
-      chosenIngredients: [],
       burgerIngredients: [],
       sideAndDrinkItems: [],
-      price: 0,
       orderNumber: "",
       state: 'MenuPage',
       burgers: [],
@@ -201,7 +189,7 @@ export default {
         ingredients : []
       };
 
-        this.burgers.push(burger);
+      this.burgers.push(burger);
     },
 
     finishBurgerSwitchState: function () {
@@ -279,32 +267,23 @@ export default {
       this.state = this.getStateFromIndex(indexOfState-1);
     },
     // ------------
-
   }
 }
 </script>
-
-
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
-
-
 #OrderingContainer{
-    font-family: 'Quicksand', sans-serif;
-    height:auto;
-    overflow: hidden;
-    /*background-color: rgb(0,100,200);*/
-    display: grid;
-    grid-template-areas: "TopPanel"
-                          "MiddlePanel"
-                          "ToggleBar";
-    grid-template-columns: auto;
-    grid-template-rows: auto auto auto;
-
-    grid-column-gap: 0;
-
-
+  font-family: 'Quicksand', sans-serif;
+  height:auto;
+  overflow: hidden;
+  display: grid;
+  grid-template-areas: "TopPanel"
+  "MiddlePanel"
+  "ToggleBar";
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-column-gap: 0;
 }
 
 #next{
@@ -320,7 +299,6 @@ export default {
   border-width: thin;
   margin-left: 0.8em;
 }
-
 #previous{
   position: relative;
   bottom: 0;
@@ -333,23 +311,6 @@ export default {
   border-color: black;
   border-width: thin;
 }
-
-/* #ingredients_ {
-background-color: rgb(240,240,240);
-grid-column: 1;
-grid-row: 2 / span 3;
-}
-#chosen_ingredients {
-background-color: rgb(220,150,200);
-grid-column: 2;
-grid-row: 2 / span 3;
-}
-#order_item {
-background-color: rgb(200,200,200);
-grid-column: 3;
-grid-row: 2 / span 3;
-} */
-
 #menupage {
   width: auto;
   height: auto;
@@ -358,26 +319,22 @@ grid-row: 2 / span 3;
 #TopPanel{
   grid-area: TopPanel;
 }
-
 #ToggleBar{
   grid-area: ToggleBar;
   background-color: lightgray;
   border-style: solid;
   border-width: thin;
   border-color: black;
-
-
 }
 #MiddlePanel{
-grid-area: MiddlePanel;
-background-color: lightgray;
-display:grid;
-grid-template-areas: "AllFoodTabs Kundkorg";
-grid-template-columns: 80% 20%;
-border-left-style: solid;
-border-left-color: black;
-border-left-width: thin;
-/* grid-template-rows: 1fr; */
+  grid-area: MiddlePanel;
+  background-color: lightgray;
+  display:grid;
+  grid-template-areas: "AllFoodTabs Kundkorg";
+  grid-template-columns: 80% 20%;
+  border-left-style: solid;
+  border-left-color: black;
+  border-left-width: thin;
 }
 #AllFoodTabs{
   grid-area: AllFoodTabs;
@@ -386,7 +343,6 @@ border-left-width: thin;
   grid-area: Kundkorg;
   float:left;
 }
-
 .example-panel {
   position: fixed;
   left:0;
@@ -397,7 +353,6 @@ border-left-width: thin;
   border: 1px solid #ccd;
   padding: 1em;
   background-color:  rgb(20,100,120);
-  /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
 }
 button:hover{
@@ -409,7 +364,4 @@ button:hover{
   #next {height: 2em; width: 7em;}
   #previous{float:left; height: 2em; width: 7em;}
 }
-
-
-
 </style>

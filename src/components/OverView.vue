@@ -61,6 +61,7 @@ export default{
         //   this.$refs.ingredient[i].resetCounter();
         // }
         //this.price = 0;
+        this.wipeOrder()
       }
     },
 
