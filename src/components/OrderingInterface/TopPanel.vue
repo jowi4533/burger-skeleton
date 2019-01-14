@@ -13,16 +13,16 @@
               {{uiLabels.stageOne}}
         </span > -->
 
-        <span v-if ="parentState == 'BreadAndPatty'">
+        <span class="OverlayText" v-if ="parentState == 'BreadAndPatty'">
           {{uiLabels.chooseBreadAndPatty}}
         </span>
-        <span v-if ="parentState == 'ToppingsAndSauce'">
+        <span class="OverlayText" v-if ="parentState == 'ToppingsAndSauce'">
           {{uiLabels.chooseToppingsAndSauce}}
         </span>
-        <span v-if ="parentState == 'Vegetables'">
+        <span class="OverlayText" v-if ="parentState == 'Vegetables'">
             {{uiLabels.chooseVegetables}}
         </span>
-        <span v-if ="parentState == 'Drinks'">
+        <span class="OverlayText" v-if ="parentState == 'Drinks'">
             {{uiLabels.chooseDrinkAndSides}}
         </span>
 
@@ -202,6 +202,22 @@ button {
 
 
 
+}
+@media (max-width: 670px){
+  .tabBar{
+    margin:0;
+  }
+  .OverlayText{
+    font-size: 0.5em;
+  }
+  #Cancel {
+
+    height: 2.5em;
+    width: 5em;
+    margin-left: 5%;
+    margin-right: 2%;
+
+}
 }
 
 </style>

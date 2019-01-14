@@ -220,7 +220,7 @@ float: right;
   grid-area: Patty;
   overflow-x: scroll;
   overflow-y:hidden;
-  
+
   display:grid;
   grid-template-columns:15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em 15em;
   grid-column-gap: 2em;
@@ -273,11 +273,8 @@ button {
 }
 
 @media (max-width: 600px) {
-  #ingredientButtons {
-    display:grid;
-
-  }
-
-
+  #ingredientButtons {display:grid; text-align:center; margin-left: 25%;}
+  #breadPattyButton{border-left-style: solid;}
+  #BreadAndPatty  {grid-row-gap: 0em;grid-template-rows:5% auto 1% 5% auto 10% ;}
 }
 </style>
