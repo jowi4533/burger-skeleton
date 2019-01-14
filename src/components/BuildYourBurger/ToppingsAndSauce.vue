@@ -257,12 +257,13 @@ button {
 
 button:hover {
   cursor: pointer;
-  
+
 @media (max-width: 600px) {
   #ingredientButtons {display:grid; margin-left: 18%;font-size: 0.8em;}
   #breadPattyButton{border-left-style: solid; border-left-width: thin}
   #ToppingsAndSauce  {grid-row-gap: 0em;grid-template-rows:3% auto 1% 3% auto 9% ;font-size: 0.9em;}
   .ContainerText{font-size: 0.8em;}
   .ingredientButtons{width: 80%;}
+}
 }
 </style>
