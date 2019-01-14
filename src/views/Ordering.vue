@@ -216,9 +216,7 @@ export default {
 
     finishBurgerSwitchState: function () {
         for (let burger in this.burgers) {
-          console.log("burgers loop");
           if (this.burgers[burger].isActive) {
-            console.log("isactive=true");
             if (this.breadInArray() && this.pattyInArray()) {
               this.hideBurgerIngredients();
               this.burgerIngredients = [];
