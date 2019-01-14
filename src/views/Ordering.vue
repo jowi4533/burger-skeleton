@@ -16,10 +16,12 @@
 </div>
 
 <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
-  <TopPanel @switchStage="state=$event" @switchStageWipeOrder="wipeOrder()"
+  <TopPanel @switchStage="state=$event" @wipeOrder="wipeOrder()"
   :parentState="state"
   :lang="lang"
-  :ui-labels="uiLabels">
+  :ui-labels="uiLabels"
+  :burgers="burgers"
+  :ingredients="ingredients">
 </TopPanel>
 </div>
 

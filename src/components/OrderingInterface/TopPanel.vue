@@ -46,7 +46,9 @@ export default{
   props: {
     parentState: String,
     lang: String,
-    uiLabels: Object
+    uiLabels: Object,
+    burgers: Array,
+    ingredients: Array,
   },
 
   created: function() {
@@ -58,13 +60,24 @@ export default{
 
   methods: {
 
-    switchStage: function(stage) {
-        if (this.parentState=='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
-
-          if (confirm(this.popupTextSidesAndDrinks)) {
+    cancelSwitchStage: function(stage) {
             this.$emit('switchStage', stage);
             this.$emit('wipeOrder');
-            console.log("confirm");
+    },
+
+    switchStage: function(stage) {
+        if (this.parentState=='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
+          if (this.burgers[this.burgers.length-1].ingredients.length > 0) {
+            if (confirm(this.popupTextSidesAndDrinks)) {
+              this.$emit('switchStage', stage);
+              this.$emit('wipeOrder');
+              console.log("confirm");
+            }
+          }
+          else {
+            this.$emit('wipeOrder');
+            this.cancelSwitchStage(stage);
+            console.log("else");
           }
         }
         else {
@@ -76,20 +89,26 @@ export default{
 
     switchStageWipeOrder: function(stage) {
       if (this.parentState=='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
-
-        if (confirm(this.popupText)) {
-          this.$emit('switchStageWipeOrder');
-          this.switchStage(stage);
-          console.log("confirm");
+        if (this.burgers[this.burgers.length-1].ingredients.length > 0) {
+          if (confirm(this.popupText)) {
+            this.$emit('wipeOrder');
+            this.cancelSwitchStage(stage);
+            console.log("confirm");
+          }
+        }
+        else {
+          this.$emit('wipeOrder');
+          this.cancelSwitchStage(stage);
+          console.log("else");
         }
       }
       else {
-        this.$emit('switchStageWipeOrder');
-        this.switchStage(stage);
+        this.$emit('wipeOrder');
+        this.cancelSwitchStage(stage);
         console.log("else");
       }
-
     }
+
   }
 }
 
