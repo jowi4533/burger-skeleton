@@ -80,8 +80,15 @@
   </script>
 
   <style scoped>
+  button{
+    font-family: 'Quicksand', sans-serif;
+  }
   .categoryDivider{
-    border-top: thin solid #000000;
+    top:5px;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+
   }
   .sides_drinks{
     display: inline-block;
@@ -160,6 +167,10 @@
   }
   .removeIngredientButton{
     float:right;
+    background-color: rgb(192,239,232);
+    border-style: hidden;
+    color:red;
+    font-size: 103%;
   }
   @media (max-width: 500px) {
     div.yourOrderText { font-size: 0.9em; }
@@ -170,6 +181,27 @@
     .totalPrice{
       font-size: 0.85em;
       margin-left: 0;
+    }
+    .burgerImage{
+      background-image: none;
+      height: 0;
+      width: 0;
+    }
+    .sidesImage{
+      background-image: none;
+      height: 0;
+      width: 0;
+    }
+    .drinkImage{
+      background-image: none;
+      height: 0;
+      width: 0;
+    }
+    .scrollableText{
+      font-size: 87%;
+    }
+    .removeIngredientButton{
+      font-size: 75%;
     }
 
 
