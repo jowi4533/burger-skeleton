@@ -5,7 +5,6 @@
       <button id = "StorageButton" v-on:click="OpenStorage">
         {{uiLabels.storage}}
       </button>
-      <!-- (HJÄLP) -->
       <OrderItemToPrepare
       v-bind:class = "['orderBox', {'active': (order.status === 'started')}]"
       v-for="(order, key) in undoneOrders"
@@ -103,7 +102,6 @@ export default {
           }
         }
       }
-
       return undone;
     }
   }}
@@ -117,7 +115,6 @@ export default {
     font-size:13pt;
     font-weight: bold;
   }
-
   h1 {
     text-transform: uppercase;
     font-size: 1em;
@@ -135,7 +132,6 @@ export default {
     font-family: 'Quicksand', sans-serif;
     font-size: 0.7em;
   }
-
   #gridContainer {
     margin: 5px 0px 5px 0px;
     display: grid;
@@ -147,7 +143,6 @@ export default {
     "grid grid grid grid";
     background-color: white;
   }
-
   .orderBox {
     color: rgb(0,0,0);
     margin-left: 5pt;
@@ -156,11 +151,9 @@ export default {
     border-color: rgb(0,0,0);
     border-style: solid;
   }
-
   .active {
     background-color: rgb(0,200,200);
   }
-
   .orderCount {
     width: 70px;
     height: 70px;
@@ -170,7 +163,6 @@ export default {
     border-color: black;
     border-style: solid;
   }
-
   #StorageButton{
     width: 9em;
     height: 3em;
@@ -210,10 +202,5 @@ export default {
   }
   .ManyOrders {
     background-color: rgba(255, 0, 0, 0.7);
-
   }
-
-
-
-
   </style>

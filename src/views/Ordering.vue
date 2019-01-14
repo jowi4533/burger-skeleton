@@ -1,34 +1,34 @@
 <template>
   <div id="OrderingContainer">
     <div id ="menupage" v-if ="this.state === 'MenuPage'">
-      <MenuPage @switchStage="state=$event" @switchLanguage="switchLang()" @createNewBurger="newBurger()"
+      <MenuPage
+      @switchStage="state=$event"
+      @switchLanguage="switchLang()"
+      @createNewBurger="newBurger()"
       :ui-labels="uiLabels"
       :lang="lang">
     </MenuPage>
   </div>
 
-  <div id = "payment" v-if = "this.state === 'Payment'">
-    <Payment @switchStage="state=$event"
+  <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
+    <TopPanel
+    @switchStage="state=$event"
+    @wipeOrder="wipeOrder()"
+    @wipeBurgerFromOrder="wipeBurgerFromOrder($event)"
+    @createNewBurger="newBurger()"
     :parentState="state"
     :lang="lang"
-    :ui-labels="uiLabels">
-  </Payment>
-</div>
-
-<div id="TopPanel" v-if = "this.state !== 'MenuPage'">
-  <TopPanel @switchStage="state=$event" @wipeOrder="wipeOrder()" @wipeBurgerFromOrder="wipeBurgerFromOrder($event)"
- @createNewBurger="newBurger()"
-  :parentState="state"
-  :lang="lang"
-  :ui-labels="uiLabels"
-  :burgers="burgers"
-  :ingredients="ingredients">
-</TopPanel>
+    :ui-labels="uiLabels"
+    :burgers="burgers"
+    :ingredients="ingredients">
+  </TopPanel>
 </div>
 
 <div id="MiddlePanel" v-if = "this.state !== 'MenuPage'">
   <div id = "overview" v-if = "this.state === 'OverView'">
-    <OverView @switchStage="state=$event" @wipeOrder="wipeOrder()"
+    <OverView
+    @switchStage="state=$event"
+    @wipeOrder="wipeOrder()"
     :lang="lang"
     :ui-labels="uiLabels"
     :burgers="burgers"
@@ -38,7 +38,9 @@
 
 <div id="AllFoodTabs" v-if = "this.state !== 'OverView'">
   <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
-    <BreadAndPatty @switchStage="state=$event" @switchTab="state=$event"
+    <BreadAndPatty
+    @switchStage="state=$event"
+    @switchTab="state=$event"
     :sideAndDrinkItems="sideAndDrinkItems"
     :burgerIngredients="burgerIngredients"
     :ingredients="ingredients"
@@ -49,7 +51,8 @@
 </div>
 
 <div id = "toppingsandsauce" v-if = "this.state === 'ToppingsAndSauce'">
-  <ToppingsAndSauce @switchTab="state=$event"
+  <ToppingsAndSauce
+  @switchTab="state=$event"
   :sideAndDrinkItems="sideAndDrinkItems"
   :burgerIngredients="burgerIngredients"
   :ingredients="ingredients"
@@ -60,7 +63,9 @@
 </div>
 
 <div id = "vegetables" v-if = "this.state === 'Vegetables'">
-  <Vegetables @switchStage="state=$event" @switchTab="state=$event"
+  <Vegetables
+  @switchStage="state=$event"
+  @switchTab="state=$event"
   :sideAndDrinkItems="sideAndDrinkItems"
   :burgerIngredients="burgerIngredients"
   :ingredients="ingredients"
@@ -71,7 +76,9 @@
 </div>
 
 <div id = "drinks" v-if = "this.state === 'Drinks'">
-  <Drinks @switchStage="state=$event" @switchTab="state=$event"
+  <Drinks
+  @switchStage="state=$event"
+  @switchTab="state=$event"
   :burgerIngredients="burgerIngredients"
   :sideAndDrinkItems="sideAndDrinkItems"
   :ingredients="ingredients"
@@ -81,20 +88,12 @@
 </Drinks>
 </div>
 
-<div id = "sides" v-if = "this.state === 'Sides'">
-  <Sides @switchStage="state=$event" @switchTab="state=$event"
-  :burgerIngredients="burgerIngredients"
-  :sideAndDrinkItems="sideAndDrinkItems"
-  :ingredients="ingredients"
-  :parentState="state"
-  :lang="lang"
-  :ui-labels="uiLabels">
-</Sides>
-</div>
 </div>
 
 <div id="Kundkorg">
-  <YourOrder @displayBurger="displayBurger($event)" @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
+  <YourOrder
+  @displayBurger="displayBurger($event)"
+  @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
   @removeFromSideAndDrinkItems = "removeFromSideAndDrinkItems($event)"
   :sideAndDrinkItems ="sideAndDrinkItems"
   :burgers = "burgers"
@@ -124,7 +123,6 @@ import ToppingsAndSauce from '@/components/BuildYourBurger/ToppingsAndSauce.vue'
 import Vegetables from '@/components/BuildYourBurger/Vegetables.vue'
 
 import Drinks from '@/components/SidesAndDrinks/Drinks.vue'
-import Sides from '@/components/SidesAndDrinks/Sides.vue'
 
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
@@ -146,7 +144,6 @@ export default {
     Vegetables,
     Drinks,
 
-    Sides,
     YourOrder
   },
   mixins: [sharedVueStuff],
@@ -154,14 +151,13 @@ export default {
   data: function() {
     return {
       states: ['MenuPage', 'BreadAndPatty', 'ToppingsAndSauce', 'Vegetables', 'Drinks', 'OverView'],
-      chosenIngredients: [],
       burgerIngredients: [],
       sideAndDrinkItems: [],
-      price: 0,
       orderNumber: "",
       state: 'MenuPage',
       burgers: [],
       burgerOrder : 0,
+      cancelPopupText: "Are you sure you want to Cancel? Your order will be discarded.",
     }
   },
 
@@ -188,12 +184,21 @@ export default {
 
     newBurger: function () {
       this.burgerOrder += 1;
+
+      for(let i = 0; i < this.burgers.length; i++){
+        if(this.burgers[i].burgerID === this.burgerOrder){
+          this.burgerOrder += 1;
+        }
+      }
+
       let burger = {
         burgerID : this.burgerOrder,
         isActive : true,
+        lastActive : false,
         ingredients : []
       };
-        this.burgers.push(burger);
+
+      this.burgers.push(burger);
     },
 
     breadInArray: function (){
@@ -262,7 +267,9 @@ export default {
 
     hideBurgerIngredients: function(){
       for(let i = 0; i < this.burgers.length; i++){
+        this.burgers[i].lastActive = false;
         if(this.burgers[i].isActive){
+          this.burgers[i].lastActive = true;
           this.burgers[i].isActive = false;
         }
       }
@@ -297,29 +304,46 @@ export default {
 
     changeToPreviousState: function () {
       let indexOfState = this.getIndexOfState();
-      this.state = this.getStateFromIndex(indexOfState-1);
+      if(this.state === 'Drinks'){
+        for(let i = 0; i < this.burgers.length; i++){
+          if(this.burgers[i].lastActive){
+            this.displayBurger(this.burgers[i]);
+          }
+        }
+        this.state = this.getStateFromIndex(indexOfState-1);
+      }
+
+      else if(this.state === 'BreadAndPatty' && confirm(this.cancelPopupText)){
+        for(let i = 0; i < this.burgers.length; i++){
+          if(this.burgers[i].isActive){
+            this.state = this.getStateFromIndex(indexOfState-1);
+            this.wipeBurgerFromOrder(i);
+          }
+        }
+      }
+      else if (this.state !== 'Drinks' && this.state !== 'BreadAndPatty'){
+        this.state = this.getStateFromIndex(indexOfState-1);
+      }
+
     },
     // ------------
   }
 }
 </script>
-
-
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 #OrderingContainer{
-    font-family: 'Quicksand', sans-serif;
-    height:auto;
-    overflow: hidden;
-    /*background-color: rgb(0,100,200);*/
-    display: grid;
-    grid-template-areas: "TopPanel"
-                          "MiddlePanel"
-                          "ToggleBar";
-    grid-template-columns: auto;
-    grid-template-rows: auto auto auto;
-    grid-column-gap: 0;
+  font-family: 'Quicksand', sans-serif;
+  height:auto;
+  overflow: hidden;
+  display: grid;
+  grid-template-areas: "TopPanel"
+  "MiddlePanel"
+  "ToggleBar";
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-column-gap: 0;
 }
 
 #next{
@@ -329,7 +353,7 @@ export default {
   float: right;
   background-color: rgb(27, 183, 84);
   height: 4em;
-  width: 9em;
+  width: 12.1em;
   border-style: solid;
   border-color: black;
   border-width: thin;
@@ -340,7 +364,6 @@ export default {
   cursor: pointer;
   opacity: 0.7;
 }
-
 #previous{
   position: relative;
   font-family: 'Quicksand', sans-serif;
@@ -348,7 +371,7 @@ export default {
   float: right;
   background-color: rgb(0,200,250);
   height: 4em;
-  width: 9em;
+  width: 12.1em;
   border-style: solid;
   border-color: black;
   border-width: thin;
@@ -368,15 +391,12 @@ export default {
   grid-area: TopPanel;
 
 }
-
 #ToggleBar{
   grid-area: ToggleBar;
   background-color: rgb(28, 247, 189);
   border-style: solid;
   border-width: thin;
   border-color: black;
-
-
 }
 #MiddlePanel{
   grid-area: MiddlePanel;
@@ -396,7 +416,6 @@ export default {
   grid-area: Kundkorg;
   float:left;
 }
-
 .example-panel {
   position: fixed;
   left:0;
@@ -407,7 +426,6 @@ export default {
   border: 1px solid #ccd;
   padding: 1em;
   background-color:  rgb(20,100,120);
-
   color: white;
 }
 button:hover{
@@ -419,7 +437,4 @@ button:hover{
   #next { font-size: 1.2em; height: 2em; width: 50%;}
   #previous{font-size: 1.2em; float:left; height: 2em; width: 50%;}
 }
-
-
-
 </style>
