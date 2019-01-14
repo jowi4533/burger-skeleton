@@ -48,6 +48,10 @@
   "chooseBreadAndPatty" :"Välj Bröd och Bas",
   "chooseToppingsAndSauce" : "Välj Topping och Sås",
   "chooseDrinkAndSides" : "Välj Dryck and Tillbehör",
-  "chooseVegetables": "Välj Grönsaker"
+  "chooseVegetables": "Välj Grönsaker",
+  "popupTextCancel": "Vill du verkligen Avbryta? Hela din order kommer kasseras!",
+  "popupTextOverview": "Vill du verkligen gå till Översikt? Den smaskiga burgaren du håller på bygga kommer försvinna!",
+  "popupTextSidesAndDrinks": "Vill du verkligen gå till Tillbehör och Dryck? Den smaskiga burgaren du håller på bygga kommer försvinna!",
+  "popupBurgerNotFinished": "Hmmm... Hur tänkte du äta den här burgaren utan bröd? Var vänlig välj ett bröd och en bas innan du färdigställer burgaren!"
 
 }

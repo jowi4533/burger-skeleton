@@ -197,11 +197,38 @@ export default {
         this.burgers.push(burger);
     },
 
-    finishBurgerSwitchState: function () {
-      this.burgerFinished = "Yes"
-      this.burgerIngredients = [];
+    breadInArray: function (){
+      for(let i in this.burgerIngredients) {
+        if (this.burgerIngredients[i].category == 1) {
+          return true;
 
-      this.changeToNextState();
+        }
+      }
+      return false;
+    },
+    pattyInArray: function(){
+      for(var i = 0; i < this.burgerIngredients.length; i++) {
+        if (this.burgerIngredients[i].category == 2) {
+          return true;
+        }
+      }
+    return false;
+  },
+
+    finishBurgerSwitchState: function () {
+        for (let burger in this.burgers) {
+          if (burger.isActive) {
+            if (this.breadInArray() && this.pattyInArray()) {
+              this.burgerIngredients = [];
+              this.changeToNextState();
+            }
+            else {
+              alert("you need to select a bread and patty");
+            }
+
+          }
+        }
+
     },
 
     addToBurgerIngredients: function(item){
