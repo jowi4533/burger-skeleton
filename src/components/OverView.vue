@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import YourOrder from '@/components/YourOrder.vue'
 import Ingredient from '@/components/Ingredient.vue'
 
 export default{
@@ -81,12 +82,13 @@ export default{
 
 #OverViewContainer {
   background-color: rgb(220,220,220);
-  width: 40em;
-  height: 20em;
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: 15% 70% 15%;
   grid-template-rows: 20% 65% 15%;
   justify-items: center;
+  margin: 0;
 }
 
 #wrapper {
