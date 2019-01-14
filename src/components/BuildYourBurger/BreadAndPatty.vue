@@ -1,16 +1,16 @@
 <template>
   <div id = "BreadAndPattyContainer">
     <div id="ingredientButtons">
-      <button id="breadPattyButton" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
-      <button v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
-      <button v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
+      <button class="ingredientButtons" id="breadPattyButton" :class="{tabButton : parentState === 'BreadAndPatty'}"> {{uiLabels.breadandpatty}} </button>
+      <button class="ingredientButtons" v-on:click= "switchTab('ToppingsAndSauce')"> {{uiLabels.toppingsandsauce}} </button>
+      <button class="ingredientButtons" v-on:click= "switchTab('Vegetables')"> {{uiLabels.veggies}} </button>
     </div>
 
     <div id="BreadAndPatty">
 
-      <h4 id="BreadText"> {{uiLabels.bread}} </h4>
+      <h4 class="ContainerText" id="BreadText"> {{uiLabels.bread}} </h4>
 
-      <h4 id="PattyText"> {{uiLabels.patty}} </h4>
+      <h4 class="ContainerText" id="PattyText"> {{uiLabels.patty}} </h4>
 
       <div id="BreadContainer" v-on:scroll="windowScroll('BreadContainer')">
 
@@ -273,8 +273,10 @@ button {
 }
 
 @media (max-width: 600px) {
-  #ingredientButtons {display:grid; text-align:center; margin-left: 25%;}
+  #ingredientButtons {display:grid; margin-left: 18%;font-size: 0.8em;}
   #breadPattyButton{border-left-style: solid;}
-  #BreadAndPatty  {grid-row-gap: 0em;grid-template-rows:5% auto 1% 5% auto 10% ;}
+  #BreadAndPatty  {grid-row-gap: 0em;grid-template-rows:3% auto 1% 3% auto 9% ;font-size: 0.9em;}
+  .ContainerText{font-size: 0.8em;}
+  .ingredientButtons{width: 80%;}
 }
 </style>

@@ -381,6 +381,9 @@ border-left-width: thin;
   /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
 }
+button:hover{
+  cursor:pointer;
+}
 @media (max-width: 600px) {
   #MiddlePanel{grid-template-columns: 70% 30%;}
   #ToggleBar{border-top-style: hidden;}

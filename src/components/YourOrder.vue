@@ -72,6 +72,7 @@ li::first-letter {
   padding-left: 0.1em;
   font-size: 1.2em;
   font-weight: bold;
+
 }
 @media (max-width: 600px) {
   div.yourOrderText { font-size: 0.7em; }
