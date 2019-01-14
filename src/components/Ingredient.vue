@@ -112,7 +112,7 @@ width: 100%;
 
 .ingredient_img{
   border: 3px solid #000000;
-  height: 60%;
+  height: 10em;
   width: 100%;
 }
 
