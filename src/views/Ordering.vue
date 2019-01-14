@@ -94,7 +94,7 @@
 </div>
 
 <div id="Kundkorg">
-  <YourOrder
+  <YourOrder @displayBurger="displayBurger($event)"
   :burgerIngredients ="burgerIngredients"
   :sideAndDrinkItems ="sideAndDrinkItems"
   :burgers = "burgers"
@@ -189,7 +189,7 @@ export default {
     newBurger: function () {
       this.burgerOrder += 1;
       let burger = {
-        state : this.burgerOrder,
+        burgerID : this.burgerOrder,
         burgerFinished : "No",
         ingredients : []
       };
@@ -198,7 +198,7 @@ export default {
     },
 
     finishBurgerSwitchState: function () {
-      this.burgerFinished = "Yes"
+      this.burgers[this.burgers.length-1].burgerFinished = "Yes"
       this.burgerIngredients = [];
 
       this.changeToNextState();
@@ -222,6 +222,10 @@ export default {
     removeFromSideAndDrinkItems: function(item) {
       let index = this.sideAndDrinkItems.findIndex(x => x.ingredient_id==item.ingredient_id);
       this.sideAndDrinkItems.splice(index, 1);
+    },
+
+    displayBurger: function(burger) {
+      burger.burgerFinished = 'No';
     },
 
     //These 2 are currently not used
