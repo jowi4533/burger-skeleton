@@ -16,7 +16,8 @@
 </div>
 
 <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
-  <TopPanel @switchStage="state=$event" @wipeOrder="wipeOrder()"
+  <TopPanel @switchStage="state=$event" @wipeOrder="wipeOrder()" @wipeBurgerFromOrder="wipeBurgerFromOrder($event)"
+ @createNewBurger="newBurger()"
   :parentState="state"
   :lang="lang"
   :ui-labels="uiLabels"
@@ -160,7 +161,7 @@ export default {
       orderNumber: "",
       state: 'MenuPage',
       burgers: [],
-      burgerOrder : 1,
+      burgerOrder : 0,
     }
   },
 
@@ -176,9 +177,17 @@ export default {
       this.burgers = [];
       this.sideAndDrinkItems = [];
       this.burgerIngredients = [];
+      this.burgerOrder = 0;
+    },
+
+    wipeBurgerFromOrder: function (index) {
+      this.burgers.splice(index, 1);
+      this.burgerIngredients = [];
+      this.burgerOrder -= 1;
     },
 
     newBurger: function () {
+      this.burgerOrder += 1;
       let burger = {
         state : this.burgerOrder,
         burgerFinished : "No",
@@ -191,7 +200,6 @@ export default {
     finishBurgerSwitchState: function () {
       this.burgerFinished = "Yes"
       this.burgerIngredients = [];
-      this.burgerOrder += 1;
 
       this.changeToNextState();
     },
@@ -285,7 +293,7 @@ export default {
   bottom: 0;
   float: right;
   background-color: rgb(30,200,100);
-  height: 3em;
+  height: 4em;
   width: 9em;
   border-radius: 1em;
   border-style: solid;
@@ -299,7 +307,7 @@ export default {
   bottom: 0;
   float: right;
   background-color: rgb(30,100,200);
-  height: 3em;
+  height: 4em;
   width: 9em;
   border-radius: 1em;
   border-style: solid;

@@ -1,23 +1,19 @@
 <template>
 
 <body id="body">
-
-
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <header id="TopHeader">
-  <img id="headerImg" src="https://i.imgur.com/1NLTXH0.png">
+  <h1 id = "rawsauce">RAW Sauce Burgers</h1>
 </header>
 
   <div class="wrapper" align="center">
-      <button id="EatHere" v-on:click="OrderOption()" >Eat Here</button>
-      <button id="EatThere" v-on:click="OrderOption()">Take Away</button>
+      <button class="buttons" id="EatHere" v-on:click="OrderOption()" ><span>Eat here</span></button>
+      <button class="buttons" id="EatThere" v-on:click="OrderOption()"><span>Take away</span></button>
   </div>
 
 </body>
 </template>
-
 
 <script>
 
@@ -27,7 +23,6 @@ export default {
   methods: {
     OrderOption: function (){
       window.location = 'http://localhost:8080/#/Ordering';
-      this.state = "HomePage";
     },
   }
 }
@@ -37,19 +32,24 @@ export default {
 
 #body{
   background-color: rgb(192, 239, 232);
-/*  overflow: hidden;*/
+  font-family: 'Quicksand', sans-serif;
 }
 
 #TopHeader{
-  font-size: 2em; 
+  font-size: 2.5em;
   text-align: center;
-  background-color: black;
 }
 
-#headerImg{
-  width: 100%;
-  opacity: 0.8;
-  border-bottom: 2px solid red;
+#rawsauce {
+  background-color: rgb(28, 247, 189);
+  border-color: rgb(42, 70, 145);
+  border-bottom-style: solid;
+  border-width: 0.2em;
+  color: rgb(42, 70, 145);
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0.7em;
+  padding-top: 0.7em;
 }
 
 .wrapper{
@@ -57,42 +57,61 @@ export default {
   grid-template-columns: 50% 50%;
   color: black;
   height: 60vh;
-  /*background-color: rgb(192, 239, 232);*/
 }
 
 button {
-  background-color: rgb(0,200,250);
-  color: rgb(4, 40, 51);
-  font-size: 200%;
-  width: 80%;
-  margin: 5% 0 5% 0;
-  opacity: 0.7;
-  transition: 0.3s;
-  border-style: hidden;
+  display: inline-block;
   border-radius: 10px;
+  background-color: #rgb(255,255,255);
+  border: none;
+  color: rgb(42,70,145);
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 4em;
+  width: 80%;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5% 0 5% 0;
+}
+button:hover {
+  background-color: rgb(0,200,250);
+  opacity: 1;
+  cursor: pointer;
+}
+
+.buttons span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.buttons span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -1em;
+  transition: 0.5s;
+}
+
+.buttons:hover span {
+  padding-right: 0.8em;
+}
+
+.buttons:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 #EatHere{
-/*  position: absolute;*/
-  /*display: block;*/
   grid-column: 1;
   grid-row: 1;
 }
 
-#EatHere:hover{
-  opacity: 1;
-  cursor: pointer;
-}
-
 #EatThere{
-  /*display: block;*/
   grid-column: 2;
   grid-row: 1;
-}
-
-#EatThere:hover{
-  opacity: 1;
-  cursor: pointer;
 }
 
 </style>
