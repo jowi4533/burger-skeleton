@@ -257,6 +257,7 @@ float: right;
 }
 
 
+
 button {
   font-family: 'Quicksand', sans-serif;
   border-style: solid;
@@ -271,4 +272,12 @@ button {
   padding: 0;
 }
 
+@media (max-width: 600px) {
+  #ingredientButtons {
+    display:grid;
+
+  }
+
+
+}
 </style>

@@ -119,7 +119,7 @@ width: 100%;
 }
 .ingredient_image_container{
   border: 3px solid #000000;
-  height: 60%;
+  height: 10em;
   width: 100%;
 }
 
