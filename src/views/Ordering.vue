@@ -16,7 +16,8 @@
 </div>
 
 <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
-  <TopPanel @switchStage="state=$event" @wipeOrder="wipeOrder()"
+  <TopPanel @switchStage="state=$event" @wipeOrder="wipeOrder()" @wipeBurgerFromOrder="wipeBurgerFromOrder($event)"
+ @createNewBurger="newBurger()"
   :parentState="state"
   :lang="lang"
   :ui-labels="uiLabels"
@@ -93,8 +94,8 @@
 </div>
 
 <div id="Kundkorg">
-  <YourOrder
-  :burgerIngredients ="burgerIngredients"
+  <YourOrder @displayBurger="displayBurger($event)" @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
+  @removeFromSideAndDrinkItems = "removeFromSideAndDrinkItems($event)"
   :sideAndDrinkItems ="sideAndDrinkItems"
   :burgers = "burgers"
   :ui-labels="uiLabels"
@@ -160,7 +161,7 @@ export default {
       orderNumber: "",
       state: 'MenuPage',
       burgers: [],
-      burgerOrder : 1,
+      burgerOrder : 0,
     }
   },
 
@@ -176,28 +177,38 @@ export default {
       this.burgers = [];
       this.sideAndDrinkItems = [];
       this.burgerIngredients = [];
+      this.burgerOrder = 0;
+    },
+
+    wipeBurgerFromOrder: function (index) {
+      this.burgers.splice(index, 1);
+      this.burgerIngredients = [];
+      this.burgerOrder -= 1;
     },
 
     newBurger: function () {
+      this.burgerOrder += 1;
       let burger = {
-        state : this.burgerOrder,
-        burgerFinished : "No",
+        burgerID : this.burgerOrder,
+        isActive : true,
         ingredients : []
       };
         this.burgers.push(burger);
     },
 
     finishBurgerSwitchState: function () {
-      this.burgerFinished = "Yes"
+      this.hideBurgerIngredients();
       this.burgerIngredients = [];
-      this.burgerOrder += 1;
-
       this.changeToNextState();
     },
 
     addToBurgerIngredients: function(item){
       this.burgerIngredients.push(item);
-      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
+      for(let i = 0; i < this.burgers.length; i++){
+        if(this.burgers[i].isActive){
+          this.burgers[i].ingredients = this.burgerIngredients;
+        }
+      }
     },
 
     addToSideAndDrinkItems: function(item) {
@@ -206,8 +217,13 @@ export default {
 
     removeFromBurgerIngredients: function(item) {
       let index = this.burgerIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
-      this.burgerIngredients.splice(index, 1);
-      this.burgers[this.burgers.length-1].ingredients = this.burgerIngredients;
+
+      for(let i = 0; i < this.burgers.length; i++){
+        if(this.burgers[i].isActive){
+          this.burgerIngredients.splice(index, 1);
+          this.burgers[i].ingredients = this.burgerIngredients;
+        }
+      }
     },
 
     removeFromSideAndDrinkItems: function(item) {
@@ -215,18 +231,23 @@ export default {
       this.sideAndDrinkItems.splice(index, 1);
     },
 
-    //These 2 are currently not used
-    addToOrder: function (item) {
-      this.chosenIngredients.push(item);
-      this.burgerIngredients.push(item);
-      this.price += +item.selling_price;
+    hideBurgerIngredients: function(){
+      for(let i = 0; i < this.burgers.length; i++){
+        if(this.burgers[i].isActive){
+          this.burgers[i].isActive = false;
+        }
+      }
     },
 
-    removeFromOrder: function (item){
-      let index = this.chosenIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
+    loadBurgerItems: function(burgerIngredients) {
+      this.burgerIngredients = burgerIngredients;
+    },
 
-      this.chosenIngredients.splice(index,1);
-      this.price = this.price - item.selling_price;
+    displayBurger: function(burger) {
+      this.hideBurgerIngredients();
+      this.loadBurgerItems(burger.ingredients)
+      this.state = 'BreadAndPatty'
+      burger.isActive = true;
     },
     //--------------
     //All functions handling state ---
@@ -360,10 +381,14 @@ export default {
   /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
 }
-
-@media (max-width: 500px) {
-  button#next {height: 2em; width: 6.5em;}
-  button#previous {height: 2em; width: 6.5em;}
+button:hover{
+  cursor:pointer;
+}
+@media (max-width: 600px) {
+  #MiddlePanel{grid-template-columns: 70% 30%;}
+  #ToggleBar{border-top-style: hidden;}
+  #next {height: 2em; width: 7em;}
+  #previous{float:left; height: 2em; width: 7em;}
 }
 
 

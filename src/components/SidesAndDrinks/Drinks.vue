@@ -8,8 +8,8 @@
 
 <div id="DrinksAndSides">
 
-  <h4 id="DrinksText"> {{uiLabels.drinks}} </h4>
-  <h4 id="SidesText"> {{uiLabels.sides}} </h4>
+  <h4 class="ContainerText" id="DrinksText"> {{uiLabels.drinks}} </h4>
+  <h4 class="ContainerText" id="SidesText"> {{uiLabels.sides}} </h4>
 
 <div id="DrinksContainer" v-on:scroll="windowScroll('DrinksContainer')">
       <Ingredient
@@ -267,6 +267,14 @@ button {
   font-weight: bold;
   margin-right: 1em;
   padding: 0;
+}
+@media (max-width: 600px) {
+
+  #breadPattyButton{border-left-style: solid; border-left-width: thin}
+  #DrinksAndSidesContainer{grid-template-rows: 12.3% 95%;}
+  #DrinksAndSides  {grid-row-gap: 0em;grid-template-rows:3% auto 1% 3% auto 9% ;font-size: 0.9em;}
+
+
 }
 
 /* #next{

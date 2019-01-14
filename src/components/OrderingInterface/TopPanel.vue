@@ -12,17 +12,22 @@
               >
               {{uiLabels.stageOne}}
         </span > -->
+<<<<<<< HEAD
       <div id="span">
         <span v-if ="parentState == 'BreadAndPatty'">
+=======
+
+        <span class="OverlayText" v-if ="parentState == 'BreadAndPatty'">
+>>>>>>> 5e6b7b6b1e074632c08df0505072f6cb9c8501c3
           {{uiLabels.chooseBreadAndPatty}}
         </span>
-        <span v-if ="parentState == 'ToppingsAndSauce'">
+        <span class="OverlayText" v-if ="parentState == 'ToppingsAndSauce'">
           {{uiLabels.chooseToppingsAndSauce}}
         </span>
-        <span v-if ="parentState == 'Vegetables'">
+        <span class="OverlayText" v-if ="parentState == 'Vegetables'">
             {{uiLabels.chooseVegetables}}
         </span>
-        <span v-if ="parentState == 'Drinks'">
+        <span class="OverlayText" v-if ="parentState == 'Drinks'">
             {{uiLabels.chooseDrinkAndSides}}
         </span>
       </div>
@@ -40,8 +45,10 @@ export default{
   name: 'TopPanel',
   data: function() {
     return {
-      popupText: "Are you sure you want to Cancel? Your order will be discarded.",
-      popupTextSidesAndDrinks: "Are you sure you want to go to Sides and Drinks? Your current burger will be discarded."
+      cancelPopupText: "Are you sure you want to Cancel? Your order will be discarded.",
+      popupTextSidesAndDrinks: "Are you sure you want to go to Sides and Drinks? Your current burger will be discarded.",
+      popupTextOverview: "Are you sure you want to go to Overview? Your current burger will be discarded."
+
     }
   },
   props: {
@@ -57,58 +64,45 @@ export default{
     this.uiLabels = this.$parent.uiLabels;
   },
 
-  //mixins: [sharedVueStuff],
-
   methods: {
 
-    cancelSwitchStage: function(stage) {
-            this.$emit('switchStage', stage);
-            this.$emit('wipeOrder');
-    },
-
     switchStage: function(stage) {
-        if (this.parentState=='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
-          if (this.burgers[this.burgers.length-1].ingredients.length > 0) {
-            if (confirm(this.popupTextSidesAndDrinks)) {
-              this.$emit('switchStage', stage);
-              this.$emit('wipeOrder');
-            }
+      if (this.parentState ==='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
+        if(stage !== 'BreadAndPatty' && this.burgers[this.burgers.length-1].ingredients.length > 0){
+          if (stage === 'Drinks' && confirm(this.popupTextSidesAndDrinks)) {
+            this.$emit('switchStage', stage);
+            this.$emit('wipeBurgerFromOrder', this.burgers.length-1);
           }
-          else {
-            this.$emit('wipeOrder');
-            this.cancelSwitchStage(stage);
+
+          else if(stage === 'OverView' && confirm(this.popupTextOverview)) {
+            this.$emit('switchStage', stage);
+            this.$emit('wipeBurgerFromOrder', this.burgers.length-1);
           }
         }
-        else {
+        else if (stage !== 'BreadAndPatty' && this.burgers[this.burgers.length-1].ingredients.length === 0){
           this.$emit('switchStage', stage);
+          this.$emit('wipeBurgerFromOrder', this.burgers.length-1)
         }
+      }
+
+      else {
+        if(stage === 'BreadAndPatty'){
+          this.$emit('createNewBurger');
+        }
+        this.$emit('switchStage', stage);
+      }
     },
 
     switchStageWipeOrder: function(stage) {
-      if (this.parentState=='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
-        if (this.burgers[this.burgers.length-1].ingredients.length > 0) {
-          if (confirm(this.popupText)) {
-            this.$emit('wipeOrder');
-            this.cancelSwitchStage(stage);
-          }
-        }
-        else {
-          this.$emit('wipeOrder');
-          this.cancelSwitchStage(stage);
-        }
-      }
-      else {
+      if (confirm(this.cancelPopupText)) {
         this.$emit('wipeOrder');
-        this.cancelSwitchStage(stage);
+        this.$emit('switchStage', stage)
       }
     }
-
   }
 }
 
-
 </script>
-
 
 <style scoped>
 #span {
@@ -209,10 +203,17 @@ button:hover {
   border-color: black;
   border-width: thin;
   opacity: 1;
-}
+  }
+
 
 #Cancel:hover {
-  background-color: rgb(250, 117, 117);
+background-color: rgb(250, 117, 117);
+
+}
+@media (max-width: 670px){
+  .tabBar{margin:0; height: 2.5em; width: 2.5em;}
+  .OverlayText{font-size: 0.5em;}
+  #Cancel {height: 2.5em; width: 4em; margin-left: 4%; margin-right: 2%; padding:0;}
 }
 
 </style>
