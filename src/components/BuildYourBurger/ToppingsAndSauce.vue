@@ -265,5 +265,4 @@ button:hover {
   .ContainerText{font-size: 0.8em;}
   .ingredientButtons{width: 80%;}
 }
-}
 </style>
