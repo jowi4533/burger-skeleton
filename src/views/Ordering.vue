@@ -186,6 +186,7 @@ export default {
       let burger = {
         burgerID : this.burgerOrder,
         isActive : true,
+        lastActive : false,
         ingredients : []
       };
 
@@ -229,7 +230,9 @@ export default {
 
     hideBurgerIngredients: function(){
       for(let i = 0; i < this.burgers.length; i++){
+        this.burgers[i].lastActive = false;
         if(this.burgers[i].isActive){
+          this.burgers[i].lastActive = true;
           this.burgers[i].isActive = false;
         }
       }
@@ -264,7 +267,15 @@ export default {
 
     changeToPreviousState: function () {
       let indexOfState = this.getIndexOfState();
+      if(this.state === 'Drinks'){
+        for(let i = 0; i < this.burgers.length; i++){
+          if(this.burgers[i].lastActive){
+            this.displayBurger(this.burgers[i]);
+          }
+        }
+      }
       this.state = this.getStateFromIndex(indexOfState-1);
+
     },
     // ------------
   }
