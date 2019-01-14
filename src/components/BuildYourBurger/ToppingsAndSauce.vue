@@ -257,7 +257,7 @@ button {
 
 button:hover {
   cursor: pointer;
-  
+}
 @media (max-width: 600px) {
   #ingredientButtons {display:grid; margin-left: 18%;font-size: 0.8em;}
   #breadPattyButton{border-left-style: solid; border-left-width: thin}
