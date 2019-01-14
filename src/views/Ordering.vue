@@ -217,13 +217,15 @@ export default {
 
     finishBurgerSwitchState: function () {
         for (let burger in this.burgers) {
-          if (burger.isActive) {
+          console.log("burgers loop");
+          if (this.burgers[burger].isActive) {
+            console.log("isactive=true");
             if (this.breadInArray() && this.pattyInArray()) {
               this.burgerIngredients = [];
               this.changeToNextState();
             }
             else {
-              alert("you need to select a bread and patty");
+              alert(this.uiLabels.popupBurgerNotFinished);
             }
 
           }
