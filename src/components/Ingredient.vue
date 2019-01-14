@@ -178,6 +178,12 @@ width: 100%;
 .ingredient_choosen{
   border: 3px solid #40ff00;
 }
+/* @media (max-width: 600px) {
+  .ingredient_image_container{
 
+    height: 8em;
+
+  }
+} */
 
 </style>
