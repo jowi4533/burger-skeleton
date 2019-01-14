@@ -48,6 +48,7 @@
   "chooseBreadAndPatty" :"Välj Bröd och Bas",
   "chooseToppingsAndSauce" : "Välj Topping och Sås",
   "chooseDrinkAndSides" : "Välj Dryck and Tillbehör",
-  "chooseVegetables": "Välj Grönsaker"
+  "chooseVegetables": "Välj Grönsaker",
+  "totalPrice": "Totalt Pris:"
 
 }

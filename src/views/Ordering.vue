@@ -245,7 +245,7 @@ export default {
       this.state = 'BreadAndPatty'
       burger.isActive = true;
     },
-
+    //--------------
     //All functions handling state ---
     getIndexOfState: function () {
       var indexOfState=this.states.indexOf(this.state)
@@ -288,29 +288,40 @@ export default {
 
 #next{
   position: relative;
+  font-family: 'Quicksand', sans-serif;
   bottom: 0;
   float: right;
   background-color: rgb(30,200,100);
   height: 4em;
   width: 9em;
-  border-radius: 1em;
   border-style: solid;
   border-color: black;
   border-width: thin;
-  margin-left: 0.8em;
+  margin-left: 0;
+}
+
+#next:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 #previous{
   position: relative;
+  font-family: 'Quicksand', sans-serif;
   bottom: 0;
   float: right;
-  background-color: rgb(30,100,200);
+  background-color: rgb(0,200,250);
   height: 4em;
   width: 9em;
-  border-radius: 1em;
   border-style: solid;
   border-color: black;
   border-width: thin;
 }
+
+#previous:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
 #menupage {
   width: auto;
   height: auto;
@@ -318,23 +329,25 @@ export default {
 }
 #TopPanel{
   grid-area: TopPanel;
+
 }
 #ToggleBar{
   grid-area: ToggleBar;
-  background-color: lightgray;
+  background-color: rgb(28, 247, 189);
   border-style: solid;
   border-width: thin;
   border-color: black;
 }
 #MiddlePanel{
   grid-area: MiddlePanel;
-  background-color: lightgray;
+  background-color: rgb(192, 239, 232);
   display:grid;
   grid-template-areas: "AllFoodTabs Kundkorg";
   grid-template-columns: 80% 20%;
   border-left-style: solid;
   border-left-color: black;
   border-left-width: thin;
+/* grid-template-rows: 1fr; */
 }
 #AllFoodTabs{
   grid-area: AllFoodTabs;

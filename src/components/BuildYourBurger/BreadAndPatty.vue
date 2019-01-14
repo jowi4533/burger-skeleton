@@ -58,8 +58,6 @@
     </div>
   </div>
 </div>
-
-
 </div>
 
 </template>
@@ -123,7 +121,9 @@ export default {
 
 
 <style scoped>
-
+button:hover {
+  cursor: pointer;
+}
 h4 {
   margin: 1%;
 }
@@ -133,7 +133,8 @@ h4 {
 }
 
 .tabButton {
-  background-color: yellow;
+  background-color: rgb(0,200,250);
+  margin: 0;
 
 }
 #breadPattyButton {
@@ -192,6 +193,7 @@ float: right;
    grid-template-columns: 2fr;
    grid-row-gap: 0.3em;
    margin-left: 1%;
+   background-color: rgb(192, 239, 232);
 }
 
 #BreadText{
@@ -264,7 +266,7 @@ button {
   border-color: black;
   border-width: thin;
   border-top-style: hidden;
-  margin-right: 1em;
+  margin: 0;
   height: 3em;
   width: 15em;
   font-size: 0.6em;
