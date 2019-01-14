@@ -1,10 +1,8 @@
 <template>
-
-<body id="body">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<div>
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <header id="TopHeader">
-  <h1 id = "rawsauce">RAW Sauce Burgers</h1>
+  <div id = "rawsauce">RAW Sauce Burgers</div>
 </header>
 
   <div class="wrapper" align="center">
@@ -12,7 +10,7 @@
       <button class="buttons" id="EatThere" v-on:click="OrderOption()"><span>Take away</span></button>
   </div>
 
-</body>
+</div>
 </template>
 
 <script>
@@ -30,7 +28,7 @@ export default {
 
 <style lang="css">
 
-#body{
+body{
   background-color: rgb(192, 239, 232);
   font-family: 'Quicksand', sans-serif;
 }
@@ -41,6 +39,7 @@ export default {
 }
 
 #rawsauce {
+  font-size: 200%;
   background-color: rgb(28, 247, 189);
   border-color: rgb(42, 70, 145);
   border-bottom-style: solid;
@@ -71,7 +70,7 @@ button {
   width: 80%;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 5% 0 5% 0;
+  margin: 5% 0 5% 10%;
 }
 button:hover {
   background-color: rgb(0,200,250);
@@ -103,15 +102,27 @@ button:hover {
   opacity: 1;
   right: 0;
 }
-
 #EatHere{
-  grid-column: 1;
-  grid-row: 1;
+  /* grid-column: 1;
+  grid-row: 1; */
 }
-
 #EatThere{
-  grid-column: 2;
-  grid-row: 1;
+  /* grid-column: 1;
+  grid-row: 1;  */
+}
+@media (max-width: 500px) {
+  div#rawsauce { font-size: 75%; }
+  div.wrapper{
+    margin-top: 15%;
+    display: grid;
+    grid-template-columns:auto;
+    grid-row: 50% 50%;
+    color: black;
+    height: 60vh;
+  }
+  button{
+    font-size: 200%;
+  }
 }
 
 </style>
