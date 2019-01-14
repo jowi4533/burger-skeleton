@@ -10,12 +10,19 @@
         <li v-if= "burger.ingredients.length > 0"> Burger: {{burger.burgerID}}
           <button v-if= "burger.isActive === false" v-on:click = "displayBurger(burger)"> Show Burger Ingredients </button>
         </li>
-          <ul id="burgerIngredients">
-            <li v-if= "burger.isActive === true" v-for = "ingredient in burger.ingredients">{{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-</li>
-          </ul>
+          <div id="burgerIngredients">
+            <li v-if= "burger.isActive === true" v-for = "ingredient in burger.ingredients">
+              <div class="burgerImage" v-if = "ingredient.category < 6 ">
+              </div>
+              {{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-</li>
+          </div>
         </div>
         <div class="sidesAndDrinks" v-for ="item in sideAndDrinkItems">
-          <li>{{item["ingredient_"+ lang]}}, {{item.selling_price}}:-</li>
+          <div class="drinkImage" v-if = "item.category == 7">
+          </div>
+          <div class="sidesImage" v-if = "item.category ==6">
+          </div>
+            <li class ="sides_drinks">{{item["ingredient_"+ lang]}}, {{item.selling_price}}:-</li>
         </div>
       </div>
       <div class="totalPrice">
@@ -60,14 +67,44 @@
   </script>
 
   <style scoped>
-
+  .burgerImage{
+    display: inline-block;
+    background-image: url('~@/assets/hamburger.png');
+    height: 1.2em;
+    width: 1.2em;
+    background-size:cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+  }
+  .sidesImage{
+    display: inline-block;
+    background-image: url('~@/assets/sides.png');
+    height: 1.2em;
+    width: 1.2em;
+    background-size:cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+  }
+  .drinkImage{
+    display: inline-block;
+    background-image: url('~@/assets/drinks.png');
+    height: 1.2em;
+    width: 1.2em;
+    background-size:cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+  }
+  .sides_drinks{
+    display: inline-block;
+  }
   #burgerIngredients{
     margin: 0;
   }
 
   .scrollableText{
-    height: 95%;
+    height: 92%;
     overflow-y: scroll;
+    border-bottom: thin solid #000000;
   }
   .yourOrderContainer {
     border: thin solid #000000;
@@ -86,6 +123,7 @@
     padding-left: 1.5em;
   }
   li{
+    margin-left: 2px;
   }
   li::first-letter {
     text-transform: capitalize;
@@ -96,6 +134,7 @@
     font-size: 1.2em;
     font-weight: bold;
   }
+
   .totalPrice{
     height:3vh;
     margin-left: 5%;

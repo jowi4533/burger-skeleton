@@ -30,7 +30,7 @@ ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,s
 29,rå rödlök,raw red onion,4,1,1,1,5,/vegetables/redonion.jpg
 30,rå gul lök,raw yellow onion,4,1,1,1,5,/vegetables/yellowonion.jpg
 31,majonnäs,mayonnaise,5,1,1,0,5,/sauce/mayonnaise.jpg
-32,klassisk hamburgarsås,classic hamburger dressing,5,1,1,0,5,/sauce/classicdressing.jpg
+32,klassisk hamburgarsås,hamburger dressing,5,1,1,0,5,/sauce/classicdressing.jpg
 33,ketchup,ketchup,5,1,1,1,5,/sauce/ketchup.jpg
 34,senap,mustard,5,1,1,1,5,/sauce/mustard.jpg
 35,aioli,aioli,5,1,1,0,5,/sauce/aioli.jpg
