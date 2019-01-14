@@ -58,11 +58,6 @@ export default{
 
   methods: {
 
-    cancelSwitchStage: function(stage) {
-      this.$emit('switchStage', stage);
-      this.$emit('wipeOrder');
-    },
-
     switchStage: function(stage) {
       if (this.parentState ==='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
         if(stage !== 'BreadAndPatty'){
@@ -76,6 +71,9 @@ export default{
       }
 
       else {
+        if(stage === 'BreadAndPatty'){
+          this.$emit('createNewBurger');
+        }
         this.$emit('switchStage', stage);
       }
     },
