@@ -88,7 +88,6 @@
     border-bottom-style: solid;
     border-bottom-color: black;
     border-bottom-width: thin;
-
   }
   .sides_drinks{
     display: inline-block;
@@ -206,6 +205,12 @@
     }
     .removeIngredientButton{
       font-size: 75%;
+    }
+    .categoryDivider{
+      top:0;
+      border-bottom-style: none;
+      border-bottom-color: none;
+      border-bottom-width: none;
     }
 
 

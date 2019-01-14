@@ -18,7 +18,6 @@
     <div class="numberOfOrders" v-bind:class="['NumberOfOrders ',{'ManyOrders':(orderCount >= 15)}]">
       Total orders: {{orderCount}}
     </div>
-
   </div>
 
   <div v-else-if= "NewState =='StorageState'">
@@ -78,12 +77,7 @@ export default {
       var orderCount1 = 0;
       for (let o in this.orders) {
         if (this.orders[o].status !=='done'){
-          for (let item in this.orders[o].ingredients){
-            if (this.orders[o].ingredients[item].category !==6 && this.orders[o].ingredients[item].category !==7){
-              orderCount1 = orderCount1 +1 ;
-              break
-            }
-          }
+          orderCount1 = orderCount1 +1 ;
         }
       }
       return orderCount1
@@ -93,14 +87,10 @@ export default {
       let undone = {};
       let count = 0;
       for (let o in this.orders) {
-        for (let item in this.orders[o].ingredients){
-          if (this.orders[o].ingredients[item].category !==6 && this.orders[o].ingredients[item].category !==7){
-            if (this.orders[o].status !== 'done' && count < 8) {
+          if (this.orders[o].status !== 'done' && count < 8 ) {
               undone[o] = this.orders[o];
               count += 1;
-            }
           }
-        }
       }
       return undone;
     }
