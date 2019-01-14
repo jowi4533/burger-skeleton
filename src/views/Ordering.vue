@@ -16,7 +16,7 @@
 </div>
 
 <div id="TopPanel" v-if = "this.state !== 'MenuPage'">
-  <TopPanel @switchStage="state=$event"
+  <TopPanel @switchStage="state=$event" @switchStageWipeOrder="wipeOrder()"
   :parentState="state"
   :lang="lang"
   :ui-labels="uiLabels">
@@ -25,7 +25,7 @@
 
 <div id="MiddlePanel" v-if = "this.state !== 'MenuPage'">
   <div id = "overview" v-if = "this.state === 'OverView'">
-    <OverView @switchStage="state=$event"
+    <OverView @switchStage="state=$event" @wipeOrder="wipeOrder()"
     :lang="lang"
     :ui-labels="uiLabels"
     :burgers="burgers"
@@ -165,6 +165,12 @@ export default {
 
   methods: {
     //All functions handling burgerIngredients and the items included in the order -----
+    wipeOrder: function () {
+      this.burgers = [];
+      this.sideAndDrinkItems = [];
+      this.burgerIngredients = [];
+    },
+
     newBurger: function () {
       let burger = {
         state : this.burgerOrder,

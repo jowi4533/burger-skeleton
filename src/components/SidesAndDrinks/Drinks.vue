@@ -101,7 +101,7 @@ export default{
       this.$parent.addToSideAndDrinkItems(item);
     },
     removeFromOrder : function(item){
-      this.$parent.removeFromBurgerIngredients(item);
+      this.$parent.removeFromSideAndDrinkItems(item);
     },
     windowScroll: function(id) {
   var winScroll = document.body.scrollLeft || document.getElementById(id).scrollLeft;

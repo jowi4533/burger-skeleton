@@ -6,11 +6,12 @@
       </div>
     </div>
     <div v-bind:class = "['ingredient_img', {'ingredient_choosen':(this.counter > 0)}]" align= "center">
+      <img class ="ingredient_image" :src="getImage(item.ingredient_img)" alt="">
     </div>
     <div class="all_buttons" align="center">
       <button v-bind:class = "['minus_button_grey', {'minus_button_red':(this.counter > 0)}]" v-on:click="decreaseCounter" ></button>
       <div class = "counterBox">{{ counter }}</div>
-      <button v-bind:class = "['plus_button', {'plus_button_white':(this.counter > 0)}]" v-on:click="incrementCounter"></button>
+      <button v-bind:class = "['plus_button', {'plus_button_white':(this.counter > 0 && item.category < 6)}]" v-on:click="incrementCounter"></button>
 
 
 
@@ -29,7 +30,7 @@ export default {
   },
   data: function () {
     return {
-      counter:0
+
     };
   },
   methods: {
@@ -53,6 +54,7 @@ export default {
     incrementCounter: function () {
       var breadtruth = this.breadInArray();
       var pattytruth = this.pattyInArray();
+      if (this.item.category < 6){
 
       if (this.counter < 1){
         if(this.item.category == 1){
@@ -65,34 +67,53 @@ export default {
             return;
           }
         }
-          console.log("balle")
-          this.counter +=1;
           this.$emit('increment');
-
       }
+    }
+    else {
+      this.$emit('increment');
+    }
+
     },
   resetCounter: function () {
     this.counter = 0;
   },
   decreaseCounter: function(){
     if (this.counter > 0){
-      this.counter -= 1 ;
       this.$emit('decrease');
     }
+  },
+    getImage: function(ing_img){
+      var theImage = ing_img;
+      let imagePath = require('../assets' + theImage);
+      return imagePath;
+    }
+},
+computed: {
+   counter: function () {
+     let count = 0;
+     for (let i = 0; i < this.burgerIngredients.length; i += 1) {
+       if (this.burgerIngredients[i].ingredient_id === this.item.ingredient_id) {
+         count += 1;
+       }
+     }
+     return count;
+   }
+ }
 
-  }
-}
 }
 </script>
 <style scoped>
+.ingredient_image{
+object-fit: cover;
+height: 100%;
+width: 100%;
+}
+
 .ingredient_img{
   border: 3px solid #000000;
-  height: 70%;
+  height: 60%;
   width: 100%;
-  background-image: url('~@/assets/patty/beef.jpg');
-  background-size:     cover;
-  background-repeat:   no-repeat;
-  background-position: center center;
 }
 
 .all_button{
