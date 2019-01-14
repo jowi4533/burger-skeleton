@@ -194,10 +194,39 @@ export default {
       this.burgers.push(burger);
     },
 
+    breadInArray: function (){
+      for(let i in this.burgerIngredients) {
+        if (this.burgerIngredients[i].category == 1) {
+          return true;
+
+        }
+      }
+      return false;
+    },
+    pattyInArray: function(){
+      for(var i = 0; i < this.burgerIngredients.length; i++) {
+        if (this.burgerIngredients[i].category == 2) {
+          return true;
+        }
+      }
+    return false;
+  },
+
     finishBurgerSwitchState: function () {
-      this.hideBurgerIngredients();
-      this.burgerIngredients = [];
-      this.changeToNextState();
+        for (let burger in this.burgers) {
+          if (this.burgers[burger].isActive) {
+            if (this.breadInArray() && this.pattyInArray()) {
+              this.hideBurgerIngredients();
+              this.burgerIngredients = [];
+              this.changeToNextState();
+            }
+            else {
+              alert(this.uiLabels.popupBurgerNotFinished);
+            }
+
+          }
+        }
+
     },
 
     addToBurgerIngredients: function(item){
@@ -311,7 +340,7 @@ export default {
   font-family: 'Quicksand', sans-serif;
   bottom: 0;
   float: right;
-  background-color: rgb(30,200,100);
+  background-color: rgb(27, 183, 84);
   height: 4em;
   width: 9em;
   border-style: solid;
@@ -367,7 +396,7 @@ export default {
   border-left-style: solid;
   border-left-color: black;
   border-left-width: thin;
-/* grid-template-rows: 1fr; */
+
 }
 #AllFoodTabs{
   grid-area: AllFoodTabs;

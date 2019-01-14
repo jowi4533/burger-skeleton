@@ -80,8 +80,15 @@
   </script>
 
   <style scoped>
+  button{
+    font-family: 'Quicksand', sans-serif;
+  }
   .categoryDivider{
-    border-top: thin solid #000000;
+    top:5px;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+
   }
   .sides_drinks{
     display: inline-block;
@@ -125,28 +132,32 @@
     overflow-y: scroll;
     border-bottom: thin solid #000000;
   }
+
   .yourOrderContainer {
     border: thin solid #000000;
     border-top-style: hidden;
     border-bottom-style: hidden;
     height:87vh;
     overflow: hidden;
-
   }
+
   .yourOrderTextBox{
     height: 1.5em;
     border-bottom: thin solid #000000;
-
   }
+
   .theIngredients{
     padding-left: 1.5em;
   }
+
   li{
     margin-left: 2px;
   }
+
   li::first-letter {
     text-transform: capitalize;
   }
+
   .yourOrderText{
     padding-top: 0.155em;
     padding-left: 0.1em;
@@ -160,6 +171,10 @@
   }
   .removeIngredientButton{
     float:right;
+    background-color: rgb(192,239,232);
+    border-style: hidden;
+    color:red;
+    font-size: 103%;
   }
   @media (max-width: 500px) {
     div.yourOrderText { font-size: 0.9em; }
@@ -170,6 +185,27 @@
     .totalPrice{
       font-size: 0.85em;
       margin-left: 0;
+    }
+    .burgerImage{
+      background-image: none;
+      height: 0;
+      width: 0;
+    }
+    .sidesImage{
+      background-image: none;
+      height: 0;
+      width: 0;
+    }
+    .drinkImage{
+      background-image: none;
+      height: 0;
+      width: 0;
+    }
+    .scrollableText{
+      font-size: 87%;
+    }
+    .removeIngredientButton{
+      font-size: 75%;
     }
 
 

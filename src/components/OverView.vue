@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import YourOrder from '@/components/YourOrder.vue'
 import Ingredient from '@/components/Ingredient.vue'
 
 export default{
@@ -45,29 +46,33 @@ export default{
     switchStage: function(stage) {
       this.$emit('switchStage', stage);
     },
+
     placeOrder: function () {
       //Wrap the order in an object
-
-      for(let j = 0; j < this.burgers.length; j +=1){
-        let order = {
-          ingredients: this.burgers[j].ingredients,
-          price: 10
-        };
-        // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-        this.$store.state.socket.emit('order', {order: order});
-        //this.$emit('order');
-        //set all counters to 0. Notice the use of $refs
-        // for (let i = 0; i < this.$refs.ingredient.length; i += 1) {
-        //   this.$refs.ingredient[i].resetCounter();
-        // }
-        //this.price = 0;
-        this.wipeOrder()
+      if (confirm(this.uiLabels.popupPlaceOrder)) {
+        for(let j = 0; j < this.burgers.length; j +=1){
+          let order = {
+            ingredients: this.burgers[j].ingredients,
+            price: 10
+          };
+          // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+          this.$store.state.socket.emit('order', {order: order});
+          //this.$emit('order');
+          //set all counters to 0. Notice the use of $refs
+          // for (let i = 0; i < this.$refs.ingredient.length; i += 1) {
+          //   this.$refs.ingredient[i].resetCounter();
+          // }
+          //this.price = 0;
+          this.$emit('wipeOrder');
+          window.location = 'http://localhost:8080/#/';
+        }
       }
     },
 
     wipeOrder: function() {
       this.$emit('wipeOrder')
     }
+
   }
 }
 
@@ -77,12 +82,13 @@ export default{
 
 #OverViewContainer {
   background-color: rgb(220,220,220);
-  width: 40em;
-  height: 20em;
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: 15% 70% 15%;
   grid-template-rows: 20% 65% 15%;
   justify-items: center;
+  margin: 0;
 }
 
 #wrapper {
