@@ -68,10 +68,14 @@ export default{
             this.$emit('wipeBurgerFromOrder', this.burgers.length-1);
           }
 
-          if(stage === 'OverView' && confirm(this.popupTextOverview)) {
+          else if(stage === 'OverView' && confirm(this.popupTextOverview)) {
             this.$emit('switchStage', stage);
             this.$emit('wipeBurgerFromOrder', this.burgers.length-1);
           }
+        }
+        else if (stage !== 'BreadAndPatty' && this.burgers[this.burgers.length-1].ingredients.length === 0){
+          this.$emit('switchStage', stage);
+          this.$emit('wipeBurgerFromOrder', this.burgers.length-1)
         }
       }
 
