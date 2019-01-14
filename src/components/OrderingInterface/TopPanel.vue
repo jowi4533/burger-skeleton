@@ -40,7 +40,9 @@ export default{
   data: function() {
     return {
       cancelPopupText: "Are you sure you want to Cancel? Your order will be discarded.",
-      popupTextSidesAndDrinks: "Are you sure you want to go to Sides and Drinks? Your current burger will be discarded."
+      popupTextSidesAndDrinks: "Are you sure you want to go to Sides and Drinks? Your current burger will be discarded.",
+      popupTextOverview: "Are you sure you want to go to Overview? Your current burger will be discarded."
+
     }
   },
   props: {
@@ -60,12 +62,15 @@ export default{
 
     switchStage: function(stage) {
       if (this.parentState ==='BreadAndPatty' || this.parentState === 'ToppingsAndSauce' || this.parentState === 'Vegetables') {
-        if(stage !== 'BreadAndPatty'){
-          if (this.burgers[this.burgers.length-1].ingredients.length > 0) {
-            if (confirm(this.popupTextSidesAndDrinks)) {
-              this.$emit('switchStage', stage);
-              this.$emit('wipeBurgerFromOrder', this.burgers.length-1);
-            }
+        if(stage !== 'BreadAndPatty' && this.burgers[this.burgers.length-1].ingredients.length > 0){
+          if (stage === 'Drinks' && confirm(this.popupTextSidesAndDrinks)) {
+            this.$emit('switchStage', stage);
+            this.$emit('wipeBurgerFromOrder', this.burgers.length-1);
+          }
+
+          if(stage === 'OverView' && confirm(this.popupTextOverview)) {
+            this.$emit('switchStage', stage);
+            this.$emit('wipeBurgerFromOrder', this.burgers.length-1);
           }
         }
       }
