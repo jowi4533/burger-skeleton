@@ -60,6 +60,13 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
+
+button:hover {
+  cursor: pointer;
+}
+button {
+  font-family: 'Quicksand', sans-serif;
+}
 .displayNewOrder{
   position:relative;
   /*grid-template-rows: "1 2 3 4 5 6 7 8 9";*/
@@ -68,26 +75,26 @@ export default {
 .OrderDoneButton {
   font-family: 'Quicksand', sans-serif;
   font-weight:  bold;
-  background-color: #3e8e47;
+  background-color: rgb(28, 247, 189);
   position:absolute;
   bottom: 2px;
   left: 2px;
   width: 70px;
   height: 25px;
-  border-radius: 8px;
-  border-style: hidden;
+  border-style: solid;
+  border-color: rgb(0,0,0);
 }
 .OrderStartedButton {
   font-family: 'Quicksand', sans-serif;
   font-weight:  bold;
-  background-color: #fcf574;
+  background-color: rgb(28, 247, 189);
+  border-style: solid;
+  border-color: rgb(0,0,0);
   position:absolute;
   bottom: 2px;
   right: 2px;
   width: 70px;
   height: 25px;
-  border-radius: 8px;
-  border-style: hidden;
-
 }
+
 </style>

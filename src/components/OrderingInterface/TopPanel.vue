@@ -100,7 +100,7 @@ export default{
 }
 
 </script>
-
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 <style scoped>
 #OverlayText {
   margin-top: 1em;
@@ -155,6 +155,7 @@ export default{
 }
 
 button {
+  font-family: 'Quicksand', sans-serif;
   border-style: solid;
   float:left;
   margin: 0;

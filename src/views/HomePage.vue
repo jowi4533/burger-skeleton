@@ -40,6 +40,7 @@ body{
 
 #rawsauce {
   font-size: 200%;
+  font-family: 'Quicksand', sans-serif;
   background-color: rgb(28, 247, 189);
   border-color: rgb(42, 70, 145);
   border-bottom-style: solid;
@@ -56,6 +57,7 @@ body{
   grid-template-columns: 50% 50%;
   color: black;
   height: 60vh;
+  background-color: rgb(192, 239, 232);
 }
 
 button {
@@ -68,10 +70,10 @@ button {
   font-family: 'Quicksand', sans-serif;
   font-size: 4em;
   width: 80%;
-  transition: all 0.5s;
-  cursor: pointer;
+  transition: 0.5s;
   margin: 5% 0 5% 0%;
 }
+
 button:hover {
   background-color: rgb(0,200,250);
   opacity: 1;
