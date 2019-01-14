@@ -12,13 +12,16 @@
           <button v-if= "burger.isActive === false" v-on:click = "displayBurger(burger)"> Show Burger Ingredients </button> </li>
 
           <ul id="burgerIngredients">
-            <li v-if= "burger.isActive === true" v-for = "ingredient in burger.ingredients">{{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-</li>
+            <li v-if= "burger.isActive === true" v-for = "ingredient in burger.ingredients">{{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-
+              <button v-on:click = "removeFromBurgerIngredients(ingredient)"> X </button>
+            </li>
           </ul>
 
         </div>
 
         <div class="sidesAndDrinks" v-for ="item in sideAndDrinkItems">
-          <li>{{item["ingredient_"+ lang]}}, {{item.selling_price}}:-</li>
+          <li>{{item["ingredient_"+ lang]}}, {{item.selling_price}}:-
+          <button v-on:click = "removeFromSideAndDrinkItems(item)"> X </button></li>
         </div>
 
       </div>
@@ -31,7 +34,6 @@
     props:{
       uiLabels: Object,
       lang: String,
-      burgerIngredients: Array,
       burgers: Array,
       sideAndDrinkItems: Array,
     },
@@ -39,6 +41,14 @@
     methods: {
       displayBurger(burger){
         this.$emit('displayBurger', burger)
+      },
+
+      removeFromBurgerIngredients(ingredient) {
+        this.$emit('removeFromBurgerIngredients', ingredient)
+      },
+
+      removeFromSideAndDrinkItems(item) {
+        this.$emit('removeFromSideAndDrinkItems', item)
       }
     }
   }

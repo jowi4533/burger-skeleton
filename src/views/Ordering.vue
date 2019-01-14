@@ -94,8 +94,8 @@
 </div>
 
 <div id="Kundkorg">
-  <YourOrder @displayBurger="displayBurger($event)"
-  :burgerIngredients ="burgerIngredients"
+  <YourOrder @displayBurger="displayBurger($event)" @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
+  @removeFromSideAndDrinkItems = "removeFromSideAndDrinkItems($event)"
   :sideAndDrinkItems ="sideAndDrinkItems"
   :burgers = "burgers"
   :ui-labels="uiLabels"
