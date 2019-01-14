@@ -9,10 +9,10 @@
     <div class="scrollableText">
       <div class="theBurgers" v-for = "burger in burgers">
         <li v-if= "burger.ingredients.length > 0"> Burger: {{burger.burgerID}}
-          <button v-if= "burger.burgerFinished === 'Yes'" v-on:click = "displayBurger(burger)"> Show Burger Ingredients </button> </li>
+          <button v-if= "burger.isActive === false" v-on:click = "displayBurger(burger)"> Show Burger Ingredients </button> </li>
 
           <ul id="burgerIngredients">
-            <li v-if= "burger.burgerFinished === 'No'" v-for = "ingredient in burger.ingredients">{{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-</li>
+            <li v-if= "burger.isActive === true" v-for = "ingredient in burger.ingredients">{{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-</li>
           </ul>
 
         </div>
