@@ -94,7 +94,7 @@
 </div>
 
 <div id="Kundkorg">
-  <YourOrder
+  <YourOrder @displayBurger="displayBurger($event)"
   :burgerIngredients ="burgerIngredients"
   :sideAndDrinkItems ="sideAndDrinkItems"
   :burgers = "burgers"
@@ -189,8 +189,8 @@ export default {
     newBurger: function () {
       this.burgerOrder += 1;
       let burger = {
-        state : this.burgerOrder,
-        burgerFinished : "No",
+        burgerID : this.burgerOrder,
+        isActive : true,
         ingredients : []
       };
 
@@ -198,7 +198,7 @@ export default {
     },
 
     finishBurgerSwitchState: function () {
-      this.burgerFinished = "Yes"
+      this.burgers[this.burgers.length-1].isActive = false;
       this.burgerIngredients = [];
 
       this.changeToNextState();
@@ -222,6 +222,10 @@ export default {
     removeFromSideAndDrinkItems: function(item) {
       let index = this.sideAndDrinkItems.findIndex(x => x.ingredient_id==item.ingredient_id);
       this.sideAndDrinkItems.splice(index, 1);
+    },
+
+    displayBurger: function(burger) {
+      burger.isActive = true;
     },
 
     //These 2 are currently not used
@@ -381,16 +385,11 @@ border-left-width: thin;
   /*background-image: url('~@/assets/exampleImage.jpg');*/
   color: white;
 }
-@media (max-width: 600px) {
-  #MiddlePanel{grid-template-columns: 70% 30%;}
-  #ToggleBar{border-top-style: hidden;}
-  #next {height: 2em; width: 7em;}
-  #previous{float:left; height: 2em; width: 7em;}
+
+@media (max-width: 500px) {
+  button#next {height: 2em; width: 6.5em;}
+  button#previous {height: 2em; width: 6.5em;}
 }
-/* @media (max-width: 500px) {
-  button
-  button#previous {}
-} */
 
 
 
