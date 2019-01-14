@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped>
 
 body{
   background-color: rgb(192, 239, 232);
