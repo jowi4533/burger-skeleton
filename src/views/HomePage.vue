@@ -1,13 +1,9 @@
 <template>
 
 <body id="body">
-
-
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <header id="TopHeader">
-  <!-- <img id="headerImg" src="https://i.imgur.com/1NLTXH0.png"> -->
   <h1 id = "rawsauce">RAW Sauce Burgers</h1>
 </header>
 
@@ -27,7 +23,6 @@ export default {
   methods: {
     OrderOption: function (){
       window.location = 'http://localhost:8080/#/Ordering';
-      this.state = "HomePage";
     },
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div id ="MenuPageContainer">
     <title>MenuPage</title>
-    <h1 id="welcome">{{uiLabels.menuPageHeader}}</h1>
+    <div id="welcome">{{uiLabels.menuPageHeader}}</div>
 
     <div id="buttons">
       <button v-on:click= "initiateBurgerOrder('BreadAndPatty')" class="pictureButtons" id="buttonPicOne"><img src="https://classroomclipart.com/images/gallery/Animations/Food/TN_animated-clipart-gif-building-cheese-burger-animation-05c.jpg"></button>
@@ -65,6 +65,7 @@ export default {
 }
 
 #welcome {
+  font-size: 2.3em;
   color: black;
   text-align: center;
   font-family: 'Quicksand', sans-serif;
