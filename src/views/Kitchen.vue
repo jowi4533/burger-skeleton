@@ -108,6 +108,19 @@ export default {
   h1 {
     text-transform: uppercase;
     font-size: 1em;
+    padding-bottom: 0.8em;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(0,0,0);
+    margin-bottom: 0;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  button {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.7em;
   }
   #gridContainer {
     margin: 5px 0px 5px 0px;
@@ -121,15 +134,15 @@ export default {
     background-color: white;
   }
   .orderBox {
-    color: #black;
+    color: rgb(0,0,0);
     margin-left: 5pt;
     margin-top: 3pt;
-    background-color: #8b999b;
-    border-color: black;
+    background-color: rgb(192, 239, 232);;
+    border-color: rgb(0,0,0);
     border-style: solid;
   }
   .active {
-    background-color: #fcf574;
+    background-color: rgb(0,200,200);
   }
   .orderCount {
     width: 70px;
@@ -146,14 +159,24 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
+    background-color: rgb(28, 247, 189);
+    border-style: solid;
+    border-color: rgb(0,0,0);
+    margin: 0.5em;
   }
+
   #StorageButton2{
     width: 9em;
     height: 3em;
     position: absolute;
     top: 0;
     right: 0;
+    background-color: rgb(28, 247, 189);
+    border-style: solid;
+    border-color: rgb(0,0,0);
+    margin: 0.5em;
   }
+
   #footer {
     position:fixed;
     width:100%;

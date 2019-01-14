@@ -1,20 +1,36 @@
 <template>
   <div id ="MenuPageContainer">
     <title>MenuPage</title>
-    <div id="welcome">{{uiLabels.menuPageHeader}}</div>
+    <div id="WelcomeText">{{uiLabels.menuPageHeader}}</div>
 
-    <div id="buttons">
-      <button v-on:click= "initiateBurgerOrder('BreadAndPatty')" class="pictureButtons" id="buttonPicOne"><img src="https://classroomclipart.com/images/gallery/Animations/Food/TN_animated-clipart-gif-building-cheese-burger-animation-05c.jpg"></button>
-      <button v-on:click= "switchStage('Drinks')" class="pictureButtons" id="buttonPicTwo"><img src="https://st3.depositphotos.com/5934840/12771/v/950/depositphotos_127717872-stock-illustration-french-fries-and-soda-design.jpg"></button>
-      <button v-on:click= "switchStage('OverView')" class="pictureButtons" id="buttonPicThree"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPrk3fOyuSsjA4DKyItpI_9Wh2Cfff8iIEZZnIZCMA3yM7XYfn"></button>
-      <!-- <button class="pictureButtton" id="buttonPicFour"><img src="http://www.smalandselfstorage.se/wp-content/uploads/2017/05/cash-payment-icon-5.jpg"></button> -->
-
-      <button v-on:click= "initiateBurgerOrder('BreadAndPatty')" class="textButtons" id="buttonTextOne"><span> {{uiLabels.stageOne}}</span> </button>
-      <button v-on:click= "switchStage('Drinks')" class="textButtons" id="buttonTextTwo"><span> {{uiLabels.stageTwo}} </span></button>
-      <button v-on:click= "switchStage('OverView')" class="textButtons" id="buttonTextThree"><span> {{uiLabels.stageThree}} </span> </button>
-      <!-- <button class="textButton" id="buttonTextFour"> {{uiLabels.stageFour}} </button> -->
-
+      <div id="LanguageButton">
       <button v-on:click= "switchLanguage()" id="langbutton"> {{uiLabels.language}} </button>
+      </div>
+
+    <div id="ButtonContainer">
+      <div id="Pictures">
+
+      <!-- <div id="bread"> -->
+      <button v-on:click= "initiateBurgerOrder('BreadAndPatty')" class="pictureButtons" id="PictureBreadAndPatty"><img src="https://classroomclipart.com/images/gallery/Animations/Food/TN_animated-clipart-gif-building-cheese-burger-animation-05c.jpg"></button>
+      <span class="mediaLabel"> {{uiLabels.stageOne}}</span>
+      <!-- </div> -->
+
+      <!-- <div id="drinks"> -->
+      <button v-on:click= "switchStage('Drinks')" class="pictureButtons" id=" PictureDrinksAndSides"><img src="https://st3.depositphotos.com/5934840/12771/v/950/depositphotos_127717872-stock-illustration-french-fries-and-soda-design.jpg"></button>
+      <span class="mediaLabel"> {{uiLabels.stageTwo}}</span>
+      <!-- </div> -->
+
+      <!-- <div id="Overview"> -->
+      <button v-on:click= "switchStage('OverView')" class="pictureButtons" id="PictureOverview"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPrk3fOyuSsjA4DKyItpI_9Wh2Cfff8iIEZZnIZCMA3yM7XYfn"></button>
+      <span class="mediaLabel"> {{uiLabels.stageThree}}</span>
+      <!-- </div> -->
+    </div>
+
+      <div id="Texts">
+      <button v-on:click= "initiateBurgerOrder('BreadAndPatty')" class="textButtons" id="TextBreadAndPatty"><span> {{uiLabels.stageOne}}</span> </button>
+      <button v-on:click= "switchStage('Drinks')" class="textButtons" id="TextDrinksAndSides"><span> {{uiLabels.stageTwo}} </span></button>
+      <button v-on:click= "switchStage('OverView')" class="textButtons" id="TextOverview"><span> {{uiLabels.stageThree}} </span> </button>
+      </div>
 
     </div>
   </div>
@@ -55,39 +71,111 @@ export default {
 <style scoped>
 
 #MenuPageContainer {
-  height: 100vh;
-  width: 100vw;
+  height: 98vh;
+  width: 98vw;
+  border-style: solid;
   border-color: black;
   background-color: rgb(192, 239, 232);
-  grid-template-columns: 33%;
-  grid-template-rows: 45% 45% 10%;
-}
+  grid-template-areas: "WelcomeText"
+                      "LanguageButton"
+                      "ButtonContainer";
 
-#welcome {
+  grid-template-rows: 20% 10% 70%;
+  grid-template-columns: 100%;
+  grid-row-gap:1em;
+
+  text-align: center;
+
+}
+#WelcomeText {
+  grid-area:WelcomeText;
   background-color: rgb(28, 247, 189);
   color: rgb(42, 70, 145);
   text-align: center;
   font-family: 'Quicksand', sans-serif;
   font-size: 3em;
-  margin-bottom: 0;
-  margin-top: 0;
+
   padding-top: 0.7em;
   padding-bottom: 0.7em;
   border-bottom-style: solid;
   border-color: rgb(42, 70, 145);
 }
+#LanguageButton{
+grid-area:LanguageButton;
+height: 10%;
+}
 
-#buttons {
+#langbutton {
+  width: 15em;
+  height: 3em;
+  font-size: 1.2em;
+
+  border-radius: 0.25em;
+  background-color: rgb(165, 254, 203);
+}
+#langbutton:hover {
+  background-color: rgb(28, 247, 189);
+}
+
+
+#ButtonContainer {
+  grid-area: ButtonContainer;
   display: grid;
-  width: 100vw;
+  height: 65vh;
+  grid-template-areas: "Pictures"
+                      "Texts";
+  grid-template-columns: 100%;
+  grid-template-rows: 80% 20%;
+  grid-row-gap: 1em;
+
+
+
 /*  margin-right: 10%;*/
   /* grid-template-columns: 33%;
   grid-template-rows: 45% 45% 10%; */
   justify-items: center;
-  padding-top: 2em;
+  /* padding-top: 2em;
   margin-left: 0;
-  margin-right: 3%;
+  margin-right: 3%; */
 }
+
+#Pictures{
+  grid-area:Pictures;
+  width: 100%;
+
+
+
+
+
+
+
+}
+#Texts{
+  grid-area:Texts;
+
+}
+#PictureBreadAndPatty{
+
+  }
+#PictureDrinksAndSides{
+
+  }
+#PictureOverview{
+
+}
+#TextBreadAndPatty{
+
+  }
+#TextDrinksAndSides{
+
+  }
+#TextOverview{
+
+}
+
+
+
+
 
 button {
   background-color: rgb(255,255,255);
@@ -96,45 +184,49 @@ button {
   font-weight: bold;
   border-style: hidden;
 }
+button:hover {
+  cursor: pointer;
+  opacity: 1;
+}
 
 img {
   height: 20em;
   width: 20em;
-  margin-left: -0.5em;
-  margin-top: -0.1em;
+align: center;
+
+  /* margin-left: -0.5em;
+  margin-top: -0.1em; */
   border-radius: 50%;
 }
 
-#langbutton {
-  width: 15em;
-  height: 3em;
-  font-size: 1.2em;
-  grid-column: 2;
-  grid-row: 3;
-  border-radius: 0.25em;
-  background-color: rgb(165, 254, 203);
+.mediaLabel{
+
+  font-size: 0;
 }
 
-#langbutton:hover {
-  background-color: rgb(28, 247, 189);
-}
+
 
 .pictureButtons {
+  margin: 2em;
+  margin-bottom: 0;
+  margin-top:0;
   border-radius: 50%;
   width: 20em;
   height: 20em;
-  align: center;
-  margin-top: 5%;
-  margin-bottom: 5%;
+align: center;
   opacity: 0.7;
   transition: 0.3s;
+
 }
 
 .textButtons {
+  display:inline-block;
   border-radius: 0.3em;
-  margin: 0% 3% 3% 3%;
+  margin: 2em;
+  margin-bottom: 0;
+  margin-top: 0;
   padding: 0;
-  width: 18em;
+  width: 10em;
   height: 4em;
   font-size: 1.3em;
 }
@@ -142,10 +234,7 @@ img {
   background-color: rgb(0,200,250);
 }
 
-button:hover {
-  cursor: pointer;
-  opacity: 1;
-}
+
 
 .textButtons span {
   cursor: pointer;
@@ -171,7 +260,26 @@ button:hover {
   opacity: 1;
   right: 0;
 }
-
+@media (max-width: 1000px){
+  #ButtonContainer{
+  /* grid-template-areas: "BreadAndPatty"
+                                          "Drinks"
+                                          "Overview";
+                  grid-template-rows: 100% 100% 100%; */
+                  overflow-y: scroll;}
+  #PictureBreadAndPatty{display: block;}
+  #TextBreadAndPatty{display: block;}
+  #PictureDrinksAndSides{display: block;}
+  #TextDrinksAndSides{display: block;}
+  #PictureOverview{display: block;}
+  #TextOverview{display: block;}
+  #Pictures{display:grid;}
+  img{height:5em;width:5em;;display: block;padding:0;}
+  .pictureButtons{height:5em;width:5em;display: block;padding: 0;}
+  .textButtons{height: 4em;width: 7em;font-size: 0.8em;visibility: hidden;}
+  .mediaLabel{font-size: 1em;}
+}
+/*
 #buttonPicOne {
   grid-column: 1;
   grid-row: 1;
@@ -206,7 +314,7 @@ button:hover {
   grid-column: 3;
   grid-row: 2;
 
-}
+} */
 
 /* #buttonPicFour {
   grid-column: 4;

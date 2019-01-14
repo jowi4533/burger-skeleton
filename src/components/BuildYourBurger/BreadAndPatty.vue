@@ -236,6 +236,7 @@ button {
   #ingredientButtons {display:grid; margin-left: 18%;font-size: 0.8em;}
   #breadPattyButton{border-left-style: solid;}
   #BreadAndPatty  {grid-row-gap: 0em;grid-template-rows:3% auto 1% 3% auto 9% ;font-size: 0.9em;}
+  #BreadAndPattyContainer{height:82vh;}
   .ContainerText{font-size: 0.8em;}
   .ingredientButtons{width: 80%;}
 }
