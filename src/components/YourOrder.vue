@@ -35,8 +35,8 @@
           </div>
           <div class="sidesImage" v-if = "item.category ==6">
           </div>
-          <li class ="sides_drinks">{{item["ingredient_"+ lang]}}, {{item.selling_price}}:-
-          <button class ="removeIngredientButton" v-on:click = "removeFromSideAndDrinkItems(item)"> X </button></li>
+          <li class ="sides_drinks">{{item["ingredient_"+ lang]}}, {{item.selling_price}}:-</li>
+          <button class ="removeIngredientButton" v-on:click = "removeFromSideAndDrinkItems(item)"> X </button>
         </div>
       </div>
       <div class="totalPrice">
@@ -143,7 +143,7 @@
     background-position: center center;
   }
   .sidesAndDrinks{
-    
+
   }
   #burgerIngredients{
     margin: 0;
