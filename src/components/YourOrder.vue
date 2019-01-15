@@ -191,6 +191,8 @@
     float:right;
     background-color: rgb(192,239,232);
     border-style: hidden;
+    margin-right: 0.1em;
+
     color:red;
     font-size: 103%;
   }
