@@ -8,14 +8,23 @@
     <div class="scrollableText">
       <div class="theBurgers" v-for = "burger in burgers">
         <li v-if= "burger.ingredients.length > 0"> Burger: {{burger.burgerID}}
-          <button v-if= "burger.isActive === false" v-on:click = "displayBurger(burger)"> Show Burger Ingredients </button> </li>
+          <button v-if= "burger.isActive === false && checkState() !== 'OverView'" v-on:click = "displayBurger(burger)"> Show Burger Ingredients </button> </li>
           <div id="burgerIngredients">
-            <div v-if= "burger.isActive === true" v-for = "ingredient in burger.ingredients">
+            <div v-if= "burger.isActive === true && checkState() !== 'OverView'" v-for = "ingredient in burger.ingredients">
               <div class="burgerImage" v-if = "ingredient.category < 6 ">
               </div>
               {{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-
               <button class ="removeIngredientButton" v-on:click = "removeFromBurgerIngredients(ingredient)"> X </button>
             </div>
+
+            <div v-if= "checkState() === 'OverView'" v-for = "ingredient in burger.ingredients">
+              <div class="burgerImage" v-if = "ingredient.category < 6 ">
+              </div>
+              {{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-
+              <button class ="removeIngredientButton" v-on:click = "removeItem(ingredient, burger)"> X </button>
+            </div>
+
+
           </div>
 
         </div>
@@ -48,17 +57,27 @@
     },
 
     methods: {
-      displayBurger(burger){
-        this.$emit('displayBurger', burger)
+      displayBurger: function(burger){
+        this.$emit('displayBurger', burger);
       },
 
-      removeFromBurgerIngredients(ingredient) {
-        this.$emit('removeFromBurgerIngredients', ingredient)
+      removeFromBurgerIngredients: function(ingredient) {
+        this.$emit('removeFromBurgerIngredients', ingredient);
       },
 
-      removeFromSideAndDrinkItems(item) {
-        this.$emit('removeFromSideAndDrinkItems', item)
+      removeFromSideAndDrinkItems: function (item) {
+        this.$emit('removeFromSideAndDrinkItems', item);
+      },
+
+      removeItem: function (item, burger){
+        this.$emit('removeItem', [item, burger]);
+      },
+
+      checkState: function(){
+        let stateIs = this.$parent.state;
+        return stateIs;
       }
+
     },
     computed: {
       price: function () {

@@ -29,12 +29,13 @@
     <OverView
     @switchStage="state=$event"
     @wipeOrder="wipeOrder()"
+    :state="state"
     :lang="lang"
     :ui-labels="uiLabels"
     :burgers="burgers"
     :sideAndDrinkItems="sideAndDrinkItems">
-  </Overview>
-</div>
+    </Overview>
+  </div>
 
 <div id="AllFoodTabs" v-if = "this.state !== 'OverView'">
   <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
@@ -90,7 +91,7 @@
 
 </div>
 
-<div id="Kundkorg" v-if="this.state !=='OverView' ">
+<div id="Kundkorg" v-if ="this.state !== 'OverView'">
   <YourOrder
   @displayBurger="displayBurger($event)"
   @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
@@ -219,12 +220,13 @@ export default {
           return true;
         }
       }
-    return false;
-  },
+      return false;
+    },
 
     finishBurgerSwitchState: function () {
-        for (let burger in this.burgers) {
-          if (this.burgers[burger].isActive) {
+      for (let burger in this.burgers) {
+        if (this.burgers[burger].isActive) {
+          if(this.burgers[burger].ingredients.length !== 0){
             if (this.breadInArray() && this.pattyInArray()) {
               this.hideBurgerIngredients();
               this.burgerIngredients = [];
@@ -233,104 +235,120 @@ export default {
             else {
               alert(this.uiLabels.popupBurgerNotFinished);
             }
+          }
+          else {
+            for(let i = 0; i < this.burgers.length; i++){
+              if(this.burgers[i].isActive){
+                this.wipeBurgerFromOrder(i);
 
+              }
+            }
+            this.changeToNextState()
           }
         }
 
-    },
+      }
 
-    addToBurgerIngredients: function(item){
-      this.burgerIngredients.push(item);
+  },
+
+  addToBurgerIngredients: function(item){
+    this.burgerIngredients.push(item);
+    for(let i = 0; i < this.burgers.length; i++){
+      if(this.burgers[i].isActive){
+        this.burgers[i].ingredients = this.burgerIngredients;
+      }
+    }
+  },
+
+  addToSideAndDrinkItems: function(item) {
+    this.sideAndDrinkItems.push(item);
+  },
+
+  removeFromBurgerIngredients: function(item) {
+    let index = this.burgerIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
+
+    for(let i = 0; i < this.burgers.length; i++){
+      if(this.burgers[i].isActive){
+        this.burgerIngredients.splice(index, 1);
+        this.burgers[i].ingredients = this.burgerIngredients;
+      }
+    }
+  },
+
+  removeItem: function(item, burger){
+    let index = burger.ingredients.findIndex(x => x.ingredient_id==item.ingredient_id);
+
+    burger.ingredients.splice(index, 1);
+  },
+
+  removeFromSideAndDrinkItems: function(item) {
+    let index = this.sideAndDrinkItems.findIndex(x => x.ingredient_id==item.ingredient_id);
+    this.sideAndDrinkItems.splice(index, 1);
+  },
+
+  hideBurgerIngredients: function(){
+    for(let i = 0; i < this.burgers.length; i++){
+      this.burgers[i].lastActive = false;
+      if(this.burgers[i].isActive){
+        this.burgers[i].lastActive = true;
+        this.burgers[i].isActive = false;
+      }
+    }
+  },
+
+  loadBurgerItems: function(burgerIngredients) {
+    this.burgerIngredients = burgerIngredients;
+  },
+
+  displayBurger: function(burger) {
+    this.hideBurgerIngredients();
+    this.loadBurgerItems(burger.ingredients)
+    this.state = 'BreadAndPatty'
+    burger.isActive = true;
+  },
+  //--------------
+  //All functions handling state ---
+  getIndexOfState: function () {
+    var indexOfState=this.states.indexOf(this.state)
+    return indexOfState;
+  },
+
+  getStateFromIndex: function (index) {
+    var currentState = this.states[index];
+    return currentState;
+  },
+
+  changeToNextState: function () {
+    let indexOfState = this.getIndexOfState();
+    this.state = this.getStateFromIndex(indexOfState+1);
+  },
+
+  changeToPreviousState: function () {
+    let indexOfState = this.getIndexOfState();
+    if(this.state === 'Drinks'){
+      for(let i = 0; i < this.burgers.length; i++){
+        if(this.burgers[i].lastActive){
+          this.displayBurger(this.burgers[i]);
+        }
+      }
+      this.state = this.getStateFromIndex(indexOfState-1);
+    }
+
+    else if(this.state === 'BreadAndPatty' && confirm(this.cancelPopupText)){
       for(let i = 0; i < this.burgers.length; i++){
         if(this.burgers[i].isActive){
-          this.burgers[i].ingredients = this.burgerIngredients;
+          this.state = this.getStateFromIndex(indexOfState-1);
+          this.wipeBurgerFromOrder(i);
         }
       }
-    },
+    }
+    else if (this.state !== 'Drinks' && this.state !== 'BreadAndPatty'){
+      this.state = this.getStateFromIndex(indexOfState-1);
+    }
 
-    addToSideAndDrinkItems: function(item) {
-      this.sideAndDrinkItems.push(item);
-    },
-
-    removeFromBurgerIngredients: function(item) {
-      let index = this.burgerIngredients.findIndex(x => x.ingredient_id==item.ingredient_id);
-
-      for(let i = 0; i < this.burgers.length; i++){
-        if(this.burgers[i].isActive){
-          this.burgerIngredients.splice(index, 1);
-          this.burgers[i].ingredients = this.burgerIngredients;
-        }
-      }
-    },
-
-    removeFromSideAndDrinkItems: function(item) {
-      let index = this.sideAndDrinkItems.findIndex(x => x.ingredient_id==item.ingredient_id);
-      this.sideAndDrinkItems.splice(index, 1);
-    },
-
-    hideBurgerIngredients: function(){
-      for(let i = 0; i < this.burgers.length; i++){
-        this.burgers[i].lastActive = false;
-        if(this.burgers[i].isActive){
-          this.burgers[i].lastActive = true;
-          this.burgers[i].isActive = false;
-        }
-      }
-    },
-
-    loadBurgerItems: function(burgerIngredients) {
-      this.burgerIngredients = burgerIngredients;
-    },
-
-    displayBurger: function(burger) {
-      this.hideBurgerIngredients();
-      this.loadBurgerItems(burger.ingredients)
-      this.state = 'BreadAndPatty'
-      burger.isActive = true;
-    },
-    //--------------
-    //All functions handling state ---
-    getIndexOfState: function () {
-      var indexOfState=this.states.indexOf(this.state)
-      return indexOfState;
-    },
-
-    getStateFromIndex: function (index) {
-      var currentState = this.states[index];
-      return currentState;
-    },
-
-    changeToNextState: function () {
-      let indexOfState = this.getIndexOfState();
-      this.state = this.getStateFromIndex(indexOfState+1);
-    },
-
-    changeToPreviousState: function () {
-      let indexOfState = this.getIndexOfState();
-      if(this.state === 'Drinks'){
-        for(let i = 0; i < this.burgers.length; i++){
-          if(this.burgers[i].lastActive){
-            this.displayBurger(this.burgers[i]);
-          }
-        }
-        this.state = this.getStateFromIndex(indexOfState-1);
-      }
-
-      else if(this.state === 'BreadAndPatty' && confirm(this.cancelPopupText)){
-        for(let i = 0; i < this.burgers.length; i++){
-          if(this.burgers[i].isActive){
-            this.state = this.getStateFromIndex(indexOfState-1);
-            this.wipeBurgerFromOrder(i);
-          }
-        }
-      }
-      else if (this.state !== 'Drinks' && this.state !== 'BreadAndPatty'){
-        this.state = this.getStateFromIndex(indexOfState-1);
-      }
-
-    },
-    // ------------
-  }
+  },
+  // ------------
+}
 }
 </script>
 <style scoped>
@@ -368,6 +386,7 @@ export default {
   cursor: pointer;
   opacity: 0.7;
 }
+
 #previous{
   position: relative;
   font-family: 'Quicksand', sans-serif;
@@ -391,10 +410,12 @@ export default {
   height: auto;
 
 }
+
 #TopPanel{
   grid-area: TopPanel;
 
 }
+
 #ToggleBar{
   grid-area: ToggleBar;
   background-color: rgb(28, 247, 189);
@@ -402,6 +423,7 @@ export default {
   border-width: thin;
   border-color: black;
 }
+
 #MiddlePanel{
   grid-area: MiddlePanel;
   background-color: rgb(192, 239, 232);
@@ -411,16 +433,22 @@ export default {
   border-left-style: solid;
   border-left-color: black;
   border-left-width: thin;
+  border-right-style: solid;
   border-right-color: black;
   border-right-width: thin;
-  border-right-style: solid;
 }
+
 #AllFoodTabs{
   grid-area: AllFoodTabs;
 }
+
 #Kundkorg{
-  grid-area: Kundkorg;
-  float:left;
+  /* grid-area: Kundkorg;
+  float:left; */
+}
+
+#overview {
+  background-color: red;
 }
 .overviewBottomBar{
   height: 19vh;
@@ -437,15 +465,18 @@ export default {
   top:0;
   z-index: -2;
 }
+
 .ingredient {
   border: 1px solid #ccd;
   padding: 1em;
   background-color:  rgb(20,100,120);
   color: white;
 }
+
 button:hover{
   cursor:pointer;
 }
+
 @media (max-width: 600px) {
   #MiddlePanel{grid-template-columns: 70% 30%;}
   #ToggleBar{border-top-style: hidden;}
