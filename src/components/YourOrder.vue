@@ -88,7 +88,6 @@
     border-bottom-style: solid;
     border-bottom-color: black;
     border-bottom-width: thin;
-
   }
   .sides_drinks{
     display: inline-block;
@@ -181,7 +180,7 @@
     div.theIngredients {font-size: 0.7em;}
     div.yourOrderTextBox {
     border-bottom: thin solid #000000;}
-    .yourOrderContainer{border-bottom-style:solid;}
+    .yourOrderContainer{border-bottom-style:solid;height:82vh;}
     .totalPrice{
       font-size: 0.85em;
       margin-left: 0;
@@ -206,6 +205,12 @@
     }
     .removeIngredientButton{
       font-size: 75%;
+    }
+    .categoryDivider{
+      top:0;
+      border-bottom-style: none;
+      border-bottom-color: none;
+      border-bottom-width: none;
     }
 
 

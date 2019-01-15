@@ -13,8 +13,9 @@
               {{uiLabels.stageOne}}
         </span > -->
 
-      <div id="span">
-        <span class="OverlayText" v-if ="parentState == 'BreadAndPatty'">
+      <div id="OverlayText">
+            <span class="OverlayText" v-if ="parentState == 'BreadAndPatty'">
+
           {{uiLabels.chooseBreadAndPatty}}
         </span>
         <span class="OverlayText" v-if ="parentState == 'ToppingsAndSauce'">
@@ -99,15 +100,13 @@ export default{
 }
 
 </script>
-
-<style scoped>
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
-
-#span {
+<style scoped>
+#OverlayText {
   margin-top: 1em;
   margin-bottom: 1em;
   display: inline-block;
-  margin-right: 10%
+  margin-right: 10%;
 }
 
 .heading {
