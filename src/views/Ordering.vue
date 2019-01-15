@@ -110,9 +110,7 @@
   <button id="next" v-if = "this.state === 'Vegetables'" v-on:click= "finishBurgerSwitchState()"> {{uiLabels.finishburger}} </button>
   <button id="previous" v-on:click= "changeToPreviousState()"> {{uiLabels.previous}} </button>
 </div>
-<div class="overviewBottomBar" v-if ="this.state == 'OverView'">
 
-</div>
 
 </div>
 </template>
@@ -347,7 +345,7 @@ export default {
     }
 
   },
-  // ------------
+
 }
 }
 </script>
@@ -449,15 +447,6 @@ export default {
 
 #overview {
   background-color: red;
-}
-.overviewBottomBar{
-  height: 19vh;
-  grid-area: ToggleBar;
-  background-color: rgb(192, 239, 232);
-  border-style: solid;
-  border-width: thin;
-  border-color: black;
-  border-top: none;
 }
 .example-panel {
   position: fixed;

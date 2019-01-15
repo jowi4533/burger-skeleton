@@ -3,6 +3,17 @@
   <div class="">
   <div id = "OverViewContainer">
     <h1> {{uiLabels.overViewHeader}} </h1>
+    <div id="yourOrderOmg">
+      <YourOrder @displayBurger="displayBurger($event)"
+      @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
+      @removeFromSideAndDrinkItems = "removeFromSideAndDrinkItems($event)"
+      @removeItem = "removeItem($event)"
+      :sideAndDrinkItems ="sideAndDrinkItems"
+      :burgers = "burgers"
+      :ui-labels="uiLabels"
+      :lang="lang">
+      </YourOrder>
+    </div>
     <!-- <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">{{uiLabels.previous}}</button>
     <button class="overviewButtons" id="purchaseButton" v-on:click= "switchStage('Payment')"> {{uiLabels.purchaseItemsInOverview}} </button>
     <div id="wrapper">
@@ -15,29 +26,10 @@
 <button class="overviewButtons" id="addButton" v-on:click= "switchStage('MenuPage')"> {{uiLabels.addItemInOverview}} </button>
 <button class="overviewButtons" id="purchaseButton" v-on:click= "placeOrder()"> {{uiLabels.purchaseItemsInOverview}} </button>
 <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Drinks')">{{uiLabels.previous}}</button>
-<<<<<<< HEAD
-</div>
-<div class="bottomBar">
-=======
-
-    <div id="yourOrderOmg">
-      <YourOrder @displayBurger="displayBurger($event)"
-      @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
-      @removeFromSideAndDrinkItems = "removeFromSideAndDrinkItems($event)"
-      @removeItem = "removeItem($event)"
-      :sideAndDrinkItems ="sideAndDrinkItems"
-      :burgers = "burgers"
-      :ui-labels="uiLabels"
-      :lang="lang">
-
-      </YourOrder>
-
-
-    </div>
->>>>>>> c7233fc17c1e4d817e67024814cce7f8fca80700
-
 
 </div>
+
+
   </div>
 </template>
 
@@ -123,13 +115,8 @@ export default{
 
   float:right;
   background-color: rgb(220,220,220);
-<<<<<<< HEAD
   width: 70%;
   height: 70vh;
-=======
-  width: 100vw;
-  height: 100vh;
->>>>>>> c7233fc17c1e4d817e67024814cce7f8fca80700
   display: grid;
   grid-template-columns: 15% 70% 15%;
   grid-template-rows: 20% 65% 15%;
@@ -149,7 +136,7 @@ export default{
 } */
 
 #youOrderOmg {
-  grid-row: 1;
+  grid-row: 2;
   grid-column: 2;
 }
 
