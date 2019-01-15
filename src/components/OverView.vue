@@ -51,7 +51,6 @@ export default{
       //Wrap the order in an object
       if (confirm(this.uiLabels.popupPlaceOrder)) {
         for(let j = 0; j < this.burgers.length; j +=1){
-          if(this.burger[j].ingredients.length > 0){
             let order = {
               ingredients: this.burgers[j].ingredients,
               price: 10
@@ -65,7 +64,6 @@ export default{
             // }
             //this.price = 0;
           }
-        }
         this.$emit('wipeOrder');
         window.location = 'http://localhost:8080/#/';
       }
