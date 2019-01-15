@@ -29,6 +29,7 @@
     <OverView
     @switchStage="state=$event"
     @wipeOrder="wipeOrder()"
+    :state="state"
     :lang="lang"
     :ui-labels="uiLabels"
     :burgers="burgers"

@@ -15,9 +15,9 @@
 <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Drinks')">{{uiLabels.previous}}</button>
 
     <div id="yourOrderOmg">
-      <YourOrder @displayBurger="showBurger($event)"
-      @removeFromBurgerIngredients= "removeBurgerIngredient($event)"
-      @removeFromSideAndDrinkItems = "removeSidesDrinks($event)"
+      <YourOrder @displayBurger="displayBurger($event)"
+      @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
+      @removeFromSideAndDrinkItems = "removeFromSideAndDrinkItems($event)"
       :sideAndDrinkItems ="sideAndDrinkItems"
       :burgers = "burgers"
       :ui-labels="uiLabels"
@@ -48,7 +48,8 @@ export default{
     uiLabels: Object,
     ingredients: Array,
     burgers: Array,
-    sideAndDrinkItems: Array
+    sideAndDrinkItems: Array,
+    state: String
   },
 
   components: {
@@ -57,29 +58,18 @@ export default{
   },
 
   methods: {
-    bajs: function(event) {
-      this.$parent.showBurger(event);
+    displayBurger: function(burger) {
+      this.$parent.displayBurger(burger);
     },
-    hejsan: function (event) {
-    this.$parent.removeBurgerIngredient(event);
+    removeFromBurgerIngredients: function (item) {
+      this.$parent.removeFromBurgerIngredient(item);
     },
-    fest: function (event) {
-      this.$parent.removeSidesDrinks(event);
+    removeFromSideAndDrinkItems: function (item) {
+      this.$parent.removeFromSideAndDrinkItems(item);
     },
 
     switchStage: function(stage) {
-    this.$emit('swithcStage', stage);
-    },
-    displayBurger(burger){
-      this.$parent.displayBurger(burger);
-    },
-
-    removeFromBurgerIngredients(ingredient) {
-      this.$parent.removeFromBurgerIngredients(ingredient);
-    },
-
-    removeFromSideAndDrinkItems(item) {
-      this.$parent.removeFromBurgerIngredients(item);
+    this.$emit('switchStage', stage);
     },
 
     placeOrder: function () {
