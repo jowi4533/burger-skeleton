@@ -33,8 +33,8 @@
     :ui-labels="uiLabels"
     :burgers="burgers"
     :sideAndDrinkItems="sideAndDrinkItems">
-  </Overview>
-</div>
+    </Overview>
+  </div>
 
 <div id="AllFoodTabs" v-if = "this.state !== 'OverView'">
   <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
@@ -90,7 +90,7 @@
 
 </div>
 
-<div id="Kundkorg">
+<div id="Kundkorg" v-if ="this.state !== 'OverView'">
   <YourOrder
   @displayBurger="displayBurger($event)"
   @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
@@ -364,6 +364,7 @@ export default {
   cursor: pointer;
   opacity: 0.7;
 }
+
 #previous{
   position: relative;
   font-family: 'Quicksand', sans-serif;
@@ -387,10 +388,12 @@ export default {
   height: auto;
 
 }
+
 #TopPanel{
   grid-area: TopPanel;
 
 }
+
 #ToggleBar{
   grid-area: ToggleBar;
   background-color: rgb(28, 247, 189);
@@ -398,6 +401,7 @@ export default {
   border-width: thin;
   border-color: black;
 }
+
 #MiddlePanel{
   grid-area: MiddlePanel;
   background-color: rgb(192, 239, 232);
@@ -407,30 +411,39 @@ export default {
   border-left-style: solid;
   border-left-color: black;
   border-left-width: thin;
-
 }
+
 #AllFoodTabs{
   grid-area: AllFoodTabs;
 }
+
 #Kundkorg{
-  grid-area: Kundkorg;
-  float:left;
+  /* grid-area: Kundkorg;
+  float:left; */
 }
+
+#overview {
+  background-color: red;
+}
+
 .example-panel {
   position: fixed;
   left:0;
   top:0;
   z-index: -2;
 }
+
 .ingredient {
   border: 1px solid #ccd;
   padding: 1em;
   background-color:  rgb(20,100,120);
   color: white;
 }
+
 button:hover{
   cursor:pointer;
 }
+
 @media (max-width: 600px) {
   #MiddlePanel{grid-template-columns: 70% 30%;}
   #ToggleBar{border-top-style: hidden;}

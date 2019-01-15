@@ -14,6 +14,19 @@
     <button class="overviewButtons" id="purchaseButton" v-on:click= "placeOrder()"> {{uiLabels.purchaseItemsInOverview}} </button>
     <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">{{uiLabels.previous}}</button>
 
+    <div id="yourOrderOmg">
+      <YourOrder @displayBurger="showBurger($event)"
+      @removeFromBurgerIngredients= "removeBurgerIngredient($event)"
+      @removeFromSideAndDrinkItems = "removeSidesDrinks($event)"
+      :sideAndDrinkItems ="sideAndDrinkItems"
+      :burgers = "burgers"
+      :ui-labels="uiLabels"
+      :lang="lang">
+
+      </YourOrder>
+
+
+    </div>
 
 
   </div>
@@ -39,12 +52,34 @@ export default{
   },
 
   components: {
-    Ingredient
+    Ingredient,
+    YourOrder
   },
 
   methods: {
+    bajs: function(event) {
+      this.$parent.showBurger(event);
+    },
+    hejsan: function (event) {
+    this.$parent.removeBurgerIngredient(event);
+    },
+    fest: function (event) {
+      this.$parent.removeSidesDrinks(event);
+    },
+
     switchStage: function(stage) {
-      this.$emit('switchStage', stage);
+    this.$emit('swithcStage', stage);
+    },
+    displayBurger(burger){
+      this.$parent.displayBurger(burger);
+    },
+
+    removeFromBurgerIngredients(ingredient) {
+      this.$parent.removeFromBurgerIngredients(ingredient);
+    },
+
+    removeFromSideAndDrinkItems(item) {
+      this.$parent.removeFromBurgerIngredients(item);
     },
 
     placeOrder: function () {
@@ -82,8 +117,8 @@ export default{
 
 #OverViewContainer {
   background-color: rgb(220,220,220);
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: grid;
   grid-template-columns: 15% 70% 15%;
   grid-template-rows: 20% 65% 15%;
@@ -91,7 +126,7 @@ export default{
   margin: 0;
 }
 
-#wrapper {
+/* #wrapper {
   background-color: rgb(240,240,240);
   height: 15em;
   width: 25em;
@@ -100,6 +135,15 @@ export default{
   display: grid;
   grid-template-rows: 80% 20%;
   justify-items: center;
+} */
+
+#youOrderOmg {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+#yourOrderContainer {
+  width: 100em;
 }
 
 h1 {
@@ -141,12 +185,19 @@ h1 {
   grid-row: 2;
   grid-column: 1;
 }
+button:hover {
+  cursor: pointer;
+}
+button {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1em;
+}
 
-#removeButton {
+/* #removeButton {
   background-color: rgb(254, 177, 43);
   grid-row: 2;
   grid-column: 2;
-}
+} */
 
 
 </style>
