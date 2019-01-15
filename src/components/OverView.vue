@@ -1,6 +1,6 @@
 <template>
   <div id = "OverViewContainer">
-    <h1> {{uiLabels.overViewHeader}} </h1>
+    <p id="heading">{{uiLabels.overViewHeader}}</p>
     <!-- <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">{{uiLabels.previous}}</button>
     <button class="overviewButtons" id="purchaseButton" v-on:click= "switchStage('Payment')"> {{uiLabels.purchaseItemsInOverview}} </button>
      <div id="wrapper">
@@ -10,12 +10,20 @@
       <button class="overviewButtons" id="addButton" v-on:click= "switchStage('MenuPage')"> {{uiLabels.addItemInOverview}} </button>
       <button class="overviewButtons" id="removeButton"> {{uiLabels.removeItemInOverview}} </button>
     </div> -->
-    <button class="overviewButtons" id="addButton" v-on:click= "switchStage('MenuPage')"> {{uiLabels.addItemInOverview}} </button>
-    <button class="overviewButtons" id="purchaseButton" v-on:click= "placeOrder()"> {{uiLabels.purchaseItemsInOverview}} </button>
-    <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">{{uiLabels.previous}}</button>
+  <div class="addButton">
+    <button id="addButton" v-on:click= "switchStage('MenuPage')"> {{uiLabels.addItemInOverview}} </button>
+  </div>
+  <div class="purchaseButton">
+    <button id="purchaseButton" v-on:click= "placeOrder()"> {{uiLabels.purchaseItemsInOverview}} </button>
+  </div>
+  <div class="previousButton">
+    <button id="previousButton" v-on:click= "switchStage('Drinks')">{{uiLabels.previous}}</button>
+  </div>
 
-    <div id="yourOrderOmg">
-      <YourOrder @displayBurger="displayBurger($event)"
+
+
+    <div id="yourOrderContainerInOverview">
+      <YourOrder class="yourOrderInOverview" @displayBurger="displayBurger($event)"
       @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
       @removeFromSideAndDrinkItems = "removeFromSideAndDrinkItems($event)"
       @removeItem = "removeItem($event)"
@@ -109,14 +117,34 @@ export default{
 </script>
 
 <style scoped>
+#heading {
+  grid-area: topmiddle;
+  margin-top: 1%;
+  margin-bottom: 0;
+  font-size: 2em;
+  align-items: center;
+}
+
+.yourOrderInOverview {
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
+  height: 80vh;
+  width: 55vw;
+  overflow: hidden;
+  align-self: center;
+}
 
 #OverViewContainer {
   background-color: rgb(220,220,220);
-  width: 100vw;
-  height: 100vh;
+  width:auto;
+  height: 90vh;
   display: grid;
-  grid-template-columns: 15% 70% 15%;
-  grid-template-rows: 20% 65% 15%;
+  grid-template-areas:  "topleft topmiddle topright"
+                        "left middle right";
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: auto;
+  grid-gap: 0.3em;
   justify-items: center;
   margin: 0;
 }
@@ -132,57 +160,78 @@ export default{
   justify-items: center;
 } */
 
-#youOrderOmg {
-  grid-row: 1;
-  grid-column: 2;
+#yourOrderContainerInOverview {
+  grid-area:middle;
 }
 
 #yourOrderContainer {
   width: 100em;
 }
 
-h1 {
-  grid-column: 1 / span 3;
-  grid-row: 1;
-}
 
-.overviewButtons {
+.previousButton {
+  position:absolute;
+  bottom: 0;
+  left: 6%;
+  align-self:bottom;
+  grid-area: left;
+
+}
+#previousButton {
+  vertical-align: bottom;
+  background-color: rgb(30,100,200);
   width: 9em;
   height: 4em;
-  justify-items: center;
   border: 1px;
   border-style: hidden;
   border-radius: 4px;
 }
 
-#previousButton {
-  background-color: rgb(30,100,200);
-  grid-column: 1;
-  grid-row: 3;
-}
 
+.purchaseButton{
+  grid-area: right;
+  position: absolute;
+  bottom: 0;
+  right: 6%;
+  align-self: center;
+}
 #purchaseButton {
   background-color: rgb(30,200,100);
-  grid-column: 3;
-  grid-row: 3;
+  width: 9em;
+  height: 4em;
+  border: 1px;
+  border-style: hidden;
+  border-radius: 4px;
+
 }
+
+.addButton{
+grid-area: right;
+position: absolute;
+bottom: 11%;
+right: 6%;
+align-self: center;
+}
+#addButton {
+  background-color: rgb(251, 248, 198);
+  width: 9em;
+  height: 4em;
+  border: 1px;
+  border-style: hidden;
+  border-radius: 4px;
+}
+
 #orderlist {
-  grid-row: 1;
-  grid-column: 1 / span 2;
   background-color: rgb(244,244,244);
   height: 9em;
   width: 18em;
   margin-top: 1em;
 }
 
-#addButton {
-  background-color: rgb(251, 248, 198);
-  grid-row: 2;
-  grid-column: 1;
-}
 button:hover {
   cursor: pointer;
 }
+
 button {
   font-family: 'Quicksand', sans-serif;
   font-size: 1em;
@@ -193,6 +242,15 @@ button {
   grid-row: 2;
   grid-column: 2;
 } */
-
+@media (max-width: 500px) {
+    #overview { width: 96vw;}
+    #OverViewContainer { width: 96vw;}
+    div.previousButton { font-size: 0.4em; }
+    div.addButton { font-size: 0.4em; }
+    div.purchaseButton { font-size: 0.4em; }
+    #previousButton {position: absolute; left: 0em; bottom: 5em;}
+    #addButton {position: absolute; right: 0em; bottom:5em; }
+    #purchaseButton {position: absolute; right: 0em; bottom:5em; }
+}
 
 </style>

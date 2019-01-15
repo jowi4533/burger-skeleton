@@ -76,7 +76,7 @@
               <div class="burgerImage" v-if = "ingredient.category < 6 ">
               </div>
               {{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-
-              <button class ="removeIngredientButton" v-on:click = "removeFromBurgerIngredients(ingredient)"> X </button>
+              <button class ="removeIngredientButton" v-on:click = "removeItem(ingredient, burger)"> X </button>
             </div>
           </div>
 
@@ -206,12 +206,15 @@
     border-bottom: thin solid #000000;
   }
 
-  .yourOrderContainerRegular {
+  .yourOrderContainer {
     border: thin solid #000000;
     border-top-style: hidden;
     border-bottom-style: hidden;
     height:87vh;
     overflow: hidden;
+    border-left: solid;
+    border-left-color: black;
+    border-left-width: thin;
   }
 
   .yourOrderTextBox{
@@ -239,12 +242,13 @@
   }
 
   .totalPrice{
-    height:3vh;
+    vertical-align: bottom;
+    height: 3vh;
     margin-left: 5%;
   }
 
   .removeIngredientButton{
-    float:right;
+    float: right;
     background-color: rgb(192,239,232);
     border-style: hidden;
     color:red;

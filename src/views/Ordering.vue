@@ -24,18 +24,20 @@
   </TopPanel>
 </div>
 
+<div id = "overview" v-if = "this.state === 'OverView' && this.state !== 'MenuPage'">
+  <OverView
+  @switchStage="state=$event"
+  @wipeOrder="wipeOrder()"
+  :state="state"
+  :lang="lang"
+  :ui-labels="uiLabels"
+  :burgers="burgers"
+  :sideAndDrinkItems="sideAndDrinkItems">
+  </Overview>
+</div>
+
 <div id="MiddlePanel" v-if = "this.state !== 'MenuPage'">
-  <div id = "overview" v-if = "this.state === 'OverView'">
-    <OverView
-    @switchStage="state=$event"
-    @wipeOrder="wipeOrder()"
-    :state="state"
-    :lang="lang"
-    :ui-labels="uiLabels"
-    :burgers="burgers"
-    :sideAndDrinkItems="sideAndDrinkItems">
-    </Overview>
-  </div>
+
 
 <div id="AllFoodTabs" v-if = "this.state !== 'OverView'">
   <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
@@ -426,9 +428,9 @@ export default {
   display:grid;
   grid-template-areas: "AllFoodTabs Kundkorg";
   grid-template-columns: 77% 23%;
-  border-left-style: solid;
-  border-left-color: black;
-  border-left-width: thin;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
 }
 
 #AllFoodTabs{
@@ -436,8 +438,9 @@ export default {
 }
 
 #Kundkorg{
-  /* grid-area: Kundkorg;
-  float:left; */
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
 }
 
 #overview {

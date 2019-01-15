@@ -141,6 +141,7 @@ export default{
 
 .tabAndText{
   height: auto;
+  width: auto;
   text-align: center;
   font-size: 100%;
   font-weight: bold;
