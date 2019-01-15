@@ -1,6 +1,19 @@
 <template>
+
+  <div class="">
   <div id = "OverViewContainer">
     <h1> {{uiLabels.overViewHeader}} </h1>
+    <div id="yourOrderOmg">
+      <YourOrder @displayBurger="displayBurger($event)"
+      @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
+      @removeFromSideAndDrinkItems = "removeFromSideAndDrinkItems($event)"
+      @removeItem = "removeItem($event)"
+      :sideAndDrinkItems ="sideAndDrinkItems"
+      :burgers = "burgers"
+      :ui-labels="uiLabels"
+      :lang="lang">
+      </YourOrder>
+    </div>
     <!-- <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">{{uiLabels.previous}}</button>
     <button class="overviewButtons" id="purchaseButton" v-on:click= "switchStage('Payment')"> {{uiLabels.purchaseItemsInOverview}} </button>
      <div id="wrapper">
@@ -14,26 +27,14 @@
     <button class="overviewButtons" id="purchaseButton" v-on:click= "placeOrder()"> {{uiLabels.purchaseItemsInOverview}} </button>
     <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">{{uiLabels.previous}}</button>
 
-    <div id="yourOrderOmg">
-      <YourOrder @displayBurger="displayBurger($event)"
-      @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
-      @removeFromSideAndDrinkItems = "removeFromSideAndDrinkItems($event)"
-      @removeItem = "removeItem($event)"
-      :sideAndDrinkItems ="sideAndDrinkItems"
-      :burgers = "burgers"
-      :ui-labels="uiLabels"
-      :lang="lang">
-
-      </YourOrder>
-
-
-    </div>
+</div>
 
 
   </div>
 </template>
 
 <script>
+
 import YourOrder from '@/components/YourOrder.vue'
 import Ingredient from '@/components/Ingredient.vue'
 
@@ -76,14 +77,26 @@ export default{
     switchStage: function(stage) {
     this.$emit('switchStage', stage);
     },
+    price: function () {
+      let price = 0;
+      for(let j = 0; j < this.burgers.length; j += 1){
+        for (let i = 0; i < this.burgers[j].ingredients.length; i += 1){
+          price = price + this.burgers[j].ingredients[i].selling_price;
+      }
+      }
+      for(let o = 0; o < this.sideAndDrinkItems.length; o +=1 ){
+        price = price + this.sideAndDrinkItems[o].selling_price;
+      }
+      return price;
+    },
 
     placeOrder: function () {
-      //Wrap the order in an object
+      let totPrice = this.price();
       if (confirm(this.uiLabels.popupPlaceOrder)) {
         for(let j = 0; j < this.burgers.length; j +=1){
           let order = {
             ingredients: this.burgers[j].ingredients,
-            price: 10
+            price: totPrice
           };
           // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
           this.$store.state.socket.emit('order', {order: order});
@@ -111,9 +124,11 @@ export default{
 <style scoped>
 
 #OverViewContainer {
+
+  float:right;
   background-color: rgb(220,220,220);
-  width: 100vw;
-  height: 100vh;
+  width: 70%;
+  height: 70vh;
   display: grid;
   grid-template-columns: 15% 70% 15%;
   grid-template-rows: 20% 65% 15%;
@@ -133,7 +148,7 @@ export default{
 } */
 
 #youOrderOmg {
-  grid-row: 1;
+  grid-row: 2;
   grid-column: 2;
 }
 
