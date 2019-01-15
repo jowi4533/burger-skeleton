@@ -191,7 +191,6 @@
   }
 
   .totalPrice{
-    vertical-align: bottom;
     height: 3vh;
     margin-left: 5%;
   }
@@ -203,48 +202,6 @@
     color:red;
     font-size: 103%;
   }
-
-
-
-
-  .yourOrderContainerOverview {
-    border-style: solid;
-    border-color: black;
-    border-width: medium;
-    height: 87vh;
-    width: 100vw;
-    overflow: hidden;
-  }
-
-  .yourOrderContainerOverview .scrollableText{
-    height: 92%;
-    width: 100%;
-    overflow-y: scroll;
-    border-bottom: thin solid #000000;
-  }
-
-  .yourOrderContainerOverview .yourOrderText{
-    padding-top: 0.155em;
-    padding-left: 0.1em;
-    font-size: 1.2em;
-    font-weight: bold;
-  }
-
-  .yourOrderContainerOverview .yourOrderTextBox{
-    height: 1.5em;
-    border-bottom: thin solid #000000;
-  }
-
-  .yourOrderContainerOverview .removeIngredientButton{
-    float:right;
-    background-color: rgb(192,239,232);
-    border-style: hidden;
-    margin-right: 0.1em;
-
-    color:red;
-    font-size: 103%;
-  }
-
 
 
   @media (max-width: 500px) {
