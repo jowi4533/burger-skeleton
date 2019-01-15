@@ -1,5 +1,6 @@
 <template>
   <div id="OrderingContainer">
+
     <div id ="menupage" v-if ="this.state === 'MenuPage'">
       <MenuPage
       @switchStage="state=$event"
@@ -24,20 +25,7 @@
   </TopPanel>
 </div>
 
-<div id = "overview" v-if = "this.state === 'OverView' && this.state !== 'MenuPage'">
-  <OverView
-  @switchStage="state=$event"
-  @wipeOrder="wipeOrder()"
-  :state="state"
-  :lang="lang"
-  :ui-labels="uiLabels"
-  :burgers="burgers"
-  :sideAndDrinkItems="sideAndDrinkItems">
-  </Overview>
-</div>
-
 <div id="MiddlePanel" v-if = "this.state !== 'MenuPage'">
-
 
 <div id="AllFoodTabs" v-if = "this.state !== 'OverView'">
   <div id = "breadandpatty" v-if = "this.state === 'BreadAndPatty'">
@@ -105,6 +93,18 @@
 </YourOrder>
 </div>
 
+</div>
+
+<div id = "overview" v-if = "this.state === 'OverView' && this.state !== 'MenuPage'">
+  <OverView
+  @switchStage="state=$event"
+  @wipeOrder="wipeOrder()"
+  :state="state"
+  :lang="lang"
+  :ui-labels="uiLabels"
+  :burgers="burgers"
+  :sideAndDrinkItems="sideAndDrinkItems">
+  </Overview>
 </div>
 
 <div id="ToggleBar" v-if = "this.state !== 'MenuPage' && this.state !== 'OverView'">
@@ -361,6 +361,16 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
+#MiddlePanel{
+  grid-area: MiddlePanel;
+  background-color: rgb(192, 239, 232);
+  display:grid;
+  grid-template-areas: "AllFoodTabs Kundkorg";
+  grid-template-columns: 77% 23%;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
+}
 
 #OrderingContainer{
   font-family: 'Quicksand', sans-serif;
@@ -412,6 +422,8 @@ export default {
   opacity: 0.7;
 }
 
+
+
 #menupage {
   width: auto;
   height: auto;
@@ -431,19 +443,12 @@ export default {
   border-color: black;
 }
 
-#MiddlePanel{
-  grid-area: MiddlePanel;
-  background-color: rgb(192, 239, 232);
-  display:grid;
-  grid-template-areas: "AllFoodTabs Kundkorg";
-  grid-template-columns: 77% 23%;
-  border-style: solid;
-  border-color: black;
-  border-width: thin;
-}
-
 #AllFoodTabs{
   grid-area: AllFoodTabs;
+}
+
+#overview {
+  grid-area: MiddlePanel;
 }
 
 #Kundkorg{
@@ -452,9 +457,6 @@ export default {
   border-width: thin;
 }
 
-#overview {
-  background-color: red;
-}
 .example-panel {
   position: fixed;
   left:0;

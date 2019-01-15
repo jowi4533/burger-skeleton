@@ -2,17 +2,7 @@
 
   <div id = "OverViewContainer">
     <p id="heading">{{uiLabels.overViewHeader}}</p>
-    <div id="yourOrderOmg">
-      <YourOrder @displayBurger="displayBurger($event)"
-      @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
-      @removeFromSideAndDrinkItems = "removeFromSideAndDrinkItems($event)"
-      @removeItem = "removeItem($event)"
-      :sideAndDrinkItems ="sideAndDrinkItems"
-      :burgers = "burgers"
-      :ui-labels="uiLabels"
-      :lang="lang">
-      </YourOrder>
-    </div>
+
     <!-- <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">{{uiLabels.previous}}</button>
     <button class="overviewButtons" id="purchaseButton" v-on:click= "switchStage('Payment')"> {{uiLabels.purchaseItemsInOverview}} </button>
      <div id="wrapper">
@@ -162,8 +152,8 @@ export default{
 #OverViewContainer {
 
   float:right;
-  background-color: rgb(220,220,220);
-  width:auto;
+  background-color: rgb(192, 239, 232);
+  width:100%;
   height: 90vh;
   display: grid;
   grid-template-areas:  "topleft topmiddle topright"
@@ -269,7 +259,6 @@ button {
   grid-column: 2;
 } */
 @media (max-width: 500px) {
-    #overview { width: 96vw;}
     #OverViewContainer { width: 96vw;}
     div.previousButton { font-size: 0.4em; }
     div.addButton { font-size: 0.4em; }

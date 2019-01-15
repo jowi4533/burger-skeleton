@@ -1,7 +1,7 @@
 <template>
 <div>
 
-  <div id = "yourOrderContainerRegular" v-if="checkState() !== 'OverView'">
+  <div id = "yourOrderContainerRegular">
     <div class="yourOrderTextBox">
       <div class ="yourOrderText">{{uiLabels.yourOrder}}</div>
 
@@ -46,54 +46,6 @@
 
 
 
-
-
-
-
-  <div id = "yourOrderContainerOverview" v-if="checkState() == 'OverView'">
-    <div class="yourOrderTextBox">
-      <div class ="yourOrderText">{{uiLabels.yourOrder}}
-      </div>
-
-    </div>
-
-    <div class="scrollableText">
-      <div class="theBurgers" v-for = "burger in burgers">
-        <li v-if= "burger.ingredients.length > 0"> Burger: {{burger.burgerID}}
-          <button v-if= "burger.isActive === false && checkState() !== 'OverView'" v-on:click = "displayBurger(burger)"> Show Burger Ingredients </button> </li>
-          <div id="burgerIngredients">
-            <div v-if= "burger.isActive === true && checkState() !== 'OverView'" v-for = "ingredient in burger.ingredients">
-              <div class="burgerImage" v-if = "ingredient.category < 6 ">
-              </div>
-              {{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-
-              <button class ="removeIngredientButton" v-on:click = "removeFromBurgerIngredients(ingredient)"> X </button>
-            </div>
-
-            <div v-if= "checkState() === 'OverView'" v-for = "ingredient in burger.ingredients">
-              <div class="burgerImage" v-if = "ingredient.category < 6 ">
-              </div>
-              {{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-
-              <button class ="removeIngredientButton" v-on:click = "removeItem(ingredient, burger)"> X </button>
-            </div>
-          </div>
-
-        </div>
-        <div class="categoryDivider">
-        </div>
-
-        <div class="sidesAndDrinks" v-for ="item in sideAndDrinkItems">
-          <div class="drinkImage" v-if = "item.category == 7">
-          </div>
-          <div class="sidesImage" v-if = "item.category ==6">
-          </div>
-          <li class ="sides_drinks">{{item["ingredient_"+ lang]}}, {{item.selling_price}}:-
-          <button class ="removeIngredientButton" v-on:click = "removeFromSideAndDrinkItems(item)"> X </button></li>
-        </div>
-      </div>
-      <div class="totalPrice">
-        {{uiLabels.totalPrice}} {{price}}:-
-      </div>
-  </div>
 
 </div>
   </template>
