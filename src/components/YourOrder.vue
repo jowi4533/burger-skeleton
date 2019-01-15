@@ -21,7 +21,7 @@
               <div class="burgerImage" v-if = "ingredient.category < 6 ">
               </div>
               {{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-
-              <button class ="removeIngredientButton" v-on:click = "removeFromBurgerIngredients(ingredient)"> X </button>
+              <button class ="removeIngredientButton" v-on:click = "removeItem(ingredient, burger)"> X </button>
             </div>
 
 
@@ -111,15 +111,19 @@
 
     methods: {
       displayBurger: function(burger){
-        this.$emit('displayBurger', burger)
+        this.$emit('displayBurger', burger);
       },
 
       removeFromBurgerIngredients: function(ingredient) {
-        this.$emit('removeFromBurgerIngredients', ingredient)
+        this.$emit('removeFromBurgerIngredients', ingredient);
       },
 
       removeFromSideAndDrinkItems: function (item) {
-        this.$emit('removeFromSideAndDrinkItems', item)
+        this.$emit('removeFromSideAndDrinkItems', item);
+      },
+
+      removeItem: function (item, burger){
+        this.$emit('removeItem', [item, burger]);
       },
 
       checkState: function(){
