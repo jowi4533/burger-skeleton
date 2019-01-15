@@ -1,5 +1,5 @@
 <template>
-  <div class = "yourOrderContainer">
+  <div v-if="this.state=='OverView'" class = "yourOrderContainerRegular">
     <div class="yourOrderTextBox">
       <div class ="yourOrderText">{{uiLabels.yourOrder}}</div>
 
@@ -44,6 +44,59 @@
         {{uiLabels.totalPrice}} {{price}}:-
     </div>
   </div>
+
+
+
+
+
+
+
+  <div v-if="this.state!=='OverView'" class = "yourOrderContainerOverview">
+    <div class="yourOrderTextBox">
+      <div class ="yourOrderText">{{uiLabels.yourOrder}}</div>
+
+    </div>
+
+    <div class="scrollableText">
+      <div class="theBurgers" v-for = "burger in burgers">
+        <li v-if= "burger.ingredients.length > 0"> Burger: {{burger.burgerID}}
+          <button v-if= "burger.isActive === false && checkState() !== 'OverView'" v-on:click = "displayBurger(burger)"> Show Burger Ingredients </button> </li>
+          <div id="burgerIngredients">
+            <div v-if= "burger.isActive === true && checkState() !== 'OverView'" v-for = "ingredient in burger.ingredients">
+              <div class="burgerImage" v-if = "ingredient.category < 6 ">
+              </div>
+              {{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-
+              <button class ="removeIngredientButton" v-on:click = "removeFromBurgerIngredients(ingredient)"> X </button>
+            </div>
+
+            <div v-if= "checkState() === 'OverView'" v-for = "ingredient in burger.ingredients">
+              <div class="burgerImage" v-if = "ingredient.category < 6 ">
+              </div>
+              {{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-
+              <button class ="removeIngredientButton" v-on:click = "removeFromBurgerIngredients(ingredient)"> X </button>
+            </div>
+
+
+          </div>
+
+        </div>
+        <div class="categoryDivider">
+
+        </div>
+        <div class="sidesAndDrinks" v-for ="item in sideAndDrinkItems">
+          <div class="drinkImage" v-if = "item.category == 7">
+          </div>
+          <div class="sidesImage" v-if = "item.category ==6">
+          </div>
+          <li class ="sides_drinks">{{item["ingredient_"+ lang]}}, {{item.selling_price}}:-
+          <button class ="removeIngredientButton" v-on:click = "removeFromSideAndDrinkItems(item)"> X </button></li>
+        </div>
+      </div>
+      <div class="totalPrice">
+        {{uiLabels.totalPrice}} {{price}}:-
+    </div>
+  </div>
+
   </template>
 
   <script>
@@ -147,7 +200,7 @@
     border-bottom: thin solid #000000;
   }
 
-  .yourOrderContainer {
+  .yourOrderContainerRegular {
     border: thin solid #000000;
     border-top-style: hidden;
     border-bottom-style: hidden;
@@ -183,6 +236,7 @@
     height:3vh;
     margin-left: 5%;
   }
+
   .removeIngredientButton{
     float:right;
     background-color: rgb(192,239,232);
@@ -190,6 +244,47 @@
     color:red;
     font-size: 103%;
   }
+
+
+
+
+  .yourOrderContainerOverview {
+    border: thin solid #000000;
+    border-top-style: hidden;
+    border-bottom-style: hidden;
+    height:87vh;
+    width: 60vw;
+    overflow: hidden;
+  }
+
+  .yourOrderContainerOverview .scrollableText{
+    height: 92%;
+    overflow-y: scroll;
+    border-bottom: thin solid #000000;
+  }
+
+  .yourOrderContainerOverview .yourOrderText{
+    padding-top: 0.155em;
+    padding-left: 0.1em;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .yourOrderContainerOverview .yourOrderTextBox{
+    height: 1.5em;
+    border-bottom: thin solid #000000;
+  }
+
+  .yourOrderContainerOverview .removeIngredientButton{
+    float:right;
+    background-color: rgb(192,239,232);
+    border-style: hidden;
+    color:red;
+    font-size: 103%;
+  }
+
+
+
   @media (max-width: 500px) {
     div.yourOrderText { font-size: 0.9em; }
     div.theIngredients {font-size: 0.7em;}
