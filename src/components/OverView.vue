@@ -91,12 +91,12 @@ export default{
     },
 
     placeOrder: function () {
-      //Wrap the order in an object
+      let totPrice = this.price();
       if (confirm(this.uiLabels.popupPlaceOrder)) {
         for(let j = 0; j < this.burgers.length; j +=1){
           let order = {
             ingredients: this.burgers[j].ingredients,
-            price: price()
+            price: totPrice
           };
           // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
           this.$store.state.socket.emit('order', {order: order});

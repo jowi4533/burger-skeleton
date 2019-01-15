@@ -299,6 +299,13 @@ export default {
   },
 
   displayBurger: function(burger) {
+
+    for (let i = 0; i < this.burgers.length; i++){
+      if(this.burgers[i].ingredients.length === 0){
+        this.wipeBurgerFromOrder(i);
+      }
+    }
+    
     this.hideBurgerIngredients();
     this.loadBurgerItems(burger.ingredients)
     this.state = 'BreadAndPatty'
