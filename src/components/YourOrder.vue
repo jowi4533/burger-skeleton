@@ -1,5 +1,7 @@
 <template>
-  <div v-if="this.state=='OverView'" class = "yourOrderContainerRegular">
+<div>
+
+  <div id = "yourOrderContainerRegular" v-if="checkState() !== 'OverView'">
     <div class="yourOrderTextBox">
       <div class ="yourOrderText">{{uiLabels.yourOrder}}</div>
 
@@ -42,7 +44,7 @@
       </div>
       <div class="totalPrice">
         {{uiLabels.totalPrice}} {{price}}:-
-    </div>
+      </div>
   </div>
 
 
@@ -51,9 +53,10 @@
 
 
 
-  <div v-if="this.state!=='OverView'" class = "yourOrderContainerOverview">
+  <div id = "yourOrderContainerOverview" v-if="checkState() == 'OverView'">
     <div class="yourOrderTextBox">
-      <div class ="yourOrderText">{{uiLabels.yourOrder}}</div>
+      <div class ="yourOrderText">{{uiLabels.yourOrder}}
+      </div>
 
     </div>
 
@@ -75,14 +78,12 @@
               {{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-
               <button class ="removeIngredientButton" v-on:click = "removeFromBurgerIngredients(ingredient)"> X </button>
             </div>
-
-
           </div>
 
         </div>
         <div class="categoryDivider">
-
         </div>
+
         <div class="sidesAndDrinks" v-for ="item in sideAndDrinkItems">
           <div class="drinkImage" v-if = "item.category == 7">
           </div>
@@ -94,9 +95,10 @@
       </div>
       <div class="totalPrice">
         {{uiLabels.totalPrice}} {{price}}:-
-    </div>
+      </div>
   </div>
 
+</div>
   </template>
 
   <script>
@@ -253,16 +255,17 @@
 
 
   .yourOrderContainerOverview {
-    border: thin solid #000000;
-    border-top-style: hidden;
-    border-bottom-style: hidden;
-    height:87vh;
-    width: 60vw;
+    border-style: solid;
+    border-color: black;
+    border-width: medium;
+    height: 87vh;
+    width: 100vw;
     overflow: hidden;
   }
 
   .yourOrderContainerOverview .scrollableText{
     height: 92%;
+    width: 100%;
     overflow-y: scroll;
     border-bottom: thin solid #000000;
   }
