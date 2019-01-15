@@ -272,6 +272,12 @@ export default {
     }
   },
 
+  removeItem: function(item, burger){
+    let index = burger.ingredients.findIndex(x => x.ingredient_id==item.ingredient_id);
+
+    burger.ingredients.splice(index, 1);
+  },
+
   removeFromSideAndDrinkItems: function(item) {
     let index = this.sideAndDrinkItems.findIndex(x => x.ingredient_id==item.ingredient_id);
     this.sideAndDrinkItems.splice(index, 1);

@@ -18,6 +18,7 @@
       <YourOrder @displayBurger="displayBurger($event)"
       @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
       @removeFromSideAndDrinkItems = "removeFromSideAndDrinkItems($event)"
+      @removeItem = "removeItem($event)"
       :sideAndDrinkItems ="sideAndDrinkItems"
       :burgers = "burgers"
       :ui-labels="uiLabels"
@@ -66,6 +67,10 @@ export default{
     },
     removeFromSideAndDrinkItems: function (item) {
       this.$parent.removeFromSideAndDrinkItems(item);
+    },
+
+    removeItem(array){
+      this.$parent.removeItem(array[0], array[1]);
     },
 
     switchStage: function(stage) {
