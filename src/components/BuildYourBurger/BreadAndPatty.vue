@@ -7,7 +7,7 @@
     </div>
 
     <div id="BreadAndPatty">
-      <h4 class="ContainerText" id="BreadText"> {{uiLabels.bread}} </h4>
+      <h4 class="ContainerText" id="BreadText"> {{uiLabels.bread}}</h4>
       <h4 class="ContainerText" id="PattyText"> {{uiLabels.patty}} </h4>
 
       <div id="BreadContainer" v-on:scroll="windowScroll('BreadContainer')">
@@ -100,6 +100,7 @@ export default {
         document.getElementById("myPattyBar").style.width = scrolled + "%";
       }
     }
+  
   },
 
 }
@@ -169,6 +170,7 @@ h4 {
 }
 
 #BreadContainer{
+  /* url("http://cdn.onlinewebfonts.com/svg/img_69465.png"); */
   grid-area: Bread;
   overflow-x: scroll;
   overflow-y:hidden;
@@ -188,13 +190,16 @@ h4 {
   grid-column-gap: 2em;
 
 }
+
+
 #progress-Breadcontainer {
   grid-area: BreadBar;
   display:inline-block;
   vertical-align: bottom;
   width: auto;
   height: 5px;
-  background: white;
+  background:white;
+
 }
 #progress-Pattycontainer {
   grid-area: PattyBar;
@@ -204,6 +209,7 @@ h4 {
   height: 5px;
   background: white;
 }
+
 .progress-Breadbar {
   height: 5px;
   background: gray;
@@ -217,6 +223,7 @@ h4 {
 ::-webkit-scrollbar {
   display: none;
 }
+
 
 button {
   font-family: 'Quicksand', sans-serif;
