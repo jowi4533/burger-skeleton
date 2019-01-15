@@ -196,7 +196,7 @@
     div.theIngredients {font-size: 0.7em;}
     div.yourOrderTextBox {
     border-bottom: thin solid #000000;}
-    .yourOrderContainer{border-bottom-style:solid;height:82vh;}
+    .yourOrderContainer{border-bottom-style:solid;height:82vh}
     .totalPrice{
       font-size: 0.85em;
       margin-left: 0;

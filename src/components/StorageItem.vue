@@ -45,7 +45,7 @@
 														<td class="alignRight"> {{item.stock}} </td></tr>
 													</table>
 												</div>
-												<div class= "sides">
+												<!-- <div class= "sides">
 													<table style="width: 100%;">
 														<th>{{uiLabels.sides}}</th>
 														<tr v-for = "item in ingredients" v-if = "item.category == 6">
@@ -62,7 +62,7 @@
 																		{{item["ingredient_"+ lang]}}</td>
 																		<td class="alignRight"> {{item.stock}} </td></tr>
 																	</table>
-																</div>
+																</div> -->
 
 	</div>
 </template>
@@ -71,7 +71,7 @@
 import Ingredient from '@/components/Ingredient.vue'
 export default {
 	name: 'StorageItem',
-	
+
 	props: {
 	uiLabels: Object,
 	lang: String,
@@ -126,7 +126,6 @@ export default {
 		border: 1px solid #ccd;
 		padding: 1em;
 		background-color:  rgb(20,100,120);
-		/*background-image: url('~@/assets/exampleImage.jpg');*/
 		color: white;
 	}
 	td {
