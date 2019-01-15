@@ -1,4 +1,6 @@
 <template>
+
+  <div class="">
   <div id = "OverViewContainer">
     <h1> {{uiLabels.overViewHeader}} </h1>
     <!-- <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Sides')">{{uiLabels.previous}}</button>
@@ -13,13 +15,16 @@
 <button class="overviewButtons" id="addButton" v-on:click= "switchStage('MenuPage')"> {{uiLabels.addItemInOverview}} </button>
 <button class="overviewButtons" id="purchaseButton" v-on:click= "placeOrder()"> {{uiLabels.purchaseItemsInOverview}} </button>
 <button class="overviewButtons" id="previousButton" v-on:click= "switchStage('Drinks')">{{uiLabels.previous}}</button>
-
+</div>
+<div class="bottomBar">
 
 
 </div>
+  </div>
 </template>
 
 <script>
+
 import YourOrder from '@/components/YourOrder.vue'
 import Ingredient from '@/components/Ingredient.vue'
 
@@ -83,9 +88,11 @@ export default{
 <style scoped>
 
 #OverViewContainer {
+
+  float:right;
   background-color: rgb(220,220,220);
-  width: 100%;
-  height: 100%;
+  width: 70%;
+  height: 70vh;
   display: grid;
   grid-template-columns: 15% 70% 15%;
   grid-template-rows: 20% 65% 15%;

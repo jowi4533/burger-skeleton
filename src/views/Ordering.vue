@@ -90,7 +90,7 @@
 
 </div>
 
-<div id="Kundkorg">
+<div id="Kundkorg" v-if="this.state !=='OverView' ">
   <YourOrder
   @displayBurger="displayBurger($event)"
   @removeFromBurgerIngredients= "removeFromBurgerIngredients($event)"
@@ -108,6 +108,9 @@
   <button id="next" v-if = "this.state !== 'Vegetables'" v-on:click= "changeToNextState()"> {{uiLabels.next}} </button>
   <button id="next" v-if = "this.state === 'Vegetables'" v-on:click= "finishBurgerSwitchState()"> {{uiLabels.finishburger}} </button>
   <button id="previous" v-on:click= "changeToPreviousState()"> {{uiLabels.previous}} </button>
+</div>
+<div class="overviewBottomBar" v-if ="this.state == 'OverView'">
+
 </div>
 
 </div>
@@ -333,6 +336,7 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
+
 #OrderingContainer{
   font-family: 'Quicksand', sans-serif;
   height:auto;
@@ -407,7 +411,9 @@ export default {
   border-left-style: solid;
   border-left-color: black;
   border-left-width: thin;
-
+  border-right-color: black;
+  border-right-width: thin;
+  border-right-style: solid;
 }
 #AllFoodTabs{
   grid-area: AllFoodTabs;
@@ -415,6 +421,15 @@ export default {
 #Kundkorg{
   grid-area: Kundkorg;
   float:left;
+}
+.overviewBottomBar{
+  height: 19vh;
+  grid-area: ToggleBar;
+  background-color: rgb(192, 239, 232);
+  border-style: solid;
+  border-width: thin;
+  border-color: black;
+  border-top: none;
 }
 .example-panel {
   position: fixed;
