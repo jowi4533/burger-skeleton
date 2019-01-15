@@ -113,6 +113,7 @@
   <button id="previous" v-on:click= "changeToPreviousState()"> {{uiLabels.previous}} </button>
 </div>
 
+
 </div>
 </template>
 
@@ -300,6 +301,13 @@ export default {
   },
 
   displayBurger: function(burger) {
+
+    for (let i = 0; i < this.burgers.length; i++){
+      if(this.burgers[i].ingredients.length === 0){
+        this.wipeBurgerFromOrder(i);
+      }
+    }
+
     this.hideBurgerIngredients();
     this.loadBurgerItems(burger.ingredients)
     this.state = 'BreadAndPatty'
@@ -346,12 +354,13 @@ export default {
     }
 
   },
-  // ------------
+
 }
 }
 </script>
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
+
 
 #OrderingContainer{
   font-family: 'Quicksand', sans-serif;
@@ -446,7 +455,6 @@ export default {
 #overview {
   background-color: red;
 }
-
 .example-panel {
   position: fixed;
   left:0;

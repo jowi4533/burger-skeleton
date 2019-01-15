@@ -6,7 +6,6 @@
       <div class ="yourOrderText">{{uiLabels.yourOrder}}</div>
 
     </div>
-
     <div class="scrollableText">
       <div class="theBurgers" v-for = "burger in burgers">
         <li v-if= "burger.ingredients.length > 0"> Burger: {{burger.burgerID}}
@@ -25,8 +24,6 @@
               {{ingredient["ingredient_"+ lang]}}, {{ingredient.selling_price}}:-
               <button class ="removeIngredientButton" v-on:click = "removeItem(ingredient, burger)"> X </button>
             </div>
-
-
           </div>
 
         </div>
