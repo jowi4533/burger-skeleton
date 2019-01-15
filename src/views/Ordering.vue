@@ -443,6 +443,7 @@ button:hover{
   cursor:pointer;
 }
 @media (max-width: 600px) {
+  #OrderingContainer{height: auto;width: auto;}
   #MiddlePanel{grid-template-columns: 70% 30%;}
   #ToggleBar{border-top-style: hidden;}
   #next { font-size: 1.2em; height: 2em; width: 50%;}

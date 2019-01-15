@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="SiteContainer">
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <header id="TopHeader">
   <div id = "rawsauce">RAW Sauce Burgers</div>
@@ -29,13 +29,19 @@ export default {
 <style scoped>
 
 body{
-  background-color: rgb(192, 239, 232);
+   background-color: rgb(192, 239, 232);
   font-family: 'Quicksand', sans-serif;
 }
 
 #TopHeader{
   font-size: 2.5em;
   text-align: center;
+}
+#SiteContainer{
+    background-color: rgb(192, 239, 232);
+    height: 98vh;
+
+    border-style: Solid;
 }
 
 #rawsauce {
@@ -56,7 +62,8 @@ body{
   display: grid;
   grid-template-columns: 50% 50%;
   color: black;
-  height: 60vh;
+  height: auto;
+  width: auto;
   background-color: rgb(192, 239, 232);
 }
 
@@ -72,6 +79,7 @@ button {
   width: 80%;
   transition: 0.5s;
   margin: 5% 0 5% 0%;
+  height: 5em;
 }
 
 button:hover {
@@ -113,6 +121,7 @@ button:hover {
   grid-row: 1;  */
 }
 @media (max-width: 500px) {
+  #SiteContainer{height: 95vh;width: auto;}
   div#rawsauce { font-size: 75%; }
   div.wrapper{
     margin-top: 15%;

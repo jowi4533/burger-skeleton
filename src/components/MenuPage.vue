@@ -72,7 +72,7 @@ export default {
 
 #MenuPageContainer {
   height: 98vh;
-  width: 98vw;
+  width: auto;
   border-style: solid;
   border-color: black;
   background-color: rgb(192, 239, 232);
@@ -125,7 +125,7 @@ height: 10%;
   grid-template-areas: "Pictures"
                       "Texts";
   grid-template-columns: 100%;
-  grid-template-rows: 80% 20%;
+  grid-template-rows: 75% 25%;
   grid-row-gap: 1em;
 
 
@@ -170,7 +170,7 @@ height: 10%;
 
   }
 #TextOverview{
-
+margin:7;
 }
 
 
@@ -207,7 +207,7 @@ align: center;
 
 
 .pictureButtons {
-  margin: 2em;
+  margin: 5em;
   margin-bottom: 0;
   margin-top:0;
   border-radius: 50%;
@@ -222,11 +222,11 @@ align: center;
 .textButtons {
   display:inline-block;
   border-radius: 0.3em;
-  margin: 2em;
+  margin: 3.6em;
   margin-bottom: 0;
   margin-top: 0;
   padding: 0;
-  width: 10em;
+  width: 12em;
   height: 4em;
   font-size: 1.3em;
 }
@@ -260,22 +260,23 @@ align: center;
   opacity: 1;
   right: 0;
 }
-@media (max-width: 1000px){
+@media (max-width: 800px){
+  #MenuPageContainer{height: 97vh;width: auto;}
   #ButtonContainer{
   /* grid-template-areas: "BreadAndPatty"
                                           "Drinks"
                                           "Overview";
                   grid-template-rows: 100% 100% 100%; */
-                  overflow-y: scroll;}
+                  }
   #PictureBreadAndPatty{display: block;}
   #TextBreadAndPatty{display: block;}
   #PictureDrinksAndSides{display: block;}
   #TextDrinksAndSides{display: block;}
   #PictureOverview{display: block;}
   #TextOverview{display: block;}
-  #Pictures{display:grid;}
-  img{height:5em;width:5em;;display: block;padding:0;}
-  .pictureButtons{height:5em;width:5em;display: block;padding: 0;}
+
+  img{height:7em;width:7em;;display: block;padding:0;}
+  .pictureButtons{height:7em;width:7em;display: block;padding: 0;margin-left: 38%;}
   .textButtons{height: 4em;width: 7em;font-size: 0.8em;visibility: hidden;}
   .mediaLabel{font-size: 1em;}
 }
