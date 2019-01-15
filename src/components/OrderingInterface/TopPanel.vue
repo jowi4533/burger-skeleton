@@ -140,10 +140,11 @@ export default{
 }
 
 .tabAndText{
-  height: 100%;
+  height: auto;
   text-align: center;
   font-size: 100%;
   font-weight: bold;
+
 }
 
 #Parent{
@@ -194,7 +195,7 @@ button:hover {
   font-family: 'Quicksand', sans-serif;
   border-style: solid;
   float: right;
-  height: 100%;
+  height: 4.8em;
   width: 9em;
   margin-left: 0;
   margin-right: 0;
@@ -210,6 +211,7 @@ background-color: rgb(250, 117, 117);
 
 }
 @media (max-width: 670px){
+  #TopPanelContainer{height:auto;}
   .tabBar{margin:0; height: 2.5em; width: 2.5em;}
   .OverlayText{font-size: 0.5em;}
   #Cancel {height: 2.5em; width: 4em; margin-left: 4%; margin-right: 2%; padding:0;}

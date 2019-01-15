@@ -378,7 +378,7 @@ export default {
   float: right;
   background-color: rgb(27, 183, 84);
   height: 4em;
-  width: 12.1em;
+  width: 11.6em;
   border-style: solid;
   border-color: black;
   border-width: thin;
@@ -397,7 +397,7 @@ export default {
   float: right;
   background-color: rgb(0,200,250);
   height: 4em;
-  width: 12.1em;
+  width: 11.6em;
   border-style: solid;
   border-color: black;
   border-width: thin;
@@ -470,6 +470,7 @@ button:hover{
 }
 
 @media (max-width: 600px) {
+  #OrderingContainer{height: auto;width: auto;}
   #MiddlePanel{grid-template-columns: 70% 30%;}
   #ToggleBar{border-top-style: hidden;}
   #next { font-size: 1.2em; height: 2em; width: 50%;}
