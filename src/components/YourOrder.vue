@@ -1,7 +1,7 @@
 <template>
 <div>
 
-  <div id = "yourOrderContainerRegular">
+  <div id = "yourOrderContainer">
     <div class="yourOrderTextBox">
       <div class ="yourOrderText">{{uiLabels.yourOrder}}</div>
 
@@ -155,7 +155,7 @@
     border-bottom: thin solid #000000;
   }
 
-  .yourOrderContainer {
+  #yourOrderContainer {
     border: thin solid #000000;
     border-top-style: hidden;
     border-bottom-style: hidden;
